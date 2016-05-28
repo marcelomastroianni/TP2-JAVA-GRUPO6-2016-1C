@@ -10,7 +10,7 @@ public class AlgoformerTest {
         Algoformer optimus = new Algoformer();
         
         String nombre = optimus.getNombre();
-        Assert.assertEquals("Nombre deberia ser Optimus","Optimus", nombre);
+        Assert.assertEquals("Nombre deberia ser Optimus","Optimus2", nombre);
         
 	}
 	
