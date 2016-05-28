@@ -1,1 +1,11 @@
 language: java
+notifications:
+  email:
+    recipients:
+      - marcelomastroianni@gmail.com
+      - jazminsofiaf@gmail.com
+      - ariel.manzione@yahoo.com.ar
+      - nicodec_89@hotmail.com
+      - ari-man_77@hotmail.com
+    on_success: always
+    on_failure: always
