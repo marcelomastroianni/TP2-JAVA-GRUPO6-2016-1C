@@ -1,6 +1,7 @@
 package fiuba.algo3.algoformers.board;
 
-public class Position{
+
+public class Position {
 	private Integer X;
 	private Integer Y;
 	public Position(Integer X, Integer Y){
@@ -25,4 +26,5 @@ public class Position{
 		Position aPosition = (Position) anObject;
 		return (aPosition.getX().equals(this.X) && aPosition.getY().equals(this.Y));
 	}
+
 }

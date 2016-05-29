@@ -5,6 +5,7 @@ import org.junit.Test;
 
 public class PositionTests {
 
+
 	@Test
 	public void compareTwoEqualPositionsTest(){
 		Position position1 = new Position(0,0);
@@ -18,5 +19,6 @@ public class PositionTests {
 		Position position2 = new Position(0,1);
 		Assert.assertFalse(position1.equals(position2));
 	}
+
 
 }

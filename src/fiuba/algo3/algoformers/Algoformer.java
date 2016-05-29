@@ -1,38 +1,37 @@
 package fiuba.algo3.algoformers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Algoformer {
 
+import fiuba.algo3.algoformers.board.Board;
+import fiuba.algo3.algoformers.board.Content;
+import fiuba.algo3.algoformers.board.Nothing;
+import fiuba.algo3.algoformers.board.Position;
+
+public class Algoformer implements Content{
+	private String name;
+	private Mode mode;
+
+
+	public Algoformer(String name, Mode humanoidMode) {
+		this.name = name;
+		this.mode = humanoidMode; // porque siempre se empieza de forma humanoide
+	}
 
 	public String getNombre() {
-		return "Optimus";
+		return name;
 	}
 
 	public String getDescripcion() {
 		return "Optimus Humanoide";
 	}
 
-	public void setNombre(String string) {
-		// TODO Auto-generated method stub
-		
+	@Override
+	public void moveEast(Position inicialPosition, Board board) {
+		Position finalPosition = mode.moveEast(inicialPosition ,board);
+		board.putContent(inicialPosition, new Nothing());
+		board.putContent(finalPosition, this);
 	}
 
-	public void setPuntosVida(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setModoHumanoide(ModoAlgoformer modoHumanoide) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setModoAlterno(ModoAlgoformer modoAlgoformer) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 
