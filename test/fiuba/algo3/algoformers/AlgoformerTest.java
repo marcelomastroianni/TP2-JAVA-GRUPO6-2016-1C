@@ -7,7 +7,7 @@ import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
 
 
-public class AlgoformerTests {
+public class AlgoformerTest {
 
 
 	@Test

@@ -3,7 +3,7 @@ package fiuba.algo3.algoformers.board;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PositionTests {
+public class PositionTest {
 
 
 	@Test

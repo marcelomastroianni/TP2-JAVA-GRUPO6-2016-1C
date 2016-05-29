@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class BoardTests {
+public class BoardTest {
 	private Board board;
 	private Position firstPosition;
 	private Position lastPosition;
