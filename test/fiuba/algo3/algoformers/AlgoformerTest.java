@@ -30,6 +30,20 @@ public class AlgoformerTest {
 		Assert.assertTrue(board.isEmpty(initialPosition));
 		Assert.assertEquals(board.getContent(finalPosition),optimusPrime);
 	}
+	
+	
+	@Test
+	public void testTransform(){
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+				
+        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());        
+        algoformer.transform();
+        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        algoformer.transform();
+        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        algoformer.transform();
+        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+	}
 
 
 

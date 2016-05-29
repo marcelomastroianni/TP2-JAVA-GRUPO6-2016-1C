@@ -38,6 +38,25 @@ public class Algoformer implements Content{
 		board.putContent(finalPosition, this);
 	}
 
+	public Mode getActiveMode() {
+		return activeMode;
+	}
+
+	public void transform() {
+		if (this.activeMode.equals(this.humanoidMode))
+			this.activeMode = this.alternalMode;
+		else
+			this.activeMode = this.humanoidMode;
+	}
+
+	public Mode getHumanoidMode() {
+		return humanoidMode;
+	}
+
+	public Mode getAlternalMode() {
+		return alternalMode;
+	}
+
 
 
 
