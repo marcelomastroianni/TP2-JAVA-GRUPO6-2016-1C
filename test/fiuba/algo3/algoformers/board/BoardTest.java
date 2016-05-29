@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.algoformers.AlgoFormerFactory;
+import fiuba.algo3.algoformers.Algoformer;
+
 
 public class BoardTest {
 	private Board board;
@@ -27,6 +30,15 @@ public class BoardTest {
 	public void isEmptyTest(){
 		Assert.assertTrue(board.isEmpty(firstPosition));
 		Assert.assertTrue(board.isEmpty(lastPosition));
+	}
+
+	@Test
+	public void addContentTest(){
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
+		optimusPrime.setPosition(new Position(4,4));
+		board.add(optimusPrime);
+		Assert.assertTrue(board.isEmpty(firstPosition));
+		Assert.assertEquals(optimusPrime, board.getContent(lastPosition));
 	}
 
 

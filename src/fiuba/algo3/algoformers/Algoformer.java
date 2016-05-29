@@ -9,9 +9,9 @@ import fiuba.algo3.algoformers.board.Position;
 
 public class Algoformer implements IContent{
 	private String name;
-	
+
 	Position position;
-	
+
 	private Integer life;
 	private Mode humanoidMode;
 	private Mode alternalMode;
@@ -19,8 +19,8 @@ public class Algoformer implements IContent{
 
 	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life) {
 		this.name = name;
-		this.humanoidMode = humanoidMode; 
-		this.alternalMode = alternalMode; 
+		this.humanoidMode = humanoidMode;
+		this.alternalMode = alternalMode;
 		this.activeMode = this.humanoidMode;
 		this.life = life;
 	}
@@ -28,7 +28,7 @@ public class Algoformer implements IContent{
 	public String getNombre() {
 		return this.name;
 	}
-	
+
 	public Integer getLife() {
 		return this.life;
 	}
@@ -54,52 +54,94 @@ public class Algoformer implements IContent{
 	}
 
 	@Override
-	public void moveRight(Board board) {		
+	public void moveEast(Board board) {
 		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);		
-		this.position = this.activeMode.moveRight(this.position ,board);						
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveEast(this.position ,board);
 		board.add(nothing);
 		board.add(this);
-		
+
 	}
 
 	@Override
-	public void moveLeft(Board board) {
+	public void moveWest(Board board) {
 		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);		
-		this.position = this.activeMode.moveLeft(this.position ,board);							
-		board.add(nothing);
-		board.add(this);
-	}
-
-	@Override
-	public void moveUp(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);		
-		this.position = this.activeMode.moveUp(this.position ,board);						
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveWest(this.position ,board);
 		board.add(nothing);
 		board.add(this);
 	}
 
 	@Override
-	public void moveDown(Board board) {
+	public void moveNorth(Board board) {
 		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);		
-		this.position = this.activeMode.moveDown(this.position ,board);						
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveNorth(this.position ,board);
 		board.add(nothing);
 		board.add(this);
 	}
+
+	@Override
+	public void moveSouth(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveSouth(this.position ,board);
+		board.add(nothing);
+		board.add(this);
+	}
+
+	@Override
+	public void moveSouthEast(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveSouthEast(this.position ,board);
+		board.add(nothing);
+		board.add(this);
+
+	}
+
+	@Override
+	public void moveSouthWest(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveSouthWest(this.position ,board);
+		board.add(nothing);
+		board.add(this);
+
+	}
+
+	@Override
+	public void moveNorthWest(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveNorthWest(this.position ,board);
+		board.add(nothing);
+		board.add(this);
+
+	}
+
+	@Override
+	public void moveNorthEast(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		this.position = this.activeMode.moveNorthEast(this.position ,board);
+		board.add(nothing);
+		board.add(this);
+
+	}
+
 
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
-		
+
 	}
 
 	@Override
 	public Position getPosition() {
 		return this.position;
 	}
+
 
 
 
