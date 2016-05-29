@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algoformers.AlgoFormerFactory;
 import fiuba.algo3.algoformers.Algoformer;
+import fiuba.algo3.exceptions.InvalidPositionException;
 
 
 public class BoardTest {
@@ -39,6 +40,20 @@ public class BoardTest {
 		board.add(optimusPrime);
 		Assert.assertTrue(board.isEmpty(firstPosition));
 		Assert.assertEquals(optimusPrime, board.getContent(lastPosition));
+	}
+
+	@Test(expected= InvalidPositionException.class)
+	public void addContentInInvalidPositionTest(){
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
+		optimusPrime.setPosition(new Position(5,5));
+		board.add(optimusPrime);
+	}
+
+	@Test(expected= InvalidPositionException.class)
+	public void addContentInNegativePositionTest(){
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
+		optimusPrime.setPosition(new Position(-5,0));
+		board.add(optimusPrime);
 	}
 
 

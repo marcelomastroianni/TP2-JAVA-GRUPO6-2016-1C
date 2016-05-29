@@ -15,7 +15,6 @@ public class RatchetTests {
 	public void setUp() {
 		board = new Board(10, 10);
 		ratchet = AlgoFormerFactory.getRatchet();
-
 	}
 
 	@Test
