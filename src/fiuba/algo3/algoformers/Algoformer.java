@@ -13,11 +13,11 @@ public class Algoformer implements IContent{
 	Position position;
 	
 	private Integer life;
-	private IMode humanoidMode;
-	private IMode alternalMode;
-	private IMode activeMode;
+	private Mode humanoidMode;
+	private Mode alternalMode;
+	private Mode activeMode;
 
-	public Algoformer(String name, IMode humanoidMode,IMode alternalMode,Integer life) {
+	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life) {
 		this.name = name;
 		this.humanoidMode = humanoidMode; 
 		this.alternalMode = alternalMode; 
@@ -34,7 +34,7 @@ public class Algoformer implements IContent{
 	}
 
 
-	public IMode getActiveMode() {
+	public Mode getActiveMode() {
 		return activeMode;
 	}
 
@@ -45,11 +45,11 @@ public class Algoformer implements IContent{
 			this.activeMode = this.humanoidMode;
 	}
 
-	public IMode getHumanoidMode() {
+	public Mode getHumanoidMode() {
 		return humanoidMode;
 	}
 
-	public IMode getAlternalMode() {
+	public Mode getAlternalMode() {
 		return alternalMode;
 	}
 
