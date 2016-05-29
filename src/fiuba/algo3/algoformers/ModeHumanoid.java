@@ -7,21 +7,21 @@ import fiuba.algo3.algoformers.board.Cell;
 import fiuba.algo3.algoformers.board.Position;
 import fiuba.algo3.exceptions.cantCrossException;
 
-public class HumanoidMode implements Mode{
+public class ModeHumanoid implements Mode{
 
 	private Integer life;
 	private Integer attack;
 	private Integer strikingDistance;
 	private Integer speed;
 	private Type type;
-	private AlternalMode alternalMode;
+	private ModeAlternal alternalMode;
 
-	public HumanoidMode(Integer life, Integer attack, Integer strikingDistance, Integer speed, AlternalMode alternalMode) {
+	public ModeHumanoid(Integer life, Integer attack, Integer strikingDistance, Integer speed, ModeAlternal alternalMode) {
 		this.life = life;
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
-		this.type = new TerrestrialType();
+		this.type = new TypeTerrestrial();
 		this.alternalMode = alternalMode;
 	}
 

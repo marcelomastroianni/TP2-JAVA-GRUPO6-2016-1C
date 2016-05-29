@@ -3,7 +3,7 @@ package fiuba.algo3.algoformers;
 import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
 
-public class AlternalMode implements Mode{
+public class ModeAlternal implements Mode{
 
 	private Integer life;
 	private Integer attack;
@@ -11,7 +11,7 @@ public class AlternalMode implements Mode{
 	private Integer speed;
 	private Type type;
 
-	public AlternalMode(Integer life, Integer attack, Integer strikingDistance, Integer speed, Type type) {
+	public ModeAlternal(Integer life, Integer attack, Integer strikingDistance, Integer speed, Type type) {
 		this.life = life;
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
