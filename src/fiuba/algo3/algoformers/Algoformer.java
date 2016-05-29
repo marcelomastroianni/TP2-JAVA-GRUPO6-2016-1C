@@ -24,12 +24,13 @@ public class Algoformer implements Content{
 	}
 
 	public String getNombre() {
-		return name;
+		return this.name;
+	}
+	
+	public Integer getLife() {
+		return this.life;
 	}
 
-	public String getDescripcion() {
-		return "Optimus Humanoide";
-	}
 
 	@Override
 	public void moveEast(Position inicialPosition, Board board) {
