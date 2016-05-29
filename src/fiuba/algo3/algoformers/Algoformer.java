@@ -10,6 +10,8 @@ import fiuba.algo3.algoformers.board.Position;
 public class Algoformer implements IContent{
 	private String name;
 	
+	Position position;
+	
 	private Integer life;
 	private IMode humanoidMode;
 	private IMode alternalMode;
@@ -52,31 +54,52 @@ public class Algoformer implements IContent{
 	}
 
 	@Override
-	public void moveRight(Position inicialPosition, Board board) {
-		Position finalPosition = this.activeMode.moveEast(inicialPosition ,board);
-		board.putContent(inicialPosition, new Nothing());
-		board.putContent(finalPosition, this);
+	public void moveRight(Board board) {		
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);		
+		this.position = this.activeMode.moveRight(this.position ,board);						
+		board.add(nothing);
+		board.add(this);
 		
 	}
 
 	@Override
-	public void moveLeft(Position inicialPosition, Board board) {
-		// TODO Auto-generated method stub
+	public void moveLeft(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);		
+		this.position = this.activeMode.moveLeft(this.position ,board);							
+		board.add(nothing);
+		board.add(this);
+	}
+
+	@Override
+	public void moveUp(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);		
+		this.position = this.activeMode.moveUp(this.position ,board);						
+		board.add(nothing);
+		board.add(this);
+	}
+
+	@Override
+	public void moveDown(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);		
+		this.position = this.activeMode.moveDown(this.position ,board);						
+		board.add(nothing);
+		board.add(this);
+	}
+
+	@Override
+	public void setPosition(Position position) {
+		this.position = position;
 		
 	}
 
 	@Override
-	public void moveUp(Position inicialPosition, Board board) {
-		// TODO Auto-generated method stub
-		
+	public Position getPosition() {
+		return this.position;
 	}
-
-	@Override
-	public void moveDown(Position inicialPosition, Board board) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 
 

@@ -8,8 +8,11 @@ import fiuba.algo3.algoformers.board.Position;
 
 public interface IMode {
 
-	Position moveEast(Position inicialPosition, Board board);
-
+	Position moveRight(Position inicialPosition, Board board);
+	Position moveLeft(Position inicialPosition, Board board);
+	Position moveUp(Position inicialPosition, Board board);
+	Position moveDown(Position inicialPosition, Board board);
+	
 	void cross(ArrayList<Cell> steps);
 
 }

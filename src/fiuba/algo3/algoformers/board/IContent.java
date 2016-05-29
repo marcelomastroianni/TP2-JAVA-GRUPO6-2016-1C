@@ -2,9 +2,11 @@ package fiuba.algo3.algoformers.board;
 
 public interface IContent {
 
-	void moveRight(Position inicialPosition, Board board);
-	void moveLeft(Position inicialPosition, Board board);
-	void moveUp(Position inicialPosition, Board board);
-	void moveDown(Position inicialPosition, Board board);
+	void moveRight(Board board);
+	void moveLeft(Board board);
+	void moveUp(Board board);
+	void moveDown(Board board);
+	void setPosition(Position position);
+	Position getPosition();
 
 }

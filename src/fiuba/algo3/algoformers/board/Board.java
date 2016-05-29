@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
+import fiuba.algo3.algoformers.Algoformer;
 import fiuba.algo3.exceptions.IsAnEmptyPositionException;
 
 public class Board {
@@ -14,48 +15,23 @@ public class Board {
 		}
 	}
 
-
-
-	public IContent getContent(Position position) {
-		Integer X = position.getX();
-		Integer Y = position.getY();
-		return matrix[Y][X].getContent();
-	}
-
-	public boolean isEmpty(Position position) {
-		Integer X = position.getX();
-		Integer Y = position.getY();
-		return matrix[Y][X].getContent().equals(new Nothing());
-	}
-
-
-
-	public void putContent(Position position, IContent content) {
-		Integer X = position.getX();
-		Integer Y = position.getY();
-		matrix[Y][X].putContent(content);
-	}
-
-
-
-	public void moveAlgoformerRight(Position position) {
-		if(isEmpty(position)){
-			throw new IsAnEmptyPositionException();
-		}
-		getContent(position).moveRight(position,this);
-
-	}
-
-
-
 	public Cell getCell(Position position) {
 		Integer X = position.getX();
 		Integer Y = position.getY();
 		return matrix[Y][X];
 	}
 
+	public IContent getContent(Position position) {
+		return this.getCell(position).getContent();
+	}
 
+	public boolean isEmpty(Position position) {
+		return this.getContent(position).equals(new Nothing());
+	}
 
-
-
+	public void add(IContent content) {
+		Integer X = content.getPosition().getX();
+		Integer Y = content.getPosition().getY();
+		matrix[Y][X].putContent(content);	
+	}
 }
