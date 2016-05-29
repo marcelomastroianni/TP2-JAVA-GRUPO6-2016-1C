@@ -7,7 +7,7 @@ import fiuba.algo3.algoformers.board.Cell;
 import fiuba.algo3.algoformers.board.Position;
 import fiuba.algo3.exceptions.cantCrossException;
 
-public class ModeAerial implements Mode{
+public class ModeAerial implements IMode{
 
 
 	private Integer attack;

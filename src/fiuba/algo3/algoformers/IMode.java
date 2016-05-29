@@ -6,7 +6,7 @@ import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Cell;
 import fiuba.algo3.algoformers.board.Position;
 
-public interface Mode {
+public interface IMode {
 
 	Position moveEast(Position inicialPosition, Board board);
 

@@ -16,7 +16,7 @@ public class Board {
 
 
 
-	public Content getContent(Position position) {
+	public IContent getContent(Position position) {
 		Integer X = position.getX();
 		Integer Y = position.getY();
 		return matrix[Y][X].getContent();
@@ -30,7 +30,7 @@ public class Board {
 
 
 
-	public void putContent(Position position, Content content) {
+	public void putContent(Position position, IContent content) {
 		Integer X = position.getX();
 		Integer Y = position.getY();
 		matrix[Y][X].putContent(content);
@@ -38,11 +38,11 @@ public class Board {
 
 
 
-	public void moveAlgoformerToEast(Position position) {
+	public void moveAlgoformerRight(Position position) {
 		if(isEmpty(position)){
 			throw new IsAnEmptyPositionException();
 		}
-		getContent(position).moveEast(position,this);
+		getContent(position).moveRight(position,this);
 
 	}
 

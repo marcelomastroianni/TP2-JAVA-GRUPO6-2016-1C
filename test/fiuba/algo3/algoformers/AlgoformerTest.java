@@ -26,7 +26,7 @@ public class AlgoformerTest {
 
 		board.putContent(initialPosition, optimusPrime);
 		Assert.assertEquals(board.getContent(initialPosition),optimusPrime);
-		board.moveAlgoformerToEast(initialPosition);
+		board.moveAlgoformerRight(initialPosition);
 		Assert.assertTrue(board.isEmpty(initialPosition));
 		Assert.assertEquals(board.getContent(finalPosition),optimusPrime);
 	}

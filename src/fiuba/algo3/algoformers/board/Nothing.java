@@ -1,6 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
-public class Nothing implements Content{
+public class Nothing implements IContent{
 
 
 	@Override
@@ -9,8 +9,18 @@ public class Nothing implements Content{
 	}
 
 	@Override
-	public void moveEast(Position inicialPosition, Board board) {
-		// TODO Auto-generated method stub
+	public void moveRight(Position inicialPosition, Board board) {
+	}
 
+	@Override
+	public void moveLeft(Position inicialPosition, Board board) {
+	}
+
+	@Override
+	public void moveUp(Position inicialPosition, Board board) {
+	}
+
+	@Override
+	public void moveDown(Position inicialPosition, Board board) {
 	}
 }

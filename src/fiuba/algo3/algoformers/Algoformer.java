@@ -3,19 +3,19 @@ package fiuba.algo3.algoformers;
 
 
 import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.Content;
+import fiuba.algo3.algoformers.board.IContent;
 import fiuba.algo3.algoformers.board.Nothing;
 import fiuba.algo3.algoformers.board.Position;
 
-public class Algoformer implements Content{
+public class Algoformer implements IContent{
 	private String name;
 	
 	private Integer life;
-	private Mode humanoidMode;
-	private Mode alternalMode;
-	private Mode activeMode;
+	private IMode humanoidMode;
+	private IMode alternalMode;
+	private IMode activeMode;
 
-	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life) {
+	public Algoformer(String name, IMode humanoidMode,IMode alternalMode,Integer life) {
 		this.name = name;
 		this.humanoidMode = humanoidMode; 
 		this.alternalMode = alternalMode; 
@@ -32,14 +32,7 @@ public class Algoformer implements Content{
 	}
 
 
-	@Override
-	public void moveEast(Position inicialPosition, Board board) {
-		Position finalPosition = this.activeMode.moveEast(inicialPosition ,board);
-		board.putContent(inicialPosition, new Nothing());
-		board.putContent(finalPosition, this);
-	}
-
-	public Mode getActiveMode() {
+	public IMode getActiveMode() {
 		return activeMode;
 	}
 
@@ -50,12 +43,38 @@ public class Algoformer implements Content{
 			this.activeMode = this.humanoidMode;
 	}
 
-	public Mode getHumanoidMode() {
+	public IMode getHumanoidMode() {
 		return humanoidMode;
 	}
 
-	public Mode getAlternalMode() {
+	public IMode getAlternalMode() {
 		return alternalMode;
+	}
+
+	@Override
+	public void moveRight(Position inicialPosition, Board board) {
+		Position finalPosition = this.activeMode.moveEast(inicialPosition ,board);
+		board.putContent(inicialPosition, new Nothing());
+		board.putContent(finalPosition, this);
+		
+	}
+
+	@Override
+	public void moveLeft(Position inicialPosition, Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveUp(Position inicialPosition, Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveDown(Position inicialPosition, Board board) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

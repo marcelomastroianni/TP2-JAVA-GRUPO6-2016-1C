@@ -3,7 +3,7 @@ package fiuba.algo3.algoformers.board;
 public class Cell{
 	private Position position;
 	private Surface surface;
-	private Content content;
+	private IContent content;
 
 	public Cell(Position position){
 		this.position = position;
@@ -14,12 +14,12 @@ public class Cell{
 		return position;
 	}
 
-	public Content getContent() {
+	public IContent getContent() {
 		return content;
 
 	}
 
-	public void putContent(Content content) {
+	public void putContent(IContent content) {
 		this.content = content;
 
 	}
