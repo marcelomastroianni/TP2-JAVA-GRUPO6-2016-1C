@@ -11,13 +11,6 @@ public class AlgoformerTest {
 
 
 	@Test
-	public void testgetOptimusPrime(){
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-        Assert.assertEquals("Optimus Prime", optimusPrime.getNombre());
-
-	}
-
-	@Test
 	public void testMovement(){
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
@@ -43,6 +36,9 @@ public class AlgoformerTest {
 		Assert.assertTrue("Algoformer deberia haberse movido hacia arriba",board.isEmpty(new Position(0,2)));
 		Assert.assertEquals("Algoformer deberia haberse movido hacia arriba",board.getContent(new Position(0,0)),algoformer);
 	}
+
+
+
 
 	@Test
 	public void diagonalMovementTest(){
@@ -86,6 +82,9 @@ public class AlgoformerTest {
         algoformer.transform();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
 	}
+
+
+
 
 
 
