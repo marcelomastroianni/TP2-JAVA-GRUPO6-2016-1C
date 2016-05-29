@@ -9,12 +9,17 @@ import fiuba.algo3.algoformers.board.Position;
 
 public class Algoformer implements Content{
 	private String name;
-	private Mode mode;
+	
+	
+	private Mode humanoidMode;
+	private Mode alternalMode;
+	private Mode activeMode;
 
-
-	public Algoformer(String name, Mode humanoidMode) {
+	public Algoformer(String name, Mode humanoidMode,Mode alternalMode) {
 		this.name = name;
-		this.mode = humanoidMode; // porque siempre se empieza de forma humanoide
+		this.humanoidMode = humanoidMode; 
+		this.alternalMode = alternalMode; 
+		this.activeMode = this.humanoidMode;
 	}
 
 	public String getNombre() {
@@ -27,7 +32,7 @@ public class Algoformer implements Content{
 
 	@Override
 	public void moveEast(Position inicialPosition, Board board) {
-		Position finalPosition = mode.moveEast(inicialPosition ,board);
+		Position finalPosition = this.activeMode.moveEast(inicialPosition ,board);
 		board.putContent(inicialPosition, new Nothing());
 		board.putContent(finalPosition, this);
 	}

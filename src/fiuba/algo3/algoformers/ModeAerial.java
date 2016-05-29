@@ -7,22 +7,21 @@ import fiuba.algo3.algoformers.board.Cell;
 import fiuba.algo3.algoformers.board.Position;
 import fiuba.algo3.exceptions.cantCrossException;
 
-public class ModeHumanoid implements Mode{
+public class ModeAerial implements Mode{
 
 	private Integer life;
 	private Integer attack;
 	private Integer strikingDistance;
 	private Integer speed;
-	private Type type;
-	private ModeAlternal alternalMode;
+	
+	
 
-	public ModeHumanoid(Integer life, Integer attack, Integer strikingDistance, Integer speed, ModeAlternal alternalMode) {
+	public ModeAerial(Integer life, Integer attack, Integer strikingDistance, Integer speed) {
 		this.life = life;
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
-		this.type = new TypeTerrestrial();
-		this.alternalMode = alternalMode;
+		
 	}
 
 
@@ -36,13 +35,20 @@ public class ModeHumanoid implements Mode{
 			steps.add(board.getCell(new Position(X+i+1,Y)));
 		}
 		try{
-			type.cross(steps);
+			cross(steps);
 		}
 		catch(cantCrossException e){
 			return initialPosition;
 		}
 		return new Position(X+i,Y);
 
+	}
+
+
+	@Override
+	public void cross(ArrayList<Cell> steps) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
