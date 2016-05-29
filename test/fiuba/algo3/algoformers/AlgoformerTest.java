@@ -45,7 +45,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void diagonalMovement(){
+	public void diagonalMovementTest(){
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
 
@@ -78,7 +78,6 @@ public class AlgoformerTest {
 	@Test
 	public void testTransform(){
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
-
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());

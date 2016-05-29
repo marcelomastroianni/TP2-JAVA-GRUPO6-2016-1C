@@ -159,6 +159,7 @@ public class Mode {
 		catch(cantCrossException e){
 			return initialPosition;
 		}
+
 		return new Position(X-i,Y+i);
 	}
 
