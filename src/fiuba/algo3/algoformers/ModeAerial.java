@@ -9,15 +9,14 @@ import fiuba.algo3.exceptions.cantCrossException;
 
 public class ModeAerial implements Mode{
 
-	private Integer life;
+
 	private Integer attack;
 	private Integer strikingDistance;
 	private Integer speed;
 	
 	
 
-	public ModeAerial(Integer life, Integer attack, Integer strikingDistance, Integer speed) {
-		this.life = life;
+	public ModeAerial(Integer attack, Integer strikingDistance, Integer speed) {
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
