@@ -1,14 +1,13 @@
 package fiuba.algo3.algoformers;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
-public class AlgoformerTest {
+public class AlgoformerTests {
 
 	@Test
 	public void testAlgoformers(){
         Algoformer optimus = new Algoformer();
-        
         String nombre = optimus.getNombre();
         Assert.assertEquals("Nombre deberia ser Optimus","Optimus", nombre);
         
