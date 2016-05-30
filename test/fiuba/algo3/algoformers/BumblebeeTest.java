@@ -13,7 +13,7 @@ public class BumblebeeTest {
 
 	@Before
 	public void setUp() {
-		board = new Board(10, 10);
+		board = Board.getInstance();
 		bumblebee = AlgoFormerFactory.getBumblebee();
 
 	}

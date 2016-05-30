@@ -1,34 +1,49 @@
 package fiuba.algo3.algoformers.board;
 
-import fiuba.algo3.algoformers.Algoformer;
+import java.util.HashMap;
+import java.util.Map;
+
 import fiuba.algo3.exceptions.InvalidPositionException;
-import fiuba.algo3.exceptions.IsAnEmptyPositionException;
 
 public class Board {
-	private  Cell [][]matrix;
+	
+	private static Board singleton;
+	
+	private  Map<Position,Cell> map = new HashMap<>();
+	
 	Position centralPosition;
-	int x_length;
-	int y_length;
+	public static final Integer X_LENGHT = 20;
+	public static final Integer Y_LENGHT = 20;
 
-	public Board( int rows,int columns){
-		this.matrix = new Cell[rows][columns];
-		for(int row = 0 ; row< rows ; row++ ){
-		    for(int column = 0 ; column < columns ; column++ ){
-		        matrix[row][column] = new Cell(new Position(column,row));
+	private Board(){
+		for(int row = 0 ; row< X_LENGHT ; row++ ){
+		    for(int column = 0 ; column < Y_LENGHT ; column++ ){
+		        map.put(new Position(column,row),new Cell(new Position(column,row)));
 		    }
 		}
 		
-		this.x_length = rows;
-		this.y_length = columns;
-		this.centralPosition = new Position(rows/2,columns/2);
-		
+		this.centralPosition = new Position(X_LENGHT/2,Y_LENGHT/2);
+	}
+	
+	public void reset(){
+		map.clear();
+		for(int row = 0 ; row< X_LENGHT ; row++ ){
+		    for(int column = 0 ; column < Y_LENGHT ; column++ ){
+		        map.put(new Position(column,row),new Cell(new Position(column,row)));
+		    }
+		}
+	}
+	
+	public static Board getInstance() {
+		if (singleton == null) {
+			singleton = new Board();
+		}
+		return singleton;
 	}
 
 
 	public Cell getCell(Position position) {
-		Integer X = position.getX();
-		Integer Y = position.getY();
-		return matrix[Y][X];
+		return map.get(position);
 	}
 
 	public IContent getContent(Position position) {
@@ -36,20 +51,18 @@ public class Board {
 	}
 
 	public boolean isEmpty(Position position) {
-		return this.getContent(position).equals(new Nothing());
+		return this.getContent(position) instanceof Nothing;
 	}
 
 	private boolean isValidPosition(Position position) {
-		return(position.getY()>=0 && position.getY() < matrix.length && position.getX() >=0  && position.getX() < matrix[0].length );
+		return(position.getY()>=0 && position.getY() < Y_LENGHT && position.getX() >=0  && position.getX() < X_LENGHT );
 	}
 
 	public void add(IContent content) {
 		if(!isValidPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}
-		Integer X = content.getPosition().getX();
-		Integer Y = content.getPosition().getY();
-		matrix[Y][X].putContent(content);
+		map.get(content.getPosition()).putContent(content);
 	}
 
 
@@ -57,17 +70,5 @@ public class Board {
 	
 		return this.centralPosition;
 	}
-
-
-	public int get_X_Length() {
-		return this.x_length;
-	}
-
-
-	public int get_Y_Length() {
-		return this.y_length;
-	}
-
-
 
 }

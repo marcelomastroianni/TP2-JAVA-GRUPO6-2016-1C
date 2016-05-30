@@ -13,7 +13,7 @@ public class RatchetTest {
 
 	@Before
 	public void setUp() {
-		board = new Board(10, 10);
+		board = Board.getInstance();
 		ratchet = AlgoFormerFactory.getRatchet();
 	}
 

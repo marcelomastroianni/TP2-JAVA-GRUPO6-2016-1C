@@ -1,7 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 

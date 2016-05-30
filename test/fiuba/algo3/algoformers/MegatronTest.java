@@ -13,7 +13,7 @@ public class MegatronTest {
 
 	@Before
 	public void setUp() {
-		board = new Board(10, 10);
+		board = Board.getInstance();
 		megatron = AlgoFormerFactory.getMegatron();
 
 	}

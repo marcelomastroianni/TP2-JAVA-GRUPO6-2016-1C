@@ -13,12 +13,12 @@ public class BoardTest {
 	private Board board;
 	private Position firstPosition;
 	private Position lastPosition;
-	int BOARD_X_LENGTH = 5;
-	int BOARD_Y_LENGTH = 5;
+	Integer BOARD_X_LENGTH = 20;
+	Integer BOARD_Y_LENGTH = 20;
 
 	@Before
 	public void setUp(){
-		board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		board = Board.getInstance();
 		firstPosition = new Position(0,0);
 		lastPosition = new Position(4,4);
 	}	
@@ -47,7 +47,7 @@ public class BoardTest {
 	@Test(expected= InvalidPositionException.class)
 	public void addContentInInvalidPositionTest(){
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		optimusPrime.setPosition(new Position(5,5));
+		optimusPrime.setPosition(new Position(21,5));
 		board.add(optimusPrime);
 	}
 
@@ -61,7 +61,7 @@ public class BoardTest {
 
 	@Test
 	public void testCentralPosition(){
-		Board tablero = new Board(21,20);
+		Board tablero = Board.getInstance();
 		Position centralPosition = tablero.getCentralPosition();
 		
 		Integer x_central = 10;
@@ -73,8 +73,8 @@ public class BoardTest {
 	
 	@Test
 	public void testObtenerTamañoTablero(){			
-		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",BOARD_X_LENGTH, board.get_X_Length());
-		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",BOARD_Y_LENGTH, board.get_Y_Length());
+		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",BOARD_X_LENGTH, Board.X_LENGHT);
+		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",BOARD_Y_LENGTH, Board.Y_LENGHT);
 	}
 
 
