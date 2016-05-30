@@ -6,6 +6,9 @@ import fiuba.algo3.exceptions.IsAnEmptyPositionException;
 
 public class Board {
 	private  Cell [][]matrix;
+	Position centralPosition;
+	int x_length;
+	int y_length;
 
 	public Board( int rows,int columns){
 		this.matrix = new Cell[rows][columns];
@@ -14,6 +17,11 @@ public class Board {
 		        matrix[row][column] = new Cell(new Position(column,row));
 		    }
 		}
+		
+		this.x_length = rows;
+		this.y_length = columns;
+		this.centralPosition = new Position(rows/2,columns/2);
+		
 	}
 
 
@@ -42,6 +50,22 @@ public class Board {
 		Integer X = content.getPosition().getX();
 		Integer Y = content.getPosition().getY();
 		matrix[Y][X].putContent(content);
+	}
+
+
+	public Position getCentralPosition() {
+	
+		return this.centralPosition;
+	}
+
+
+	public int get_X_Length() {
+		return this.x_length;
+	}
+
+
+	public int get_Y_Length() {
+		return this.y_length;
 	}
 
 
