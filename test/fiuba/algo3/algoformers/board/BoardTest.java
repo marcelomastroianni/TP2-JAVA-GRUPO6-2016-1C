@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +26,8 @@ public class BoardTest {
 
 	@Test
 	public void getContentTest(){
-		Assert.assertEquals(new Nothing(), board.getContent(firstPosition));
-		Assert.assertEquals(new Nothing(), board.getContent(lastPosition));
+		Assert.assertTrue( board.getContent(firstPosition) instanceof Nothing);
+		Assert.assertTrue(board.getContent(lastPosition) instanceof Nothing);
 	}
 
 	@Test
@@ -78,6 +79,10 @@ public class BoardTest {
 	}
 
 
+	@After
+	public void tearDown(){
+		board.reset();
+	}
 
 
 }

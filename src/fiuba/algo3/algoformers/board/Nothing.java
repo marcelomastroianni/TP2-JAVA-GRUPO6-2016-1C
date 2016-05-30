@@ -4,6 +4,16 @@ public class Nothing implements IContent{
 
 	Position position;
 
+	public Nothing() {
+		super();
+	}
+
+
+	public Nothing(Position position) {
+		this.position = position;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
