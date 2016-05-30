@@ -7,7 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
 
-public class AlgoformerUnitTests {
+public class AlgoformerUnitTest {
 
 	private Board board;
 

@@ -7,42 +7,41 @@ import org.junit.Test;
 import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
 
-public class OptimusPrimeTests {
+public class BumblebeeTest {
 	private Board board;
-	private Algoformer optimusPrime;
+	private Algoformer bumblebee;
 
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		optimusPrime = AlgoFormerFactory.getOptimusPrime();
+		bumblebee = AlgoFormerFactory.getBumblebee();
 
 	}
 
 	@Test
 	public void nametest() {
-		Assert.assertEquals("Optimus Prime", optimusPrime.getNombre());
+		Assert.assertEquals("Bumblebee", bumblebee.getNombre());
 	}
-
 
 	@Test
 	public void speedTest() {
-		optimusPrime.setPosition(new Position(0, 0));
-		board.add(optimusPrime);
-		optimusPrime.moveEast(board);
+		bumblebee.setPosition(new Position(0, 0));
+		board.add(bumblebee);
+		bumblebee.moveEast(board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(2, 0)),
-				optimusPrime);
+				bumblebee);
 	}
 
 	@Test
 	public void speedAlternalModeTest() {
-		optimusPrime.transform();
-		optimusPrime.setPosition(new Position(0, 0));
-		board.add(optimusPrime);
-		optimusPrime.moveEast(board);
+		bumblebee.transform();
+		bumblebee.setPosition(new Position(0, 0));
+		board.add(bumblebee);
+		bumblebee.moveEast(board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(5, 0)),
-				optimusPrime);
+				bumblebee);
 
 	}
 

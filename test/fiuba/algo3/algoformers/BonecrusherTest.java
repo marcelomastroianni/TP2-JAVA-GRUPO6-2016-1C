@@ -7,41 +7,41 @@ import org.junit.Test;
 import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
 
-public class RatchetTests {
+public class BonecrusherTest {
 	private Board board;
-	private Algoformer ratchet;
+	private Algoformer bonecrusher;
 
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		ratchet = AlgoFormerFactory.getRatchet();
+		bonecrusher = AlgoFormerFactory.getBonecrusher();
+
 	}
 
 	@Test
 	public void nametest() {
-		Assert.assertEquals("Ratchet", ratchet.getNombre());
+		Assert.assertEquals("Bonecrusher", bonecrusher.getNombre());
 	}
 
 	@Test
 	public void speedTest() {
-		ratchet.setPosition(new Position(0, 0));
-		board.add(ratchet);
-		ratchet.moveEast(board);
+		bonecrusher.setPosition(new Position(0, 0));
+		board.add(bonecrusher);
+		bonecrusher.moveEast(board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
-				ratchet);
+				bonecrusher);
 	}
-
 
 	@Test
 	public void speedAlternalModeTest() {
-		ratchet.transform();
-		ratchet.setPosition(new Position(0, 0));
-		board.add(ratchet);
-		ratchet.moveEast(board);
+		bonecrusher.transform();
+		bonecrusher.setPosition(new Position(0, 0));
+		board.add(bonecrusher);
+		bonecrusher.moveEast(board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(8, 0)),
-				ratchet);
+				bonecrusher);
 
 	}
 
