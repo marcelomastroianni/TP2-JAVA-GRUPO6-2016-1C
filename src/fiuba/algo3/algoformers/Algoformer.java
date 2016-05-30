@@ -2,10 +2,14 @@ package fiuba.algo3.algoformers;
 
 
 
+import java.util.ArrayList;
+
 import fiuba.algo3.algoformers.board.Board;
+import fiuba.algo3.algoformers.board.Cell;
 import fiuba.algo3.algoformers.board.IContent;
 import fiuba.algo3.algoformers.board.Nothing;
 import fiuba.algo3.algoformers.board.Position;
+import fiuba.algo3.exceptions.CantCrossException;
 
 public class Algoformer implements IContent{
 	private String name;
@@ -50,82 +54,19 @@ public class Algoformer implements IContent{
 			this.activeMode = this.humanoidMode;
 	}
 
-	@Override
-	public void moveEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveEast(this.position ,board);
-		board.add(nothing);
-		board.add(this);
+	
 
-	}
 
-	@Override
-	public void moveWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveWest(this.position ,board);
-		board.add(nothing);
-		board.add(this);
-	}
 
-	@Override
-	public void moveNorth(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveNorth(this.position ,board);
-		board.add(nothing);
-		board.add(this);
-	}
 
-	@Override
-	public void moveSouth(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveSouth(this.position ,board);
-		board.add(nothing);
-		board.add(this);
-	}
 
-	@Override
-	public void moveSouthEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveSouthEast(this.position ,board);
-		board.add(nothing);
-		board.add(this);
 
-	}
 
-	@Override
-	public void moveSouthWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveSouthWest(this.position ,board);
-		board.add(nothing);
-		board.add(this);
 
-	}
 
-	@Override
-	public void moveNorthWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveNorthWest(this.position ,board);
-		board.add(nothing);
-		board.add(this);
 
-	}
 
-	@Override
-	public void moveNorthEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		this.position = this.activeMode.moveNorthEast(this.position ,board);
-		board.add(nothing);
-		board.add(this);
 
-	}
 
 
 	@Override
@@ -139,6 +80,224 @@ public class Algoformer implements IContent{
 		return this.position;
 	}
 
+	
+	//------------------------------
+	
+	@Override
+	public void moveEast(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X+i+1,Y)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return ;
+		}
+		this.position = new Position(X+i,Y);
+		
+		
+		board.add(nothing);
+		board.add(this);
+
+	}
+	
+	
+
+	@Override
+	public void moveWest(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X-(i+1),Y)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return;
+		}
+		this.position =  new Position(X-i,Y);
+		
+		
+		board.add(nothing);
+		board.add(this);
+	}
+	
+
+
+	@Override
+	public void moveNorth(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X,Y-(i+1))));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return;
+		}
+		this.position =  new Position(X,Y-i);
+		
+		board.add(nothing);
+		board.add(this);
+	}
+	
+
+	@Override
+	public void moveSouth(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X,Y+i+1)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return ;
+		}
+		this.position =  new Position(X,Y+i);
+		
+		
+		board.add(nothing);
+		board.add(this);
+	}
+	
+
+
+	@Override
+	public void moveNorthEast(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X+i+1,Y-i-1)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return ;
+		}
+		this.position =  new Position(X+i,Y-i);
+		
+		board.add(nothing);
+		board.add(this);
+
+	}
+	
+	
+
+	
+	@Override
+	public void moveSouthEast(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X+i+1,Y+i+1)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return;
+		}
+		this.position =  new Position(X+i,Y+i);
+		
+		board.add(nothing);
+		board.add(this);
+
+	}
+	
+	@Override
+	public void moveNorthWest(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X-(i+1),Y-i-1)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return;
+		}
+		this.position =  new Position(X-i,Y-i);
+		
+		board.add(nothing);
+		board.add(this);
+
+	}
+	
+
+	@Override
+	public void moveSouthWest(Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X-i-1,Y+i+1)));
+		}
+		try{
+			this.activeMode.cross(steps);
+		}
+		catch(CantCrossException e){
+			return ;
+		}
+
+		this.position =  new Position(X-i,Y+i);
+		
+		
+		board.add(nothing);
+		board.add(this);
+
+	}
+	
+	
 
 
 
