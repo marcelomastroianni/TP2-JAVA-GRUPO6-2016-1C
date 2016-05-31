@@ -83,6 +83,7 @@ public class AlgoformerTest {
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
 	}
 
+
 	@Test
 	public void testShootingToAnotherAlgoformer(){
 
@@ -102,7 +103,6 @@ public class AlgoformerTest {
 		algoformer2.shot(algoformer1);
 		Assert.assertEquals("La vida de Frenzy deberia 400", 400, algoformer1.getLife());
 	}
-
 
 
 }
