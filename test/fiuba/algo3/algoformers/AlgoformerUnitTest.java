@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Position;
-import fiuba.algo3.exceptions.InvalidStrikeException;
 
 public class AlgoformerUnitTest {
 
@@ -39,36 +38,6 @@ public class AlgoformerUnitTest {
 		Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
 	}
 
-	@Test
-	public void algoformerCanAttackAnotherone(){
-		
-		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy();
-		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime();
-		
-		algoformer1.setPosition(new Position(2,0));
-		algoformer2.setPosition(new Position(2,4));
-		board.add(algoformer1);
-		board.add(algoformer2);
-		
-		algoformer1.shot(algoformer2);
-		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
-		
-	}
-	
-	@Test(expected = InvalidStrikeException.class)
-	public void algoformerCanNotAttackAnotherone() throws InvalidStrikeException{
-		
-		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy();
-		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime();
-		
-		algoformer1.setPosition(new Position(2,0));
-		algoformer2.setPosition(new Position(2,4));
-		board.add(algoformer1);
-		board.add(algoformer2);
-		
-		algoformer2.resolveDistance(algoformer1);
-		
-	}
 
 
 }

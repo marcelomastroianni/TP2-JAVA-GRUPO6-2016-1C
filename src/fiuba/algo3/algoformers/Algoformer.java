@@ -4,14 +4,10 @@ package fiuba.algo3.algoformers;
 
 import fiuba.algo3.algoformers.board.*;
 import fiuba.algo3.exceptions.CantCrossException;
-import fiuba.algo3.exceptions.InvalidPositionException;
-import fiuba.algo3.exceptions.InvalidStrikeException;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountedCompleter;
 
 public class Algoformer implements IContent{
-	
 	private String name;
 
 	Position position;
@@ -57,30 +53,22 @@ public class Algoformer implements IContent{
 		else
 			this.activeMode = this.humanoidMode;
 	}
-	
 
 	public void shot(Algoformer algoformer){
-		try {
-			this.resolveDistance(algoformer);
-			algoformer.receiveDamage(this.activeMode.getAttack());
-		} catch (InvalidStrikeException e) {
-			//TODO Reservado para interaccion con la GUI
-		}
-	}
 
-	
-	public void resolveDistance(Algoformer algoformer) throws InvalidStrikeException {
-		if( this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()){
-			throw new InvalidStrikeException("You can't attack objectives that far.");
-		}
-		
 	}
 
 
-	private void receiveDamage(Integer attack) {
-		this.life = this.life - attack;
-		
-	}
+
+
+
+
+
+
+
+
+
+
 
 
 	@Override

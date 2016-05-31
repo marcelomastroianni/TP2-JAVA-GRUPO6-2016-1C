@@ -4,7 +4,6 @@ package fiuba.algo3.algoformers.board;
 public class Position {
 	private Integer X;
 	private Integer Y;
-	
 	public Position(Integer X, Integer Y){
 		this.X = X;
 		this.Y = Y;
@@ -16,10 +15,6 @@ public class Position {
 
 	public Integer getY(){
 		return Y;
-	}
-	
-	public Double distance(Position position){
-		return Math.sqrt(Math.pow(this.X - position.getX(), 2) + Math.pow(this.Y - position.getY(), 2) );
 	}
 
 
