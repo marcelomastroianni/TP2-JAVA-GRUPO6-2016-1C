@@ -2,14 +2,10 @@ package fiuba.algo3.algoformers;
 
 
 
-import java.util.ArrayList;
-
-import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.Cell;
-import fiuba.algo3.algoformers.board.IContent;
-import fiuba.algo3.algoformers.board.Nothing;
-import fiuba.algo3.algoformers.board.Position;
+import fiuba.algo3.algoformers.board.*;
 import fiuba.algo3.exceptions.CantCrossException;
+
+import java.util.ArrayList;
 
 public class Algoformer implements IContent{
 	private String name;
@@ -47,6 +43,10 @@ public class Algoformer implements IContent{
 		return alternalMode;
 	}
 
+	public int getLife()  {
+		return life;
+	}
+
 	public void transform() {
 		if (this.activeMode.equals(this.humanoidMode))
 			this.activeMode = this.alternalMode;
@@ -54,7 +54,9 @@ public class Algoformer implements IContent{
 			this.activeMode = this.humanoidMode;
 	}
 
-	
+	public void shot(Algoformer algoformer){
+
+	}
 
 
 
