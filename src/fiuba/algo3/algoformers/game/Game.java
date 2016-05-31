@@ -10,11 +10,16 @@ public class Game {
 
 	Player player1;
 	Player player2;
-	Board board = Board.getInstance();
+	Board board;
 	
+	int BOARD_X_LENGTH = 20;
+	int BOARD_Y_LENGTH = 20;
+	
+
 	public void init() {
 		this.player1 = new Player();
 		this.player2 = new Player();
+		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		
 		//Autobots:
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
@@ -33,9 +38,9 @@ public class Game {
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy();
 		
 		
-		megatron.setPosition(new Position(Board.X_LENGHT-1,0));
-		bonecrusher.setPosition(new Position(Board.X_LENGHT-1,1));
-		frenzy.setPosition(new Position(Board.X_LENGHT-1,2));
+		megatron.setPosition(new Position(board.get_X_Length()-1,0));
+		bonecrusher.setPosition(new Position(board.get_X_Length()-1,1));
+		frenzy.setPosition(new Position(board.get_X_Length()-1,2));
 				
 		
 		this.player1.addAlgoformer(optimusPrime);

@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algoformers.*;
+import fiuba.algo3.algoformers.board.Board;
+import fiuba.algo3.algoformers.board.Position;
 
 
 public class PlayerTest {

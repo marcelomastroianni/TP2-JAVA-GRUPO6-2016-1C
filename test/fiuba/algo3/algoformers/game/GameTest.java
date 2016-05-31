@@ -33,7 +33,7 @@ public class GameTest {
 		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
 		Assert.assertEquals("Jugador 2 deberia tener 3 algoformers",3,algoformersJugador2.size());
 		
-		Board tablero = Board.getInstance();
+		Board tablero = game.getBoard();
 		Assert.assertTrue("El juego deberia tener un tablero",tablero!=null);
 		
 		Position posicionCentral = tablero.getCentralPosition();
@@ -45,9 +45,9 @@ public class GameTest {
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(0,1)) instanceof Algoformer );
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(0,2)) instanceof Algoformer );
 		
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(Board.X_LENGHT - 1,0)) instanceof Algoformer );
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(Board.X_LENGHT - 1,1)) instanceof Algoformer );
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(Board.X_LENGHT - 1,2)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,0)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,1)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,2)) instanceof Algoformer );
 		
 	}
 

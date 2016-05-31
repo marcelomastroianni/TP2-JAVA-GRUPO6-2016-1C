@@ -13,7 +13,7 @@ public class OptimusPrimeTest {
 
 	@Before
 	public void setUp() {
-		board = Board.getInstance();
+		board = new Board(10, 10);
 		optimusPrime = AlgoFormerFactory.getOptimusPrime();
 
 	}

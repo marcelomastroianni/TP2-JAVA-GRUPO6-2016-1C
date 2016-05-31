@@ -12,7 +12,7 @@ public class AlgoformerTest {
 
 	@Test
 	public void testMovement(){
-		Board board = Board.getInstance();
+		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
 
 
@@ -42,7 +42,7 @@ public class AlgoformerTest {
 
 	@Test
 	public void diagonalMovementTest(){
-		Board board = Board.getInstance();
+		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
 
 

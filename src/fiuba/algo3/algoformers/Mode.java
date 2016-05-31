@@ -2,7 +2,10 @@ package fiuba.algo3.algoformers;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algoformers.board.Board;
 import fiuba.algo3.algoformers.board.Cell;
+import fiuba.algo3.algoformers.board.Position;
+import fiuba.algo3.exceptions.CantCrossException;
 
 public class Mode {
 
@@ -19,6 +22,7 @@ public class Mode {
 	}
 
 	public void cross(ArrayList<Cell> steps) {
+		// TODO Auto-generated method stub
 
 	}
 	

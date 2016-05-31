@@ -13,7 +13,7 @@ public class BonecrusherTest {
 
 	@Before
 	public void setUp() {
-		board = Board.getInstance();
+		board = new Board(10, 10);
 		bonecrusher = AlgoFormerFactory.getBonecrusher();
 
 	}

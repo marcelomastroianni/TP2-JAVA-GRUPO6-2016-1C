@@ -1,6 +1,5 @@
 package fiuba.algo3.algoformers;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,7 @@ public class AlgoformerUnitTest {
 
 	@Before
 	public void setUp() {
-		board = Board.getInstance();
+		board = new Board(10, 10);
 	}
 
 	@Test
@@ -40,9 +39,5 @@ public class AlgoformerUnitTest {
 	}
 
 
-	@After
-	public void tearDown(){
-		board.reset();
-	}
 
 }
