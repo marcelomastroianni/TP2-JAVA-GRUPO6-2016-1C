@@ -2,8 +2,8 @@
 build/
 libs/
 tmp/
-out
-.idea
+out/
+.idea/
 *.iml
 .classpath
 .project
