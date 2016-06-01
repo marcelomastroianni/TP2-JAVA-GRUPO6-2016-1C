@@ -13,7 +13,7 @@ import fiuba.algo3.algoformers.board.Position;
 import fiuba.algo3.algoformers.game.Game;
 import fiuba.algo3.algoformers.game.Player;
 
-public class PrimeraEntraga {
+public class PrimeraEntragaTest {
 
 	//Se ubica un algoformer humanoide en un casillero, se pide que se mueva, se verifica
 	//nueva posición acorde a su modo.
