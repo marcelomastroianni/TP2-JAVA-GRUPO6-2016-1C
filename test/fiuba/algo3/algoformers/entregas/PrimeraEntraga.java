@@ -106,6 +106,21 @@ public class PrimeraEntraga {
 	//ataquen respetando ( y no ) las distancias verificando los daños ( o no daños ).
 	@Test
 	public void test05(){
+		Board board = new Board(5,5);
+		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy();
+		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime();
+
+		algoformer1.setPosition(new Position(2,0));
+		algoformer2.setPosition(new Position(2,4));
+		board.add(algoformer1);
+		board.add(algoformer2);
+
+		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
+		algoformer1.shot(algoformer2);
+		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
+		algoformer2.shot(algoformer1);
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 
 	}
 
