@@ -95,12 +95,12 @@ public class AlgoformerTest {
 		board.add(algoformer1);
 		board.add(algoformer2);
 
-		Assert.assertEquals("La vida de Optimus deberia 500", 500, algoformer2.getLife());
+		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
 		algoformer1.shot(algoformer2);
-		Assert.assertEquals("La vida de Optimus deberia 490", 490, algoformer2.getLife());
-		Assert.assertEquals("La vida de Frenzy deberia 400", 400, algoformer1.getLife());
+		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 		algoformer2.shot(algoformer1);
-		Assert.assertEquals("La vida de Frenzy deberia 400", 400, algoformer1.getLife());
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
 
 

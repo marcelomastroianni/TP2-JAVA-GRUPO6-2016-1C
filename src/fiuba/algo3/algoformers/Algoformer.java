@@ -34,6 +34,9 @@ public class Algoformer implements IContent{
 		return activeMode;
 	}
 
+	public void downHealthPoints(Integer damage ){
+		this.life = this.life - damage;
+	}
 
 	public Mode getHumanoidMode() {
 		return humanoidMode;
@@ -55,6 +58,13 @@ public class Algoformer implements IContent{
 	}
 
 	public void shot(Algoformer algoformer){
+		if ((this.getPosition().getX() + this.getActiveMode().getStrikingDistance()) >= algoformer.getPosition().getX() &&
+				algoformer.getPosition().getX() >= (this.getPosition().getX() - this.getActiveMode().getStrikingDistance()) &&
+				(this.getPosition().getY() + this.getActiveMode().getStrikingDistance()) >= algoformer.getPosition().getY() &&
+				algoformer.getPosition().getY() >= (this.getPosition().getY() - this.getActiveMode().getStrikingDistance()))
+		{
+			algoformer.downHealthPoints(this.getActiveMode().getAttack());
+		}
 
 	}
 
