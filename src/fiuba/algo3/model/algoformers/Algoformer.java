@@ -1,16 +1,17 @@
-package fiuba.algo3.algoformers;
+package fiuba.algo3.model.algoformers;
 
 
 
-import fiuba.algo3.algoformers.board.*;
-import fiuba.algo3.exceptions.CantCrossException;
+import fiuba.algo3.model.algoformers.board.*;
+import fiuba.algo3.model.exceptions.CantCrossException;
+import fiuba.algo3.model.exceptions.InvalidStrikeException;
 
 import java.util.ArrayList;
 
 public class Algoformer implements IContent{
 	private String name;
 
-	Position position;
+	private Position position;
 
 	private Integer life;
 	private Mode humanoidMode;
@@ -58,17 +59,20 @@ public class Algoformer implements IContent{
 	}
 
 	public void shot(Algoformer algoformer){
-		if ((this.getPosition().getX() + this.getActiveMode().getStrikingDistance()) >= algoformer.getPosition().getX() &&
-				algoformer.getPosition().getX() >= (this.getPosition().getX() - this.getActiveMode().getStrikingDistance()) &&
-				(this.getPosition().getY() + this.getActiveMode().getStrikingDistance()) >= algoformer.getPosition().getY() &&
-				algoformer.getPosition().getY() >= (this.getPosition().getY() - this.getActiveMode().getStrikingDistance()))
-		{
-			algoformer.downHealthPoints(this.getActiveMode().getAttack());
+		try {
+			this.resolveDistance(algoformer);
+			algoformer.downHealthPoints(this.activeMode.getAttack());
+		} catch (InvalidStrikeException e) {
+			//TODO Reservado para interaccion con la GUI
 		}
-
 	}
 
-
+	private void resolveDistance(Algoformer algoformer) throws InvalidStrikeException {
+		if( this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()){
+			throw new InvalidStrikeException("You can't attack objectives that far.");
+		}
+		
+	}
 
 
 

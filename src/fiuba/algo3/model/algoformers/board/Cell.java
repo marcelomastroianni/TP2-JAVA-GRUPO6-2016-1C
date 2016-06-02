@@ -1,4 +1,4 @@
-package fiuba.algo3.algoformers.board;
+package fiuba.algo3.model.algoformers.board;
 
 public class Cell{
 	private Position position;
@@ -17,6 +17,14 @@ public class Cell{
 	public IContent getContent() {
 		return content;
 
+	}
+	
+	public Surface getSurface() {
+		return surface;
+	}
+
+	public void setSurface(Surface surface) {
+		this.surface = surface;
 	}
 
 	public void putContent(IContent content) {

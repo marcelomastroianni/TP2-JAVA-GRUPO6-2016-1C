@@ -5,10 +5,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algoformers.*;
-import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.ChispaSuprema;
-import fiuba.algo3.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.*;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.Player;
 
 
 public class GameTest {
