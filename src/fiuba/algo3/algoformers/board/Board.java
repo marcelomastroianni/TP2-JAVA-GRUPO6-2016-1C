@@ -2,7 +2,6 @@ package fiuba.algo3.algoformers.board;
 
 import fiuba.algo3.algoformers.Algoformer;
 import fiuba.algo3.exceptions.InvalidPositionException;
-import fiuba.algo3.exceptions.IsAnEmptyPositionException;
 
 public class Board {
 	private  Cell [][]matrix;
