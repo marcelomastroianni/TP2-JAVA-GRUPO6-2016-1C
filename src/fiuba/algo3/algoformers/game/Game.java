@@ -11,6 +11,7 @@ public class Game {
 	Player player1;
 	Player player2;
 	Board board;
+	Turn turn;
 	
 	int BOARD_X_LENGTH = 20;
 	int BOARD_Y_LENGTH = 20;
@@ -20,6 +21,7 @@ public class Game {
 		this.player1 = new Player();
 		this.player2 = new Player();
 		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		this.turn = new Turn(this.player1, this.player2);
 		
 		//Autobots:
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
