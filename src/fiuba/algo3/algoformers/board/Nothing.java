@@ -1,6 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
-public class Nothing implements IContent{
+public class Nothing implements Content{
 
 	Position position;
 

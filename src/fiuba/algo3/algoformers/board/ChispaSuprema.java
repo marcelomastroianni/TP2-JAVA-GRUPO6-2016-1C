@@ -1,6 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
-public class ChispaSuprema implements IContent {
+public class ChispaSuprema implements Content {
 
 	Position position;
 	

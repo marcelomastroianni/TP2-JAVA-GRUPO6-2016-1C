@@ -7,7 +7,7 @@ import fiuba.algo3.exceptions.CantCrossException;
 
 import java.util.ArrayList;
 
-public class Algoformer implements IContent{
+public class Algoformer implements Content{
 	private String name;
 
 	Position position;
@@ -68,19 +68,6 @@ public class Algoformer implements IContent{
 
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
@@ -92,15 +79,12 @@ public class Algoformer implements IContent{
 		return this.position;
 	}
 
-	
-	//------------------------------
-	
 	@Override
 	public void moveEast(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
-		
+
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -115,20 +99,20 @@ public class Algoformer implements IContent{
 			return ;
 		}
 		this.position = new Position(X+i,Y);
-		
-		
+
+
 		board.add(nothing);
 		board.add(this);
 
 	}
-	
-	
+
+
 
 	@Override
 	public void moveWest(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -143,19 +127,19 @@ public class Algoformer implements IContent{
 			return;
 		}
 		this.position =  new Position(X-i,Y);
-		
-		
+
+
 		board.add(nothing);
 		board.add(this);
 	}
-	
+
 
 
 	@Override
 	public void moveNorth(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -170,17 +154,17 @@ public class Algoformer implements IContent{
 			return;
 		}
 		this.position =  new Position(X,Y-i);
-		
+
 		board.add(nothing);
 		board.add(this);
 	}
-	
+
 
 	@Override
 	public void moveSouth(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -195,19 +179,19 @@ public class Algoformer implements IContent{
 			return ;
 		}
 		this.position =  new Position(X,Y+i);
-		
-		
+
+
 		board.add(nothing);
 		board.add(this);
 	}
-	
+
 
 
 	@Override
 	public void moveNorthEast(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -222,20 +206,20 @@ public class Algoformer implements IContent{
 			return ;
 		}
 		this.position =  new Position(X+i,Y-i);
-		
+
 		board.add(nothing);
 		board.add(this);
 
 	}
-	
-	
 
-	
+
+
+
 	@Override
 	public void moveSouthEast(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -250,17 +234,17 @@ public class Algoformer implements IContent{
 			return;
 		}
 		this.position =  new Position(X+i,Y+i);
-		
+
 		board.add(nothing);
 		board.add(this);
 
 	}
-	
+
 	@Override
 	public void moveNorthWest(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -275,18 +259,18 @@ public class Algoformer implements IContent{
 			return;
 		}
 		this.position =  new Position(X-i,Y-i);
-		
+
 		board.add(nothing);
 		board.add(this);
 
 	}
-	
+
 
 	@Override
 	public void moveSouthWest(Board board) {
 		Nothing nothing = new Nothing();
 		nothing.setPosition(this.position);
-		
+
 		Integer i = 1;
 		Integer X = this.position.getX();
 		Integer Y = this.position.getY();
@@ -302,14 +286,14 @@ public class Algoformer implements IContent{
 		}
 
 		this.position =  new Position(X-i,Y+i);
-		
-		
+
+
 		board.add(nothing);
 		board.add(this);
 
 	}
-	
-	
+
+
 
 
 

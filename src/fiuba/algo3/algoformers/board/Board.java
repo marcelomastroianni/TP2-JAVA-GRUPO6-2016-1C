@@ -30,7 +30,7 @@ public class Board {
 		return matrix[Y][X];
 	}
 
-	public IContent getContent(Position position) {
+	public Content getContent(Position position) {
 		return this.getCell(position).getContent();
 	}
 
@@ -42,7 +42,7 @@ public class Board {
 		return(position.getY()>=0 && position.getY() < matrix.length && position.getX() >=0  && position.getX() < matrix[0].length );
 	}
 
-	public void add(IContent content) {
+	public void add(Content content) {
 		if(!isValidPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}

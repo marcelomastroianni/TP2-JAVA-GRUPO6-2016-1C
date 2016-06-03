@@ -1,6 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
-public interface IContent {
+public interface Content {
 
 	void setPosition(Position position);
 	Position getPosition();
