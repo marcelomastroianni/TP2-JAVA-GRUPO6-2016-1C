@@ -43,6 +43,12 @@ public class Position {
 			return false;
 		return true;
 	}
+	
+	public boolean isInRange(int xLength, int yLength){
+		return(Y>=0 && Y < yLength && X >=0  && X < xLength );
+		
+		
+	}
 
 
 	public Integer getX(){

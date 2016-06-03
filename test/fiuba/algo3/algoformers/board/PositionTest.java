@@ -35,6 +35,24 @@ public class PositionTest {
 		Position position2 = new Position(4,3);
 		Assert.assertEquals(position1.distance(position2),new Double(5));			
 	}
+	
+	@Test
+	public void isInRangeTrueTest(){
+		Position position = new Position(5,6);
+		Assert.assertTrue(position.isInRange(8,8));	
+	}
+	
+	@Test
+	public void isInRangeFalseTest(){
+		Position position = new Position(5,6);
+		Assert.assertFalse(position.isInRange(4,4));	
+	}
+	
+	@Test
+	public void isInRangeLimitTest(){
+		Position position = new Position(5,6);
+		Assert.assertFalse(position.isInRange(5,6));	
+	}
 
 
 

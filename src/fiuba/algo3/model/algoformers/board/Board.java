@@ -40,7 +40,7 @@ public class Board {
 	}
 
 	private boolean isValidPosition(Position position) {
-		return(position.getY()>=0 && position.getY() < this.yLength && position.getX() >=0  && position.getX() < this.xLength );
+		return position.isInRange(xLength,yLength);
 	}
 	private boolean isOccupiedPosition(Position position) {
 		if(!isValidPosition(position)){
