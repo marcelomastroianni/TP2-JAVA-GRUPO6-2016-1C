@@ -29,7 +29,7 @@ public class BumblebeeTest {
 	public void speedTest() {
 		bumblebee.setPosition(new Position(0, 0));
 		board.add(bumblebee);
-		bumblebee.moveEast(board);
+		bumblebee.move(new Position(2,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(2, 0)),
 				bumblebee);
@@ -40,7 +40,7 @@ public class BumblebeeTest {
 		bumblebee.transform();
 		bumblebee.setPosition(new Position(0, 0));
 		board.add(bumblebee);
-		bumblebee.moveEast(board);
+		bumblebee.move(new Position(5,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(5, 0)),
 				bumblebee);

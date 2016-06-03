@@ -27,7 +27,7 @@ public class PrimeraEntragaTest {
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
-		algoformer.moveEast(board);
+		algoformer.move(new Position(2,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,0)),algoformer);
 	}
@@ -58,7 +58,7 @@ public class PrimeraEntragaTest {
 		board.add(algoformer);
 		algoformer.transform();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
-		algoformer.moveEast(board);
+		algoformer.move(new Position(5,0),board);
 		Assert.assertTrue("Algoformer alterno deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",board.getContent(new Position(5,0)),algoformer);
 

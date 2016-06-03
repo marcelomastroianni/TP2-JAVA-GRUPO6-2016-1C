@@ -29,7 +29,7 @@ public class MegatronTest {
 	public void speedTest() {
 		megatron.setPosition(new Position(0, 0));
 		board.add(megatron);
-		megatron.moveEast(board);
+		megatron.move(new Position(1,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
 				megatron);
@@ -40,7 +40,7 @@ public class MegatronTest {
 		megatron.transform();
 		megatron.setPosition(new Position(0, 0));
 		board.add(megatron);
-		megatron.moveEast(board);
+		megatron.move(new Position(8,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(8, 0)),
 				megatron);

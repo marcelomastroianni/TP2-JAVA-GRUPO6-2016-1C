@@ -4,6 +4,7 @@ package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.*;
 import fiuba.algo3.model.exceptions.CantCrossException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 
 import java.util.ArrayList;
@@ -57,6 +58,19 @@ public class Algoformer implements Content{
 		else
 			this.activeMode = this.humanoidMode;
 	}
+	
+	public void move(Position finalPosition, Board board) {
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+		board.add(nothing);
+		this.position = finalPosition;
+		try{
+			board.add(this);
+		}catch(InvalidPositionException e){
+			this.position = nothing.getPosition();
+			board.add(this);
+		}
+	}
 
 	public void shot(Algoformer algoformer){
 		try {
@@ -84,224 +98,5 @@ public class Algoformer implements Content{
 	public Position getPosition() {
 		return this.position;
 	}
-
-	@Override
-	public void moveEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X+i+1,Y)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return ;
-		}
-		this.position = new Position(X+i,Y);
-
-
-		board.add(nothing);
-		board.add(this);
-
-	}
-
-
-
-	@Override
-	public void moveWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X-(i+1),Y)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return;
-		}
-		this.position =  new Position(X-i,Y);
-
-
-		board.add(nothing);
-		board.add(this);
-	}
-
-
-
-	@Override
-	public void moveNorth(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X,Y-(i+1))));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return;
-		}
-		this.position =  new Position(X,Y-i);
-
-		board.add(nothing);
-		board.add(this);
-	}
-
-
-	@Override
-	public void moveSouth(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X,Y+i+1)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return ;
-		}
-		this.position =  new Position(X,Y+i);
-
-
-		board.add(nothing);
-		board.add(this);
-	}
-
-
-
-	@Override
-	public void moveNorthEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X+i+1,Y-i-1)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return ;
-		}
-		this.position =  new Position(X+i,Y-i);
-
-		board.add(nothing);
-		board.add(this);
-
-	}
-
-
-
-
-	@Override
-	public void moveSouthEast(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X+i+1,Y+i+1)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return;
-		}
-		this.position =  new Position(X+i,Y+i);
-
-		board.add(nothing);
-		board.add(this);
-
-	}
-
-	@Override
-	public void moveNorthWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X-(i+1),Y-i-1)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return;
-		}
-		this.position =  new Position(X-i,Y-i);
-
-		board.add(nothing);
-		board.add(this);
-
-	}
-
-
-	@Override
-	public void moveSouthWest(Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-
-		Integer i = 1;
-		Integer X = this.position.getX();
-		Integer Y = this.position.getY();
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X-i-1,Y+i+1)));
-		}
-		try{
-			this.activeMode.cross(steps);
-		}
-		catch(CantCrossException e){
-			return ;
-		}
-
-		this.position =  new Position(X-i,Y+i);
-
-
-		board.add(nothing);
-		board.add(this);
-
-	}
-
-
-
-
-
 
 }
