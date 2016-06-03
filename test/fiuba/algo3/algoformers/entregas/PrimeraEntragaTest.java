@@ -21,9 +21,8 @@ public class PrimeraEntragaTest {
 	public void test01(){
 
 		Board board = new Board(20,20);
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
-		algoformer.setPosition(new Position(0,0));
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
@@ -36,7 +35,7 @@ public class PrimeraEntragaTest {
 	//en ambas direcciones.
 	@Test
 	public void test02(){
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
@@ -52,9 +51,8 @@ public class PrimeraEntragaTest {
 	@Test
 	public void test03(){
 		Board board = new Board(20,20);
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
-		algoformer.setPosition(new Position(0,0));
 		board.add(algoformer);
 		algoformer.transform();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
@@ -107,11 +105,9 @@ public class PrimeraEntragaTest {
 	@Test
 	public void test05(){
 		Board board = new Board(5,5);
-		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy();
-		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));
 
-		algoformer1.setPosition(new Position(2,0));
-		algoformer2.setPosition(new Position(2,4));
 		board.add(algoformer1);
 		board.add(algoformer2);
 

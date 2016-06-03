@@ -19,12 +19,13 @@ public class Algoformer implements Content{
 	private Mode alternalMode;
 	private Mode activeMode;
 
-	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life) {
+	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life,Position position) {
 		this.name = name;
 		this.humanoidMode = humanoidMode;
 		this.alternalMode = alternalMode;
 		this.activeMode = this.humanoidMode;
 		this.life = life;
+		this.position = position;
 	}
 
 
@@ -60,8 +61,7 @@ public class Algoformer implements Content{
 	}
 	
 	public void move(Position finalPosition, Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
+		Nothing nothing = new Nothing(this.position);
 		board.add(nothing);
 		this.position = finalPosition;
 		try{
@@ -88,11 +88,13 @@ public class Algoformer implements Content{
 		
 	}
 
+	/*
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
 
 	}
+	*/
 
 	@Override
 	public Position getPosition() {
