@@ -60,11 +60,9 @@ public class BoardTest {
 	
 	@Test(expected= InvalidPositionException.class)
 	public void addContentInOccupiedPositionTest(){
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		optimusPrime.setPosition(new Position(2,0));
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,0));
 		board.add(optimusPrime);
-		Algoformer megatron= AlgoFormerFactory.getMegatron();
-		megatron.setPosition(new Position(2,0));
+		Algoformer megatron= AlgoFormerFactory.getMegatron(new Position(2,0));
 		board.add(megatron);
 	}
 	
