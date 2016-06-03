@@ -71,6 +71,23 @@ public class AlgoformerTest {
 
 
 	}
+	
+
+	@Test
+	public void testInvalidMovement(){
+		Board board = new Board(5,5);
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+
+		algoformer.setPosition(new Position(0,0));
+		board.add(algoformer);
+		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
+
+		algoformer.move(new Position(-2,0),board);
+		Assert.assertFalse("Algoformer no deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
+		Assert.assertEquals("Algoformer sigue en la misma posicion",board.getContent(new Position(0,0)),algoformer);
+		Assert.assertTrue("no hay nada en la posicion 2,0",board.isEmpty(new Position(2,0)));
+		
+	}
 
 
 	@Test
