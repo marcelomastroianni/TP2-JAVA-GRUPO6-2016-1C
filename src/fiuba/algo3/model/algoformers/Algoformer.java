@@ -19,12 +19,13 @@ public class Algoformer implements Content{
 	private Mode alternalMode;
 	private Mode activeMode;
 
-	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life) {
+	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life,Position position) {
 		this.name = name;
 		this.humanoidMode = humanoidMode;
 		this.alternalMode = alternalMode;
 		this.activeMode = this.humanoidMode;
 		this.life = life;
+		this.position = position;
 	}
 
 
@@ -60,8 +61,7 @@ public class Algoformer implements Content{
 	}
 	
 	public void move(Position finalPosition, Board board) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
+		Nothing nothing = new Nothing(this.position);
 		board.add(nothing);
 		this.position = finalPosition;
 		try{
@@ -88,15 +88,80 @@ public class Algoformer implements Content{
 		
 	}
 
+	/*
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
 
 	}
+	*/
 
 	@Override
 	public Position getPosition() {
 		return this.position;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((activeMode == null) ? 0 : activeMode.hashCode());
+		result = prime * result
+				+ ((alternalMode == null) ? 0 : alternalMode.hashCode());
+		result = prime * result
+				+ ((humanoidMode == null) ? 0 : humanoidMode.hashCode());
+		result = prime * result + ((life == null) ? 0 : life.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((position == null) ? 0 : position.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Algoformer other = (Algoformer) obj;
+		if (activeMode == null) {
+			if (other.activeMode != null)
+				return false;
+		} else if (!activeMode.equals(other.activeMode))
+			return false;
+		if (alternalMode == null) {
+			if (other.alternalMode != null)
+				return false;
+		} else if (!alternalMode.equals(other.alternalMode))
+			return false;
+		if (humanoidMode == null) {
+			if (other.humanoidMode != null)
+				return false;
+		} else if (!humanoidMode.equals(other.humanoidMode))
+			return false;
+		if (life == null) {
+			if (other.life != null)
+				return false;
+		} else if (!life.equals(other.life))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (position == null) {
+			if (other.position != null)
+				return false;
+		} else if (!position.equals(other.position))
+			return false;
+		return true;
+	}
+	
+	
 
 }

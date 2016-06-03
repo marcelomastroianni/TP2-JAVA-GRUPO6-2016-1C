@@ -24,25 +24,21 @@ public class Game {
 		this.turn = new Turn(this.player1, this.player2);
 		
 		//Autobots:
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		Algoformer bumblebee = AlgoFormerFactory.getBumblebee();
-		Algoformer ratchet = AlgoFormerFactory.getRatchet();	
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(0,2));	
 		
-		optimusPrime.setPosition(new Position(0,0));
-		bumblebee.setPosition(new Position(0,1));
-		ratchet.setPosition(new Position(0,2));
+	
 		
 	
 		
 		//Decepticons:
-		Algoformer megatron = AlgoFormerFactory.getMegatron();		
-		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher();
-		Algoformer frenzy = AlgoFormerFactory.getFrenzy();
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(board.getXLength()-1,0));		
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(board.getXLength()-1,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(board.getXLength()-1,2));
 		
 		
-		megatron.setPosition(new Position(board.getXLength()-1,0));
-		bonecrusher.setPosition(new Position(board.getXLength()-1,1));
-		frenzy.setPosition(new Position(board.getXLength()-1,2));
+
 				
 		
 		this.player1.addAlgoformer(optimusPrime);
@@ -53,8 +49,8 @@ public class Game {
 		this.player2.addAlgoformer(bonecrusher);
 		this.player2.addAlgoformer(frenzy);
 		
-		ChispaSuprema chispaSuprema = new ChispaSuprema();
-		chispaSuprema.setPosition(board.getCentralPosition());
+		ChispaSuprema chispaSuprema = new ChispaSuprema(board.getCentralPosition());
+
 		
 		this.board.add(chispaSuprema);
 		

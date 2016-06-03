@@ -16,7 +16,7 @@ public class RatchetTest {
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		ratchet = AlgoFormerFactory.getRatchet();
+		ratchet = AlgoFormerFactory.getRatchet(new Position(0, 0));
 	}
 
 	@Test
@@ -26,7 +26,6 @@ public class RatchetTest {
 
 	@Test
 	public void speedTest() {
-		ratchet.setPosition(new Position(0, 0));
 		board.add(ratchet);
 		ratchet.move(new Position(1,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
@@ -38,7 +37,6 @@ public class RatchetTest {
 	@Test
 	public void speedAlternalModeTest() {
 		ratchet.transform();
-		ratchet.setPosition(new Position(0, 0));
 		board.add(ratchet);
 		ratchet.move(new Position(8,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));

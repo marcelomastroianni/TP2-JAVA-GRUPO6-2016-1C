@@ -16,7 +16,7 @@ public class OptimusPrimeTest {
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		optimusPrime = AlgoFormerFactory.getOptimusPrime();
+		optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 
 	}
 
@@ -28,7 +28,6 @@ public class OptimusPrimeTest {
 
 	@Test
 	public void speedTest() {
-		optimusPrime.setPosition(new Position(0, 0));
 		board.add(optimusPrime);
 		optimusPrime.move(new Position(2,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
@@ -39,7 +38,6 @@ public class OptimusPrimeTest {
 	@Test
 	public void speedAlternalModeTest() {
 		optimusPrime.transform();
-		optimusPrime.setPosition(new Position(0, 0));
 		board.add(optimusPrime);
 		optimusPrime.move(new Position(1,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));

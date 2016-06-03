@@ -28,8 +28,8 @@ public class BoardTest {
 
 	@Test
 	public void getContentTest(){
-		Assert.assertEquals(new Nothing(), board.getContent(firstPosition));
-		Assert.assertEquals(new Nothing(), board.getContent(lastPosition));
+		Assert.assertEquals(new Nothing(firstPosition), board.getContent(firstPosition));
+		Assert.assertEquals(new Nothing(lastPosition), board.getContent(lastPosition));
 	}
 
 	@Test
@@ -40,8 +40,7 @@ public class BoardTest {
 
 	@Test
 	public void addContentTest(){
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		optimusPrime.setPosition(new Position(4,4));
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(4,4));
 		board.add(optimusPrime);
 		Assert.assertTrue(board.isEmpty(firstPosition));
 		Assert.assertEquals(optimusPrime, board.getContent(lastPosition));
@@ -49,15 +48,13 @@ public class BoardTest {
 
 	@Test(expected= InvalidPositionException.class)
 	public void addContentInInvalidPositionTest(){
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		optimusPrime.setPosition(new Position(5,5));
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(5,5));
 		board.add(optimusPrime);
 	}
 
 	@Test(expected= InvalidPositionException.class)
 	public void addContentInNegativePositionTest(){
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime();
-		optimusPrime.setPosition(new Position(-5,0));
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(-5,0));
 		board.add(optimusPrime);
 	}
 	

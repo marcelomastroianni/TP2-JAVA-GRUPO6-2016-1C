@@ -26,7 +26,7 @@ public class CellTest {
 	@Test
 	public void geContent(){
 		Cell casillero = new Cell(new Position(0,0));
-		Assert.assertEquals(new Nothing(), casillero.getContent());
+		Assert.assertEquals(new Nothing(new Position(0,0)), casillero.getContent());
 	}
 
 
