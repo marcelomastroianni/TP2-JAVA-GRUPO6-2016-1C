@@ -274,9 +274,16 @@ public class Algoformer implements Content{
 
 	@Override
 	public void moveSouthWest(Board board) {
-		
-		
-		
+		Nothing nothing = new Nothing();
+		nothing.setPosition(this.position);
+
+		Integer i = 1;
+		Integer X = this.position.getX();
+		Integer Y = this.position.getY();
+		ArrayList<Cell> steps = new ArrayList<Cell>();
+		for(i= 0; i < this.activeMode.getSpeed(); i++){
+			steps.add(board.getCell(new Position(X-i-1,Y+i+1)));
+		}
 		try{
 			this.activeMode.cross(steps);
 		}
@@ -290,19 +297,6 @@ public class Algoformer implements Content{
 		board.add(nothing);
 		board.add(this);
 
-	}
-
-
-	public void move(Board board, Position position2) {
-		Nothing nothing = new Nothing();
-		nothing.setPosition(this.position);
-		ArrayList<Cell> steps = new ArrayList<Cell>();
-		for(int i= 0; i < this.activeMode.getSpeed(); i++){
-			steps.add(board.getCell(new Position(X-i-1,Y+i+1)));
-		}
-
-		
-		
 	}
 
 
