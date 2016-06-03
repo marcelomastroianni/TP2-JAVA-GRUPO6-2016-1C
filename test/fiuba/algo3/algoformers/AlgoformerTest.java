@@ -22,19 +22,19 @@ public class AlgoformerTest {
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
-		algoformer.moveEast(board);
+		algoformer.move(board,new Position(2,0));
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,0)),algoformer);
 
-		algoformer.moveWest(board);
+		algoformer.move(board, new Position(0,0));
 		Assert.assertTrue("Algoformer deberia haberse movido a la izquierda",board.isEmpty(new Position(2,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",board.getContent(new Position(0,0)),algoformer);
 
-		algoformer.moveSouth(board);
+		algoformer.move(board, new Position(0,2));
 		Assert.assertTrue("Algoformer deberia haberse movido hacia abajo",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido hacia abajo",board.getContent(new Position(0,2)),algoformer);
 
-		algoformer.moveNorth(board);
+		algoformer.move(board, new Position(0,0));
 		Assert.assertTrue("Algoformer deberia haberse movido hacia arriba",board.isEmpty(new Position(0,2)));
 		Assert.assertEquals("Algoformer deberia haberse movido hacia arriba",board.getContent(new Position(0,0)),algoformer);
 	}
@@ -52,20 +52,20 @@ public class AlgoformerTest {
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
-		algoformer.moveSouthEast(board);
+		algoformer.move(board, new Position(2,2));
 		Assert.assertTrue("Algoformer deberia haberse movido abajo a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido hacia abajo",board.getContent(new Position(2,2)),algoformer);
 
-		algoformer.moveSouthWest(board);
+		algoformer.move(board, new Position(0,4));
 		Assert.assertTrue("Algoformer deberia haberse movido abajo a la izquierda",board.isEmpty(new Position(2,2)));
 		Assert.assertEquals("Algoformer deberia haberse movido hacia arriba",board.getContent(new Position(0,4)),algoformer);
 
 
-		algoformer.moveNorthEast(board);
+		algoformer.move(board, new Position(2,2));
 		Assert.assertTrue("Algoformer deberia haberse movido arriba a la derecha",board.isEmpty(new Position(0,4)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,2)),algoformer);
 
-		algoformer.moveNorthWest(board);
+		algoformer.move(board, new Position(0,0));
 		Assert.assertTrue("Algoformer deberia haberse movido arriba a la izquierda",board.isEmpty(new Position(2,2)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",board.getContent(new Position(0,0)),algoformer);
 
