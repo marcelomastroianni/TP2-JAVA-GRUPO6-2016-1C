@@ -4,11 +4,16 @@ public class ChispaSuprema implements Content {
 
 	Position position;
 	
+	public ChispaSuprema(Position position){
+		this.position = position;
+	}
+	
+/*	
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-
+*/
 	@Override
 	public Position getPosition() {
 		return this.position;

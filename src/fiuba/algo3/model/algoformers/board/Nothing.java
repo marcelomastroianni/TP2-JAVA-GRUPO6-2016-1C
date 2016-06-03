@@ -9,13 +9,16 @@ public class Nothing implements Content{
 		return anObject instanceof Nothing;
 	}
 
-
+	public Nothing(Position position){
+		this.position = position;
+	}
+/*
 	@Override
 	public void setPosition(Position position) {
 		this.position = position;
 
 	}
-
+*/
 	@Override
 	public Position getPosition() {
 		return this.position;

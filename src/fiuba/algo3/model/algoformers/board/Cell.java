@@ -7,7 +7,7 @@ public class Cell{
 
 	public Cell(Position position){
 		this.position = position;
-		this.content = new Nothing();
+		this.content = new Nothing(position);
 	}
 
 	public Position getPosition(){

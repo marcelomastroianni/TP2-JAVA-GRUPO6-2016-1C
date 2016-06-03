@@ -16,7 +16,7 @@ public class FrenzyTest {
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		frenzy = AlgoFormerFactory.getFrenzy();
+		frenzy = AlgoFormerFactory.getFrenzy(new Position(0, 0));
 
 	}
 
@@ -27,7 +27,6 @@ public class FrenzyTest {
 
 	@Test
 	public void speedTest() {
-		frenzy.setPosition(new Position(0, 0));
 		board.add(frenzy);
 		frenzy.move(new Position(2,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
@@ -38,7 +37,6 @@ public class FrenzyTest {
 	@Test
 	public void speedAlternalModeTest() {
 		frenzy.transform();
-		frenzy.setPosition(new Position(0, 0));
 		board.add(frenzy);
 		frenzy.move(new Position(6,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));

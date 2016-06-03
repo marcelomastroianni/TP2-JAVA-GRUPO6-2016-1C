@@ -16,7 +16,7 @@ public class BonecrusherTest {
 	@Before
 	public void setUp() {
 		board = new Board(10, 10);
-		bonecrusher = AlgoFormerFactory.getBonecrusher();
+		bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(0, 0));
 
 	}
 
@@ -27,7 +27,7 @@ public class BonecrusherTest {
 
 	@Test
 	public void speedTest() {
-		bonecrusher.setPosition(new Position(0, 0));
+
 		board.add(bonecrusher);
 		bonecrusher.move(new Position(1,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
@@ -38,7 +38,6 @@ public class BonecrusherTest {
 	@Test
 	public void speedAlternalModeTest() {
 		bonecrusher.transform();
-		bonecrusher.setPosition(new Position(0, 0));
 		board.add(bonecrusher);
 		bonecrusher.move(new Position(8,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
