@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers.board;
 import java.util.HashMap;
 import java.util.Map;
 
+import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class Board {
@@ -41,9 +42,15 @@ public class Board {
 	private boolean isValidPosition(Position position) {
 		return(position.getY()>=0 && position.getY() < this.yLength && position.getX() >=0  && position.getX() < this.xLength );
 	}
+	private boolean isOccupiedPosition(Position position) {
+		if(!isValidPosition(position)){
+			return false;
+		}
+		return(getContent(position) instanceof Algoformer);
+	}
 
 	public void add(Content content) {
-		if(!isValidPosition(content.getPosition())){
+		if(!isValidPosition(content.getPosition()) | isOccupiedPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}
 		matrix.get(content.getPosition()).putContent(content);
