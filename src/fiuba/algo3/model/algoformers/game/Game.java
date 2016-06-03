@@ -1,10 +1,10 @@
-package fiuba.algo3.algoformers.game;
+package fiuba.algo3.model.algoformers.game;
 
-import fiuba.algo3.algoformers.AlgoFormerFactory;
-import fiuba.algo3.algoformers.Algoformer;
-import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.ChispaSuprema;
-import fiuba.algo3.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.algoformers.board.Position;
 
 public class Game {
 
@@ -40,9 +40,9 @@ public class Game {
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy();
 		
 		
-		megatron.setPosition(new Position(board.get_X_Length()-1,0));
-		bonecrusher.setPosition(new Position(board.get_X_Length()-1,1));
-		frenzy.setPosition(new Position(board.get_X_Length()-1,2));
+		megatron.setPosition(new Position(board.getXLength()-1,0));
+		bonecrusher.setPosition(new Position(board.getXLength()-1,1));
+		frenzy.setPosition(new Position(board.getXLength()-1,2));
 				
 		
 		this.player1.addAlgoformer(optimusPrime);

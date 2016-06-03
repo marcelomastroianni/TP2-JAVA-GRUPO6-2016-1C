@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.Player;
+import fiuba.algo3.model.algoformers.game.Turn;
+
 
 
 public class TurnTest{

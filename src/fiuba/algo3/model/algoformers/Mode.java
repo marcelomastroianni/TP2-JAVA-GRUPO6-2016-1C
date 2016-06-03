@@ -1,11 +1,8 @@
-package fiuba.algo3.algoformers;
+package fiuba.algo3.model.algoformers;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.Cell;
-import fiuba.algo3.algoformers.board.Position;
-import fiuba.algo3.exceptions.CantCrossException;
+import fiuba.algo3.model.algoformers.board.Cell;
 
 public class Mode {
 

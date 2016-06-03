@@ -1,33 +1,33 @@
-package fiuba.algo3.algoformers.board;
+package fiuba.algo3.model.algoformers.board;
 
-import fiuba.algo3.algoformers.Algoformer;
-import fiuba.algo3.exceptions.InvalidPositionException;
+import java.util.HashMap;
+import java.util.Map;
+
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class Board {
-	private  Cell [][]matrix;
+	private  Map<Position,Cell> matrix;
 	Position centralPosition;
-	int x_length;
-	int y_length;
+	int xLength;
+	int yLength;
 
 	public Board( int rows,int columns){
-		this.matrix = new Cell[rows][columns];
+		this.matrix = new HashMap<>();
 		for(int row = 0 ; row< rows ; row++ ){
 		    for(int column = 0 ; column < columns ; column++ ){
-		        matrix[row][column] = new Cell(new Position(column,row));
+		        matrix.put(new Position(column,row), new Cell(new Position(column,row)));
 		    }
 		}
 		
-		this.x_length = rows;
-		this.y_length = columns;
+		this.xLength = rows;
+		this.yLength = columns;
 		this.centralPosition = new Position(rows/2,columns/2);
 		
 	}
 
 
 	public Cell getCell(Position position) {
-		Integer X = position.getX();
-		Integer Y = position.getY();
-		return matrix[Y][X];
+		return matrix.get(position);
 	}
 
 	public Content getContent(Position position) {
@@ -39,16 +39,14 @@ public class Board {
 	}
 
 	private boolean isValidPosition(Position position) {
-		return(position.getY()>=0 && position.getY() < matrix.length && position.getX() >=0  && position.getX() < matrix[0].length );
+		return(position.getY()>=0 && position.getY() < this.yLength && position.getX() >=0  && position.getX() < this.xLength );
 	}
 
 	public void add(Content content) {
 		if(!isValidPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}
-		Integer X = content.getPosition().getX();
-		Integer Y = content.getPosition().getY();
-		matrix[Y][X].putContent(content);
+		matrix.get(content.getPosition()).putContent(content);
 	}
 
 
@@ -58,13 +56,13 @@ public class Board {
 	}
 
 
-	public int get_X_Length() {
-		return this.x_length;
+	public int getXLength() {
+		return this.xLength;
 	}
 
 
-	public int get_Y_Length() {
-		return this.y_length;
+	public int getYLength() {
+		return this.yLength;
 	}
 
 

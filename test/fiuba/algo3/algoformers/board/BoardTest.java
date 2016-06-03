@@ -4,9 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.algoformers.AlgoFormerFactory;
-import fiuba.algo3.algoformers.Algoformer;
-import fiuba.algo3.exceptions.InvalidPositionException;
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Nothing;
+import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 
 public class BoardTest {
@@ -73,8 +76,8 @@ public class BoardTest {
 	
 	@Test
 	public void testGetBoardSize(){			
-		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",BOARD_X_LENGTH, board.get_X_Length());
-		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",BOARD_Y_LENGTH, board.get_Y_Length());
+		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",BOARD_X_LENGTH, board.getXLength());
+		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",BOARD_Y_LENGTH, board.getXLength());
 	}
 
 

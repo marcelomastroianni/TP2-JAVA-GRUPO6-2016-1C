@@ -1,15 +1,15 @@
-package fiuba.algo3.algoformers.game;
+package fiuba.algo3.model.algoformers.game;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.Algoformer;
 
 public class Player {
 
 	List<Algoformer> algoformersList;
 	
-	Player(){
+	public Player(){
 		algoformersList = new ArrayList<Algoformer>();
 	}
 	
