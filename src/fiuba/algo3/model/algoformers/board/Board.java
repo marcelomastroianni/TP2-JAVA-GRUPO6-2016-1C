@@ -35,7 +35,7 @@ public class Board {
 	}
 
 	public boolean isEmpty(Position position) {
-		return this.getContent(position).equals(new Nothing());
+		return this.getContent(position) instanceof Nothing;
 	}
 
 	private boolean isValidPosition(Position position) {
