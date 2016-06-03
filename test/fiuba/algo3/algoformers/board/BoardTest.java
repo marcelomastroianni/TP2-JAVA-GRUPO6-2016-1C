@@ -16,12 +16,12 @@ public class BoardTest {
 	private Board board;
 	private Position firstPosition;
 	private Position lastPosition;
-	int BOARD_X_LENGTH = 5;
-	int BOARD_Y_LENGTH = 5;
+	int XBOARDLENGTH = 5;
+	int YBOARDLENGTH = 5;
 
 	@Before
 	public void setUp(){
-		board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		board = new Board(XBOARDLENGTH,YBOARDLENGTH);
 		firstPosition = new Position(0,0);
 		lastPosition = new Position(4,4);
 	}	
@@ -67,17 +67,17 @@ public class BoardTest {
 		Board tablero = new Board(21,20);
 		Position centralPosition = tablero.getCentralPosition();
 		
-		Integer x_central = 10;
-		Integer y_central = 10;
+		Integer xCentral = 10;
+		Integer yCentral = 10;
 		
-		Assert.assertEquals("Posicion X Central deberia ser la mitad del tablero",x_central, centralPosition.getX());
-		Assert.assertEquals("Posicion Y Central deberia ser la mitad del tablero",y_central, centralPosition.getY());
+		Assert.assertEquals("Posicion X Central deberia ser la mitad del tablero",xCentral, centralPosition.getX());
+		Assert.assertEquals("Posicion Y Central deberia ser la mitad del tablero",yCentral, centralPosition.getY());
 	}
 	
 	@Test
 	public void testGetBoardSize(){			
-		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",BOARD_X_LENGTH, board.getXLength());
-		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",BOARD_Y_LENGTH, board.getXLength());
+		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",XBOARDLENGTH, board.getXLength());
+		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",YBOARDLENGTH, board.getXLength());
 	}
 
 
