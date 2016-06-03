@@ -43,18 +43,16 @@ public class Board {
 		return position.isInRange(xLength,yLength);
 	}
 	private boolean isOccupiedPosition(Position position) {
-		if(!isValidPosition(position)){
-			return false;
-		}
 		return(getContent(position) instanceof Algoformer);
 	}
 
 	public void add(Content content) {
-		if(!isValidPosition(content.getPosition()) | isOccupiedPosition(content.getPosition())){
+		if(!isValidPosition(content.getPosition()) || (content instanceof Algoformer && isOccupiedPosition(content.getPosition()))){
 			throw new InvalidPositionException();
 		}
 		matrix.get(content.getPosition()).putContent(content);
 	}
+	
 
 
 	public Position getCentralPosition() {
