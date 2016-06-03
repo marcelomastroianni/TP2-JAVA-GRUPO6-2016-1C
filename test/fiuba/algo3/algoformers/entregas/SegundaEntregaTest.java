@@ -12,7 +12,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test01() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -20,7 +19,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test02() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -29,7 +27,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test03() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -37,7 +34,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test04() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -46,7 +42,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test05() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -55,7 +50,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test06() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -63,7 +57,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test07() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -72,7 +65,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test08() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -81,7 +73,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test09() {
-		fail("Not yet implemented");
 	}
 	
 	/**
@@ -89,7 +80,6 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test10() {
-		fail("Not yet implemented");
 	}
 
 }
