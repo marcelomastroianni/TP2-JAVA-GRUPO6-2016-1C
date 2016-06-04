@@ -61,15 +61,16 @@ public class Algoformer implements Content{
 	}
 	
 	public void move(Position finalPosition, Board board) {
-		Nothing nothing = new Nothing(this.position);
-		board.add(nothing);
-		this.position = finalPosition;
-		try{
-			board.add(this);
-		}catch(InvalidPositionException e){
-			this.position = nothing.getPosition();
-			board.add(this);
-		}
+		if(board.isValidPosition(finalPosition)){
+			Position initialPosition = this.position;
+			int steps = 0;			
+			while(position.hasNext(finalPosition) && steps<this.activeMode.getSpeed()){
+				steps++;
+				this.position = this.position.next(finalPosition);				
+			}							
+			board.add(new Nothing(initialPosition));
+			board.add(this);		
+		}			
 	}
 
 	public void shot(Algoformer algoformer){
