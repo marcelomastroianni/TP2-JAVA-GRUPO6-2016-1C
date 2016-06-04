@@ -67,6 +67,22 @@ public class BoardTest {
 	}
 	
 
+
+	@Test
+	public void testValidPosition(){
+		Board tablero = new Board(21,20);	
+		Assert.assertFalse("(-1,0) no es una posicion valida", tablero.isValidPosition(new Position(-1,0)));
+		Assert.assertFalse("(0,-1) no es una posicion valida", tablero.isValidPosition(new Position(0,-1)));
+		Assert.assertFalse("(-1,-1) no es una posicion valida", tablero.isValidPosition(new Position(-1,-1)));
+		Assert.assertTrue("(0,0) es una posicion valida", tablero.isValidPosition(new Position(0,0)));		
+		
+		Assert.assertFalse("(23,26) no es una posicion valida", tablero.isValidPosition(new Position(23,26)));						
+		Assert.assertFalse("(21,20) no es una posicion valida", tablero.isValidPosition(new Position(21,20)));
+		Assert.assertFalse("(21,19) no es una posicion valida", tablero.isValidPosition(new Position(21,19)));
+		Assert.assertFalse("(20,20) no es una posicion valida", tablero.isValidPosition(new Position(20,20)));
+		Assert.assertTrue("(20,19) es una posicion valida", tablero.isValidPosition(new Position(20,19)));
+	}
+	
 	@Test
 	public void testCentralPosition(){
 		Board tablero = new Board(21,20);		

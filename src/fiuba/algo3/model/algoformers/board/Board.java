@@ -39,7 +39,7 @@ public class Board {
 		return this.getContent(position) instanceof Nothing;
 	}
 
-	private boolean isValidPosition(Position position) {
+	public boolean isValidPosition(Position position) {
 		return position.isInRange(xLength,yLength);
 	}
 	private boolean isOccupiedPosition(Position position) {
