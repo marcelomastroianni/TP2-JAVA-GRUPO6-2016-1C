@@ -5,15 +5,15 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algoformers.AlgoFormerFactory;
-import fiuba.algo3.algoformers.Algoformer;
-import fiuba.algo3.algoformers.board.Board;
-import fiuba.algo3.algoformers.board.ChispaSuprema;
-import fiuba.algo3.algoformers.board.Position;
-import fiuba.algo3.algoformers.game.Game;
-import fiuba.algo3.algoformers.game.Player;
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.Player;
 
-public class PrimeraEntraga {
+public class PrimeraEntragaTest {
 
 	//Se ubica un algoformer humanoide en un casillero, se pide que se mueva, se verifica
 	//nueva posición acorde a su modo.
@@ -21,13 +21,12 @@ public class PrimeraEntraga {
 	public void test01(){
 
 		Board board = new Board(20,20);
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
-		algoformer.setPosition(new Position(0,0));
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
-		algoformer.moveEast(board);
+		algoformer.move(new Position(2,0),board);
 		Assert.assertTrue("Algoformer deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,0)),algoformer);
 	}
@@ -36,7 +35,7 @@ public class PrimeraEntraga {
 	//en ambas direcciones.
 	@Test
 	public void test02(){
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
@@ -52,13 +51,12 @@ public class PrimeraEntraga {
 	@Test
 	public void test03(){
 		Board board = new Board(20,20);
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
-		algoformer.setPosition(new Position(0,0));
 		board.add(algoformer);
 		algoformer.transform();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
-		algoformer.moveEast(board);
+		algoformer.move(new Position(5,0),board);
 		Assert.assertTrue("Algoformer alterno deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
 		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",board.getContent(new Position(5,0)),algoformer);
 
@@ -97,9 +95,9 @@ public class PrimeraEntraga {
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(0,1)) instanceof Algoformer );
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(0,2)) instanceof Algoformer );
 
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,0)) instanceof Algoformer );
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,1)) instanceof Algoformer );
-		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.get_X_Length()-1,2)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,0)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,1)) instanceof Algoformer );
+		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,2)) instanceof Algoformer );
 	}
 
 	//5. Combinaciones en modos de: Ubicar un autobot, ubicar un decepticon, pedir que se
@@ -107,11 +105,9 @@ public class PrimeraEntraga {
 	@Test
 	public void test05(){
 		Board board = new Board(5,5);
-		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy();
-		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime();
+		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));
 
-		algoformer1.setPosition(new Position(2,0));
-		algoformer2.setPosition(new Position(2,4));
 		board.add(algoformer1);
 		board.add(algoformer2);
 

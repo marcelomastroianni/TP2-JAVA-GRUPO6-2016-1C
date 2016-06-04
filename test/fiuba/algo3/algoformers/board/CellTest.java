@@ -1,8 +1,11 @@
 package fiuba.algo3.algoformers.board;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+
+import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Nothing;
+import fiuba.algo3.model.algoformers.board.Position;
 
 
 public class CellTest {
@@ -23,7 +26,7 @@ public class CellTest {
 	@Test
 	public void geContent(){
 		Cell casillero = new Cell(new Position(0,0));
-		Assert.assertEquals(new Nothing(), casillero.getContent());
+		Assert.assertEquals(new Nothing(new Position(0,0)), casillero.getContent());
 	}
 
 

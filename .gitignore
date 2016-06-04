@@ -11,7 +11,4 @@ out/
 bin/
 build.xml.old
 *.jar
-.idea/
-out/
-.class
-.iml
+*.class

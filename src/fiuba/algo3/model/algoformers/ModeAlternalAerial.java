@@ -1,8 +1,8 @@
-package fiuba.algo3.algoformers;
+package fiuba.algo3.model.algoformers;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Cell;
 
 public class ModeAlternalAerial extends Mode{
 

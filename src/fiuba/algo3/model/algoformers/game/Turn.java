@@ -1,4 +1,4 @@
-package fiuba.algo3.algoformers.game;
+package fiuba.algo3.model.algoformers.game;
 
 public class Turn {
 
