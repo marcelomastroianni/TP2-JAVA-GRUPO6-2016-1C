@@ -51,11 +51,11 @@ public class Position {
 	}
 
 
-	public Integer getX(){
+	private Integer getX(){
 		return X;
 	}
 
-	public Integer getY(){
+	private Integer getY(){
 		return Y;
 	}
 
