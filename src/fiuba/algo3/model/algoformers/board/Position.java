@@ -51,12 +51,43 @@ public class Position {
 	}
 
 
-	public Integer getX(){
+	private Integer getX(){
 		return X;
 	}
 
-	public Integer getY(){
+	private Integer getY(){
 		return Y;
+	}
+
+	public boolean hasNext(Position finalPosition) {
+		return !this.equals(finalPosition);
+	}
+
+	public Position next(Position finalPosition) {
+		int xNext = 0;
+		int yNext = 0;
+		
+		if (this.getX()>finalPosition.getX()){
+			xNext = this.getX() - 1;		
+		}
+		if (this.getX()<finalPosition.getX()){
+			xNext = this.getX() + 1;		
+		}
+		if (this.getX()==finalPosition.getX()){
+			xNext = this.getX();		
+		}
+		
+		if (this.getY()>finalPosition.getY()){
+			yNext = this.getY() - 1;		
+		}
+		if (this.getY()<finalPosition.getY()){
+			yNext = this.getY() + 1;		
+		}
+		if (this.getY()==finalPosition.getY()){
+			yNext = this.getY();		
+		}
+		
+		return new Position(xNext,yNext);
 	}
 
 }

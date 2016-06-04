@@ -69,14 +69,8 @@ public class BoardTest {
 
 	@Test
 	public void testCentralPosition(){
-		Board tablero = new Board(21,20);
-		Position centralPosition = tablero.getCentralPosition();
-		
-		Integer xCentral = 10;
-		Integer yCentral = 10;
-		
-		Assert.assertEquals("Posicion X Central deberia ser la mitad del tablero",xCentral, centralPosition.getX());
-		Assert.assertEquals("Posicion Y Central deberia ser la mitad del tablero",yCentral, centralPosition.getY());
+		Board tablero = new Board(21,20);		
+		Assert.assertEquals("Posicion central deberia estar en el centro del tablero",new Position(10,10), tablero.getCentralPosition());		
 	}
 	
 	@Test
