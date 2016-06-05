@@ -72,5 +72,10 @@ public class Board {
 	}
 
 
+	public void addCell(Cell cell) {	
+		matrix.put(cell.getPosition(), cell);
+	}
+
+
 
 }

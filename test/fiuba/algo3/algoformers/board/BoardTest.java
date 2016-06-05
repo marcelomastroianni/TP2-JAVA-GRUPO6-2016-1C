@@ -7,9 +7,12 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.surfaces.SuperficieNube;
+import fiuba.algo3.model.surfaces.SuperficieRocosa;
 
 
 public class BoardTest {
@@ -95,6 +98,16 @@ public class BoardTest {
 		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",YBOARDLENGTH, board.getXLength());
 	}
 
+	@Test
+	public void addCellTest(){
+		Board tablero = new Board(10,10);
+		
+
+		tablero.addCell(new Cell(new Position(0,0),new SuperficieNube()));
+	
+		Assert.assertTrue(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieNube );
+		Assert.assertFalse(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieRocosa);
+	}
 
 
 
