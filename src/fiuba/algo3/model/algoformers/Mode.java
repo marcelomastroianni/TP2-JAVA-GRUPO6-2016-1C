@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers;
 import java.util.ArrayList;
 
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.surfaces.Surface;
 
 public class Mode {
 
@@ -16,6 +17,9 @@ public class Mode {
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
 
+	}
+	public boolean canCrossSurface(Surface surface) {
+		return true;
 	}
 
 	public void cross(ArrayList<Cell> steps) {

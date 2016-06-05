@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.*;
 import fiuba.algo3.model.exceptions.CantCrossException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
+import fiuba.algo3.model.surfaces.Surface;
 
 import java.util.ArrayList;
 
@@ -63,13 +64,25 @@ public class Algoformer implements Content{
 	public void move(Position finalPosition, Board board) {
 		if(board.isValidPosition(finalPosition)){
 			Position initialPosition = this.position;
+			Position previous;
+			Position next;
+			Surface nextSurface;
 			int steps = 0;			
 			while(position.hasNext(finalPosition) && steps<this.activeMode.getSpeed()){
 				steps++;
-				this.position = this.position.next(finalPosition);				
+				previous = this.position;
+				next = this.position.next(finalPosition);
+				nextSurface = board.getSurface(next);
+				if (this.activeMode.canCrossSurface(nextSurface)){
+					this.position = next;
+					board.add(new Nothing(previous));
+					board.add(this);
+				}else{
+					break;
+				}											
 			}							
-			board.add(new Nothing(initialPosition));
-			board.add(this);		
+			//board.add(new Nothing(initialPosition));
+			//board.add(this);		
 		}			
 	}
 

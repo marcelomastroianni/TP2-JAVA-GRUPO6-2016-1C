@@ -2,7 +2,17 @@ package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
+import fiuba.algo3.model.algoformers.ModeHumanoid;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.surfaces.SuperficiePantano;
 
 public class SegundaEntregaTest {
 
@@ -19,6 +29,27 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test02() {
+		Board tablero = new Board(20,20);
+		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		tablero.add(optimus);
+		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
+		optimus.move(new Position(3,3), tablero);
+		
+		Assert.assertTrue("Algoformer no deberia estar en la posicion (3,3)",tablero.isEmpty(new Position(3,3)));
+		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
+
+		optimus.transform();
+		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		optimus.move(new Position(3,3), tablero);
+		Assert.assertTrue("Algoformer no deberia estar en la posicion (2,3)",tablero.isEmpty(new Position(2,3)));
+		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));
+		Assert.assertEquals("Algoformer deberia estar en la posicion (3,3)",tablero.getContent(new Position(3,3)),optimus);
+		
+		
 	}
 	
 	/**
