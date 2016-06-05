@@ -69,4 +69,5 @@ public class SuperficieRocosaTest {
 
 		Assert.assertTrue("frenzy deberia estar en la posicion (3,5)", frenzy.getPosition().equals(new Position(3, 5)));
 	}
+
 }

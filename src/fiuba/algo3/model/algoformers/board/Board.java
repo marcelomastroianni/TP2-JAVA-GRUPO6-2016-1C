@@ -55,8 +55,13 @@ public class Board {
 		}
 		matrix.get(content.getPosition()).putContent(content);
 	}
-	
 
+	public void remove(Content content) {
+		if(!isValidPosition(content.getPosition())){
+			throw new InvalidPositionException();
+		}
+		matrix.get(content.getPosition()).removeContent();
+	}
 
 	public Position getCentralPosition() {
 	

@@ -27,7 +27,9 @@ public class Cell{
 		return surface;
 	}
 
-	
+	public void removeContent(){
+		this.content = new Nothing(position);
+	}
 	
 
 	public void putContent(Content content) {

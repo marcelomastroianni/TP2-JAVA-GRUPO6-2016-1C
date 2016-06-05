@@ -117,5 +117,15 @@ public class BoardTest {
 		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
 	}
 
+	@Test
+	public void removeAlgoforme(){
+		Board tablero = new Board(5,5);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 1));
+		tablero.add(frenzy);
+
+		Assert.assertTrue("frenzy deberia estar en la posicion (1,1)", frenzy.getPosition().equals(new Position(1, 1)));
+		tablero.remove(frenzy);
+		Assert.assertTrue("frenzy no deberia estar en el tablero",tablero.isEmpty(new Position(1,1)));
+	}
 
 }

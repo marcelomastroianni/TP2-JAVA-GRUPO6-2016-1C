@@ -2,6 +2,7 @@ package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import org.junit.Assert;
 import org.junit.Test;
 
