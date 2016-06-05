@@ -1,11 +1,11 @@
-package fiuba.algo3.algoformers.board;
+package fiuba.algo3.algoformers.surfaces;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.algoformers.board.Surface;
+import fiuba.algo3.model.surfaces.SuperficieRocosa;
 
 
 

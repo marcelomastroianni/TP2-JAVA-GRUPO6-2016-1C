@@ -1,5 +1,7 @@
 package fiuba.algo3.model.algoformers.board;
 
+import fiuba.algo3.model.surfaces.Surface;
+
 public class Cell{
 	private Position position;
 	private Surface surface;

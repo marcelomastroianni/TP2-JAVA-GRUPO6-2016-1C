@@ -1,6 +1,6 @@
-package fiuba.algo3.algoformers.board;
+package fiuba.algo3.model.surfaces;
 
-import fiuba.algo3.model.algoformers.board.Surface;
+
 
 public class SuperficieRocosa implements Surface {
 
