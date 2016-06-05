@@ -2,14 +2,11 @@ package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.model.algoformers.AlgoFormerFactory;
-import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
-import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
@@ -23,6 +20,84 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test01() {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(4, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(5, 5), new SuperficieRocosa()));
+
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(1, 5));
+		tablero.add(optimus);
+		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("optimus deberia estar en la posicion (1,5)", optimus.getPosition().equals(new Position(1, 5)));
+		optimus.move(new Position(3, 5), tablero);
+		Assert.assertTrue("optimus deberia estar en la posicion (3,5)", optimus.getPosition().equals(new Position(3, 5)));
+		optimus.transform();
+		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		optimus.move(new Position(5, 5), tablero);
+		Assert.assertTrue("optimus deberia estar en la posicion (5,5)", optimus.getPosition().equals(new Position(5, 5)));
+		tablero.remove(optimus);
+
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1, 5));
+		tablero.add(bumblebee);
+		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("bumblebee deberia estar en la posicion (1,5)", bumblebee.getPosition().equals(new Position(1, 5)));
+		bumblebee.move(new Position(3, 5), tablero);
+		Assert.assertTrue("bumblebee deberia estar en la posicion (3,5)", bumblebee.getPosition().equals(new Position(3, 5)));
+		bumblebee.transform();
+		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeAlternalTerrestrial);
+		bumblebee.move(new Position(5, 5), tablero);
+		Assert.assertTrue("bumblebee deberia estar en la posicion (5,5)", bumblebee.getPosition().equals(new Position(5, 5)));
+		tablero.remove(bumblebee);
+
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1, 5));
+		tablero.add(ratchet);
+		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("ratchet deberia estar en la posicion (1,5)", ratchet.getPosition().equals(new Position(1, 5)));
+		ratchet.move(new Position(2, 5), tablero);
+		Assert.assertTrue("ratchet deberia estar en la posicion (2,5)", ratchet.getPosition().equals(new Position(2, 5)));
+		ratchet.transform();
+		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeAlternalAerial);
+		ratchet.move(new Position(5, 5), tablero);
+		Assert.assertTrue("ratchet deberia estar en la posicion (5,5)", ratchet.getPosition().equals(new Position(5, 5)));
+		tablero.remove(ratchet);
+
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1, 5));
+		tablero.add(megatron);
+		Assert.assertTrue(megatron.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("megatron deberia estar en la posicion (1,5)", megatron.getPosition().equals(new Position(1, 5)));
+		megatron.move(new Position(2, 5), tablero);
+		Assert.assertTrue("megatron deberia estar en la posicion (2,5)", megatron.getPosition().equals(new Position(2, 5)));
+		megatron.transform();
+		Assert.assertTrue(megatron.getActiveMode() instanceof ModeAlternalAerial);
+		megatron.move(new Position(5, 5), tablero);
+		Assert.assertTrue("megatron deberia estar en la posicion (5,5)", megatron.getPosition().equals(new Position(5, 5)));
+		tablero.remove(megatron);
+
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1, 5));
+		tablero.add(bonecrusher);
+		Assert.assertTrue(bonecrusher.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("bonecrusher deberia estar en la posicion (1,5)", bonecrusher.getPosition().equals(new Position(1, 5)));
+		bonecrusher.move(new Position(2, 5), tablero);
+		Assert.assertTrue("bonecrusher deberia estar en la posicion (2,5)", bonecrusher.getPosition().equals(new Position(2, 5)));
+		bonecrusher.transform();
+		Assert.assertTrue(bonecrusher.getActiveMode() instanceof ModeAlternalTerrestrial);
+		bonecrusher.move(new Position(5, 5), tablero);
+		Assert.assertTrue("bonecrusher deberia estar en la posicion (5,5)", bonecrusher.getPosition().equals(new Position(5, 5)));
+		tablero.remove(bonecrusher);
+
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 5));
+		tablero.add(frenzy);
+		Assert.assertTrue(frenzy.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
+		frenzy.move(new Position(3, 5), tablero);
+		Assert.assertTrue("frenzy deberia estar en la posicion (3,5)", frenzy.getPosition().equals(new Position(3, 5)));
+		frenzy.transform();
+		Assert.assertTrue(frenzy.getActiveMode() instanceof ModeAlternalTerrestrial);
+		frenzy.move(new Position(5, 5), tablero);
+		Assert.assertTrue("frenzy deberia estar en la posicion (5,5)", frenzy.getPosition().equals(new Position(5, 5)));
+		tablero.remove(frenzy);
 	}
 	
 	/**
