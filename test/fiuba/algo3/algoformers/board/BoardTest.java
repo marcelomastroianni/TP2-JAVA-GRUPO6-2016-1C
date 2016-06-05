@@ -109,6 +109,13 @@ public class BoardTest {
 		Assert.assertFalse(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieRocosa);
 	}
 
+	@Test
+	public void getSurfaceTest(){
+		Board tablero = new Board(10,10);		
+		tablero.addCell(new Cell(new Position(0,0),new SuperficieNube()));
+		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof SuperficieNube );
+		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
+	}
 
 
 }
