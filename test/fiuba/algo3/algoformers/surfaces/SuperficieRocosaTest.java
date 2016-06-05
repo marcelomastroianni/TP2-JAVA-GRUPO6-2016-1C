@@ -1,5 +1,9 @@
 package fiuba.algo3.algoformers.surfaces;
 
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeHumanoid;
+import fiuba.algo3.model.algoformers.board.Board;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,6 +31,23 @@ public class SuperficieRocosaTest {
 		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.puedeSerCruzadaPorModoAlternoTerrestre());
 		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.puedeSerCruzadaPorModoAlternoAereo());										
 	}
-	
+
+	@Test
+	public void testModoHumanoideCruzaSuperficieRocosa() {
+
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1, 5));
+		tablero.add(bumblebee);
+
+		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue("bumblebee deberia estar en la posicion (1,5)", bumblebee.getPosition().equals(new Position(1, 5)));
+
+		bumblebee.move(new Position(3, 5), tablero);
+
+		Assert.assertTrue("bumblebee deberia estar en la posicion (3,5)", bumblebee.getPosition().equals(new Position(3, 5)));
+	}
 	
 }
