@@ -5,6 +5,7 @@ import java.util.Map;
 
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.surfaces.SuperficieRocosa;
 
 public class Board {
 	private  Map<Position,Cell> matrix;
@@ -16,7 +17,7 @@ public class Board {
 		this.matrix = new HashMap<>();
 		for(int row = 0 ; row< rows ; row++ ){
 		    for(int column = 0 ; column < columns ; column++ ){
-		        matrix.put(new Position(column,row), new Cell(new Position(column,row)));
+		        matrix.put(new Position(column,row), new Cell(new Position(column,row),new SuperficieRocosa()));
 		    }
 		}
 		

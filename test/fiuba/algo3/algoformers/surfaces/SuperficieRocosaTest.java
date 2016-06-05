@@ -16,8 +16,7 @@ public class SuperficieRocosaTest {
 	@Test
 	public void testCrearSuperficieRocosa(){		
 		Surface superficieRocosa = new SuperficieRocosa();		
-		Cell casillero = new Cell(new Position(0,0));		
-		casillero.setSurface(superficieRocosa);		
+		Cell casillero = new Cell(new Position(0,0),superficieRocosa);		
 		Assert.assertEquals("La superficie del casillero deberia ser Superficie Rocosa", superficieRocosa, casillero.getSurface());		
 	}
 	

@@ -13,8 +13,7 @@ public class SuperficiePantanoTest {
 	@Test
 	public void testCrearSuperficiePantano(){		
 		Surface superficiePantano = new SuperficiePantano();		
-		Cell casillero = new Cell(new Position(0,0));		
-		casillero.setSurface(superficiePantano);		
+		Cell casillero = new Cell(new Position(0,0),superficiePantano);		
 		Assert.assertEquals("La superficie del casillero deberia ser Superficie Pantano", superficiePantano, casillero.getSurface());		
 	}
 	

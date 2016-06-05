@@ -1,5 +1,6 @@
 package fiuba.algo3.model.algoformers.board;
 
+import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Cell{
@@ -7,9 +8,10 @@ public class Cell{
 	private Surface surface;
 	private Content content;
 
-	public Cell(Position position){
+	public Cell(Position position, Surface surface){
 		this.position = position;
 		this.content = new Nothing(position);
+		this.surface = surface;
 	}
 
 	public Position getPosition(){
@@ -25,9 +27,8 @@ public class Cell{
 		return surface;
 	}
 
-	public void setSurface(Surface surface) {
-		this.surface = surface;
-	}
+	
+	
 
 	public void putContent(Content content) {
 		this.content = content;

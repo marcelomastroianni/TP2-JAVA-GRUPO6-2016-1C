@@ -17,8 +17,7 @@ public class SuperficieNubeTest {
 	@Test
 	public void testCrearSuperficieNube(){		
 		Surface superficieNube = new SuperficieNube();		
-		Cell casillero = new Cell(new Position(0,0));		
-		casillero.setSurface(superficieNube);		
+		Cell casillero = new Cell(new Position(0,0),superficieNube);		
 		Assert.assertEquals("La superficie del casillero deberia ser Superficie Rocosa", superficieNube, casillero.getSurface());		
 	}
 	
