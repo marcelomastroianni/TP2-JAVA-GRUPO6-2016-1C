@@ -2,6 +2,7 @@ package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import org.junit.Assert;
@@ -49,5 +50,23 @@ public class SuperficieRocosaTest {
 
 		Assert.assertTrue("bumblebee deberia estar en la posicion (3,5)", bumblebee.getPosition().equals(new Position(3, 5)));
 	}
-	
+
+	@Test
+	public void testModoAlternoCruzaSuperficieRocosa() {
+
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 5));
+		frenzy.transform();
+		tablero.add(frenzy);
+
+		Assert.assertTrue(frenzy.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
+
+		frenzy.move(new Position(3, 5), tablero);
+
+		Assert.assertTrue("frenzy deberia estar en la posicion (3,5)", frenzy.getPosition().equals(new Position(3, 5)));
+	}
 }
