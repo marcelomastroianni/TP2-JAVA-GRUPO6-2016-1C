@@ -157,7 +157,7 @@ public class SegundaEntregaTest {
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		optimus.move(new Position(3,0), tablero);
-		//Assert.assertEquals(optimus.getLife(), 498);
+		Assert.assertEquals(451, optimus.getLife() );
 	}
 	
 	/**
