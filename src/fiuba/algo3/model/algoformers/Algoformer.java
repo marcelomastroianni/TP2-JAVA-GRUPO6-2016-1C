@@ -60,10 +60,12 @@ public class Algoformer implements Content{
 		else
 			this.activeMode = this.humanoidMode;
 	}
+	public void reduceLife() {
+		this.life = (int) (this.life*0.95);
+	}
 	
 	public void move(Position finalPosition, Board board) {
 		if(board.isValidPosition(finalPosition)){
-			Position initialPosition = this.position;
 			Position previous;
 			Position next;
 			Surface nextSurface;
@@ -74,6 +76,7 @@ public class Algoformer implements Content{
 				next = this.position.next(finalPosition);
 				nextSurface = board.getSurface(next);
 				if (this.activeMode.canCrossSurface(nextSurface)){
+					nextSurface.BeCrossedBy(this);
 					this.position = next;
 					board.add(new Nothing(previous));
 					board.add(this);
@@ -175,6 +178,9 @@ public class Algoformer implements Content{
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 
