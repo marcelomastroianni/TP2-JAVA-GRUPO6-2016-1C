@@ -17,7 +17,7 @@ public class ModeAlternalAerial extends Mode{
 	
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.puedeSerCruzadaPorModoAlternoAereo();
+		return surface.canBeCrossedBy(this);
 	}
 
 }

@@ -17,7 +17,7 @@ public class ModeHumanoid extends Mode {
 
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.puedeSerCruzadaPorModoHumanoide();
+		return surface.canBeCrossedBy(this);
 	}
 	
 }

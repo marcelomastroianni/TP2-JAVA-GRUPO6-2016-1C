@@ -2,9 +2,11 @@ package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,11 +28,15 @@ public class SuperficieRocosaTest {
 	}
 	
 	@Test
-	public void testCruzarSuperficieRocosa(){		
+	public void testCruzarSuperficieRocosa(){	
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieRocosa = new SuperficieRocosa();				
-		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.puedeSerCruzadaPorModoHumanoide());
-		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.puedeSerCruzadaPorModoAlternoTerrestre());
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.puedeSerCruzadaPorModoAlternoAereo());										
+		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeHumanoid) optimusPrime.getActiveMode()));
+		optimusPrime.transform();
+		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeAlternalTerrestrial) optimusPrime.getActiveMode()));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
+		megatron.transform();
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeAlternalAerial) megatron.getActiveMode()));										
 	}
 
 	@Test

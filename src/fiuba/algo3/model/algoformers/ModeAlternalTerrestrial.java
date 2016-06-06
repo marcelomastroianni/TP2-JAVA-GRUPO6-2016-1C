@@ -18,7 +18,7 @@ public class ModeAlternalTerrestrial extends Mode{
 
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.puedeSerCruzadaPorModoAlternoTerrestre();
+		return surface.canBeCrossedBy(this);
 	}
 	
 }

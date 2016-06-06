@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
@@ -24,10 +25,14 @@ public class SuperficiePantanoTest {
 	
 	@Test
 	public void testCruzarSuperficiePantano(){		
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficiePantano = new SuperficiePantano();				
-		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.puedeSerCruzadaPorModoHumanoide());
-		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.puedeSerCruzadaPorModoAlternoTerrestre());
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.puedeSerCruzadaPorModoAlternoAereo());										
+		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeHumanoid) optimusPrime.getActiveMode()));
+		optimusPrime.transform();
+		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeAlternalTerrestrial) optimusPrime.getActiveMode()));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
+		megatron.transform();
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeAlternalAerial) megatron.getActiveMode()));										
 	}
 	
 	@Test
