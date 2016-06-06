@@ -1,5 +1,6 @@
 package fiuba.algo3.model.algoformers.board;
 
+import fiuba.algo3.model.surfaces.Air;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -25,6 +26,10 @@ public class Cell{
 	
 	public Surface getSurface() {
 		return surface;
+	}
+	
+	public void setSurface(Surface surface) {
+		this.surface = surface;	
 	}
 
 	public void removeContent(){
@@ -74,6 +79,8 @@ public class Cell{
 			return false;
 		return true;
 	}
+
+	
 
 	
 

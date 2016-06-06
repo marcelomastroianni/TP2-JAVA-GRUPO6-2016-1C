@@ -6,6 +6,7 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.surfaces.Air;
 import fiuba.algo3.model.surfaces.SuperficieNube;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
@@ -25,6 +26,7 @@ public class CellTest {
 		Cell casillero = new Cell(new Position(0,0),new SuperficieRocosa());
 		Assert.assertEquals(new Position(0,0), casillero.getPosition());
 	}
+	
 
 	@Test
 	public void testGetContent(){
@@ -38,6 +40,14 @@ public class CellTest {
 		Assert.assertTrue( casillero.getSurface() instanceof SuperficieRocosa );
 		Assert.assertFalse( casillero.getSurface() instanceof SuperficieNube);
 	}
-
+	
+	@Test
+	public void testSetSurfaceTest(){
+		Cell casillero = new Cell(new Position(0,0),new SuperficieRocosa());
+		casillero.setSurface(new Air());
+		Assert.assertFalse( casillero.getSurface() instanceof SuperficieNube);
+		Assert.assertTrue( casillero.getSurface() instanceof Air );
+		
+	}
 
 }
