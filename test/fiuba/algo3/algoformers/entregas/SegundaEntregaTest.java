@@ -156,8 +156,15 @@ public class SegundaEntregaTest {
 		tablero.addCell(new Cell(new Position(2, 0), new Thorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
+		tablero.add(optimus);
 		optimus.move(new Position(3,0), tablero);
-		Assert.assertEquals(451, optimus.getLife() );
+		Assert.assertEquals("su vida se ve reducida 5% por cada casillero",451, optimus.getLife());
+		
+		optimus.transform();
+		
+		optimus.move(new Position(1,0), tablero);
+		Assert.assertEquals("su vida se ve reducida 5% por un casillero de espinas",428, optimus.getLife());
+		
 	}
 	
 	/**
@@ -166,6 +173,15 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test06() {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new Thorn()));
+		tablero.addCell(new Cell(new Position(2, 0), new Thorn()));
+
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		tablero.add(megatron);
+		megatron.transform();
+		megatron.move(new Position(3,0), tablero);
+		Assert.assertEquals(550, megatron.getLife() );
 	}
 	
 	/**
