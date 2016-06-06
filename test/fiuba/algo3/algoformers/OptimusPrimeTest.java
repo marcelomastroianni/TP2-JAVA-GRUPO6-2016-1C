@@ -45,5 +45,12 @@ public class OptimusPrimeTest {
 				optimusPrime);
 
 	}
+	
+	@Test
+	public void reduceLifeTest() {
+		optimusPrime.reduceLife();
+		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",475,optimusPrime.getLife());
+
+	}
 
 }

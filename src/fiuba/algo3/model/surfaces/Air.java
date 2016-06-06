@@ -1,5 +1,6 @@
 package fiuba.algo3.model.surfaces;
 
+import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
@@ -22,6 +23,12 @@ public class Air implements Surface{
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void BeCrossedBy(Algoformer algoformer) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

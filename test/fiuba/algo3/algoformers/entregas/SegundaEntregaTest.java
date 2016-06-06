@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
+import fiuba.algo3.model.surfaces.Thorn;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -149,6 +151,13 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test05() {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new Thorn()));
+		tablero.addCell(new Cell(new Position(2, 0), new Thorn()));
+
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
+		optimus.move(new Position(3,0), tablero);
+		//Assert.assertEquals(optimus.getLife(), 498);
 	}
 	
 	/**

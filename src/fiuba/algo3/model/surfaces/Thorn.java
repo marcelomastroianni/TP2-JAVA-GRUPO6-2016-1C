@@ -1,30 +1,38 @@
 package fiuba.algo3.model.surfaces;
 
+
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 
-public class SuperficieNube  implements Surface{
-
+public class Thorn implements Surface {
+	
+	private boolean terrestial;
+	
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
-		return false;
-	}
-
-	@Override
-	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
+		terrestial = true;
 		return true;
 	}
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial) {
-		return false;
+		terrestial = true;
+		return true;
+	}
+
+	@Override
+	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
+		terrestial = false;
+		return true;
 	}
 
 	@Override
 	public void BeCrossedBy(Algoformer algoformer) {
-		// TODO Auto-generated method stub
+		if(terrestial){
+			algoformer.reduceLife();
+		}
 		
 	}
 
