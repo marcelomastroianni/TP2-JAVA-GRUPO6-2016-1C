@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerParaMoverException;
 
 public class Game {
@@ -81,16 +82,20 @@ public class Game {
 		return this.board;
 	}
 
-	public void moverAlgoformer(Player jugador1, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerParaMoverException {
+	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerParaMoverException, JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException {
 		Content content = this.board.getContent(initialPosition);
 		
 		if (!(content instanceof Algoformer)){
 			throw new UsuarioNoSeleccionoAlgoformerParaMoverException();
 		}
 		
-		Algoformer algofomer = (Algoformer)content;
+		Algoformer algoformer = (Algoformer)content;
 		
-		algofomer.move(finalPosition, this.board);
+		if (!jugador.hasAlgoformer(algoformer)){
+			throw new JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException();
+		}
+		
+		algoformer.move(finalPosition, this.board);
 
 	}
 
