@@ -1,8 +1,8 @@
 package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
-
 import fiuba.algo3.model.algoformers.*;
+import fiuba.algo3.model.surfaces.Cloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Thorn;
 
@@ -143,6 +143,19 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test04() {
+		Board tablero = new Board(20,20);
+		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2,3));		
+		tablero.add(megatron);
+		megatron.transform();
+		Assert.assertTrue(megatron.getActiveMode() instanceof ModeAlternalAerial);
+		megatron.move(new Position(4,3), tablero);
+		
+		Assert.assertTrue("Algoformer no deberia estar en la posicion (3,3)",tablero.isEmpty(new Position(3,3)));
+		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",megatron.getPosition().equals(new Position(3,3)));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",megatron.getPosition().equals(new Position(4,3)));
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(4,3)),megatron);
+
 	}
 	
 	/**
@@ -189,6 +202,16 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test07() {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new Cloud()));
+		tablero.addCell(new Cell(new Position(2, 0), new Cloud()));
+
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		tablero.add(megatron);
+		megatron.transform();
+		Position newPosition = new Position(3,0);
+		megatron.move(newPosition, tablero);
+		Assert.assertEquals(newPosition, megatron.getPosition() );
 	}
 	
 	/**

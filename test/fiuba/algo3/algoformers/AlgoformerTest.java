@@ -94,8 +94,8 @@ public class AlgoformerTest {
 		Board board = new Board(100,100);
 		int speed1 = 2;
 		
-		Mode mode1 = new Mode(50,2,speed1);	
-		Algoformer algoformer = new Algoformer("Algoformer 1", mode1,mode1,500,new Position(0,0));			
+		Mode mode1 = new ModeHumanoid(50,2,speed1);	
+		Algoformer algoformer = new Algoformer("Algoformer 1", mode1,mode1,500,new Position(0,0), Algoformer.Team.AUTOBOTS);			
 		board.add(algoformer);
 		
 		
@@ -141,8 +141,8 @@ public class AlgoformerTest {
 		Assert.assertEquals("Algoformer deberia estar en la posicion (10,10)",board.getContent(new Position(10,10)),algoformer);
 		
 		int speed2 = 7;
-		Mode mode2 = new Mode(50,2,speed2);	
-		Algoformer algoformer2 = new Algoformer("Algoformer 2 ", mode2,mode2,500,new Position(50,50));			
+		Mode mode2 = new ModeHumanoid(50,2,speed2);	
+		Algoformer algoformer2 = new Algoformer("Algoformer 2 ", mode2,mode2,500,new Position(50,50), Algoformer.Team.AUTOBOTS);			
 		board.add(algoformer2);
 		
 		

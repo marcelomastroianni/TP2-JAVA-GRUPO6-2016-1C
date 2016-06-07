@@ -19,14 +19,20 @@ public class Algoformer implements Content{
 	private Mode humanoidMode;
 	private Mode alternalMode;
 	private Mode activeMode;
+	private Team team;
+	
+	public enum Team{
+		AUTOBOTS,DECEPTICONS;
+	}
 
-	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life,Position position) {
+	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life,Position position, Team team) {
 		this.name = name;
 		this.humanoidMode = humanoidMode;
 		this.alternalMode = alternalMode;
 		this.activeMode = this.humanoidMode;
 		this.life = life;
 		this.position = position;
+		this.team = team;
 	}
 
 
@@ -74,7 +80,7 @@ public class Algoformer implements Content{
 				steps++;
 				previous = this.position;
 				next = this.position.next(finalPosition);
-				nextSurface = board.getSurface(next);
+				nextSurface = board.getCell(next).getSurface();
 				if (this.activeMode.canCrossSurface(nextSurface)){
 					nextSurface.BeCrossedBy(this);
 					this.position = next;
@@ -91,14 +97,15 @@ public class Algoformer implements Content{
 
 	public void shot(Algoformer algoformer){
 		try {
-			this.resolveDistance(algoformer);
+			this.resolveShootingDistance(algoformer);
 			algoformer.downHealthPoints(this.activeMode.getAttack());
 		} catch (InvalidStrikeException e) {
+			System.err.print(e.getMessage());
 			//TODO Reservado para interaccion con la GUI
 		}
 	}
 
-	private void resolveDistance(Algoformer algoformer) throws InvalidStrikeException {
+	private void resolveShootingDistance(Algoformer algoformer) throws InvalidStrikeException {
 		if( this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()){
 			throw new InvalidStrikeException("You can't attack objectives that far.");
 		}
@@ -113,9 +120,15 @@ public class Algoformer implements Content{
 	}
 	*/
 
+	
 	@Override
 	public Position getPosition() {
 		return this.position;
+	}
+
+
+	public Team getTeam() {
+		return team;
 	}
 
 

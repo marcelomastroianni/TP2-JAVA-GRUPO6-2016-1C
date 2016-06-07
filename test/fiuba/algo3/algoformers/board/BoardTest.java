@@ -11,7 +11,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.surfaces.SuperficieNube;
+import fiuba.algo3.model.surfaces.Cloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 
 
@@ -103,17 +103,17 @@ public class BoardTest {
 		Board tablero = new Board(10,10);
 		
 
-		tablero.addCell(new Cell(new Position(0,0),new SuperficieNube()));
+		tablero.addCell(new Cell(new Position(0,0),new Cloud()));
 	
-		Assert.assertTrue(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieNube );
+		Assert.assertTrue(tablero.getCell(new Position(0,0)).getSurface() instanceof Cloud );
 		Assert.assertFalse(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieRocosa);
 	}
 
 	@Test
 	public void getSurfaceTest(){
 		Board tablero = new Board(10,10);		
-		tablero.addCell(new Cell(new Position(0,0),new SuperficieNube()));
-		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof SuperficieNube );
+		tablero.addCell(new Cell(new Position(0,0),new Cloud()));
+		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof Cloud );
 		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
 	}
 

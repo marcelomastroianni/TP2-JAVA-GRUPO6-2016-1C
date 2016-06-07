@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.surfaces.Surface;
 
-public class Mode {
+public abstract class Mode {
 
 	protected Integer attack;
 	protected Integer strikingDistance;
@@ -18,15 +18,8 @@ public class Mode {
 		this.speed = speed;
 
 	}
-	public boolean canCrossSurface(Surface surface) {
-		return true;
-	}
+	public abstract boolean canCrossSurface(Surface surface);
 
-	public void cross(ArrayList<Cell> steps) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public Integer getAttack(){
 		return this.attack;
 	}

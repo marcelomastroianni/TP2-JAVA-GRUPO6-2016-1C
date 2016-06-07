@@ -12,11 +12,6 @@ public class ModeAlternalTerrestrial extends Mode{
 	}
 
 	@Override
-	public void cross(ArrayList<Cell> steps) {
-	}
-
-
-	@Override
 	public boolean canCrossSurface(Surface surface) {
 		return surface.canBeCrossedBy(this);
 	}
