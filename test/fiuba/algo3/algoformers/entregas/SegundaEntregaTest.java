@@ -2,7 +2,7 @@ package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
 import fiuba.algo3.model.algoformers.*;
-import fiuba.algo3.model.surfaces.Cloud;
+import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Thorn;
 
@@ -203,8 +203,8 @@ public class SegundaEntregaTest {
 	@Test
 	public void test07() {
 		Board tablero = new Board(10, 10);
-		tablero.addCell(new Cell(new Position(1, 0), new Cloud()));
-		tablero.addCell(new Cell(new Position(2, 0), new Cloud()));
+		tablero.addCell(new Cell(new Position(1, 0), new SurfaceCloud()));
+		tablero.addCell(new Cell(new Position(2, 0), new SurfaceCloud()));
 
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);

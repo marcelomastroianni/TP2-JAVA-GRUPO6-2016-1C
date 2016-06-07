@@ -5,7 +5,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 
-public class Cloud  implements Surface{
+public class SurfaceCloud  implements Surface{
 
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
