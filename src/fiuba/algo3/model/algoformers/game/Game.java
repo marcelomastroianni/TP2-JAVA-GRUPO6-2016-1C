@@ -4,6 +4,7 @@ import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 
 public class Game {
@@ -77,6 +78,14 @@ public class Game {
 
 	public Board getBoard() {
 		return this.board;
+	}
+
+	public void moverAlgoformer(Player jugador1, Position initialPosition, Position finalPosition) {
+		Content content = this.board.getContent(initialPosition);
+		Algoformer algofomer = (Algoformer)content;
+		
+		algofomer.move(finalPosition, this.board);
+
 	}
 
 }

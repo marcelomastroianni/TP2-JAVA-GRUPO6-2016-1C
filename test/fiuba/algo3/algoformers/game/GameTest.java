@@ -18,8 +18,6 @@ public class GameTest {
 
 	@Test
 	public void testGame(){
-		
-	
 		Game game = new Game();		
 		game.init();
 		
@@ -50,10 +48,24 @@ public class GameTest {
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,0)) instanceof Algoformer );
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,1)) instanceof Algoformer );
 		Assert.assertTrue("Los algoformers deberian estar en los extremos del tablero",tablero.getContent(new Position(tablero.getXLength()-1,2)) instanceof Algoformer );
-		
 	}
 
-
+	@Test
+	public void testMoverAlgoformer(){
+		Game game = new Game();		
+		game.init();
+		
+		Player jugador1 = game.getPlayer1();		
+		Player jugador2 = game.getPlayer2();			
+		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
+	}
 
 
 
