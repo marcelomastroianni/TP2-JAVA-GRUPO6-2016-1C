@@ -9,7 +9,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.surfaces.Thorn;
+import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 public class SurfaceTest {
 	int XBOARDLENGTH = 10;
@@ -24,7 +24,7 @@ public class SurfaceTest {
 	
 	@Test
 	public void crossThornReduceLifeOfTerrestial(){	
-		board.addCell(new Cell(new Position(1, 0), new Thorn()));
+		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		board.add(optimus);
@@ -35,7 +35,7 @@ public class SurfaceTest {
 	
 	@Test
 	public void startInthornReduceLifeOfTerrestial(){	
-		board.addCell(new Cell(new Position(0, 0), new Thorn()));
+		board.addCell(new Cell(new Position(0, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		board.add(optimus);
@@ -46,7 +46,7 @@ public class SurfaceTest {
 	
 	@Test
 	public void endInthornDontReduceLifeOfTerrestial(){	
-		board.addCell(new Cell(new Position(1, 0), new Thorn()));
+		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		board.add(optimus);

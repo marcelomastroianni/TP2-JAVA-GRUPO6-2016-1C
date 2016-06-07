@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
-import fiuba.algo3.model.surfaces.Thorn;
+import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -192,8 +192,8 @@ public class SegundaEntregaTest {
 	@Test
 	public void test05() {
 		Board tablero = new Board(10, 10);
-		tablero.addCell(new Cell(new Position(1, 0), new Thorn()));
-		tablero.addCell(new Cell(new Position(2, 0), new Thorn()));
+		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
+		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		tablero.add(optimus);
@@ -214,8 +214,8 @@ public class SegundaEntregaTest {
 	@Test
 	public void test06() {
 		Board tablero = new Board(10, 10);
-		tablero.addCell(new Cell(new Position(1, 0), new Thorn()));
-		tablero.addCell(new Cell(new Position(2, 0), new Thorn()));
+		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
+		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
 
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);

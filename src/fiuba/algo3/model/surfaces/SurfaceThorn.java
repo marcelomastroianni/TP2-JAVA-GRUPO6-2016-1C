@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 
-public class Thorn implements Surface {
+public class SurfaceThorn implements Surface {
 	
 	private boolean terrestial;
 	
