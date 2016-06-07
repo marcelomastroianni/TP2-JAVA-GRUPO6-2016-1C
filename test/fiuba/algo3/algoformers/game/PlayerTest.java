@@ -27,13 +27,32 @@ public class PlayerTest {
 		
 		List<Algoformer> listaAlgoformersJugador =  jugador.getAlgoformers();
 		
-		Assert.assertEquals("Jugador deberia tener 3 algoformers", listaAlgoformersJugador.size(),3);
-		
+		Assert.assertEquals("Jugador deberia tener 3 algoformers", listaAlgoformersJugador.size(),3);		
 	}
 
 
 
+	@Test
+	public void testAlgoformerPerteneceAJugador(){
+		Player jugador =  new Player();
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));
+		
+		Algoformer menasor = AlgoFormerFactory.getMenasor(new Position(0,5));
 
+		
+		jugador.addAlgoformer(optimusPrime);
+		jugador.addAlgoformer(bumblebee);
+		jugador.addAlgoformer(frenzy);
+		
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
+		
+		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(menasor));
+		
+	}
 
 
 }

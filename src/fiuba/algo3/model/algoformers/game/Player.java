@@ -21,4 +21,17 @@ public class Player {
 		this.algoformersList.add(algoformer);		
 	}
 
+	public boolean hasAlgoformer(Algoformer algoformer) {
+		boolean hasAlgoformer = false;
+			
+		for(Algoformer algoforrmerItem:this.algoformersList){
+			if(algoformer.equals(algoforrmerItem)){
+				hasAlgoformer = true;
+				break;
+			}
+				
+		}
+		return hasAlgoformer;
+	}
+
 }
