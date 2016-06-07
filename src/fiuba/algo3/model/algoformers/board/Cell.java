@@ -1,6 +1,5 @@
 package fiuba.algo3.model.algoformers.board;
 
-import fiuba.algo3.model.surfaces.Air;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
 
