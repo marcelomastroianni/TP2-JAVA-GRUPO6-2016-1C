@@ -31,4 +31,19 @@ public class SuperficieRocosa implements Surface {
 		
 	}
 
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
 }

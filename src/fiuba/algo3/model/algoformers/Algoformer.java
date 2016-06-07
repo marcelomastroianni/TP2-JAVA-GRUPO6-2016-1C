@@ -77,11 +77,14 @@ public class Algoformer implements Content{
 			Surface nextSurface;
 			int steps = 0;			
 			while(position.hasNext(finalPosition) && steps<this.activeMode.getSpeed()){
-				steps++;
+				steps++;			
 				previous = this.position;
 				next = this.position.next(finalPosition);
 				nextSurface = board.getCell(next).getSurface();
 				if (this.activeMode.canCrossSurface(nextSurface)){
+					if(this.activeMode.reduceSpeedFiftyPercent(nextSurface)){
+						steps++;			
+					}
 					nextSurface.BeCrossedBy(this);
 					this.position = next;
 					board.add(new Nothing(previous));
@@ -100,7 +103,7 @@ public class Algoformer implements Content{
 			this.resolveShootingDistance(algoformer);
 			algoformer.downHealthPoints(this.activeMode.getAttack());
 		} catch (InvalidStrikeException e) {
-			System.err.print(e.getMessage());
+			//System.err.print(e.getMessage());
 			//TODO Reservado para interaccion con la GUI
 		}
 	}

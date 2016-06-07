@@ -19,6 +19,9 @@ public abstract class Mode {
 
 	}
 	public abstract boolean canCrossSurface(Surface surface);
+	
+	public abstract boolean reduceSpeedFiftyPercent(Surface surface);
+	
 
 	public Integer getAttack(){
 		return this.attack;

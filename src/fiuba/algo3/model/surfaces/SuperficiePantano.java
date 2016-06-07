@@ -25,8 +25,22 @@ public class SuperficiePantano implements Surface {
 
 	@Override
 	public void BeCrossedBy(Algoformer algoformer) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+		return true;
+	}
+
+	@Override
+	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
 	}
 
 }

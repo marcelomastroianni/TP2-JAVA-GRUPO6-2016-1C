@@ -10,4 +10,10 @@ public interface Surface {
 	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial);
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial);
 	public void BeCrossedBy(Algoformer algoformer);
+	
+	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid);
+	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
+	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial);
+	
+	
 }

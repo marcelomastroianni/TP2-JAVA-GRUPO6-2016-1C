@@ -16,4 +16,9 @@ public class ModeAlternalAerial extends Mode{
 		return surface.canBeCrossedBy(this);
 	}
 
+	@Override
+	public boolean reduceSpeedFiftyPercent(Surface surface) {
+		return surface.reduceSpeedFiftyPercent(this);
+	}
+
 }
