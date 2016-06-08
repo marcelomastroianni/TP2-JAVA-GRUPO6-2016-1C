@@ -239,5 +239,57 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 490 puntos de vida",490,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 450 puntos de vida",450,algofomerJugador2.getLife());
 	}
+	
+	@Test
+	public void testTransformaraAlgoformer() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException{
+		Game game = new Game();		
+		Player player1 = new Player();
+		Player player2 = new Player();
+		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		Turn turn = new Turn(player1, player2);
+		
+		//Autobots:
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));		
+		//Decepticons:
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,0));		
+							
+		player1.addAlgoformer(optimusPrime);		
+		player2.addAlgoformer(megatron);
+							
+		//Autobots:
+		board.add(optimusPrime);
+		//Decepticons:
+		board.add(megatron);	
+		
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+				
+		Player jugador1 = game.getPlayer1();		
+		Player jugador2 = game.getPlayer2();			
+		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		Algoformer algofomerJugador2 = algoformersJugador2.get(0);
+		
+		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
+		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());        
+		//Turno jugador 1
+		game.transformaraAlgoformer(jugador1,new Position(0,0));
+		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
+		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());
+		//Turno jugador 2
+		game.transformaraAlgoformer(jugador2,new Position(1,0));
+		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
+		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
+		//Turno jugador 1
+		game.transformaraAlgoformer(jugador1,new Position(0,0));
+		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
+		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
+	}
+	
 
 }
+

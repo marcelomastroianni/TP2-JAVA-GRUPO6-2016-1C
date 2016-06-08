@@ -135,4 +135,26 @@ public class Game {
 		this.turn.next();		
 	}
 
+	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
+		Content content = this.board.getContent(position);
+		
+		if (!(this.turn.getActivePlayer().equals(jugador))){
+			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
+		}
+		
+		if (!(content instanceof Algoformer)){
+			throw new UsuarioNoSeleccionoAlgoformerException();
+		}
+		
+		Algoformer algoformer = (Algoformer)content;
+		
+		if (!jugador.hasAlgoformer(algoformer)){
+			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
+		}
+		
+		algoformer.transform();
+		
+		this.turn.next();		
+	}
+
 }
