@@ -12,7 +12,6 @@ import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararE
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 
 public class Game {
-
 	Player player1;
 	Player player2;
 	Board board;
@@ -47,7 +46,6 @@ public class Game {
 		this.player2.addAlgoformer(frenzy);
 		
 		ChispaSuprema chispaSuprema = new ChispaSuprema(board.getCentralPosition());
-
 		
 		this.board.add(chispaSuprema);
 		
@@ -59,9 +57,7 @@ public class Game {
 		//Decepticons:
 		this.board.add(megatron);
 		this.board.add(bonecrusher);
-		this.board.add(frenzy);
-		
-		
+		this.board.add(frenzy);				
 	}
 	
 	public Player getPlayer1() {
@@ -134,11 +130,9 @@ public class Game {
 		}
 		Algoformer algoformerDestino = (Algoformer)contentDestino;
 		
-		//algoformer.move(finalPosition, this.board);
 		algoformer.shot(algoformerDestino);
 		
-		this.turn.next();
-		
+		this.turn.next();		
 	}
 
 }
