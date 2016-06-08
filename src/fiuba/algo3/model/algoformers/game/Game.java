@@ -84,6 +84,10 @@ public class Game {
 	public void setTurn(Turn turn){
 		this.turn = turn;
 	}
+	
+	public void finishTurn(){
+		this.turn.next();
+	}
 
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
 		Content content = this.board.getContent(initialPosition);
@@ -103,8 +107,6 @@ public class Game {
 		}
 		
 		algoformer.move(finalPosition, this.board);
-		
-		this.turn.next();
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
@@ -132,7 +134,6 @@ public class Game {
 		
 		algoformer.shot(algoformerDestino);
 		
-		this.turn.next();		
 	}
 
 	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
@@ -153,8 +154,7 @@ public class Game {
 		}
 		
 		algoformer.transform();
-		
-		this.turn.next();		
+	
 	}
 
 }

@@ -150,6 +150,7 @@ public class GameTest {
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		//Turno jugador 1
 		game.moverAlgoformer(jugador1,new Position(0,1),new Position(4,0));
+		game.finishTurn();
 		//Turno jugador 2. Intenta mover algoformer de jugador 1
 		game.moverAlgoformer(jugador2,new Position(0,0),new Position(4,0));		
 	}
@@ -184,6 +185,7 @@ public class GameTest {
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		//Turno jugador 1
 		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		game.finishTurn();
 		//Turno jugador 2
 		game.moverAlgoformer(jugador1,new Position(0,1),new Position(4,1));
 	}
@@ -228,14 +230,17 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.dispararaAlgoformer(jugador1,new Position(0,0),new Position(1,0));
+		game.finishTurn();
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 500 puntos de vida",500,algofomerJugador2.getLife());
 		//Turno jugador 2
 		game.dispararaAlgoformer(jugador2,new Position(1,0),new Position(0,0));
+		game.finishTurn();
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 490 puntos de vida",490,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 500 puntos de vida",500,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.dispararaAlgoformer(jugador1,new Position(0,0),new Position(1,0));
+		game.finishTurn();
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 490 puntos de vida",490,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 450 puntos de vida",450,algofomerJugador2.getLife());
 	}
@@ -278,10 +283,12 @@ public class GameTest {
 		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());        
 		//Turno jugador 1
 		game.transformaraAlgoformer(jugador1,new Position(0,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());
 		//Turno jugador 2
 		game.transformaraAlgoformer(jugador2,new Position(1,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		//Turno jugador 1
@@ -330,13 +337,16 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.dispararaAlgoformer(jugador1,new Position(0,0),new Position(10,0));
+		game.finishTurn();
 		//Algoformer 2 esta fuera de radio de ataque de algoformer 1
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (10,0)",algofomerJugador2.getPosition().equals(new Position(10,0)));
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
+		
 		//Turno jugador 2
 		game.dispararaAlgoformer(jugador2,new Position(10,0),new Position(0,0));
+		game.finishTurn();
 		//Algoformer 1 esta fuera de radio de ataque de algoformer 2
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (10,0)",algofomerJugador2.getPosition().equals(new Position(10,0)));
@@ -344,12 +354,14 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.moverAlgoformer(jugador1,new Position(0,0),new Position(10,0));
+		game.finishTurn();
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (10,0)",algofomerJugador2.getPosition().equals(new Position(10,0)));
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());		
 		//Turno jugador 2
 		game.transformaraAlgoformer(jugador2,new Position(10,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
@@ -358,6 +370,7 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.moverAlgoformer(jugador1,new Position(2,0),new Position(10,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (4,0)",algofomerJugador1.getPosition().equals(new Position(4,0)));
@@ -366,6 +379,7 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 2
 		game.moverAlgoformer(jugador2,new Position(10,0),new Position(5,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (4,0)",algofomerJugador1.getPosition().equals(new Position(4,0)));
@@ -374,6 +388,7 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
 		game.dispararaAlgoformer(jugador1,new Position(4,0),new Position(5,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (4,0)",algofomerJugador1.getPosition().equals(new Position(4,0)));
@@ -382,6 +397,7 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 500 puntos de vida",500,algofomerJugador2.getLife());
 		//Turno jugador 2
 		game.dispararaAlgoformer(jugador2,new Position(5,0),new Position(4,0));
+		game.finishTurn();
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (4,0)",algofomerJugador1.getPosition().equals(new Position(4,0)));
