@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerParaMoverException;
 
@@ -30,20 +31,12 @@ public class Game {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(0,2));	
-		
-	
-		
-	
-		
+								
 		//Decepticons:
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(board.getXLength()-1,0));		
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(board.getXLength()-1,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(board.getXLength()-1,2));
-		
-		
-
-				
-		
+								
 		this.player1.addAlgoformer(optimusPrime);
 		this.player1.addAlgoformer(bumblebee);
 		this.player1.addAlgoformer(ratchet);
@@ -82,8 +75,12 @@ public class Game {
 		return this.board;
 	}
 
-	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerParaMoverException, JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException {
+	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerParaMoverException, JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
 		Content content = this.board.getContent(initialPosition);
+		
+		if (!(this.turn.getActivePlayer().equals(jugador))){
+			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
+		}
 		
 		if (!(content instanceof Algoformer)){
 			throw new UsuarioNoSeleccionoAlgoformerParaMoverException();
@@ -96,7 +93,8 @@ public class Game {
 		}
 		
 		algoformer.move(finalPosition, this.board);
-
+		
+		this.turn.next();
 	}
 
 }
