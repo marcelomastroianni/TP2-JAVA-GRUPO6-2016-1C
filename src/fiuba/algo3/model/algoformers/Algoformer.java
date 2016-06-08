@@ -1,7 +1,5 @@
 package fiuba.algo3.model.algoformers;
 
-
-
 import fiuba.algo3.model.algoformers.board.*;
 import fiuba.algo3.model.exceptions.CantCrossException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -10,7 +8,7 @@ import fiuba.algo3.model.surfaces.Surface;
 
 import java.util.ArrayList;
 
-public class Algoformer implements Content{
+public class Algoformer implements Content {
 	private String name;
 
 	private Position position;
@@ -20,12 +18,12 @@ public class Algoformer implements Content{
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
-	
-	public enum Team{
-		AUTOBOTS,DECEPTICONS;
+
+	public enum Team {
+		AUTOBOTS, DECEPTICONS;
 	}
 
-	public Algoformer(String name, Mode humanoidMode,Mode alternalMode,Integer life,Position position, Team team) {
+	public Algoformer(String name, Mode humanoidMode, Mode alternalMode, Integer life, Position position, Team team) {
 		this.name = name;
 		this.humanoidMode = humanoidMode;
 		this.alternalMode = alternalMode;
@@ -35,7 +33,6 @@ public class Algoformer implements Content{
 		this.team = team;
 	}
 
-
 	public String getNombre() {
 		return this.name;
 	}
@@ -44,7 +41,7 @@ public class Algoformer implements Content{
 		return activeMode;
 	}
 
-	public void downHealthPoints(Integer damage ){
+	public void downHealthPoints(Integer damage) {
 		this.life = this.life - damage;
 	}
 
@@ -56,7 +53,7 @@ public class Algoformer implements Content{
 		return alternalMode;
 	}
 
-	public int getLife()  {
+	public int getLife() {
 		return life;
 	}
 
@@ -66,92 +63,83 @@ public class Algoformer implements Content{
 		else
 			this.activeMode = this.humanoidMode;
 	}
+
 	public void reduceLife() {
-		this.life = (int) (this.life*0.95);
-	}
-	
-	public void move(Position finalPosition, Board board) {
-		if(board.isValidPosition(finalPosition)){
-			Position previous;
-			Position next;
-			Surface nextSurface;
-			int steps = 0;			
-			while(position.hasNext(finalPosition) && steps<this.activeMode.getSpeed()){
-				steps++;			
-				previous = this.position;
-				next = this.position.next(finalPosition);
-				nextSurface = board.getCell(next).getSurface();
-				if (this.activeMode.canCrossSurface(nextSurface)){
-					if(this.activeMode.reduceSpeedFiftyPercent(nextSurface)){
-						steps++;			
-					}
-					nextSurface.BeCrossedBy(this);
-					this.position = next;
-					board.add(new Nothing(previous));
-					board.add(this);
-				}else{
-					break;
-				}											
-			}							
-			//board.add(new Nothing(initialPosition));
-			//board.add(this);		
-		}			
+		this.life = (int) (this.life * 0.95);
 	}
 
-	public void shot(Algoformer algoformer){
+	public void move(Position finalPosition, Board board) {
+		if (!board.isValidPosition(finalPosition)) {
+			return;
+		}
+		Position previous;
+		Position next;
+		Surface nextSurface;
+		int steps = 0;
+		while (position.hasNext(finalPosition) && steps < this.activeMode.getSpeed()) {
+			steps++;
+			previous = this.position;
+			next = this.position.next(finalPosition);
+			nextSurface = board.getCell(next).getSurface();
+			if (this.activeMode.canCrossSurface(nextSurface)) {
+				if (this.activeMode.reduceSpeedFiftyPercent(nextSurface)) {
+					steps++;
+				}
+				nextSurface.BeCrossedBy(this);
+				this.position = next;
+				board.add(new Nothing(previous));
+				board.add(this);
+			} else {
+				break;
+			}
+		}
+	}
+
+	public void shot(Algoformer algoformer) {
 		try {
 			this.resolveShootingDistance(algoformer);
 			algoformer.downHealthPoints(this.activeMode.getAttack());
 		} catch (InvalidStrikeException e) {
-			//System.err.print(e.getMessage());
-			//TODO Reservado para interaccion con la GUI
+			// System.err.print(e.getMessage());
+			// TODO Reservado para interaccion con la GUI
 		}
 	}
 
 	private void resolveShootingDistance(Algoformer algoformer) throws InvalidStrikeException {
-		if( this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()){
+		if (this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()) {
 			throw new InvalidStrikeException("You can't attack objectives that far.");
 		}
-		
+
 	}
 
 	/*
-	@Override
-	public void setPosition(Position position) {
-		this.position = position;
+	 * @Override public void setPosition(Position position) { this.position =
+	 * position;
+	 * 
+	 * }
+	 */
 
-	}
-	*/
-
-	
 	@Override
 	public Position getPosition() {
 		return this.position;
 	}
 
-
 	public Team getTeam() {
 		return team;
 	}
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((activeMode == null) ? 0 : activeMode.hashCode());
-		result = prime * result
-				+ ((alternalMode == null) ? 0 : alternalMode.hashCode());
-		result = prime * result
-				+ ((humanoidMode == null) ? 0 : humanoidMode.hashCode());
+		result = prime * result + ((activeMode == null) ? 0 : activeMode.hashCode());
+		result = prime * result + ((alternalMode == null) ? 0 : alternalMode.hashCode());
+		result = prime * result + ((humanoidMode == null) ? 0 : humanoidMode.hashCode());
 		result = prime * result + ((life == null) ? 0 : life.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((position == null) ? 0 : position.hashCode());
+		result = prime * result + ((position == null) ? 0 : position.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -194,10 +182,5 @@ public class Algoformer implements Content{
 			return false;
 		return true;
 	}
-
-
-	
-	
-	
 
 }
