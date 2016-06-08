@@ -12,38 +12,21 @@ import fiuba.algo3.model.algoformers.game.Turn;
 
 public class TurnTest{
 
-	private Turn turno;
-	private Game game;
-	private Player jugador1;
-	private Player jugador2;
-	@Before
-	public void setUp(){
-		game = new Game();
-		game.init();
-
-		jugador1 = game.getPlayer1();
-		jugador2 = game.getPlayer2();
-		turno = new Turn(jugador1,jugador2);
-
-	}
-
 	@Test
-	public void firstTurntest(){
-		Assert.assertEquals("El primer turno deberia ser del primer jugador",turno.getActivePlayer(),jugador1);
-
+	public void testNextTurn(){
+		Player jugador1 = new Player();
+		Player jugador2 = new Player();
+		Turn turno = new Turn(jugador1,jugador2);
+		
+		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
+		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
+		turno.next();
+		Assert.assertEquals("Jugador activo deberia ser jugador 2", jugador2,turno.getActivePlayer());
+		Assert.assertEquals("Jugador activo deberia ser jugador 2", jugador2,turno.getActivePlayer());
+		turno.next();
+		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
+		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());		
 	}
 
-	@Test
-	public void AlternTurntest(){
-		turno.getActivePlayer();
-		Assert.assertEquals("El segundo turno deberia ser del segundo jugador",turno.getActivePlayer(),jugador2);
-	}
-
-	@Test
-	public void theThirdTurnIsPlayer1Again(){
-		turno.getActivePlayer();
-		turno.getActivePlayer();
-		Assert.assertEquals("El tercer turno deberia ser del primer jugador",turno.getActivePlayer(),jugador1);
-	}
 
 }

@@ -10,11 +10,12 @@ public class Turn {
 		nonActivePlayer = jugador2;
 	}
 	public Player getActivePlayer() {
+		return activePlayer;
+	}
+	public void next() {
 		Player active = activePlayer;
 		activePlayer = nonActivePlayer;
-		nonActivePlayer = active;
-
-		return active;
+		nonActivePlayer = active;						
 	}
 
 
