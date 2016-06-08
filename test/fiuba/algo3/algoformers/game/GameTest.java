@@ -13,8 +13,10 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
+
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 
@@ -288,7 +290,7 @@ public class GameTest {
 		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());
 		//Turno jugador 2
 		game.transformaraAlgoformer(jugador2,new Position(1,0));
-		game.finishTurn();
+		game.finishTurn(); 
 		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 		//Turno jugador 1
@@ -404,6 +406,21 @@ public class GameTest {
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (5,0)",algofomerJugador2.getPosition().equals(new Position(5,0)));
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 445 puntos de vida",445,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 500 puntos de vida",500,algofomerJugador2.getLife());
+	}
+	
+	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
+	public void testNoPuedeMoverMasDeTresAlgoformersPorTurno() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException{
+		Game game = new Game();		
+		prepareGame(game);
+		
+		Player jugador1 = game.getPlayer1();	
+		
+		//Turno jugador 1
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(1,0));
+		game.moverAlgoformer(jugador1,new Position(0,1),new Position(1,1));
+		game.moverAlgoformer(jugador1,new Position(0,2),new Position(1,2));
+		
+		game.transformaraAlgoformer(jugador1,new Position(1,2));
 	}
 
 }

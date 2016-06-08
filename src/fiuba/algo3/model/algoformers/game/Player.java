@@ -9,8 +9,11 @@ public class Player {
 
 	List<Algoformer> algoformersList;
 	
+	List<Algoformer> usedAlgoformersList;
+	
 	public Player(){
 		algoformersList = new ArrayList<Algoformer>();
+		usedAlgoformersList = new ArrayList<Algoformer>();
 	}
 	
 	public List<Algoformer> getAlgoformers() {
@@ -32,6 +35,20 @@ public class Player {
 				
 		}
 		return hasAlgoformer;
+	}
+	
+	public void useAlgoformer(Algoformer algoformer){
+		this.usedAlgoformersList.add(algoformer);
+		
+	}
+	
+	public boolean haveUsed(Algoformer algoformer) {
+		return usedAlgoformersList.contains(algoformer);
+	}
+
+	public void finish() {
+		usedAlgoformersList = new ArrayList<Algoformer>();
+		
 	}
 
 }

@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
@@ -86,7 +87,9 @@ public class Game {
 	}
 	
 	public void finishTurn(){
+		turn.getActivePlayer().finish();
 		this.turn.next();
+		
 	}
 
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
@@ -106,7 +109,13 @@ public class Game {
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
 		}
 		
+		if (jugador.haveUsed(algoformer)){
+			throw new AlgoformerUsadoEsteTurnoException();
+		}
+		
+		
 		algoformer.move(finalPosition, this.board);
+		jugador.useAlgoformer(algoformer);
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
@@ -130,9 +139,15 @@ public class Game {
 		if (!(contentDestino instanceof Algoformer)){
 			throw new UsuarioNoSeleccionoAlgoformerAQuienDispararException();
 		}
+		
+		if (jugador.haveUsed(algoformer)){
+			throw new AlgoformerUsadoEsteTurnoException();
+		}
+		
 		Algoformer algoformerDestino = (Algoformer)contentDestino;
 		
 		algoformer.shot(algoformerDestino);
+		jugador.useAlgoformer(algoformer);
 		
 	}
 
@@ -153,7 +168,12 @@ public class Game {
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
 		}
 		
+		if (jugador.haveUsed(algoformer)){
+			throw new AlgoformerUsadoEsteTurnoException();
+		}
+		
 		algoformer.transform();
+		jugador.useAlgoformer(algoformer);
 	
 	}
 
