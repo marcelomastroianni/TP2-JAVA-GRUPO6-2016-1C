@@ -119,5 +119,23 @@ public class GameTest {
 		//Turno jugador 1
 		game.moverAlgoformer(jugador2,new Position(5,0),new Position(4,0));		
 	}
+	
+	@Test(expected=JugadorNoPuedeJugarCuandoNoEsSuTurnoException.class)
+	public void testJugadorIntentaJugarDosVecesSeguidas() throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException,JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerParaMoverException {
+		Game game = new Game();		
+		game.init();
+		
+		Player jugador1 = game.getPlayer1();	
+		Player jugador2 = game.getPlayer2();	
+		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();			
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		//Turno jugador 1
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		//Turno jugador 2
+		game.moverAlgoformer(jugador1,new Position(0,1),new Position(4,1));
+	}
 
 }
