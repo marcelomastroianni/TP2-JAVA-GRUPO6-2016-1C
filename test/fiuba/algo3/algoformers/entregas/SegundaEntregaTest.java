@@ -12,6 +12,7 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.surfaces.PsionicStorm;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 
 public class SegundaEntregaTest {
@@ -255,7 +256,18 @@ public class SegundaEntregaTest {
 	 */
 	@Test
 	public void test09() {
+		
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new PsionicStorm()));
+
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		tablero.add(megatron);
+		megatron.transform();
+		megatron.move(new Position(2,0), tablero);
+		Assert.assertEquals("el algoformer alterno aereo reduce su poder de ataque un 40% al pasar por una tormenta psionica",new Integer(33), megatron.getActiveMode().getAttack());
+		
 	}
+	
 	
 	/**
 	 * 10. {@link #test09() test09} + volver a pasar y ver que no bajó su capacidad de ataque.

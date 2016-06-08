@@ -21,4 +21,8 @@ public class ModeAlternalAerial extends Mode{
 		return surface.reduceSpeedFiftyPercent(this);
 	}
 
+	public void reduceAttackPowerFortyPercent() {
+		reduceAttackPower(0.6);
+	}
+
 }

@@ -22,7 +22,6 @@ public abstract class Mode {
 	
 	public abstract boolean reduceSpeedFiftyPercent(Surface surface);
 	
-
 	public Integer getAttack(){
 		return this.attack;
 	}
@@ -33,6 +32,9 @@ public abstract class Mode {
 	
 	public Integer getSpeed(){
 		return speed;
+	}
+	public void reduceAttackPower(Double porcentage) {
+		this.attack =  (int) (this.attack *porcentage);
 	}
 
 	

@@ -21,5 +21,4 @@ public class ModeAlternalTerrestrial extends Mode{
 		return surface.reduceSpeedFiftyPercent(this);
 	}
 	
-	
 }

@@ -9,7 +9,9 @@ import fiuba.algo3.model.algoformers.Mode;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.surfaces.PsionicStorm;
 
 
 public class AlgoformerTest {
@@ -193,7 +195,7 @@ public class AlgoformerTest {
 		algoformer2.shot(algoformer1);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
-
+	
 
 
 }

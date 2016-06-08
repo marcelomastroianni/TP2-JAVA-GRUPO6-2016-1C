@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 
@@ -46,6 +47,25 @@ public class AlgoformerUnitTest {
 		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",475,algoformer.getLife());
 
 	}
+	
+	@Test
+	public void alternalAerialModeTest(){
+		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
+		algoformer.transform();
+		Assert.assertTrue(algoformer.getActiveMode() instanceof ModeAlternalAerial);
+		
+	}
+	
+	@Test
+	public void reduceAttackPowerTest(){
+		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
+		algoformer.transform();
+		algoformer.getActiveMode().reduceAttackPower(0.6);
+		Assert.assertEquals("el algoformer debe tener su poder de ataque reducido un 40 %",new Integer(33),algoformer.getActiveMode().getAttack() );
+	
+	}
+	
+	
 
 
 

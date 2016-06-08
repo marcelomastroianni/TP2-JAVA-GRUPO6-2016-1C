@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.surfaces.Surface;
 
-public class SuperficieTormentaPsionica implements Surface {
+public class PsionicStorm implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
@@ -20,6 +20,7 @@ public class SuperficieTormentaPsionica implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
+		modeAlternalAerial.reduceAttackPowerFortyPercent();
 		return true;
 	}
 
@@ -42,5 +43,6 @@ public class SuperficieTormentaPsionica implements Surface {
 	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
 		return false;
 	}
+
 
 }
