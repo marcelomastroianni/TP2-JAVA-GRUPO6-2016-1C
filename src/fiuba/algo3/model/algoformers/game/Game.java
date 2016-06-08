@@ -74,6 +74,19 @@ public class Game {
 	public Board getBoard() {
 		return this.board;
 	}
+		
+	public void setBoard(Board board){
+		this.board = board;
+	}
+	public void setPlayer1(Player player1){
+		this.player1 = player1;
+	}
+	public void setPlayer2(Player player2){
+		this.player2 = player2;
+	}
+	public void setTurn(Turn turn){
+		this.turn = turn;
+	}
 
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerParaMoverException, JugadorNoPuedeMoverAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
 		Content content = this.board.getContent(initialPosition);
