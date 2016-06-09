@@ -86,7 +86,7 @@ public class Game {
 		this.turn = turn;
 	}
 	
-	public void finishTurn(){
+	public void nextTurn(){
 		turn.getActivePlayer().finish();
 		this.turn.next();
 		
