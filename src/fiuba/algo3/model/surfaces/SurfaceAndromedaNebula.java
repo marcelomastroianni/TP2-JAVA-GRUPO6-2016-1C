@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.surfaces.Surface;
 
-public class SuperficieNebulosaAndromeda implements Surface {
+public class SurfaceAndromedaNebula implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
@@ -20,6 +20,7 @@ public class SuperficieNebulosaAndromeda implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
+		modeAlternalAerial.trap(3);
 		return true;
 	}
 

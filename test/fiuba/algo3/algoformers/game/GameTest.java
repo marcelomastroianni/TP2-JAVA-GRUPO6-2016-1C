@@ -447,17 +447,14 @@ public class GameTest {
 	}
 	
 	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
-	public void testNoPuedeMoverMasDeTresAlgoformersPorTurno() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException{
+	public void testNoPuedeMoverElMismoAlgoformerEnEsteTurno() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException{
 		Game game = new Game();		
 		prepareGame(game);
 		
 		Player jugador1 = game.getPlayer1();	
 		
-		//Turno jugador 1
-		game.moverAlgoformer(jugador1,new Position(0,0),new Position(1,0));
-		game.moverAlgoformer(jugador1,new Position(0,1),new Position(1,1));
+		//Turno jugador 
 		game.moverAlgoformer(jugador1,new Position(0,2),new Position(1,2));
-		
 		game.transformaraAlgoformer(jugador1,new Position(1,2));
 	}
 

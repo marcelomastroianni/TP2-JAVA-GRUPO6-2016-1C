@@ -10,7 +10,7 @@ import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.surfaces.SuperficieNebulosaAndromeda;
+import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.Surface;
 
 
@@ -18,7 +18,7 @@ public class SuperficieNebulosaAndromedaTest {
 
 	@Test
 	public void testCrearSuperficieNebulosaAndromeda(){		
-		Surface superficieNebulosaAndromeda = new SuperficieNebulosaAndromeda();		
+		Surface superficieNebulosaAndromeda = new SurfaceAndromedaNebula();		
 		Cell casillero = new Cell(new Position(0,0),superficieNebulosaAndromeda);		
 		Assert.assertEquals("La superficie del casillero deberia ser Superficie Nebulosa Andromeda", superficieNebulosaAndromeda, casillero.getSurface());		
 	}
@@ -26,7 +26,7 @@ public class SuperficieNebulosaAndromedaTest {
 	@Test
 	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda(){
 		Board tablero = new Board(20,20);
-		tablero.addCell(new Cell(new Position(3,3), new SuperficieNebulosaAndromeda()));
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
 		optimus.transform();
@@ -41,7 +41,7 @@ public class SuperficieNebulosaAndromedaTest {
 	@Test
 	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda(){
 		Board tablero = new Board(20,20);
-		tablero.addCell(new Cell(new Position(3,3), new SuperficieNebulosaAndromeda()));
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
