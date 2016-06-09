@@ -87,8 +87,12 @@ public class Game {
 	}
 	
 	public void nextTurn(){
-		
 		this.turn.next();
+		for(Algoformer algoformer: this.turn.getActivePlayer().getAlgoformers()){
+			if(algoformer.getActiveMode().isTrapped()){
+				algoformer.getActiveMode().reduceTurnsTrapped();
+			}
+		}
 		
 	}
 

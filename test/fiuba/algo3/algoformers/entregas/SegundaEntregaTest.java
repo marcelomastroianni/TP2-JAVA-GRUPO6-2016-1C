@@ -288,7 +288,6 @@ public class SegundaEntregaTest {
 	 * 8. Llenar una zona de nebulosa de andrómeda, pasar una unidad aérea,
 	 * corroborar que quede 3 turnos atrapada, sin moverse
 	 */
-	
 
 	@Test
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
@@ -333,6 +332,14 @@ public class SegundaEntregaTest {
 		Assert.assertEquals("el algoformer deberia estar atrapado 3° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
+		// Turno jugador 2
+		game.nextTurn();
+
+		// Turno jugador 1
+		game.moverAlgoformer(jugador1, new Position(1, 0), new Position(1, 1));
+		Assert.assertEquals("el algoformer finalmente se movio", new Position(1, 1),
+				megatron.getPosition());
+		game.nextTurn();
 
 	}
 
@@ -363,8 +370,7 @@ public class SegundaEntregaTest {
 	@Test
 	public void test10() {
 	}
-	
-	
+
 	private void prepareGame(Game game) {
 		Player player1 = new Player();
 		Player player2 = new Player();
