@@ -18,14 +18,11 @@ public class TurnTest{
 		Player jugador2 = new Player();
 		Turn turno = new Turn(jugador1,jugador2);
 		
-		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
-		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
+		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));
 		turno.next();
-		Assert.assertEquals("Jugador activo deberia ser jugador 2", jugador2,turno.getActivePlayer());
-		Assert.assertEquals("Jugador activo deberia ser jugador 2", jugador2,turno.getActivePlayer());
+		Assert.assertTrue("Jugador activo deberia ser jugador 2", turno.isActivePlayer(jugador2));
 		turno.next();
-		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());
-		Assert.assertEquals("Jugador activo deberia ser jugador 1", jugador1,turno.getActivePlayer());		
+		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));		
 	}
 
 

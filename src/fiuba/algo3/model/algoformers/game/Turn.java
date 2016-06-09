@@ -9,9 +9,12 @@ public class Turn {
 		this.activePlayer = jugador1;
 		this.nonActivePlayer = jugador2;
 	}
-	public Player getActivePlayer() {
-		return this.activePlayer;
+
+	
+	public boolean isActivePlayer(Player player){
+		return this.activePlayer.equals(player);
 	}
+	
 	public void next() {
 		Player active = this.activePlayer;
 		this.activePlayer = this.nonActivePlayer;

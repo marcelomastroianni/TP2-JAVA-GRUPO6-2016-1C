@@ -95,7 +95,7 @@ public class Game {
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
 		Content content = this.board.getContent(initialPosition);
 		
-		if (!(this.turn.getActivePlayer().equals(jugador))){
+		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
@@ -122,7 +122,7 @@ public class Game {
 		Content content = this.board.getContent(initialPosition);
 		Content contentDestino = this.board.getContent(finalPosition);
 		
-		if (!(this.turn.getActivePlayer().equals(jugador))){
+		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
@@ -154,7 +154,7 @@ public class Game {
 	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
 		Content content = this.board.getContent(position);
 		
-		if (!(this.turn.getActivePlayer().equals(jugador))){
+		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
