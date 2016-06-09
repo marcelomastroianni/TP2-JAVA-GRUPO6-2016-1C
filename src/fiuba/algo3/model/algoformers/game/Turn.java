@@ -6,16 +6,18 @@ public class Turn {
 	private Player nonActivePlayer;
 
 	public Turn(Player jugador1, Player jugador2) {
-		activePlayer = jugador1;
-		nonActivePlayer = jugador2;
+		this.activePlayer = jugador1;
+		this.nonActivePlayer = jugador2;
 	}
 	public Player getActivePlayer() {
-		return activePlayer;
+		return this.activePlayer;
 	}
 	public void next() {
-		Player active = activePlayer;
-		activePlayer = nonActivePlayer;
-		nonActivePlayer = active;						
+		Player active = this.activePlayer;
+		this.activePlayer = this.nonActivePlayer;
+		this.nonActivePlayer = active;		
+		
+		this.activePlayer.notifyNextTurn();
 	}
 
 

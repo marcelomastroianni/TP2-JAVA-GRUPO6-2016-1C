@@ -46,7 +46,7 @@ public class Player {
 		return usedAlgoformersList.contains(algoformer);
 	}
 
-	public void finish() {
+	public void notifyNextTurn() {
 		usedAlgoformersList = new ArrayList<Algoformer>();
 		
 	}
