@@ -18,6 +18,9 @@ public class Algoformer implements Content {
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
+	
+	private boolean Trapped;
+	private Integer turnsTrapped;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -31,6 +34,8 @@ public class Algoformer implements Content {
 		this.life = life;
 		this.position = position;
 		this.team = team;
+		this.Trapped = false;
+		this.turnsTrapped = 0;
 	}
 
 	public String getNombre() {
@@ -58,6 +63,9 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
+		if(this.isTrapped()){
+			
+		}
 		if (this.activeMode.equals(this.humanoidMode))
 			this.activeMode = this.alternalMode;
 		else
@@ -112,12 +120,25 @@ public class Algoformer implements Content {
 
 	}
 
-	/*
-	 * @Override public void setPosition(Position position) { this.position =
-	 * position;
-	 * 
-	 * }
-	 */
+	public boolean isTrapped() {
+		return this.Trapped;
+	}
+
+	public void trap(Integer turns) {
+		this.Trapped = true;
+		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
+
+	}
+
+	public void reduceTurnsTrapped() {
+		if (!Trapped) {
+			return;
+		}
+		this.turnsTrapped -= 1;
+		if (turnsTrapped.equals(new Integer(0))) {
+			this.Trapped = false;
+		}
+	}
 
 	@Override
 	public Position getPosition() {

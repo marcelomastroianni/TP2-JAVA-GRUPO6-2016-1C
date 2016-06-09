@@ -20,13 +20,12 @@ public class SurfaceAndromedaNebula implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
-		modeAlternalAerial.trap(3);
 		return true;
 	}
 
 	@Override
 	public void BeCrossedBy(Algoformer algoformer) {
-
+		algoformer.trap(3);
 	}
 
 	@Override
