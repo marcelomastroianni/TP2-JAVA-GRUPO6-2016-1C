@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.surfaces.Surface;
 
-public class PsionicStorm implements Surface {
+public class SurfacePsionicStorm implements Surface {
 
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {

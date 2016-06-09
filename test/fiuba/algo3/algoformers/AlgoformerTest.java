@@ -11,7 +11,7 @@ import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.surfaces.PsionicStorm;
+import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
 
 
 public class AlgoformerTest {

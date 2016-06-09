@@ -12,7 +12,7 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.surfaces.PsionicStorm;
+import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 
 public class SegundaEntregaTest {
@@ -258,7 +258,7 @@ public class SegundaEntregaTest {
 	public void test09() {
 		
 		Board tablero = new Board(10, 10);
-		tablero.addCell(new Cell(new Position(1, 0), new PsionicStorm()));
+		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
 
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);
