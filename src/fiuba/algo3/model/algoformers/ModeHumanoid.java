@@ -25,5 +25,31 @@ public class ModeHumanoid extends Mode {
 	public boolean reduceLifeFiftyPercent(Surface surface) {
 		return surface.reduceLifeFiftyPercent(this);
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ModeHumanoid other = (ModeHumanoid) obj;
+		if (attack == null) {
+			if (other.attack != null)
+				return false;
+		} else if (!attack.equals(other.attack))
+			return false;
+		if (strikingDistance == null) {
+			if (other.strikingDistance!= null)
+				return false;
+		} else if (!strikingDistance.equals(other.strikingDistance))
+			return false;
+		if (speed == null) {
+			if (other.speed != null)
+				return false;
+		} else if (!speed.equals(other.speed))
+			return false;
+		return true;
+	}
 	
 }

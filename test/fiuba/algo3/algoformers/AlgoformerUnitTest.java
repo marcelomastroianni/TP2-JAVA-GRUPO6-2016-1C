@@ -66,6 +66,15 @@ public class AlgoformerUnitTest {
 	}
 	
 	
+	@Test
+	public void twoEqualsAlgoformersTest(){
+		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Assert.assertEquals(algoformer1.getActiveMode(), algoformer2.getActiveMode());
+		algoformer1.equals(algoformer2);
+		
+	}
+	
 
 
 
