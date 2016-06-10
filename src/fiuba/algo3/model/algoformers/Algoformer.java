@@ -19,7 +19,7 @@ public class Algoformer implements Content {
 	private Mode activeMode;
 	private Team team;
 	
-	private boolean Trapped;
+	private boolean trapped;
 	private Integer turnsTrapped;
 
 	public enum Team {
@@ -34,7 +34,7 @@ public class Algoformer implements Content {
 		this.life = life;
 		this.position = position;
 		this.team = team;
-		this.Trapped = false;
+		this.trapped = false;
 		this.turnsTrapped = 0;
 	}
 
@@ -60,6 +60,15 @@ public class Algoformer implements Content {
 
 	public int getLife() {
 		return life;
+	}
+	
+	@Override
+	public Position getPosition() {
+		return this.position;
+	}
+
+	public Team getTeam() {
+		return team;
 	}
 
 	public void transform() {
@@ -126,34 +135,25 @@ public class Algoformer implements Content {
 	}
 
 	public boolean isTrapped() {
-		return this.Trapped;
+		return this.trapped;
 	}
 
 	public void trap(Integer turns) {
-		this.Trapped = true;
-		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
+		this.trapped = true;
+		this.turnsTrapped = turns;
 
 	}
 
-	public void reduceTurnsTrapped() {
-		if (!Trapped) {
+	public void finishTurn() {
+		if (!trapped) {
 			return;
 		}
 		this.turnsTrapped -= 1;
 		if (turnsTrapped.equals(new Integer(0))) {
-			this.Trapped = false;
+			this.trapped = false;
 		}
 	}
-
-	@Override
-	public Position getPosition() {
-		return this.position;
-	}
-
-	public Team getTeam() {
-		return team;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -208,5 +208,7 @@ public class Algoformer implements Content {
 			return false;
 		return true;
 	}
+
+	
 
 }

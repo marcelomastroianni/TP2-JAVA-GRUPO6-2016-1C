@@ -51,4 +51,11 @@ public class Player {
 		
 	}
 
+	public void finishTurn() {
+		for(Algoformer algoformer : algoformersList){
+			algoformer.finishTurn();
+		}
+		
+	}
+
 }

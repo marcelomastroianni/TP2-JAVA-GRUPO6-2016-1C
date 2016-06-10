@@ -88,13 +88,8 @@ public class Game {
 	}
 	
 	public void nextTurn(){
-		this.turn.next();
-		for(Algoformer algoformer: this.turn.getActivePlayer().getAlgoformers()){
-			if(algoformer.isTrapped()){
-				algoformer.reduceTurnsTrapped();
-			}
-		}
-		
+		this.turn.getActivePlayer().finishTurn();
+		this.turn.next();		
 	}
 
 	private Algoformer validateAndGetAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException{
