@@ -140,7 +140,7 @@ public class Algoformer implements Content {
 
 	public void trap(Integer turns) {
 		this.trapped = true;
-		this.turnsTrapped = turns;
+		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
 
 	}
 
