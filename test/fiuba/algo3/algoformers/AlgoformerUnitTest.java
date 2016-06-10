@@ -82,7 +82,15 @@ public class AlgoformerUnitTest {
 		Assert.assertNotEquals(algoformer1, algoformer2);
 		
 	}
-	
+
+	@Test
+	public void twoEqualsAlgoformersInDiferentStatesTest(){
+		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
+		algoformer2.transform();
+		Assert.assertNotEquals(algoformer1, algoformer2);
+		
+	}
 
 
 
