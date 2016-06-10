@@ -30,7 +30,7 @@ public class CellTest {
 	@Test
 	public void testGetContent(){
 		Cell casillero = new Cell(new Position(0,0),new SuperficieRocosa());
-		Assert.assertEquals(new Nothing(new Position(0,0)), casillero.getContent());
+		Assert.assertEquals(new Nothing(new Position(0,0)), casillero.getAlgoformer());
 	}
 	
 	@Test

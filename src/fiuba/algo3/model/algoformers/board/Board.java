@@ -35,7 +35,7 @@ public class Board {
 	}
 
 	public Content getContent(Position position) {
-		return this.getCell(position).getContent();
+		return this.getCell(position).getAlgoformer();
 	}
 
 	public boolean isEmpty(Position position) {
@@ -53,7 +53,7 @@ public class Board {
 		if(!isValidPosition(content.getPosition()) || (content instanceof Algoformer && isOccupiedPosition(content.getPosition()))){
 			throw new InvalidPositionException();
 		}
-		matrix.get(content.getPosition()).putContent(content);
+		matrix.get(content.getPosition()).putAlgoformer(content);
 	}
 
 	public void remove(Content content) {
