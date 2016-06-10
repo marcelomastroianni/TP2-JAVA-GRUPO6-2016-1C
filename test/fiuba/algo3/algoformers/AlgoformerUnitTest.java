@@ -60,11 +60,18 @@ public class AlgoformerUnitTest {
 	public void reduceAttackPowerTest(){
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
-		algoformer.getActiveMode().reduceAttackPower(0.6);
+		algoformer.getActiveMode().changeAttackPower(0.6);
 		Assert.assertEquals("el algoformer debe tener su poder de ataque reducido un 40 %",new Integer(33),algoformer.getActiveMode().getAttack() );
 	
 	}
 	
+	@Test
+	public void duplicateAttackPowerTest() {
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
+		algoformer.getActiveMode().changeAttackPower(2.0);
+		Assert.assertEquals("Algoformer deberia tener un poder de ataque de 100 puntos",new Integer(100),algoformer.getActiveMode().getAttack());
+
+	}
 	
 	@Test
 	public void twoEqualsAlgoformersTest(){

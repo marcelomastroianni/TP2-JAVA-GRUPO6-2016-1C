@@ -24,7 +24,7 @@ public class ModeAlternalAerial extends Mode{
 	}
 
 	public void reduceAttackPowerFortyPercent() {
-		reduceAttackPower(0.6);
+		changeAttackPower(0.6);
 	}
 
 	@Override
