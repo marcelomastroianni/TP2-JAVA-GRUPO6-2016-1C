@@ -25,11 +25,6 @@ public class SurfacePsionicStorm implements Surface {
 	}
 
 	@Override
-	public void BeCrossedBy(Algoformer algoformer) {
-
-	}
-
-	@Override
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
 		return false;
 	}
@@ -56,6 +51,11 @@ public class SurfacePsionicStorm implements Surface {
 
 	@Override
 	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
+	@Override
+	public boolean traps() {
 		return false;
 	}
 

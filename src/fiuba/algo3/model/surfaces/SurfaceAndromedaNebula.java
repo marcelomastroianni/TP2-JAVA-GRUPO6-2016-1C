@@ -24,11 +24,6 @@ public class SurfaceAndromedaNebula implements Surface {
 	}
 
 	@Override
-	public void BeCrossedBy(Algoformer algoformer) {
-		algoformer.trap(3);
-	}
-
-	@Override
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
 		return false;
 	}
@@ -56,6 +51,11 @@ public class SurfaceAndromedaNebula implements Surface {
 	@Override
 	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
 		return false;
+	}
+
+	@Override
+	public boolean traps() {
+		return true;
 	}
 
 

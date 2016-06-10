@@ -23,12 +23,6 @@ public class SurfaceCloud  implements Surface{
 	}
 
 	@Override
-	public void BeCrossedBy(Algoformer algoformer) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
 		return false;
 	}
@@ -55,6 +49,11 @@ public class SurfaceCloud  implements Surface{
 
 	@Override
 	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
+	@Override
+	public boolean traps() {
 		return false;
 	}
 

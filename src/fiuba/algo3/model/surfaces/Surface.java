@@ -9,7 +9,6 @@ public interface Surface {
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid);
 	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial);
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial);
-	public void BeCrossedBy(Algoformer algoformer);
 	
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid);
 	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
@@ -18,4 +17,6 @@ public interface Surface {
 	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid);
 	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
 	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial);
+	
+	public boolean traps();
 }

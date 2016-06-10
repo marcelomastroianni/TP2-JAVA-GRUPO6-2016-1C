@@ -25,11 +25,6 @@ public class SuperficieRocosa implements Surface {
 		return true;
 	}
 
-	@Override
-	public void BeCrossedBy(Algoformer algoformer) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
@@ -58,6 +53,11 @@ public class SuperficieRocosa implements Surface {
 
 	@Override
 	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
+	@Override
+	public boolean traps() {
 		return false;
 	}
 
