@@ -14,6 +14,8 @@ public interface Surface {
 	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid);
 	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
 	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial);
-
 	
+	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid);
+	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
+	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial);
 }

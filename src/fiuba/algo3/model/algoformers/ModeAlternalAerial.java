@@ -27,4 +27,9 @@ public class ModeAlternalAerial extends Mode{
 		reduceAttackPower(0.6);
 	}
 
+	@Override
+	public boolean reduceLifeFiftyPercent(Surface surface) {
+		return surface.reduceLifeFiftyPercent(this);
+	}
+
 }

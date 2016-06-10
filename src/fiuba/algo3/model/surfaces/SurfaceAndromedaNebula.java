@@ -43,6 +43,21 @@ public class SurfaceAndromedaNebula implements Surface {
 		return false;
 	}
 
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
 
 
 }

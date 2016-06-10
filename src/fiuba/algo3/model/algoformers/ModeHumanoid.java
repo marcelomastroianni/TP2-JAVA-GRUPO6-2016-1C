@@ -21,4 +21,9 @@ public class ModeHumanoid extends Mode {
 		return surface.reduceSpeedFiftyPercent(this);
 	}
 	
+	@Override
+	public boolean reduceLifeFiftyPercent(Surface surface) {
+		return surface.reduceLifeFiftyPercent(this);
+	}
+	
 }

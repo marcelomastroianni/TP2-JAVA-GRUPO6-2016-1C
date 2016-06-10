@@ -93,6 +93,9 @@ public class Algoformer implements Content {
 				if (this.activeMode.reduceSpeedFiftyPercent(actualSurface)) {
 					steps++;
 				}
+				if(this.activeMode.reduceLifeFiftyPercent(actualSurface)){
+					this.reduceLife();
+				}
 				actualSurface.BeCrossedBy(this);
 				this.position = actual;
 				board.add(new Nothing(previous));

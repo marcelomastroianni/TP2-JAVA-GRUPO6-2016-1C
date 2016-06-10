@@ -20,5 +20,10 @@ public class ModeAlternalTerrestrial extends Mode{
 	public boolean reduceSpeedFiftyPercent(Surface surface) {
 		return surface.reduceSpeedFiftyPercent(this);
 	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(Surface surface) {
+		return surface.reduceLifeFiftyPercent(this);
+	}
 	
 }

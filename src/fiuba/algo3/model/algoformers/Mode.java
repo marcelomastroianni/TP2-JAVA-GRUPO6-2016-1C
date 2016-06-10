@@ -18,9 +18,6 @@ public abstract class Mode {
 		
 
 	}
-	public abstract boolean canCrossSurface(Surface surface);
-	
-	public abstract boolean reduceSpeedFiftyPercent(Surface surface);
 	
 	public Integer getAttack(){
 		return this.attack;
@@ -37,6 +34,11 @@ public abstract class Mode {
 	public void reduceAttackPower(Double porcentage) {
 		this.attack =  (int) (this.attack *porcentage);
 	}
+	public abstract boolean canCrossSurface(Surface surface);
+	
+	public abstract boolean reduceSpeedFiftyPercent(Surface surface);
+	
+	public abstract boolean reduceLifeFiftyPercent(Surface actualSurface);
 	
 	
 

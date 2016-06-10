@@ -8,31 +8,23 @@ import fiuba.algo3.model.algoformers.ModeHumanoid;
 
 public class SurfaceThorn implements Surface {
 	
-	private boolean terrestial;
-	
 	@Override
 	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
-		terrestial = true;
 		return true;
 	}
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial) {
-		terrestial = true;
 		return true;
 	}
 
 	@Override
 	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
-		terrestial = false;
 		return true;
 	}
 
 	@Override
 	public void BeCrossedBy(Algoformer algoformer) {
-		if(terrestial){
-			algoformer.reduceLife();
-		}
 		
 	}
 
@@ -48,6 +40,21 @@ public class SurfaceThorn implements Surface {
 
 	@Override
 	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+		return false;
+	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid) {
+		return true;
+	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+		return true;
+	}
+
+	@Override
+	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
 		return false;
 	}
 
