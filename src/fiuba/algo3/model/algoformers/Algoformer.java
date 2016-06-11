@@ -85,9 +85,6 @@ public class Algoformer implements Content {
 	}
 
 	public void move(Position finalPosition, Board board) {
-		if (!board.isValidPosition(finalPosition)) {
-			return;
-		}
 		if (!this.trapped){
 			Position previous;
 			Position actual;

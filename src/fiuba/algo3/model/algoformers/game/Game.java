@@ -7,6 +7,7 @@ import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
@@ -92,6 +93,10 @@ public class Game {
 	
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
 	
+		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
+			throw new InvalidPositionException();
+		}
+		
 		Content content = this.board.getContent(initialPosition);
 		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
@@ -117,6 +122,10 @@ public class Game {
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
+		
+		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
+			throw new InvalidPositionException();
+		}
 		
 		Content content = this.board.getContent(initialPosition);
 		if (!(this.turn.isActivePlayer(jugador))){
@@ -151,6 +160,11 @@ public class Game {
 	}
 
 	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
+		
+		if (!this.board.isValidPosition(position)){
+			throw new InvalidPositionException();
+		}
+		
 		Content content = this.board.getContent(position);
 		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();

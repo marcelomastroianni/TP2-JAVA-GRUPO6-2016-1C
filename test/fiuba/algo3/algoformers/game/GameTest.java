@@ -14,6 +14,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 
@@ -458,5 +459,15 @@ public class GameTest {
 		game.transformaraAlgoformer(jugador1,new Position(1,2));
 	}
 
+	@Test(expected=InvalidPositionException.class)
+	public void testInvalidMovement() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException{
+		Game game = new Game();		
+		prepareGame(game);
+		
+		Player jugador1 = game.getPlayer1();	
+		
+		//Turno jugador 
+		game.moverAlgoformer(jugador1,new Position(0,2),new Position(-2,0));		
+	}
 }
 
