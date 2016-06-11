@@ -27,12 +27,8 @@ public class Board {
 		this.centralPosition = new Position(rows/2,columns/2);
 	}
 
-	public Cell getCell(Position position) {
-		return matrix.get(position);
-	}
-
 	public Content getContent(Position position) {
-		return this.getCell(position).getContent();
+		return this.matrix.get(position).getContent();
 	}
 
 	public boolean isEmpty(Position position) {
@@ -69,7 +65,6 @@ public class Board {
 	}
 
 	public Position getCentralPosition() {
-	
 		return this.centralPosition;
 	}
 

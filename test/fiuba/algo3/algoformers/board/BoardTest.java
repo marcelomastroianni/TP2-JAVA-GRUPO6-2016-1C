@@ -105,8 +105,8 @@ public class BoardTest {
 
 		tablero.addCell(new Cell(new Position(0,0),new SurfaceCloud()));
 	
-		Assert.assertTrue(tablero.getCell(new Position(0,0)).getSurface() instanceof SurfaceCloud );
-		Assert.assertFalse(tablero.getCell(new Position(0,0)).getSurface() instanceof SuperficieRocosa);
+		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof SurfaceCloud );
+		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
 	}
 
 	@Test
