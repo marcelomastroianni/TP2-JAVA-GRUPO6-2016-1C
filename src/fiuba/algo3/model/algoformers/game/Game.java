@@ -89,9 +89,68 @@ public class Game {
 	public void nextTurn(){
 		this.turn.next();		
 	}
-
-	private Algoformer validateAndGetAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException{
+	
+	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
+	
+		Content content = this.board.getContent(initialPosition);
+		if (!(this.turn.isActivePlayer(jugador))){
+			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
+		}
 		
+		if (!(content instanceof Algoformer)){
+			throw new UsuarioNoSeleccionoAlgoformerException();
+		}
+		
+		Algoformer algoformer = (Algoformer)content;
+		
+		if (!jugador.hasAlgoformer(algoformer)){
+			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
+		}
+		
+		if (jugador.haveUsed(algoformer)){
+			throw new AlgoformerUsadoEsteTurnoException();
+		}
+		
+		algoformer.move(finalPosition, this.board);
+		jugador.useAlgoformer(algoformer);
+	
+	}
+
+	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
+		
+		Content content = this.board.getContent(initialPosition);
+		if (!(this.turn.isActivePlayer(jugador))){
+			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
+		}
+		
+		if (!(content instanceof Algoformer)){
+			throw new UsuarioNoSeleccionoAlgoformerException();
+		}
+		
+		Algoformer algoformer = (Algoformer)content;
+		
+		if (!jugador.hasAlgoformer(algoformer)){
+			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
+		}
+		
+		if (jugador.haveUsed(algoformer)){
+			throw new AlgoformerUsadoEsteTurnoException();
+		}
+		
+		Content contentDestino = this.board.getContent(finalPosition);
+		
+		if (!(contentDestino instanceof Algoformer)){
+			throw new UsuarioNoSeleccionoAlgoformerAQuienDispararException();
+		}
+		
+		Algoformer algoformerDestino = (Algoformer)contentDestino;
+		
+		algoformer.shot(algoformerDestino);
+		jugador.useAlgoformer(algoformer);
+		
+	}
+
+	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
 		Content content = this.board.getContent(position);
 		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
@@ -111,35 +170,6 @@ public class Game {
 			throw new AlgoformerUsadoEsteTurnoException();
 		}
 		
-		return algoformer;
-	}
-	
-	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
-	
-		Algoformer algoformer = validateAndGetAlgoformer(jugador, initialPosition);
-		algoformer.move(finalPosition, this.board);
-		jugador.useAlgoformer(algoformer);
-	
-	}
-
-	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
-		
-		Algoformer algoformer = validateAndGetAlgoformer(jugador, initialPosition);
-		Content contentDestino = this.board.getContent(finalPosition);
-		
-		if (!(contentDestino instanceof Algoformer)){
-			throw new UsuarioNoSeleccionoAlgoformerAQuienDispararException();
-		}
-		
-		Algoformer algoformerDestino = (Algoformer)contentDestino;
-		
-		algoformer.shot(algoformerDestino);
-		jugador.useAlgoformer(algoformer);
-		
-	}
-
-	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
-		Algoformer algoformer = validateAndGetAlgoformer(jugador, position);
 		algoformer.transform();
 		jugador.useAlgoformer(algoformer);
 	
