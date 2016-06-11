@@ -49,13 +49,9 @@ public class Player {
 	public void notifyNextTurn() {
 		usedAlgoformersList = new ArrayList<Algoformer>();
 		
-	}
-
-	public void finishTurn() {
 		for(Algoformer algoformer : algoformersList){
-			algoformer.finishTurn();
+			algoformer.notifyNextTurn();
 		}
-		
 	}
 
 }

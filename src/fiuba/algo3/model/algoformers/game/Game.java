@@ -88,7 +88,6 @@ public class Game {
 	}
 	
 	public void nextTurn(){
-		this.turn.getActivePlayer().finishTurn();
 		this.turn.next();		
 	}
 

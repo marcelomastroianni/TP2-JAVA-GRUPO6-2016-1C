@@ -144,7 +144,7 @@ public class Algoformer implements Content {
 
 	}
 
-	public void finishTurn() {
+	public void notifyNextTurn() {
 		if (!trapped) {
 			return;
 		}
