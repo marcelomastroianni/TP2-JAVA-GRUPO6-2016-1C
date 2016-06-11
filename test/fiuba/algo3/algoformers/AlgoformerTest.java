@@ -164,5 +164,28 @@ public class AlgoformerTest {
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
 	}
+
+	@Test
+	public void testSwitchModeWithDobleDamge(){
+
+		Board board = new Board(5,5);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
+
+		board.add(optimusPrime);
+
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.transform();
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.dobleDamage(2);
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 30", new Integer(30), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.transform();
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 100", new Integer(100), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.notifyNextTurn();
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.transform();
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
+	}
 }
 

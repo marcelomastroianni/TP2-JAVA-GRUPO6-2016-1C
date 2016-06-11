@@ -84,7 +84,7 @@ public class Algoformer implements Content {
 		}
 	}
 
-	public void changeMode(){
+	private void changeMode(){
 		if (this.activeMode.equals(this.humanoidMode))
 			this.activeMode = this.alternalMode;
 		else
