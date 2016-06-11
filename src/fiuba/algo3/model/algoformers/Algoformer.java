@@ -155,6 +155,13 @@ public class Algoformer implements Content {
 				this.trapped = false;
 			}
 		}
+		if  (dobleDamage){
+			this.turnsDobleDamage -= 1;
+			if (this.turnsDobleDamage.equals(new Integer(0))){
+				this.dobleDamage = false;
+				this.activeMode.changeAttackPower(0.5);
+			}
+		}
 	}
 	
 	@Override
