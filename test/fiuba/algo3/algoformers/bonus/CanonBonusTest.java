@@ -13,8 +13,8 @@ public class CanonBonusTest {
 	public void createCanonBonus(){	
 		CanonBonus canonBonus = new CanonBonus();
 		Cell cell= new Cell(new Position(0,0), new SuperficieRocosa()); 
-		cell.putBonus(canonBonus);
-		Assert.assertEquals("la celda deberia contener un canonBonus",cell.getBonus(), canonBonus);
+		cell.add(canonBonus);
+		Assert.assertEquals("la celda deberia contener un canonBonus",cell.getContent(), canonBonus);
 }
 
 }

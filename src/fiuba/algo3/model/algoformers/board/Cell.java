@@ -7,30 +7,23 @@ import fiuba.algo3.model.surfaces.Surface;
 public class Cell{
 	private Position position;
 	private Surface surface;
-	private Content algoformer;
-	private Content bonus;
+	private Content content;
 
 	public Cell(Position position, Surface surface){
 		this.position = position;
 		this.surface = surface;
-		this.algoformer = new Nothing(position);
-		this.bonus = new Nothing(position);
+		this.content = new Nothing(position);
 	}
 
 	public Position getPosition(){
 		return position;
 	}
 
-	public Content getAlgoformer() {
-		return algoformer;
-
-	}
-	
 	public Surface getSurface() {
 		return surface;
 	}
-	public Content getBonus(){
-		return bonus;
+	public Content getContent(){
+		return content;
 	}
 	
 	public void setSurface(Surface surface) {
@@ -38,24 +31,18 @@ public class Cell{
 	}
 
 	public void removeContent(){
-		this.algoformer = new Nothing(position);
+		this.content = new Nothing(position);
 	}
-	
 
-	public void putAlgoformer(Content algoformer) {
-		this.algoformer = algoformer;
-
-	}
-	
-	public void putBonus(Content bonus) {
-		this.bonus = bonus;
+	public void add(Content content) {
+		this.content = content;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((algoformer == null) ? 0 : algoformer.hashCode());
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result
 				+ ((position == null) ? 0 : position.hashCode());
 		result = prime * result + ((surface == null) ? 0 : surface.hashCode());
@@ -71,10 +58,10 @@ public class Cell{
 		if (getClass() != obj.getClass())
 			return false;
 		Cell other = (Cell) obj;
-		if (algoformer == null) {
-			if (other.algoformer != null)
+		if (content == null) {
+			if (other.content != null)
 				return false;
-		} else if (!algoformer.equals(other.algoformer))
+		} else if (!content.equals(other.content))
 			return false;
 		if (position == null) {
 			if (other.position != null)
@@ -88,11 +75,4 @@ public class Cell{
 			return false;
 		return true;
 	}
-
-	
-
-	
-
-	
-
 }

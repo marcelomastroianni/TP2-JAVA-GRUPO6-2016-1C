@@ -22,20 +22,17 @@ public class Board {
 		        matrix.put(new Position(column,row), new Cell(new Position(column,row),new SuperficieRocosa()));
 		    }
 		}
-		
 		this.xLength = rows;
 		this.yLength = columns;
 		this.centralPosition = new Position(rows/2,columns/2);
-		
 	}
-
 
 	public Cell getCell(Position position) {
 		return matrix.get(position);
 	}
 
 	public Content getContent(Position position) {
-		return this.getCell(position).getAlgoformer();
+		return this.getCell(position).getContent();
 	}
 
 	public boolean isEmpty(Position position) {
@@ -45,6 +42,7 @@ public class Board {
 	public boolean isValidPosition(Position position) {
 		return position.isInRange(xLength,yLength);
 	}
+	
 	private boolean isOccupiedPosition(Position position) {
 		return(getContent(position) instanceof Algoformer);
 	}
@@ -53,7 +51,7 @@ public class Board {
 		if(!isValidPosition(content.getPosition()) || (content instanceof Algoformer && isOccupiedPosition(content.getPosition()))){
 			throw new InvalidPositionException();
 		}
-		matrix.get(content.getPosition()).putAlgoformer(content);
+		matrix.get(content.getPosition()).add(content);
 	}
 
 	public void remove(Content content) {
@@ -68,26 +66,19 @@ public class Board {
 		return this.centralPosition;
 	}
 
-
 	public int getXLength() {
 		return this.xLength;
 	}
-
 
 	public int getYLength() {
 		return this.yLength;
 	}
 
-
 	public void addCell(Cell cell) {	
 		matrix.put(cell.getPosition(), cell);
 	}
 
-
 	public Surface getSurface(Position position) {
 		return matrix.get(position).getSurface();
 	}
-
-
-
 }
