@@ -132,4 +132,17 @@ public class AlgoformerTest {
 		algoformer2.shot(algoformer1);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
+
+	@Test
+	public void testDobleDamageActiveOn(){
+
+		Board board = new Board(10,10);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
+
+		board.add(bumblebee);
+
+		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
+		bumblebee.dobleDamage(2);
+		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
+	}
 }

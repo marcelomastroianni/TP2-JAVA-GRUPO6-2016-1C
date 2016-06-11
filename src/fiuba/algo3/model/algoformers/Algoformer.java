@@ -18,6 +18,8 @@ public class Algoformer implements Content {
 	private Team team;
 	private boolean trapped;
 	private Integer turnsTrapped;
+	private boolean dobleDamage;
+	private Integer turnsDobleDamage;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -33,6 +35,8 @@ public class Algoformer implements Content {
 		this.team = team;
 		this.trapped = false;
 		this.turnsTrapped = 0;
+		this.dobleDamage = false;
+		this.turnsDobleDamage = 0;
 	}
 
 	public String getNombre() {
@@ -69,12 +73,22 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
-		if(!this.trapped){
-			if (this.activeMode.equals(this.humanoidMode))
-				this.activeMode = this.alternalMode;
-			else
-				this.activeMode = this.humanoidMode;			
-		}	
+		if(!this.trapped)
+			this.changeMode();
+		if (!this.dobleDamage)
+			this.changeMode();
+		else{
+			this.activeMode.changeAttackPower(0.5);
+			this.changeMode();
+			this.activeMode.changeAttackPower(2.0);
+		}
+	}
+
+	public void changeMode(){
+		if (this.activeMode.equals(this.humanoidMode))
+			this.activeMode = this.alternalMode;
+		else
+			this.activeMode = this.humanoidMode;
 	}
 
 	public void reduceLife() {
@@ -121,6 +135,12 @@ public class Algoformer implements Content {
 		if (this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()) {
 			throw new InvalidStrikeException("You can't attack objectives that far.");
 		}
+	}
+
+	public void dobleDamage (Integer turns){
+		this.dobleDamage = true;
+		this.turnsDobleDamage = turns + 1;
+		this.activeMode.changeAttackPower(2.0);
 	}
 
 	public void trap(Integer turns) {
