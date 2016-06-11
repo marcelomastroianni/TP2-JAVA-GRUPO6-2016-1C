@@ -17,7 +17,6 @@ public class OptimusPrimeTest {
 	public void setUp() {
 		board = new Board(10, 10);
 		optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
-
 	}
 
 	@Test
@@ -25,14 +24,12 @@ public class OptimusPrimeTest {
 		Assert.assertEquals("Optimus Prime", optimusPrime.getNombre());
 	}
 
-
 	@Test
 	public void speedTest() {
 		board.add(optimusPrime);
 		optimusPrime.move(new Position(2,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(2, 0)),
-				optimusPrime);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(2, 0),
+				optimusPrime.getPosition());
 	}
 
 	@Test
@@ -40,17 +37,13 @@ public class OptimusPrimeTest {
 		optimusPrime.transform();
 		board.add(optimusPrime);
 		optimusPrime.move(new Position(1,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
-				optimusPrime);
-
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),
+				optimusPrime.getPosition());
 	}
 	
 	@Test
 	public void reduceLifeTest() {
 		optimusPrime.reduceLife();
 		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",475,optimusPrime.getLife());
-
 	}
-
 }

@@ -5,6 +5,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
+import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -115,8 +116,10 @@ public class Game {
 		if (jugador.haveUsed(algoformer)){
 			throw new AlgoformerUsadoEsteTurnoException();
 		}
-		
+		Position previousPosition = algoformer.getPosition();
 		algoformer.move(finalPosition, this.board);
+		this.board.add(new Nothing(previousPosition));
+		this.board.add(algoformer);
 		jugador.useAlgoformer(algoformer);
 	
 	}

@@ -103,8 +103,6 @@ public class Algoformer implements Content {
 						this.trap(3);
 					}
 					this.position = next;
-					board.add(new Nothing(previous));
-					board.add(this);
 				}
 			}			
 		}

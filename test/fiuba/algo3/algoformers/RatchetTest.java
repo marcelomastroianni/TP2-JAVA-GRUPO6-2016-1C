@@ -28,20 +28,17 @@ public class RatchetTest {
 	public void speedTest() {
 		board.add(ratchet);
 		ratchet.move(new Position(1,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
-				ratchet);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),
+				ratchet.getPosition());
 	}
-
 
 	@Test
 	public void speedAlternalModeTest() {
 		ratchet.transform();
 		board.add(ratchet);
 		ratchet.move(new Position(8,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(8, 0)),
-				ratchet);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),
+				ratchet.getPosition());
 
 	}
 

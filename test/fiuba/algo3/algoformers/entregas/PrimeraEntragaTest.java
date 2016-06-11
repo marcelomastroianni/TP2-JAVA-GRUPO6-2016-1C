@@ -27,8 +27,7 @@ public class PrimeraEntragaTest {
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
 		algoformer.move(new Position(2,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,0)),algoformer);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",new Position(2,0),algoformer.getPosition());
 	}
 
 	//2. Se ubica un algoformer humanoide se lo transforma, se verifica que se pueda transformar
@@ -57,9 +56,7 @@ public class PrimeraEntragaTest {
 		algoformer.transform();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 		algoformer.move(new Position(5,0),board);
-		Assert.assertTrue("Algoformer alterno deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
-		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",board.getContent(new Position(5,0)),algoformer);
-
+		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",new Position(5,0),algoformer.getPosition());
 	}
 
 	//4. Crear una prueba de integración en la cual se pueda crear un juego, con 2 jugadores cada

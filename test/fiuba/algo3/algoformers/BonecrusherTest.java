@@ -27,12 +27,10 @@ public class BonecrusherTest {
 
 	@Test
 	public void speedTest() {
-
 		board.add(bonecrusher);
 		bonecrusher.move(new Position(1,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
-				bonecrusher);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),
+				bonecrusher.getPosition());
 	}
 
 	@Test
@@ -40,10 +38,8 @@ public class BonecrusherTest {
 		bonecrusher.transform();
 		board.add(bonecrusher);
 		bonecrusher.move(new Position(8,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(8, 0)),
-				bonecrusher);
-
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),
+				bonecrusher.getPosition());
 	}
 	
 	@Test
@@ -52,6 +48,4 @@ public class BonecrusherTest {
 		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",190,bonecrusher.getLife());
 
 	}
-
-
 }
