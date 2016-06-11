@@ -53,6 +53,13 @@ public class Board {
 		}
 		matrix.get(content.getPosition()).add(content);
 	}
+	
+	public void clearContent(Position position) {
+		if(!isValidPosition(position)){
+			throw new InvalidPositionException();
+		}
+		matrix.get(position).add(new Nothing(position));
+	}
 
 	public void remove(Content content) {
 		if(!isValidPosition(content.getPosition())){

@@ -118,7 +118,7 @@ public class Game {
 		}
 		Position previousPosition = algoformer.getPosition();
 		algoformer.move(finalPosition, this.board);
-		this.board.add(new Nothing(previousPosition));
+		this.board.clearContent(previousPosition);
 		this.board.add(algoformer);
 		jugador.useAlgoformer(algoformer);
 	
