@@ -131,12 +131,11 @@ public class Algoformer implements Content {
 	}
 
 	public void notifyNextTurn() {
-		if (!trapped) {
-			return;
-		}
-		this.turnsTrapped -= 1;
-		if (turnsTrapped.equals(new Integer(0))) {
-			this.trapped = false;
+		if (trapped) {
+			this.turnsTrapped -= 1;
+			if (this.turnsTrapped.equals(new Integer(0))) {
+				this.trapped = false;
+			}
 		}
 	}
 	
