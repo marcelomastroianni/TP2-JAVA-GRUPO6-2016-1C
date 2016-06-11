@@ -10,15 +10,12 @@ import java.util.ArrayList;
 
 public class Algoformer implements Content {
 	private String name;
-
 	private Position position;
-
 	private Integer life;
 	private Mode humanoidMode;
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
-	
 	private boolean trapped;
 	private Integer turnsTrapped;
 
@@ -119,7 +116,6 @@ public class Algoformer implements Content {
 			algoformer.downHealthPoints(this.activeMode.getAttack());
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
-			// TODO Reservado para interaccion con la GUI
 		}
 	}
 
@@ -127,14 +123,11 @@ public class Algoformer implements Content {
 		if (this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()) {
 			throw new InvalidStrikeException("You can't attack objectives that far.");
 		}
-
 	}
-
 
 	public void trap(Integer turns) {
 		this.trapped = true;
 		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
-
 	}
 
 	public void notifyNextTurn() {
@@ -201,7 +194,4 @@ public class Algoformer implements Content {
 			return false;
 		return true;
 	}
-
-	
-
 }
