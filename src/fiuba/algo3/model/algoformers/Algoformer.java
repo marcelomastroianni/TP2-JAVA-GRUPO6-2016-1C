@@ -73,14 +73,14 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
-		if(!this.trapped)
-			this.changeMode();
-		if (!this.dobleDamage)
-			this.changeMode();
-		else{
-			this.activeMode.changeAttackPower(0.5);
-			this.changeMode();
-			this.activeMode.changeAttackPower(2.0);
+		if(!this.trapped){
+			if (!this.dobleDamage)
+				this.changeMode();
+			else {
+				this.activeMode.changeAttackPower(0.5);
+				this.changeMode();
+				this.activeMode.changeAttackPower(2.0);
+			}
 		}
 	}
 
