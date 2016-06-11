@@ -47,7 +47,7 @@ public class Player {
 	}
 
 	public void notifyNextTurn() {
-		usedAlgoformersList = new ArrayList<Algoformer>();
+		usedAlgoformersList.clear();
 		
 		for(Algoformer algoformer : algoformersList){
 			algoformer.notifyNextTurn();
