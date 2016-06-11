@@ -72,13 +72,12 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
-		if(this.isTrapped()){
-			
-		}
-		if (this.activeMode.equals(this.humanoidMode))
-			this.activeMode = this.alternalMode;
-		else
-			this.activeMode = this.humanoidMode;
+		if(!this.trapped){
+			if (this.activeMode.equals(this.humanoidMode))
+				this.activeMode = this.alternalMode;
+			else
+				this.activeMode = this.humanoidMode;			
+		}	
 	}
 
 	public void reduceLife() {
@@ -89,32 +88,34 @@ public class Algoformer implements Content {
 		if (!board.isValidPosition(finalPosition)) {
 			return;
 		}
-		Position previous;
-		Position actual;
-		Surface actualSurface;
-		int steps = 0;
-		while (position.hasNext(finalPosition) && steps < this.activeMode.getSpeed()) {
-			steps++;
-			previous = this.position;
-			actual = this.position.next(finalPosition);
-			actualSurface = board.getCell(actual).getSurface();
-			if (this.activeMode.canCrossSurface(actualSurface)) {
-				if (this.activeMode.reduceSpeedFiftyPercent(actualSurface)) {
-					steps++;
+		if (!this.trapped){
+			Position previous;
+			Position actual;
+			Surface actualSurface;
+			int steps = 0;
+			while (position.hasNext(finalPosition) && steps < this.activeMode.getSpeed()) {
+				steps++;
+				previous = this.position;
+				actual = this.position.next(finalPosition);
+				actualSurface = board.getCell(actual).getSurface();
+				if (this.activeMode.canCrossSurface(actualSurface)) {
+					if (this.activeMode.reduceSpeedFiftyPercent(actualSurface)) {
+						steps++;
+					}
+					if(this.activeMode.reduceLifeFiftyPercent(actualSurface)){
+						this.reduceLife();
+					}
+					if(actualSurface.traps()){
+						this.trap(3);
+					}
+					this.position = actual;
+					board.add(new Nothing(previous));
+					board.add(this);
+				} else {
+					break;
 				}
-				if(this.activeMode.reduceLifeFiftyPercent(actualSurface)){
-					this.reduceLife();
-				}
-				if(actualSurface.traps()){
-					this.trap(3);
-				}
-				this.position = actual;
-				board.add(new Nothing(previous));
-				board.add(this);
-			} else {
-				break;
-			}
-		}
+			}			
+		}		
 	}
 
 	public void shot(Algoformer algoformer) {
@@ -134,9 +135,6 @@ public class Algoformer implements Content {
 
 	}
 
-	public boolean isTrapped() {
-		return this.trapped;
-	}
 
 	public void trap(Integer turns) {
 		this.trapped = true;

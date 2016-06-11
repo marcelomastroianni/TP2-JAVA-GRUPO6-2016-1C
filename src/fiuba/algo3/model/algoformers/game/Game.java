@@ -6,7 +6,6 @@ import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
@@ -112,20 +111,15 @@ public class Game {
 			throw new AlgoformerUsadoEsteTurnoException();
 		}
 		
-		if(algoformer.isTrapped()){
-			throw new AlgoformerAtrapadoEsteTurnoException();
-		}
 		return algoformer;
 	}
 	
 	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
-		try{
-			Algoformer algoformer = validateAndGetAlgoformer(jugador, initialPosition);
-			algoformer.move(finalPosition, this.board);
-			jugador.useAlgoformer(algoformer);
-		}catch(AlgoformerAtrapadoEsteTurnoException e){
-			//si esta atrapado no hace nada
-		}
+	
+		Algoformer algoformer = validateAndGetAlgoformer(jugador, initialPosition);
+		algoformer.move(finalPosition, this.board);
+		jugador.useAlgoformer(algoformer);
+	
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
