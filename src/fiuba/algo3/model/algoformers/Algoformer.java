@@ -87,32 +87,30 @@ public class Algoformer implements Content {
 	public void move(Position finalPosition, Board board) {
 		if (!this.trapped){
 			Position previous;
-			Position actual;
-			Surface actualSurface;
+			Position next;
+			Surface nextSurface;
 			int steps = 0;
 			while (position.hasNext(finalPosition) && steps < this.activeMode.getSpeed()) {
 				steps++;
 				previous = this.position;
-				actual = this.position.next(finalPosition);
-				actualSurface = board.getCell(actual).getSurface();
-				if (this.activeMode.canCrossSurface(actualSurface)) {
-					if (this.activeMode.reduceSpeedFiftyPercent(actualSurface)) {
+				next = this.position.next(finalPosition);
+				nextSurface = board.getSurface(next);
+				if (this.activeMode.canCrossSurface(nextSurface)) {
+					if (this.activeMode.reduceSpeedFiftyPercent(nextSurface)) {
 						steps++;
 					}
-					if(this.activeMode.reduceLifeFiftyPercent(actualSurface)){
+					if(this.activeMode.reduceLifeFiftyPercent(nextSurface)){
 						this.reduceLife();
 					}
-					if(actualSurface.traps()){
+					if(nextSurface.traps()){
 						this.trap(3);
 					}
-					this.position = actual;
+					this.position = next;
 					board.add(new Nothing(previous));
 					board.add(this);
-				} else {
-					break;
 				}
 			}			
-		}		
+		}
 	}
 
 	public void shot(Algoformer algoformer) {
