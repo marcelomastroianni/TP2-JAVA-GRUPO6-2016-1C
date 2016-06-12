@@ -31,12 +31,12 @@ public class SuperficieRocosaTest {
 	public void testCruzarSuperficieRocosa(){	
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieRocosa = new SuperficieRocosa();				
-		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeHumanoid) optimusPrime.getActiveMode()));
+		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
-		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeAlternalTerrestrial) optimusPrime.getActiveMode()));
+		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeAlternalTerrestrial());
 		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
 		megatron.transform();
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedBy((ModeAlternalAerial) megatron.getActiveMode()));										
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeAlternalAerial());										
 	}
 
 	@Test

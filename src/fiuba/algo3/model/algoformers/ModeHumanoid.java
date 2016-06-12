@@ -13,18 +13,19 @@ public class ModeHumanoid extends Mode {
 
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.canBeCrossedBy(this);
+		return surface.canBeCrossedByModeHumanoid();
 	}
 	
 	@Override
 	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercent(this);
+		return surface.reduceSpeedFiftyPercentModeHumanoid();
 	}
 	
 	@Override
 	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercent(this);
+		return surface.reduceLifeFiftyPercentModeHumanoid();
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -50,6 +51,11 @@ public class ModeHumanoid extends Mode {
 		} else if (!speed.equals(other.speed))
 			return false;
 		return true;
+	}
+		
+	@Override
+	public boolean reduceAttackPowerFortyPercent(Surface surface) {
+		return surface.reduceAttackPowerFortyPercentModeHumanoid();
 	}
 	
 }

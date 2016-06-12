@@ -13,17 +13,17 @@ public class ModeAlternalTerrestrial extends Mode{
 
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.canBeCrossedBy(this);
+		return surface.canBeCrossedByModeAlternalTerrestrial();
 	}
 	
 	@Override
 	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercent(this);
+		return surface.reduceSpeedFiftyPercentModeAlternalTerrestrial();
 	}
 
 	@Override
 	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercent(this);
+		return surface.reduceLifeFiftyPercentModeAlternalTerrestrial();
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -51,4 +51,10 @@ public class ModeAlternalTerrestrial extends Mode{
 			return false;
 		return true;
 	}
+	
+	@Override
+	public boolean reduceAttackPowerFortyPercent(Surface surface) {
+		return surface.reduceAttackPowerFortyPercentModeAlternalTerrestrial();
+	}
+	
 }

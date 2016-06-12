@@ -9,47 +9,47 @@ import fiuba.algo3.model.surfaces.Surface;
 public class SurfaceAndromedaNebula implements Surface {
 
 	@Override
-	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid) {
+	public boolean canBeCrossedByModeHumanoid() {
 		return false;
 	}
 
 	@Override
-	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+	public boolean canBeCrossedByModeAlternalTerrestrial() {
 		return false;
 	}
 
 	@Override
-	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial) {
+	public boolean canBeCrossedByModeAlternalAerial() {
 		return true;
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid) {
+	public boolean reduceSpeedFiftyPercentModeHumanoid() {
 		return false;
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+	public boolean reduceSpeedFiftyPercentModeAlternalTerrestrial() {
 		return false;
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+	public boolean reduceSpeedFiftyPercentModeAlternalAerial() {
 		return false;
 	}
 
 	@Override
-	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid) {
+	public boolean reduceLifeFiftyPercentModeHumanoid() {
 		return false;
 	}
 
 	@Override
-	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial) {
+	public boolean reduceLifeFiftyPercentModeAlternalTerrestrial() {
 		return false;
 	}
 
 	@Override
-	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial) {
+	public boolean reduceLifeFiftyPercentModeAlternalAerial() {
 		return false;
 	}
 
@@ -59,5 +59,19 @@ public class SurfaceAndromedaNebula implements Surface {
 	}
 
 
+	@Override
+	public boolean reduceAttackPowerFortyPercentModeHumanoid() {
+		return false;
+	}
+
+	@Override
+	public boolean reduceAttackPowerFortyPercentModeAlternalTerrestrial() {
+		return false;
+	}
+
+	@Override
+	public boolean reduceAttackPowerFortyPercentModeAlternalAerial() {
+		return false;
+	}
 
 }

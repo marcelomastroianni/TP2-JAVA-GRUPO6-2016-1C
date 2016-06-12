@@ -41,5 +41,7 @@ public abstract class Mode {
 	
 	public abstract boolean reduceLifeFiftyPercent(Surface actualSurface);
 	
+	public abstract boolean reduceAttackPowerFortyPercent(Surface surface);
+	
 	
 }

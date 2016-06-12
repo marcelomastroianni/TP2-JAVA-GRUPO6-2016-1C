@@ -15,21 +15,17 @@ public class ModeAlternalAerial extends Mode{
 
 	@Override
 	public boolean canCrossSurface(Surface surface) {
-		return surface.canBeCrossedBy(this);
+		return surface.canBeCrossedByModeAlternalAerial();
 	}
 
 	@Override
 	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercent(this);
-	}
-
-	public void reduceAttackPowerFortyPercent() {
-		changeAttackPower(0.6);
+		return surface.reduceSpeedFiftyPercentModeAlternalAerial();
 	}
 
 	@Override
 	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercent(this);
+		return surface.reduceLifeFiftyPercentModeAlternalAerial();
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -56,6 +52,11 @@ public class ModeAlternalAerial extends Mode{
 		} else if (!speed.equals(other.speed))
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean reduceAttackPowerFortyPercent(Surface surface) {
+		return surface.reduceAttackPowerFortyPercentModeAlternalAerial();
 	}
 
 }

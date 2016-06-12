@@ -6,17 +6,21 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 
 public interface Surface {
-	public boolean canBeCrossedBy(ModeHumanoid modeHumanoid);
-	public boolean canBeCrossedBy(ModeAlternalTerrestrial modeAlternalTerrestrial);
-	public boolean canBeCrossedBy(ModeAlternalAerial modeAlternalAerial);
+	public boolean canBeCrossedByModeHumanoid();
+	public boolean canBeCrossedByModeAlternalTerrestrial();
+	public boolean canBeCrossedByModeAlternalAerial();
 	
-	public boolean reduceSpeedFiftyPercent(ModeHumanoid modeHumanoid);
-	public boolean reduceSpeedFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
-	public boolean reduceSpeedFiftyPercent(ModeAlternalAerial modeAlternalAerial);
+	public boolean reduceSpeedFiftyPercentModeHumanoid();
+	public boolean reduceSpeedFiftyPercentModeAlternalTerrestrial();
+	public boolean reduceSpeedFiftyPercentModeAlternalAerial();
 	
-	public boolean reduceLifeFiftyPercent(ModeHumanoid modeHumanoid);
-	public boolean reduceLifeFiftyPercent(ModeAlternalTerrestrial modeAlternalTerrestrial);
-	public boolean reduceLifeFiftyPercent(ModeAlternalAerial modeAlternalAerial);
+	public boolean reduceLifeFiftyPercentModeHumanoid();
+	public boolean reduceLifeFiftyPercentModeAlternalTerrestrial();
+	public boolean reduceLifeFiftyPercentModeAlternalAerial();
+		
+	public boolean reduceAttackPowerFortyPercentModeHumanoid();
+	public boolean reduceAttackPowerFortyPercentModeAlternalTerrestrial();
+	public boolean reduceAttackPowerFortyPercentModeAlternalAerial();
 	
 	public boolean traps();
 }

@@ -27,12 +27,12 @@ public class SuperficiePantanoTest {
 	public void testCruzarSuperficiePantano(){		
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficiePantano = new SuperficiePantano();				
-		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeHumanoid) optimusPrime.getActiveMode()));
+		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
-		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeAlternalTerrestrial) optimusPrime.getActiveMode()));
+		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalTerrestrial());
 		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
 		megatron.transform();
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedBy((ModeAlternalAerial) megatron.getActiveMode()));										
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalAerial());										
 	}
 	
 	@Test

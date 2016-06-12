@@ -113,6 +113,9 @@ public class Algoformer implements Content {
 					if(this.activeMode.reduceLifeFiftyPercent(nextSurface)){
 						this.reduceLife();
 					}
+					if(this.activeMode.reduceAttackPowerFortyPercent(nextSurface)){
+						this.activeMode.changeAttackPower(0.6);
+					}
 					if(nextSurface.traps()){
 						this.trap(3);
 					}

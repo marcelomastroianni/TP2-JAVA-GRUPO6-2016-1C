@@ -30,11 +30,11 @@ public class SuperficieNubeTest {
 	public void testCruzarSuperficieNube(){
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieNube = new SurfaceCloud();				
-		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie nube", superficieNube.canBeCrossedBy((ModeHumanoid) optimusPrime.getActiveMode()));
+		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie nube", superficieNube.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
-		Assert.assertFalse("Modo alterno terrestre no deberia poder cruzar superficie nube", superficieNube.canBeCrossedBy((ModeAlternalTerrestrial) optimusPrime.getActiveMode()));
+		Assert.assertFalse("Modo alterno terrestre no deberia poder cruzar superficie nube", superficieNube.canBeCrossedByModeAlternalTerrestrial());
 		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
 		megatron.transform();
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie nube", superficieNube.canBeCrossedBy((ModeAlternalAerial) megatron.getActiveMode()));										
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie nube", superficieNube.canBeCrossedByModeAlternalAerial());										
 	}
 }
