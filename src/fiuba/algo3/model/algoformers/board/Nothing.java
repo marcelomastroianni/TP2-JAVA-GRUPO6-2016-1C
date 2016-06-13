@@ -23,4 +23,9 @@ public class Nothing implements Content{
 	public Position getPosition() {
 		return this.position;
 	}
+	
+	@Override
+	public void collideWithAlgoformer(Content algoformer) {
+		
+	}
 }
