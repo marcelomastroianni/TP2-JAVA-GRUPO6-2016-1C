@@ -24,8 +24,11 @@ public class CanonBonus implements Bonus{
 	
 	@Override
 	public void collideWithAlgoformer(Content algoformer) {
-		Algoformer algo = (Algoformer) algoformer;	
-		algo.dobleDamage(2);
+		Algoformer algo = (Algoformer) algoformer;
+		if (!algo.dobleDamage())
+		{
+			algo.dobleDamage(2);
+		}
 	}
 
 }

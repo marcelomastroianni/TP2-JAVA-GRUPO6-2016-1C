@@ -1,7 +1,8 @@
 package fiuba.algo3.model.algoformers;
 
-import fiuba.algo3.model.algoformers.board.*;
-import fiuba.algo3.model.exceptions.CantCrossException;
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Content;
+import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
@@ -62,6 +63,14 @@ public class Algoformer implements Content {
 
 	public int getLife() {
 		return life;
+	}
+
+	public boolean dobleDamage() {
+		return dobleDamage;
+	}
+
+	public boolean flash() {
+		return flash;
 	}
 
 	@Override
