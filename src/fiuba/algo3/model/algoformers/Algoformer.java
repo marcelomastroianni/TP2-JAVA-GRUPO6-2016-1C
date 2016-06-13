@@ -7,6 +7,7 @@ import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Algoformer implements Content {
 	private String name;
@@ -15,20 +16,21 @@ public class Algoformer implements Content {
 	private Mode humanoidMode;
 	private Mode alternalMode;
 	private Mode activeMode;
+	private List<Bonus> bonusList = new ArrayList<>();
 	private Team team;
-	private boolean trapped;
-	private Integer turnsTrapped;
-	private boolean dobleDamage;
-	private Integer turnsDobleDamage;
-	private boolean flash;
-	private Integer turnsFlash;
-
+	private boolean trapped = false;
+	private Integer turnsTrapped = 0;
+	private boolean dobleDamage = false;
+	private Integer turnsDobleDamage = 0;
+	private boolean flash = false;
+	private Integer turnsFlash = 0;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
 	}
 
-	public Algoformer(String name, Mode humanoidMode, Mode alternalMode, Integer life, Position position, Team team) {
+	public Algoformer(String name, Mode humanoidMode, Mode alternalMode,
+			Integer life, Position position, Team team) {
 		this.name = name;
 		this.humanoidMode = humanoidMode;
 		this.alternalMode = alternalMode;
@@ -36,12 +38,6 @@ public class Algoformer implements Content {
 		this.life = life;
 		this.position = position;
 		this.team = team;
-		this.trapped = false;
-		this.turnsTrapped = 0;
-		this.dobleDamage = false;
-		this.turnsDobleDamage = 0;
-		this.flash = false;
-		this.turnsFlash = 0;
 	}
 
 	public String getNombre() {
@@ -67,7 +63,7 @@ public class Algoformer implements Content {
 	public int getLife() {
 		return life;
 	}
-	
+
 	@Override
 	public Position getPosition() {
 		return this.position;
@@ -78,28 +74,24 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
-		if(!this.trapped) {
+		if (!this.trapped) {
 			if (!this.dobleDamage && !this.flash)
 				this.changeMode();
-			else
-				if (this.dobleDamage && !this.flash) {
+			else if (this.dobleDamage && !this.flash) {
 				this.activeMode.changeAttackPower(0.5);
 				this.changeMode();
 				this.activeMode.changeAttackPower(2.0);
-				}
-				if (this.flash && !this.dobleDamage){
-					this.activeMode.changeSpeed(0.33);
-					this.changeMode();
-					this.activeMode.changeSpeed(3.0);
-				}
+			}
+			if (this.flash && !this.dobleDamage) {
+				this.activeMode.changeSpeed(0.33);
+				this.changeMode();
+				this.activeMode.changeSpeed(3.0);
+			}
 		}
 	}
 
-	private void changeMode(){
-		if (this.activeMode.equals(this.humanoidMode))
-			this.activeMode = this.alternalMode;
-		else
-			this.activeMode = this.humanoidMode;
+	private void changeMode() {
+		this.activeMode = (this.activeMode.equals(this.humanoidMode)) ? this.alternalMode : this.humanoidMode;
 	}
 
 	public void reduceLife() {
@@ -107,12 +99,13 @@ public class Algoformer implements Content {
 	}
 
 	public void move(Position finalPosition, Board board) {
-		if (!this.trapped){
+		if (!this.trapped) {
 			Position previous;
 			Position next;
 			Surface nextSurface;
 			int steps = 0;
-			while (position.hasNext(finalPosition) && steps < this.activeMode.getSpeed()) {
+			while (position.hasNext(finalPosition)
+					&& steps < this.activeMode.getSpeed()) {
 				steps++;
 				previous = this.position;
 				next = this.position.next(finalPosition);
@@ -121,43 +114,62 @@ public class Algoformer implements Content {
 					if (this.activeMode.reduceSpeedFiftyPercent(nextSurface)) {
 						steps++;
 					}
-					if(this.activeMode.reduceLifeFiftyPercent(nextSurface)){
+					if (this.activeMode.reduceLifeFiftyPercent(nextSurface)) {
 						this.reduceLife();
 					}
-					if(this.activeMode.reduceAttackPowerFortyPercent(nextSurface)){
+					if (this.activeMode
+							.reduceAttackPowerFortyPercent(nextSurface)) {
 						this.activeMode.changeAttackPower(0.6);
 					}
-					if(nextSurface.traps()){
+					if (nextSurface.traps()) {
 						this.trap(3);
 					}
 					this.position = next;
 				}
-			}			
+			}
 		}
 	}
 
 	public void shot(Algoformer algoformer) {
+		Integer damage = this.activeMode.getAttack() * this.getAttackModifier();
 		try {
 			this.resolveShootingDistance(algoformer);
-			algoformer.downHealthPoints(this.activeMode.getAttack());
+			this.checkTeamSide(algoformer);
+			algoformer.downHealthPoints(damage);
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
 		}
 	}
 
-	private void resolveShootingDistance(Algoformer algoformer) throws InvalidStrikeException {
-		if (this.position.distance(algoformer.getPosition()) > this.activeMode.getStrikingDistance()) {
-			throw new InvalidStrikeException("You can't attack objectives that far.");
+	private Integer getAttackModifier() {
+		Integer modifier = 1;
+		return modifier;
+	}
+
+	private void checkTeamSide(Algoformer algoformer)
+			throws InvalidStrikeException {
+		if (algoformer.getTeam().equals(this.team)) {
+			throw new InvalidStrikeException("You can't attack a partner.");
+		}
+
+	}
+
+	private void resolveShootingDistance(Algoformer algoformer)
+			throws InvalidStrikeException {
+		if (this.position.distance(algoformer.getPosition()) > this.activeMode
+				.getStrikingDistance()) {
+			throw new InvalidStrikeException(
+					"You can't attack objectives that far.");
 		}
 	}
 
-	public void dobleDamage (Integer turns){
+	public void dobleDamage(Integer turns) {
 		this.dobleDamage = true;
 		this.turnsDobleDamage = turns + 1;
 		this.activeMode.changeAttackPower(2.0);
 	}
 
-	public void haste(Integer turns){
+	public void haste(Integer turns) {
 		this.flash = true;
 		this.turnsFlash = turns + 1;
 		this.activeMode.changeSpeed(3.0);
@@ -175,32 +187,36 @@ public class Algoformer implements Content {
 				this.trapped = false;
 			}
 		}
-		if  (dobleDamage){
+		if (dobleDamage) {
 			this.turnsDobleDamage -= 1;
-			if (this.turnsDobleDamage.equals(new Integer(0))){
+			if (this.turnsDobleDamage.equals(new Integer(0))) {
 				this.dobleDamage = false;
 				this.activeMode.changeAttackPower(0.5);
 			}
 		}
-		if  (flash){
+		if (flash) {
 			this.turnsFlash -= 1;
-			if (this.turnsFlash.equals(new Integer(0))){
+			if (this.turnsFlash.equals(new Integer(0))) {
 				this.flash = false;
 				this.activeMode.changeSpeed(0.33);
 			}
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((activeMode == null) ? 0 : activeMode.hashCode());
-		result = prime * result + ((alternalMode == null) ? 0 : alternalMode.hashCode());
-		result = prime * result + ((humanoidMode == null) ? 0 : humanoidMode.hashCode());
+		result = prime * result
+				+ ((activeMode == null) ? 0 : activeMode.hashCode());
+		result = prime * result
+				+ ((alternalMode == null) ? 0 : alternalMode.hashCode());
+		result = prime * result
+				+ ((humanoidMode == null) ? 0 : humanoidMode.hashCode());
 		result = prime * result + ((life == null) ? 0 : life.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((position == null) ? 0 : position.hashCode());
+		result = prime * result
+				+ ((position == null) ? 0 : position.hashCode());
 		return result;
 	}
 

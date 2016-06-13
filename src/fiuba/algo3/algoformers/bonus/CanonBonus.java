@@ -1,14 +1,24 @@
 package fiuba.algo3.algoformers.bonus;
 
+import fiuba.algo3.model.algoformers.Bonus;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 
-public class CanonBonus implements Content{
+public class CanonBonus implements Bonus{
+	
+	private Position position;
 
+	private CanonBonus(Position position){
+		this.position = position;
+	}
+	
+	public static CanonBonus createCanonBonus(Position position){
+		return new CanonBonus(position);
+	}
+	
 	@Override
 	public Position getPosition() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.position;
 	}
 
 }

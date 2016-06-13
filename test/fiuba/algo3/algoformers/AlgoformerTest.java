@@ -129,6 +129,21 @@ public class AlgoformerTest {
 		algoformer2.shot(algoformer1);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
+	
+	@Test
+	public void testAlgoformerCanNotShootSameTeamAlgoformer(){
+
+		Board board = new Board(5,5);
+		Algoformer algoformer1 = AlgoFormerFactory.getBumblebee(new Position(2,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+
+		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
+		algoformer1.shot(algoformer2);
+		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
+	}
 
 	@Test
 	public void testDobleDamageActiveOn(){
@@ -242,5 +257,7 @@ public class AlgoformerTest {
 		bonecrusher.transform();
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
 	}
+	
+	
 }
 
