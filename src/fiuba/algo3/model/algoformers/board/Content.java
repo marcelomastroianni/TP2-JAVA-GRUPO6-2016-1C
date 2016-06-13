@@ -4,6 +4,8 @@ public interface Content {
 
 
 	Position getPosition();
+	
+	void collideWithAlgoformer(Content algoformer);
 
 
 }

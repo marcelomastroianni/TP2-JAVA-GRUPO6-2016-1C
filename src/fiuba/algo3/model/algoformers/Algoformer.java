@@ -130,7 +130,13 @@ public class Algoformer implements Content {
 					if(nextSurface.traps()){
 						this.trap(3);
 					}
-					this.position = next;
+					try{
+						board.getContent(next).collideWithAlgoformer(this);
+						this.position = next;			
+					}catch(InvalidPositionException ex){
+						//Coliciono con otro Algoformer
+						break;
+					}
 				}
 			}			
 		}
@@ -244,5 +250,10 @@ public class Algoformer implements Content {
 		} else if (!position.equals(other.position))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void collideWithAlgoformer(Content algoformer) {
+		
 	}
 }

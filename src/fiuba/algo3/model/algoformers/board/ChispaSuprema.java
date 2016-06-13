@@ -45,5 +45,9 @@ public class ChispaSuprema implements Content {
 		return true;
 	}
 	
+	@Override
+	public void collideWithAlgoformer(Content algoformer) {
+		
+	}
 	
 }
