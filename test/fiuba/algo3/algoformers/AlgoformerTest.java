@@ -6,12 +6,9 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.Mode;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
 
 public class AlgoformerTest {
 	@Test
@@ -189,6 +186,19 @@ public class AlgoformerTest {
 	}
 
 	@Test
+	public void testFlashActiveOn(){
+
+		Board board = new Board(10,10);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
+
+		board.add(bumblebee);
+
+		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", new Integer(2), bumblebee.getActiveMode().getSpeed());
+		bumblebee.haste(3);
+		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", new Integer(6), bumblebee.getActiveMode().getSpeed());
+	}
+
+	@Test
 	public void testMovementWithFlash(){
 
 		Board board = new Board(20,20);
@@ -197,7 +207,7 @@ public class AlgoformerTest {
 		board.add(frenzy);
 
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
-		frenzy.flash(3);
+		frenzy.haste(3);
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
 		frenzy.notifyNextTurn();
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
@@ -207,6 +217,30 @@ public class AlgoformerTest {
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
 		frenzy.notifyNextTurn();
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
+	}
+
+	@Test
+	public void testSwitchModeWithFlash(){
+
+		Board board = new Board(20,20);
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(5,7));
+
+		board.add(bonecrusher);
+
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.transform();
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.haste(3);
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 24",new Integer(24) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.transform();
+		bonecrusher.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 3",new Integer(3) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.notifyNextTurn();
+		bonecrusher.notifyNextTurn();
+		bonecrusher.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.transform();
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
 	}
 }
 

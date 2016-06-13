@@ -78,14 +78,20 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
-		if(!this.trapped){
-			if (!this.dobleDamage)
+		if(!this.trapped) {
+			if (!this.dobleDamage && !this.flash)
 				this.changeMode();
-			else {
+			else
+				if (this.dobleDamage && !this.flash) {
 				this.activeMode.changeAttackPower(0.5);
 				this.changeMode();
 				this.activeMode.changeAttackPower(2.0);
-			}
+				}
+				if (this.flash && !this.dobleDamage){
+					this.activeMode.changeSpeed(0.33);
+					this.changeMode();
+					this.activeMode.changeSpeed(3.0);
+				}
 		}
 	}
 
@@ -151,7 +157,7 @@ public class Algoformer implements Content {
 		this.activeMode.changeAttackPower(2.0);
 	}
 
-	public void flash(Integer turns){
+	public void haste(Integer turns){
 		this.flash = true;
 		this.turnsFlash = turns + 1;
 		this.activeMode.changeSpeed(3.0);
@@ -179,7 +185,7 @@ public class Algoformer implements Content {
 		if  (flash){
 			this.turnsFlash -= 1;
 			if (this.turnsFlash.equals(new Integer(0))){
-				this.dobleDamage = false;
+				this.flash = false;
 				this.activeMode.changeSpeed(0.33);
 			}
 		}
