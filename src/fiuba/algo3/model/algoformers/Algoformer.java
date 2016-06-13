@@ -20,6 +20,9 @@ public class Algoformer implements Content {
 	private Integer turnsTrapped;
 	private boolean dobleDamage;
 	private Integer turnsDobleDamage;
+	private boolean flash;
+	private Integer turnsFlash;
+
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -37,6 +40,8 @@ public class Algoformer implements Content {
 		this.turnsTrapped = 0;
 		this.dobleDamage = false;
 		this.turnsDobleDamage = 0;
+		this.flash = false;
+		this.turnsFlash = 0;
 	}
 
 	public String getNombre() {
@@ -146,6 +151,12 @@ public class Algoformer implements Content {
 		this.activeMode.changeAttackPower(2.0);
 	}
 
+	public void flash(Integer turns){
+		this.flash = true;
+		this.turnsFlash = turns + 1;
+		this.activeMode.changeSpeed(3.0);
+	}
+
 	public void trap(Integer turns) {
 		this.trapped = true;
 		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
@@ -163,6 +174,13 @@ public class Algoformer implements Content {
 			if (this.turnsDobleDamage.equals(new Integer(0))){
 				this.dobleDamage = false;
 				this.activeMode.changeAttackPower(0.5);
+			}
+		}
+		if  (flash){
+			this.turnsFlash -= 1;
+			if (this.turnsFlash.equals(new Integer(0))){
+				this.dobleDamage = false;
+				this.activeMode.changeSpeed(0.33);
 			}
 		}
 	}

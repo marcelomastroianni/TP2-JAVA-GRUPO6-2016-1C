@@ -35,6 +35,8 @@ public abstract class Mode {
 		this.attack =  (int) (this.attack *porcentage);
 	}
 
+	public void changeSpeed(Double porcentage){this.speed = (int) Math.round(this.speed *porcentage); }
+
 	public abstract boolean canCrossSurface(Surface surface);
 	
 	public abstract boolean reduceSpeedFiftyPercent(Surface surface);

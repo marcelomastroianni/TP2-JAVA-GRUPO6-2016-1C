@@ -187,5 +187,26 @@ public class AlgoformerTest {
 		optimusPrime.transform();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
 	}
+
+	@Test
+	public void testMovementWithFlash(){
+
+		Board board = new Board(20,20);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(5,7));
+
+		board.add(frenzy);
+
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
+		frenzy.flash(3);
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
+	}
 }
 
