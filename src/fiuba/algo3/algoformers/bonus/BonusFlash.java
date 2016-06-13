@@ -4,11 +4,11 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 
-public class CanonBonus implements Content{
+public class BonusFlash implements Content{
 
 	Position position;
 	
-	public CanonBonus(Position position){
+	public BonusFlash(Position position){
 		this.position = position;
 	}
 	
@@ -16,11 +16,11 @@ public class CanonBonus implements Content{
 	public Position getPosition() {
 		return this.position;
 	}
-	
+
 	@Override
 	public void collideWithAlgoformer(Content algoformer) {
-		Algoformer algo = (Algoformer) algoformer;	
-		algo.dobleDamage(2);
+		Algoformer algo = (Algoformer)algoformer;
+		algo.haste(3);
 	}
 
 }
