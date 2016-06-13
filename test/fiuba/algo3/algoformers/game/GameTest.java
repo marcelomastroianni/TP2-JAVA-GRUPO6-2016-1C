@@ -471,5 +471,28 @@ public class GameTest {
 		//Turno jugador 
 		game.moverAlgoformer(jugador1,new Position(0,2),new Position(-2,0));		
 	}
+	
+	@Test
+	public void testColicionarConAlgoformer() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException{
+		Game game = new Game();		
+		prepareGame(game);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		game.getPlayer1().addAlgoformer(bumblebee);
+		game.getBoard().add(bumblebee);
+		
+		//game.getBoard().add(new CanonBonus(new Position(1,0)));
+		
+		Player jugador1 = game.getPlayer1();		
+		Player jugador2 = game.getPlayer2();	
+	
+		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+	}
 }
 
