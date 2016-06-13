@@ -27,7 +27,7 @@ public class CanonBonus implements Bonus{
 		Algoformer algo = (Algoformer) algoformer;
 		if (!algo.dobleDamage())
 		{
-			algo.dobleDamage(2);
+			algo.dobleDamage(3);
 		}
 	}
 

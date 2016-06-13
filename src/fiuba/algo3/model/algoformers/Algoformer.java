@@ -146,19 +146,13 @@ public class Algoformer implements Content {
 	}
 
 	public void shot(Algoformer algoformer) {
-		Integer damage = this.activeMode.getAttack() * this.getAttackModifier();
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
-			algoformer.downHealthPoints(damage);
+			algoformer.downHealthPoints(this.activeMode.getAttack());
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
 		}
-	}
-
-	private Integer getAttackModifier() {
-		Integer modifier = 1;
-		return modifier;
 	}
 
 	private void checkTeamSide(Algoformer algoformer)
@@ -180,7 +174,7 @@ public class Algoformer implements Content {
 
 	public void dobleDamage(Integer turns) {
 		this.dobleDamage = true;
-		this.turnsDobleDamage = turns + 1;
+		this.turnsDobleDamage = turns;
 		this.activeMode.changeAttackPower(2.0);
 	}
 

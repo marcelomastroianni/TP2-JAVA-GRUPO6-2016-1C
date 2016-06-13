@@ -168,7 +168,7 @@ public class AlgoformerTest {
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(40), bumblebee.getActiveMode().getAttack());
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
 	}
