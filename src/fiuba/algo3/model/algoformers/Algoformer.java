@@ -21,9 +21,9 @@ public class Algoformer implements Content {
 	private Team team;
 	private boolean trapped = false;
 	private Integer turnsTrapped = 0;
-	private boolean dobleDamage = false;
+	private boolean isDobleDamage = false;
 	private Integer turnsDobleDamage = 0;
-	private boolean flash = false;
+	private boolean isFlash = false;
 	private Integer turnsFlash = 0;
 
 	public enum Team {
@@ -66,11 +66,11 @@ public class Algoformer implements Content {
 	}
 
 	public boolean dobleDamage() {
-		return dobleDamage;
+		return isDobleDamage;
 	}
 
 	public boolean flash() {
-		return flash;
+		return isFlash;
 	}
 
 	@Override
@@ -84,14 +84,14 @@ public class Algoformer implements Content {
 
 	public void transform() {
 		if (!this.trapped) {
-			if (!this.dobleDamage && !this.flash)
+			if (!this.isDobleDamage && !this.isFlash)
 				this.changeMode();
-			else if (this.dobleDamage && !this.flash) {
+			else if (this.isDobleDamage && !this.isFlash) {
 				this.activeMode.changeAttackPower(0.5);
 				this.changeMode();
 				this.activeMode.changeAttackPower(2.0);
 			}
-			if (this.flash && !this.dobleDamage) {
+			if (this.isFlash && !this.isDobleDamage) {
 				this.activeMode.changeSpeed(0.33);
 				this.changeMode();
 				this.activeMode.changeSpeed(3.0);
@@ -173,15 +173,19 @@ public class Algoformer implements Content {
 	}
 
 	public void dobleDamage(Integer turns) {
-		this.dobleDamage = true;
-		this.turnsDobleDamage = turns;
-		this.activeMode.changeAttackPower(2.0);
+		if (!isDobleDamage){
+			this.isDobleDamage = true;
+			this.turnsDobleDamage = turns;
+			this.activeMode.changeAttackPower(2.0);
+		}
 	}
 
 	public void haste(Integer turns) {
-		this.flash = true;
-		this.turnsFlash = turns + 1;
-		this.activeMode.changeSpeed(3.0);
+		if (!isFlash){
+			this.isFlash = true;
+			this.turnsFlash = turns + 1;
+			this.activeMode.changeSpeed(3.0);
+		}
 	}
 
 	public void trap(Integer turns) {
@@ -196,17 +200,17 @@ public class Algoformer implements Content {
 				this.trapped = false;
 			}
 		}
-		if (dobleDamage) {
+		if (isDobleDamage) {
 			this.turnsDobleDamage -= 1;
 			if (this.turnsDobleDamage.equals(new Integer(0))) {
-				this.dobleDamage = false;
+				this.isDobleDamage = false;
 				this.activeMode.changeAttackPower(0.5);
 			}
 		}
-		if (flash) {
+		if (isFlash) {
 			this.turnsFlash -= 1;
 			if (this.turnsFlash.equals(new Integer(0))) {
-				this.flash = false;
+				this.isFlash = false;
 				this.activeMode.changeSpeed(0.33);
 			}
 		}
