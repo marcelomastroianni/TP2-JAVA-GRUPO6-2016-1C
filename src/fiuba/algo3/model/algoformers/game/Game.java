@@ -115,11 +115,7 @@ public class Game {
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
 		}
 		
-		if (jugador.haveUsed(algoformer)){
-			throw new AlgoformerUsadoEsteTurnoException();
-		}
 		algoformer.move(finalPosition, this.board);
-		jugador.useAlgoformer(algoformer);
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
@@ -145,10 +141,6 @@ public class Game {
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
 		}
 		
-		if (jugador.haveUsed(algoformer)){
-			throw new AlgoformerUsadoEsteTurnoException();
-		}
-		
 		Content contentDestino = this.board.getContent(finalPosition);
 		
 		Algoformer algoformerDestino;
@@ -160,8 +152,6 @@ public class Game {
 		}
 		
 		algoformer.shot(algoformerDestino);
-		jugador.useAlgoformer(algoformer);
-		
 	}
 
 	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
@@ -187,13 +177,7 @@ public class Game {
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
 		}
 		
-		if (jugador.haveUsed(algoformer)){
-			throw new AlgoformerUsadoEsteTurnoException();
-		}
-		
 		algoformer.transform();
-		jugador.useAlgoformer(algoformer);
-	
 	}
 
 }

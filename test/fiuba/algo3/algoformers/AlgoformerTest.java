@@ -115,10 +115,13 @@ public class AlgoformerTest {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
 	}
 
@@ -178,6 +181,7 @@ public class AlgoformerTest {
 
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
 		bumblebee.dobleDamage(2);
+		bumblebee.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
@@ -197,10 +201,11 @@ public class AlgoformerTest {
 
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.transform();
+		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.dobleDamage(2);
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 30", new Integer(30), optimusPrime.getActiveMode().getAttack());
-		optimusPrime.transform();
+		optimusPrime.transform();		
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 100", new Integer(100), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.notifyNextTurn();
@@ -254,6 +259,7 @@ public class AlgoformerTest {
 
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
 		bonecrusher.transform();
+		bonecrusher.notifyNextTurn();
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
 		bonecrusher.haste(3);
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 24",new Integer(24) ,bonecrusher.getActiveMode().getSpeed());

@@ -36,6 +36,7 @@ public class TerceraEntregaTest {
 		
 
 		algoformer1.move(new Position(2, 1), board);
+		algoformer1.notifyNextTurn();
 
 		// Prueba Algoformer en modo Humanoide
 		// Primer Turno
@@ -92,11 +93,14 @@ public class TerceraEntregaTest {
 				algoformer2.getLife());
 		// Onceavo Turno
 		algoformer1.shot(algoformer2);
+		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 360", 360,
 				algoformer2.getLife());
 
 		algoformer1.transform();
+		algoformer1.notifyNextTurn();
 		algoformer1.move(new Position(2,2), board);
+		algoformer1.notifyNextTurn();
 		
 		// Prueba Algoformer en modo Alterno
 		// Primer Turno

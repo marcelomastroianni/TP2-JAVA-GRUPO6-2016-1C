@@ -36,6 +36,7 @@ public class BumblebeeTest {
 	@Test
 	public void speedAlternalModeTest() {
 		bumblebee.transform();
+		bumblebee.notifyNextTurn();
 		board.add(bumblebee);
 		bumblebee.move(new Position(5,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(5, 0),

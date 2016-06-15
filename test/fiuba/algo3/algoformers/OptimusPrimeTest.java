@@ -35,6 +35,7 @@ public class OptimusPrimeTest {
 	@Test
 	public void speedAlternalModeTest() {
 		optimusPrime.transform();
+		optimusPrime.notifyNextTurn();
 		board.add(optimusPrime);
 		optimusPrime.move(new Position(1,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),

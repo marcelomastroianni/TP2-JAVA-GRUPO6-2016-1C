@@ -36,6 +36,7 @@ public class MegatronTest {
 	@Test
 	public void speedAlternalModeTest() {
 		megatron.transform();
+		megatron.notifyNextTurn();
 		board.add(megatron);
 		megatron.move(new Position(8,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),

@@ -36,8 +36,10 @@ public class BonecrusherTest {
 	@Test
 	public void speedAlternalModeTest() {
 		bonecrusher.transform();
+		bonecrusher.notifyNextTurn();
 		board.add(bonecrusher);
 		bonecrusher.move(new Position(8,0),board);
+		bonecrusher.notifyNextTurn();
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),
 				bonecrusher.getPosition());
 	}

@@ -29,8 +29,10 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
 		optimus.transform();
+		optimus.notifyNextTurn();
 		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
 		optimus.move(new Position(4,3), tablero);
+		optimus.notifyNextTurn();
 		Assert.assertTrue("Algoformer no deberia estar en la posicion (4,3)",tablero.isEmpty(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
@@ -58,7 +60,9 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);
 		megatron.transform();
+		megatron.notifyNextTurn();
 		megatron.move(new Position(2,0), tablero);
+		megatron.notifyNextTurn();
 		//Assert.assertEquals(33,megatron.getActiveMode().getAttack());
 	}
 

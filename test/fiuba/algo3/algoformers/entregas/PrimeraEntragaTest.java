@@ -37,10 +37,13 @@ public class PrimeraEntragaTest {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
+        algoformer.notifyNextTurn();
         Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
 	}
 
@@ -54,8 +57,10 @@ public class PrimeraEntragaTest {
 
 		board.add(algoformer);
 		algoformer.transform();
+		algoformer.notifyNextTurn();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 		algoformer.move(new Position(5,0),board);
+		algoformer.notifyNextTurn();
 		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",new Position(5,0),algoformer.getPosition());
 	}
 

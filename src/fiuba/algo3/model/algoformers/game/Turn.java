@@ -21,6 +21,4 @@ public class Turn {
 		
 		this.activePlayer.notifyNextTurn();
 	}
-
-
 }

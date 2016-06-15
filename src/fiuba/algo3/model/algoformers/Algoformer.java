@@ -4,6 +4,7 @@ import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.bonus.Bonus;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
@@ -27,6 +28,7 @@ public class Algoformer implements Content {
 	private boolean isFlash = false;
 	private Integer turnsFlash = 0;
 	private Integer stepsMovedInTurn = 0;
+	private boolean haveBeenUsedInTurn = false;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -85,6 +87,8 @@ public class Algoformer implements Content {
 	}
 
 	public void transform() {
+		if(this.haveBeenUsedInTurn)
+			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
 			if (!this.isDobleDamage && !this.isFlash)
 				this.changeMode();
@@ -99,6 +103,7 @@ public class Algoformer implements Content {
 				this.activeMode.changeSpeed(3.0);
 			}
 		}
+		this.haveBeenUsedInTurn = true;
 	}
 
 	private void changeMode() {
@@ -110,11 +115,12 @@ public class Algoformer implements Content {
 	}
 
 	public void move(Position finalPosition, Board board) {
+		if(this.haveBeenUsedInTurn)
+			throw new AlgoformerUsadoEsteTurnoException();		
 		if (!this.trapped) {
 			Position previous;
 			Position next;
 			Surface nextSurface;
-			//int steps = 0;
 			while (position.hasNext(finalPosition)
 					&& this.stepsMovedInTurn < this.activeMode.getSpeed()) {
 				this.stepsMovedInTurn++;
@@ -128,6 +134,7 @@ public class Algoformer implements Content {
 						board.clearContent(previous);
 						board.add(this);
 						this.activeMode.crossSurface(nextSurface, this);
+						this.haveBeenUsedInTurn = true;
 					}catch(InvalidPositionException ex){
 						//Coliciono con otro Algoformer
 						break;
@@ -146,10 +153,13 @@ public class Algoformer implements Content {
 	}
 
 	public void shot(Algoformer algoformer) {
+		if(this.haveBeenUsedInTurn)
+			throw new AlgoformerUsadoEsteTurnoException();
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
 			algoformer.downHealthPoints(this.activeMode.getAttack());
+			this.haveBeenUsedInTurn = true;
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
 		}
@@ -173,7 +183,7 @@ public class Algoformer implements Content {
 	}
 
 	public void dobleDamage(Integer turns) {
-		this.turnsDobleDamage = turns;
+		this.turnsDobleDamage = turns + 1;
 		if (!isDobleDamage){
 			this.isDobleDamage = true;			
 			this.activeMode.changeAttackPower(2.0);
@@ -215,6 +225,7 @@ public class Algoformer implements Content {
 			}
 		}
 		this.stepsMovedInTurn = 0;
+		this.haveBeenUsedInTurn = false;
 	}
 
 	@Override

@@ -35,6 +35,7 @@ public class RatchetTest {
 	@Test
 	public void speedAlternalModeTest() {
 		ratchet.transform();
+		ratchet.notifyNextTurn();
 		board.add(ratchet);
 		ratchet.move(new Position(8,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),
