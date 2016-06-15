@@ -69,14 +69,6 @@ public class Algoformer implements Content {
 		return life;
 	}
 
-	public boolean dobleDamage() {
-		return isDobleDamage;
-	}
-
-	public boolean flash() {
-		return isFlash;
-	}
-
 	@Override
 	public Position getPosition() {
 		return this.position;
