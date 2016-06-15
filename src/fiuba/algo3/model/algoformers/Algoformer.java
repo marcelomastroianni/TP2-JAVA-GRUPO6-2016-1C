@@ -135,7 +135,9 @@ public class Algoformer implements Content {
 					}
 					try{
 						board.getContent(next).collideWithAlgoformer(this);
-						this.position = next;			
+						this.position = next;		
+						board.clearContent(previous);
+						board.add(this);
 					}catch(InvalidPositionException ex){
 						//Coliciono con otro Algoformer
 						break;

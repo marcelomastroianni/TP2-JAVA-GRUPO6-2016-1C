@@ -116,12 +116,8 @@ public class Game {
 		if (jugador.haveUsed(algoformer)){
 			throw new AlgoformerUsadoEsteTurnoException();
 		}
-		Position previousPosition = algoformer.getPosition();
 		algoformer.move(finalPosition, this.board);
-		this.board.clearContent(previousPosition);
-		this.board.add(algoformer);
 		jugador.useAlgoformer(algoformer);
-	
 	}
 
 	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
