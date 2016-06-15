@@ -24,54 +24,18 @@ public class SurfacePsionicStorm implements Surface {
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeHumanoid() {
-		return false;
+	public void crossedByModeHumanoid(Algoformer algoformer) {
+		
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeAlternalTerrestrial() {
-		return false;
+	public void crossedByModeAlternalTerrestrial(Algoformer algoformer) {
+		
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeAlternalAerial() {
-		return false;
+	public void crossedByModeAlternalAerial(Algoformer algoformer) {
+		algoformer.reduceAttackPowerFortyPercent();
 	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeHumanoid() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeAlternalTerrestrial() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeAlternalAerial() {
-		return false;
-	}
-
-	@Override
-	public boolean traps() {
-		return false;
-	}
-	
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeHumanoid() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeAlternalTerrestrial() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeAlternalAerial() {
-		return true;
-	}
-
 
 }

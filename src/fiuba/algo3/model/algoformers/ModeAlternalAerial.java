@@ -7,8 +7,6 @@ import fiuba.algo3.model.surfaces.Surface;
 
 public class ModeAlternalAerial extends Mode{
 	
-	
-
 	public ModeAlternalAerial(Integer attack, Integer strikingDistance, Integer speed) {
 		super(attack,strikingDistance,speed);
 	}
@@ -17,16 +15,12 @@ public class ModeAlternalAerial extends Mode{
 	public boolean canCrossSurface(Surface surface) {
 		return surface.canBeCrossedByModeAlternalAerial();
 	}
-
+	
 	@Override
-	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercentModeAlternalAerial();
+	public void crossSurface(Surface surface, Algoformer algoformer) {
+		surface.crossedByModeAlternalAerial(algoformer);
 	}
 
-	@Override
-	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercentModeAlternalAerial();
-	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -53,10 +47,4 @@ public class ModeAlternalAerial extends Mode{
 			return false;
 		return true;
 	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercent(Surface surface) {
-		return surface.reduceAttackPowerFortyPercentModeAlternalAerial();
-	}
-
 }

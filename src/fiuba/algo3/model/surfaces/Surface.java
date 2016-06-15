@@ -10,17 +10,7 @@ public interface Surface {
 	public boolean canBeCrossedByModeAlternalTerrestrial();
 	public boolean canBeCrossedByModeAlternalAerial();
 	
-	public boolean reduceSpeedFiftyPercentModeHumanoid();
-	public boolean reduceSpeedFiftyPercentModeAlternalTerrestrial();
-	public boolean reduceSpeedFiftyPercentModeAlternalAerial();
-	
-	public boolean reduceLifeFiftyPercentModeHumanoid();
-	public boolean reduceLifeFiftyPercentModeAlternalTerrestrial();
-	public boolean reduceLifeFiftyPercentModeAlternalAerial();
-		
-	public boolean reduceAttackPowerFortyPercentModeHumanoid();
-	public boolean reduceAttackPowerFortyPercentModeAlternalTerrestrial();
-	public boolean reduceAttackPowerFortyPercentModeAlternalAerial();
-	
-	public boolean traps();
+	public void crossedByModeHumanoid(Algoformer algoformer);
+	public void crossedByModeAlternalTerrestrial(Algoformer algoformer);
+	public void crossedByModeAlternalAerial(Algoformer algoformer);
 }

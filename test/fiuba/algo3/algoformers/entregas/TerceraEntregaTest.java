@@ -200,14 +200,17 @@ public class TerceraEntregaTest {
 		frenzy.move(new Position(2, 2), board);
 		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 20",
 				new Integer(20), frenzy.getActiveMode().getAttack());
+		frenzy.notifyNextTurn();
 		frenzy.move(new Position(2, 4), board);
 		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 20",
 				new Integer(20), frenzy.getActiveMode().getAttack());
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",
 				new Integer(2), frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
 		frenzy.move(new Position(2, 6), board);
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",
 				new Integer(6), frenzy.getActiveMode().getSpeed());
+		frenzy.notifyNextTurn();
 		frenzy.move(new Position(2, 12), board);
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",
 				new Integer(6), frenzy.getActiveMode().getSpeed());

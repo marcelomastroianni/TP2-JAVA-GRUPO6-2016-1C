@@ -21,12 +21,15 @@ public class AlgoformerTest {
 		algoformer.move(new Position(2,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",new Position(2,0),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,0),board);	
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",new Position(0,0),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,2),board);
 		Assert.assertEquals("Algoformer deberia haberse movido hacia abajo",new Position(0,2),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido hacia arriba",new Position(0,0),algoformer.getPosition());
 	}
@@ -41,12 +44,15 @@ public class AlgoformerTest {
 		algoformer.move(new Position(2,2),board);
 		Assert.assertEquals("Algoformer deberia haberse movido hacia abajo",new Position(2,2),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,4),board);
 		Assert.assertEquals("Algoformer deberia haberse movido hacia arriba",new Position(0,4),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(2,2),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",new Position(2,2),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",new Position(0,0),algoformer.getPosition());
 	}	
@@ -64,21 +70,27 @@ public class AlgoformerTest {
 		algoformer.move(new Position(3,0),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,0)",new Position(2,0),algoformer.getPosition());
 
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(3,0),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (3,0)",new Position(3,0),algoformer.getPosition());				
 						
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (5,2)",new Position(5,2),algoformer.getPosition());
 					
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (7,4)",new Position(7,4),algoformer.getPosition());
 				
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (9,6)",new Position(9,6),algoformer.getPosition());
 		
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (10,8)",new Position(10,8),algoformer.getPosition());
 		
+		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (10,10)",new Position(10,10),algoformer.getPosition());
 		
@@ -89,9 +101,11 @@ public class AlgoformerTest {
 		
 		Assert.assertEquals("Algoformer 2 deberia estar en su posicion inicial",new Position(50,50),algoformer2.getPosition());
 		
+		algoformer2.notifyNextTurn();
 		algoformer2.move(new Position(40,60),board);
 		Assert.assertEquals("Algoformer 2 deberia estar en la posicion (43,57)",new Position(43,57),algoformer2.getPosition());
 		
+		algoformer2.notifyNextTurn();
 		algoformer2.move(new Position(40,60),board);
 		Assert.assertEquals("Algoformer 2 deberia estar en la posicion (40,60)",new Position(40,60),algoformer2.getPosition());
 	}

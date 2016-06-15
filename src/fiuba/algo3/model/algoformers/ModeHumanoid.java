@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class ModeHumanoid extends Mode {
-
+	
 	public ModeHumanoid( Integer attack, Integer strikingDistance, Integer speed) {
 		super(attack,strikingDistance,speed);
 	}
@@ -17,13 +17,8 @@ public class ModeHumanoid extends Mode {
 	}
 	
 	@Override
-	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercentModeHumanoid();
-	}
-	
-	@Override
-	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercentModeHumanoid();
+	public void crossSurface(Surface surface, Algoformer algoformer) {
+		surface.crossedByModeHumanoid(algoformer);
 	}
 	
 	@Override
@@ -52,10 +47,4 @@ public class ModeHumanoid extends Mode {
 			return false;
 		return true;
 	}
-		
-	@Override
-	public boolean reduceAttackPowerFortyPercent(Surface surface) {
-		return surface.reduceAttackPowerFortyPercentModeHumanoid();
-	}
-	
 }

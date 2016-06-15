@@ -24,54 +24,17 @@ public class SurfaceThorn implements Surface {
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeHumanoid() {
-		return false;
+	public void crossedByModeHumanoid(Algoformer algoformer) {
+		algoformer.reduceLife();
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeAlternalTerrestrial() {
-		return false;
+	public void crossedByModeAlternalTerrestrial(Algoformer algoformer) {
+		algoformer.reduceLife();
 	}
 
 	@Override
-	public boolean reduceSpeedFiftyPercentModeAlternalAerial() {
-		return false;
+	public void crossedByModeAlternalAerial(Algoformer algoformer) {
 	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeHumanoid() {
-		return true;
-	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeAlternalTerrestrial() {
-		return true;
-	}
-
-	@Override
-	public boolean reduceLifeFiftyPercentModeAlternalAerial() {
-		return false;
-	}
-
-	@Override
-	public boolean traps() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeHumanoid() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeAlternalTerrestrial() {
-		return false;
-	}
-
-	@Override
-	public boolean reduceAttackPowerFortyPercentModeAlternalAerial() {
-		return false;
-	}
-
 
 }

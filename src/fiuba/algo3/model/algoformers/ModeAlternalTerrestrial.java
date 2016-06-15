@@ -6,7 +6,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class ModeAlternalTerrestrial extends Mode{
-
+	
 	public ModeAlternalTerrestrial( Integer attack, Integer strikingDistance, Integer speed) {
 		super(attack,strikingDistance,speed);
 	}
@@ -17,14 +17,10 @@ public class ModeAlternalTerrestrial extends Mode{
 	}
 	
 	@Override
-	public boolean reduceSpeedFiftyPercent(Surface surface) {
-		return surface.reduceSpeedFiftyPercentModeAlternalTerrestrial();
+	public void crossSurface(Surface surface, Algoformer algoformer) {
+		surface.crossedByModeAlternalTerrestrial(algoformer);
 	}
 
-	@Override
-	public boolean reduceLifeFiftyPercent(Surface surface) {
-		return surface.reduceLifeFiftyPercentModeAlternalTerrestrial();
-	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,10 +47,4 @@ public class ModeAlternalTerrestrial extends Mode{
 			return false;
 		return true;
 	}
-	
-	@Override
-	public boolean reduceAttackPowerFortyPercent(Surface surface) {
-		return surface.reduceAttackPowerFortyPercentModeAlternalTerrestrial();
-	}
-	
 }

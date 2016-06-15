@@ -15,8 +15,6 @@ public abstract class Mode {
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
-		
-
 	}
 	
 	public Integer getAttack(){
@@ -39,11 +37,5 @@ public abstract class Mode {
 
 	public abstract boolean canCrossSurface(Surface surface);
 	
-	public abstract boolean reduceSpeedFiftyPercent(Surface surface);
-	
-	public abstract boolean reduceLifeFiftyPercent(Surface actualSurface);
-	
-	public abstract boolean reduceAttackPowerFortyPercent(Surface surface);
-	
-	
+	public abstract void crossSurface(Surface surface,Algoformer algoformer);
 }

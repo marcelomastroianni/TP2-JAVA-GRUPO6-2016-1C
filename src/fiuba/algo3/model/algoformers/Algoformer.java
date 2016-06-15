@@ -25,6 +25,7 @@ public class Algoformer implements Content {
 	private Integer turnsDobleDamage = 0;
 	private boolean isFlash = false;
 	private Integer turnsFlash = 0;
+	private Integer stepsMovedInTurn = 0;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -112,10 +113,10 @@ public class Algoformer implements Content {
 			Position previous;
 			Position next;
 			Surface nextSurface;
-			int steps = 0;
+			//int steps = 0;
 			while (position.hasNext(finalPosition)
-					&& steps < this.activeMode.getSpeed()) {
-				steps++;
+					&& this.stepsMovedInTurn < this.activeMode.getSpeed()) {
+				this.stepsMovedInTurn++;
 				previous = this.position;
 				next = this.position.next(finalPosition);
 				nextSurface = board.getSurface(next);
@@ -125,26 +126,22 @@ public class Algoformer implements Content {
 						this.position = next;		
 						board.clearContent(previous);
 						board.add(this);
+						this.activeMode.crossSurface(nextSurface, this);
 					}catch(InvalidPositionException ex){
 						//Coliciono con otro Algoformer
 						break;
 					}
-					if (this.activeMode.reduceSpeedFiftyPercent(nextSurface)) {
-						steps++;
-					}
-					if (this.activeMode.reduceLifeFiftyPercent(nextSurface)) {
-						this.reduceLife();
-					}
-					if (this.activeMode
-							.reduceAttackPowerFortyPercent(nextSurface)) {
-						this.activeMode.changeAttackPower(0.6);
-					}
-					if (nextSurface.traps()) {
-						this.trap(3);
-					}					
 				}
 			}
 		}
+	}
+	
+	public void reduceSpeedFiftyPercent(){
+		this.stepsMovedInTurn++;
+	}
+	
+	public void reduceAttackPowerFortyPercent(){
+		this.activeMode.changeAttackPower(0.6);
 	}
 
 	public void shot(Algoformer algoformer) {
@@ -175,17 +172,17 @@ public class Algoformer implements Content {
 	}
 
 	public void dobleDamage(Integer turns) {
+		this.turnsDobleDamage = turns;
 		if (!isDobleDamage){
-			this.isDobleDamage = true;
-			this.turnsDobleDamage = turns;
+			this.isDobleDamage = true;			
 			this.activeMode.changeAttackPower(2.0);
 		}
 	}
 
 	public void haste(Integer turns) {
+		this.turnsFlash = turns + 1;
 		if (!isFlash){
 			this.isFlash = true;
-			this.turnsFlash = turns + 1;
 			this.activeMode.changeSpeed(3.0);
 		}
 	}
@@ -216,6 +213,7 @@ public class Algoformer implements Content {
 				this.activeMode.changeSpeed(0.33);
 			}
 		}
+		this.stepsMovedInTurn = 0;
 	}
 
 	@Override
