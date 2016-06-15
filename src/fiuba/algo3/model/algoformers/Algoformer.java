@@ -120,6 +120,15 @@ public class Algoformer implements Content {
 				next = this.position.next(finalPosition);
 				nextSurface = board.getSurface(next);
 				if (this.activeMode.canCrossSurface(nextSurface)) {
+					try{
+						board.getContent(next).collideWithAlgoformer(this);
+						this.position = next;		
+						board.clearContent(previous);
+						board.add(this);
+					}catch(InvalidPositionException ex){
+						//Coliciono con otro Algoformer
+						break;
+					}
 					if (this.activeMode.reduceSpeedFiftyPercent(nextSurface)) {
 						steps++;
 					}
@@ -132,16 +141,7 @@ public class Algoformer implements Content {
 					}
 					if (nextSurface.traps()) {
 						this.trap(3);
-					}
-					try{
-						board.getContent(next).collideWithAlgoformer(this);
-						this.position = next;		
-						board.clearContent(previous);
-						board.add(this);
-					}catch(InvalidPositionException ex){
-						//Coliciono con otro Algoformer
-						break;
-					}
+					}					
 				}
 			}
 		}

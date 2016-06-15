@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
@@ -20,6 +21,7 @@ import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoE
 
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 
 
@@ -494,5 +496,24 @@ public class GameTest {
 		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 	}
+	
+	@Test
+	public void testColicionarConAlgoformerNoGeneraUnEstadoInvadido() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException{
+		Game game = new Game();		
+		prepareGame(game);
+		game.getBoard().addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		game.getPlayer1().addAlgoformer(bumblebee);
+		game.getBoard().add(bumblebee);
+		Player jugador1 = game.getPlayer1();		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();		
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertEquals("Vida de Algoformer deberia ser 500",500, algofomerJugador1.getLife());
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertEquals("Superficie espina no deberia haber afecatado la vida ya que Algoformer no se pudo mover por estar ocupada la celda por otro Algoformer.",500, algofomerJugador1.getLife());
+	}
+	
 }
 
