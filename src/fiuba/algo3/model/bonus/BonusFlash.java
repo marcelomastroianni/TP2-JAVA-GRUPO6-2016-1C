@@ -1,7 +1,6 @@
-package fiuba.algo3.algoformers.bonus;
+package fiuba.algo3.model.bonus;
 
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.Bonus;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 

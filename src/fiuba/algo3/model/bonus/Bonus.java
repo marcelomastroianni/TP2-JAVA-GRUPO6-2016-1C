@@ -1,4 +1,4 @@
-package fiuba.algo3.model.algoformers;
+package fiuba.algo3.model.bonus;
 
 import fiuba.algo3.model.algoformers.board.Content;
 

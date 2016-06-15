@@ -1,10 +1,10 @@
 package fiuba.algo3.algoformers.entregas;
 
-import fiuba.algo3.algoformers.bonus.BonusFlash;
-import fiuba.algo3.algoformers.bonus.CanonBonus;
+import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.Bonus;
+import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 import org.junit.Assert;

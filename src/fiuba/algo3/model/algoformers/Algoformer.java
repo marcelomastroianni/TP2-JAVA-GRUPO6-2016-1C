@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
