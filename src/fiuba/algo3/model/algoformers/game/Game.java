@@ -103,11 +103,13 @@ public class Game {
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
-		if (!(content instanceof Algoformer)){
+		Algoformer algoformer;
+		
+		try{
+			algoformer = (Algoformer)content;
+		}catch(ClassCastException ex){
 			throw new UsuarioNoSeleccionoAlgoformerException();
 		}
-		
-		Algoformer algoformer = (Algoformer)content;
 		
 		if (!jugador.hasAlgoformer(algoformer)){
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
@@ -131,11 +133,13 @@ public class Game {
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
-		if (!(content instanceof Algoformer)){
+		Algoformer algoformer;
+		
+		try{
+			algoformer = (Algoformer)content;
+		}catch(ClassCastException ex){
 			throw new UsuarioNoSeleccionoAlgoformerException();
 		}
-		
-		Algoformer algoformer = (Algoformer)content;
 		
 		if (!jugador.hasAlgoformer(algoformer)){
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
@@ -147,11 +151,13 @@ public class Game {
 		
 		Content contentDestino = this.board.getContent(finalPosition);
 		
-		if (!(contentDestino instanceof Algoformer)){
+		Algoformer algoformerDestino;
+		
+		try{
+			algoformerDestino = (Algoformer)contentDestino;
+		}catch(ClassCastException ex){
 			throw new UsuarioNoSeleccionoAlgoformerAQuienDispararException();
 		}
-		
-		Algoformer algoformerDestino = (Algoformer)contentDestino;
 		
 		algoformer.shot(algoformerDestino);
 		jugador.useAlgoformer(algoformer);
@@ -168,12 +174,14 @@ public class Game {
 		if (!(this.turn.isActivePlayer(jugador))){
 			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
+	
+		Algoformer algoformer;
 		
-		if (!(content instanceof Algoformer)){
+		try{
+			algoformer = (Algoformer)content;
+		}catch(ClassCastException ex){
 			throw new UsuarioNoSeleccionoAlgoformerException();
 		}
-		
-		Algoformer algoformer = (Algoformer)content;
 		
 		if (!jugador.hasAlgoformer(algoformer)){
 			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
