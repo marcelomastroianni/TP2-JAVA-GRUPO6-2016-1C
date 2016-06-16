@@ -10,6 +10,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -27,7 +28,7 @@ public class SuperficieNubeTest {
 	}
 	
 	@Test
-	public void testCruzarSuperficieNube(){
+	public void testCruzarSuperficieNube() throws AlgoformerUsadoEsteTurnoException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieNube = new SurfaceCloud();				
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie nube", superficieNube.canBeCrossedByModeHumanoid());

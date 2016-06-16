@@ -20,6 +20,8 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
@@ -31,9 +33,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 1. Llenar una zona rocosa, verificar que todos los algoformers en todos
 	 * sus modos la atraviesen sin problemas
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test01() {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
 		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
@@ -150,9 +154,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 2. Llenar una zona pantano, verificar que en modo humanoide no se pueda
 	 * atravesar.
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test02() {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
@@ -184,9 +190,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 3. LLenar una zona pantano, verificar que en modo alterno las unidades
 	 * terrestres tardan el doble que rocoso
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test03() {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
@@ -222,9 +230,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 4. LLenar una zona pantano, verificar que las unidades aéreas las
 	 * atraviesan sin problemas
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test04() {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
@@ -243,9 +253,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 5. Llenar una zona de espinas verificar que todas las unidades terrestres
 	 * pierden un 5% de sus vida por cada casillero de estos que atraviesen
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test05() {
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -268,9 +280,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 6. LLenar una zona de espinas, verificar que unidades aéreas no tienen
 	 * problemas al atravesarlas.
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test06() {
+	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -288,9 +302,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 7. Llenar una zona con nubes, verificar que las unidades aéreas las
 	 * atraviesan sin problemas.
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test07() {
+	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceCloud()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceCloud()));
@@ -308,11 +324,13 @@ public class SegundaEntregaTest {
 	/**
 	 * 8. Llenar una zona de nebulosa de andrómeda, pasar una unidad aérea,
 	 * corroborar que quede 3 turnos atrapada, sin moverse
+	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException 
 	 */
 
 	@Test
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
-			JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
+			JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -368,9 +386,11 @@ public class SegundaEntregaTest {
 	/**
 	 * 9. Llenar una zona de tormenta psiónica, pasar un algoformer alterno
 	 * aéreo, ver que baje su capacidad de ataque
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test09() {
+	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
@@ -396,7 +416,7 @@ public class SegundaEntregaTest {
 	public void test10() {
 	}
 
-	private void prepareGame(Game game) {
+	private void prepareGame(Game game) throws InvalidPositionException {
 		Player player1 = new Player();
 		Player player2 = new Player();
 		Board tablero = new Board(10, 10);

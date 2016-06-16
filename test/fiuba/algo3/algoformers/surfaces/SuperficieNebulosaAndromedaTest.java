@@ -10,6 +10,8 @@ import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -24,7 +26,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda(){
+	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
@@ -41,7 +43,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 	
 	@Test
-	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda(){
+	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		

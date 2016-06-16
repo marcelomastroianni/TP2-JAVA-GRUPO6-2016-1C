@@ -9,10 +9,12 @@ import fiuba.algo3.model.algoformers.Mode;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class AlgoformerTest {
 	@Test
-	public void testMovement(){
+	public void testMovement() throws AlgoformerUsadoEsteTurnoException{
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -35,7 +37,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void diagonalMovementTest(){
+	public void diagonalMovementTest() throws AlgoformerUsadoEsteTurnoException{
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -58,7 +60,7 @@ public class AlgoformerTest {
 	}	
 	
 	@Test
-	public void testLargeDistanceMovement(){
+	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException{
 		Board board = new Board(100,100);
 		int speed1 = 2;
 		
@@ -111,7 +113,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testTransform(){
+	public void testTransform() throws AlgoformerUsadoEsteTurnoException{
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
@@ -126,7 +128,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testShootingToAnotherAlgoformer(){
+	public void testShootingToAnotherAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
@@ -144,7 +146,7 @@ public class AlgoformerTest {
 	}
 	
 	@Test
-	public void testAlgoformerCanNotShootSameTeamAlgoformer(){
+	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getBumblebee(new Position(2,0));
@@ -159,7 +161,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveOn(){
+	public void testDobleDamageActiveOn() throws InvalidPositionException{
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -172,7 +174,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveFor2Turns(){
+	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException{
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -192,7 +194,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithDobleDamge(){
+	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(5,5);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
@@ -216,7 +218,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testFlashActiveOn(){
+	public void testFlashActiveOn() throws InvalidPositionException{
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -229,7 +231,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMovementWithFlash(){
+	public void testMovementWithFlash() throws InvalidPositionException{
 
 		Board board = new Board(20,20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(5,7));
@@ -250,7 +252,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithFlash(){
+	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(20,20);
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(5,7));

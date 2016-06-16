@@ -42,7 +42,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void addContentTest(){
+	public void addContentTest() throws InvalidPositionException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(4,4));
 		board.add(optimusPrime);
 		Assert.assertTrue(board.isEmpty(firstPosition));
@@ -50,19 +50,19 @@ public class BoardTest {
 	}
 
 	@Test(expected= InvalidPositionException.class)
-	public void addContentInInvalidPositionTest(){
+	public void addContentInInvalidPositionTest() throws InvalidPositionException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(5,5));
 		board.add(optimusPrime);
 	}
 
 	@Test(expected= InvalidPositionException.class)
-	public void addContentInNegativePositionTest(){
+	public void addContentInNegativePositionTest() throws InvalidPositionException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(-5,0));
 		board.add(optimusPrime);
 	}
 	
 	@Test(expected= InvalidPositionException.class)
-	public void addContentInOccupiedPositionTest(){
+	public void addContentInOccupiedPositionTest() throws InvalidPositionException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,0));
 		board.add(optimusPrime);
 		Algoformer megatron= AlgoFormerFactory.getMegatron(new Position(2,0));
@@ -118,7 +118,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void removeAlgoforme(){
+	public void removeAlgoforme() throws InvalidPositionException{
 		Board tablero = new Board(5,5);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 1));
 		tablero.add(frenzy);

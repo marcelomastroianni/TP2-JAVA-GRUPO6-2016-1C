@@ -2,6 +2,8 @@ package fiuba.algo3.algoformers.entregas;
 
 import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.CanonBonus;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.bonus.Bonus;
@@ -17,9 +19,11 @@ public class TerceraEntregaTest {
 	 * enemigo, el algoformer captura el bonus y ataca al enemigo verificando
 	 * que causa el doble de daño durante 10 turnos. a. Repetir para el modo
 	 * alterno.
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test01() {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory
 				.getFrenzy(new Position(2, 0));
@@ -181,9 +185,11 @@ public class TerceraEntregaTest {
 	 * 4. Test boundary cases (Si ya tiene un bonus de un tipo que no pueda
 	 * agarrar otro del mismo tipo, Atrapar 2 bonus distintos verifcar ambos
 	 * comportamientos, etc…)
+	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException 
 	 */
 	@Test
-	public void test04() {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(20, 20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(2, 0));

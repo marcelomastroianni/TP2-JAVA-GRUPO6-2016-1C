@@ -42,21 +42,21 @@ public class Board {
 		return(getContent(position) instanceof Algoformer);
 	}
 
-	public void add(Content content) {
+	public void add(Content content) throws InvalidPositionException {
 		if(!isValidPosition(content.getPosition()) || (content instanceof Algoformer && isOccupiedPosition(content.getPosition()))){
 			throw new InvalidPositionException();
 		}
 		matrix.get(content.getPosition()).add(content);
 	}
 	
-	public void clearContent(Position position) {
+	public void clearContent(Position position) throws InvalidPositionException {
 		if(!isValidPosition(position)){
 			throw new InvalidPositionException();
 		}
 		matrix.get(position).add(new Nothing(position));
 	}
 
-	public void remove(Content content) {
+	public void remove(Content content) throws InvalidPositionException {
 		if(!isValidPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}

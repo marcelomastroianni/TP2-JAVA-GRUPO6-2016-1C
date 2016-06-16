@@ -9,6 +9,8 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class AlgoformerUnitTest {
 
@@ -20,7 +22,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void addToBoartTest() {
+	public void addToBoartTest() throws InvalidPositionException {
 		Algoformer algoformer = AlgoFormerFactory.getBumblebee(new Position(0, 0));
 		board.add(algoformer);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial", board.getContent(new Position(0, 0)),
@@ -34,7 +36,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void transformationTest() {
+	public void transformationTest() throws AlgoformerUsadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getFrenzy(new Position(0, 0));
 		algoformer.transform();
 		Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
@@ -48,14 +50,14 @@ public class AlgoformerUnitTest {
 	}
 	
 	@Test
-	public void alternalAerialModeTest(){
+	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException{
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		Assert.assertTrue(algoformer.getActiveMode() instanceof ModeAlternalAerial);
 	}
 	
 	@Test
-	public void reduceAttackPowerTest(){
+	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException{
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		algoformer.getActiveMode().changeAttackPower(0.6);
@@ -82,7 +84,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void twoEqualsAlgoformersInDiferentStatesTest(){
+	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException{
 		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer2.transform();

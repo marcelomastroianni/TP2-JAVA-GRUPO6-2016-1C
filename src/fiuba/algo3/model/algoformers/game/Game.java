@@ -24,7 +24,7 @@ public class Game {
 	int BOARD_Y_LENGTH = 20;
 	
 
-	public void init() {
+	public void init() throws InvalidPositionException {
 		this.player1 = new Player();
 		this.player2 = new Player();
 		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
@@ -92,7 +92,7 @@ public class Game {
 		this.turn.next();		
 	}
 	
-	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException {
+	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 	
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -118,7 +118,7 @@ public class Game {
 		algoformer.move(finalPosition, this.board);
 	}
 
-	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
+	public void dispararaAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -154,7 +154,7 @@ public class Game {
 		algoformer.shot(algoformerDestino);
 	}
 
-	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException {
+	public void transformaraAlgoformer(Player jugador, Position position) throws JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		
 		if (!this.board.isValidPosition(position)){
 			throw new InvalidPositionException();

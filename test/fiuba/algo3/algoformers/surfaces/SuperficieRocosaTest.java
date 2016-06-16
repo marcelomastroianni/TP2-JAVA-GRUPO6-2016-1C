@@ -12,6 +12,8 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -28,7 +30,7 @@ public class SuperficieRocosaTest {
 	}
 	
 	@Test
-	public void testCruzarSuperficieRocosa(){	
+	public void testCruzarSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException{	
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieRocosa = new SuperficieRocosa();				
 		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeHumanoid());
@@ -40,7 +42,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoHumanoideCruzaSuperficieRocosa() {
+	public void testModoHumanoideCruzaSuperficieRocosa() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
@@ -58,7 +60,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoAlternoCruzaSuperficieRocosa() {
+	public void testModoAlternoCruzaSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));

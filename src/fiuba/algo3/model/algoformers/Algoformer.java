@@ -82,7 +82,7 @@ public class Algoformer implements Content {
 		return team;
 	}
 
-	public void transform() {
+	public void transform() throws AlgoformerUsadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
@@ -110,7 +110,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * 0.95);
 	}
 
-	public void move(Position finalPosition, Board board) {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();		
 		if (!this.trapped) {
@@ -148,7 +148,7 @@ public class Algoformer implements Content {
 		this.activeMode.changeAttackPower(0.6);
 	}
 
-	public void shot(Algoformer algoformer) {
+	public void shot(Algoformer algoformer) throws AlgoformerUsadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		try {
@@ -164,7 +164,7 @@ public class Algoformer implements Content {
 	private void checkTeamSide(Algoformer algoformer)
 			throws InvalidStrikeException {
 		if (algoformer.getTeam().equals(this.team)) {
-			throw new InvalidStrikeException("You can't attack a partner.");
+			throw new InvalidStrikeException();
 		}
 
 	}
@@ -173,8 +173,7 @@ public class Algoformer implements Content {
 			throws InvalidStrikeException {
 		if (this.position.distance(algoformer.getPosition()) > this.activeMode
 				.getStrikingDistance()) {
-			throw new InvalidStrikeException(
-					"You can't attack objectives that far.");
+			throw new InvalidStrikeException();
 		}
 	}
 
@@ -239,7 +238,7 @@ public class Algoformer implements Content {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Content algoformer) {
+	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException {
 		throw new InvalidPositionException();
 	}
 }
