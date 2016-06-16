@@ -564,5 +564,18 @@ public class GameTest {
 		Assert.assertFalse("Bonus no deberia estar en la posicion (1,0)", game.getBoard().getContent(new Position(1,0)) instanceof Bonus);
 	}
 	
+	@Test(expected=UsuarioNoSeleccionoAlgoformerAQuienDispararException.class)
+	public void testUsuarioNoSeleccionoAlgoformerAQuienDisparar() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
+		Game game = new Game();		
+		prepareGame(game);
+		
+		Player jugador1 = game.getPlayer1();				
+		
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();			
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		game.dispararaAlgoformer(jugador1, new Position(0,0), new Position(4,0));				
+	}	
 }
 
