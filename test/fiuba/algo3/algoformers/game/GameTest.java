@@ -528,10 +528,8 @@ public class GameTest {
 		game.getBoard().add(cannonBonus);
 		
 		Player jugador1 = game.getPlayer1();		
-		Player jugador2 = game.getPlayer2();	
 	
-		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
-		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();			
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 		
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
@@ -541,6 +539,29 @@ public class GameTest {
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
 		Assert.assertEquals("El poder de ataque de algoformer deberia ser 100", new Integer(100), algofomerJugador1.getActiveMode().getAttack());
 		Assert.assertEquals("Bonus no deberia estar en la posicion (1,0)", new Nothing(new Position(1,0)), game.getBoard().getContent(new Position(1,0)));
+	}
+	
+	
+	@Test
+	public void testCapturarBonusDeUnaPosicionFinalLoBorraDelTablero() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException{
+		Game game = new Game();		
+		prepareGame(game);
+		
+		Bonus cannonBonus = CanonBonus.createCanonBonus(new Position(1,0));
+		game.getBoard().add(cannonBonus);
+		
+		Player jugador1 = game.getPlayer1();		
+	
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();		
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		
+		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertEquals("El poder de ataque de algoformer deberia ser 50", new Integer(50), algofomerJugador1.getActiveMode().getAttack());
+		Assert.assertTrue("Bonus deberia estar en la posicion (1,0)", game.getBoard().getContent(new Position(1,0)) instanceof Bonus);
+		game.moverAlgoformer(jugador1,new Position(0,0),new Position(1,0));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (1,0)",algofomerJugador1.getPosition().equals(new Position(1,0)));
+		Assert.assertEquals("El poder de ataque de algoformer deberia ser 100", new Integer(100), algofomerJugador1.getActiveMode().getAttack());
+		Assert.assertFalse("Bonus no deberia estar en la posicion (1,0)", game.getBoard().getContent(new Position(1,0)) instanceof Bonus);
 	}
 	
 }
