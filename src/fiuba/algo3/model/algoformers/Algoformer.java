@@ -29,6 +29,8 @@ public class Algoformer implements Content {
 	private Integer turnsFlash = 0;
 	private Integer stepsMovedInTurn = 0;
 	private boolean haveBeenUsedInTurn = false;
+	private boolean isImmaculateBubble = false;
+	private Integer turnsImmaculateBubble = 0;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -54,7 +56,9 @@ public class Algoformer implements Content {
 	}
 
 	public void downHealthPoints(Integer damage) {
-		this.life = this.life - damage;
+		if (!this.isImmaculateBubble){
+			this.life = this.life - damage;
+		}
 	}
 
 	public Mode getHumanoidMode() {
@@ -189,6 +193,13 @@ public class Algoformer implements Content {
 			this.activeMode.changeSpeed(3.0);
 		}
 	}
+	
+	public void protectWithImmaculateBubble(Integer turns) {
+		this.turnsImmaculateBubble = turns;
+		if (!this.isImmaculateBubble){
+			this.isImmaculateBubble = true;			
+		}
+	}
 
 	public void trap(Integer turns) {
 		this.trapped = true;
@@ -214,6 +225,13 @@ public class Algoformer implements Content {
 			if (this.turnsFlash.equals(new Integer(0))) {
 				this.isFlash = false;
 				this.activeMode.changeSpeed(0.33);
+			}
+		}
+		if (isImmaculateBubble) {
+			this.turnsImmaculateBubble -= 1;
+			if (this.turnsImmaculateBubble.equals(new Integer(0))) {
+				this.isImmaculateBubble = false;
+			
 			}
 		}
 		this.stepsMovedInTurn = 0;
