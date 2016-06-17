@@ -163,36 +163,44 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveOn() throws InvalidPositionException{
+	public void testDobleDamageActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(5,6));
 
 		board.add(bumblebee);
+		board.add(frenzy);
 
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, frenzy.getLife());
 		bumblebee.dobleDamage(2);
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
+		bumblebee.shot(frenzy);
+		Assert.assertEquals("La vida de Frenzy deberia ser 320", 320, frenzy.getLife());
 	}
 
 	@Test
-	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException{
+	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(5,6));
 
 		board.add(bumblebee);
+		board.add(frenzy);
 
 		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
 		bumblebee.dobleDamage(2);
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, frenzy.getLife());
+		bumblebee.shot(frenzy);
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(80), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("La vida de Frenzy deberia ser 320", 320, frenzy.getLife());
+		bumblebee.shot(frenzy);
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 80", new Integer(40), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("La vida de Frenzy deberia ser 240", 240, frenzy.getLife());
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
+		bumblebee.shot(frenzy);
+		Assert.assertEquals("La vida de Frenzy deberia ser 200", 200, frenzy.getLife());
 	}
 
 	@Test
@@ -200,23 +208,29 @@ public class AlgoformerTest {
 
 		Board board = new Board(5,5);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
-
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2,3));
 		board.add(optimusPrime);
+		board.add(megatron);
 
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.transform();
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.dobleDamage(2);
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 30", new Integer(30), optimusPrime.getActiveMode().getAttack());
+		Assert.assertEquals("la vida de Megatron deberia ser 550", 550, megatron.getLife());
+		optimusPrime.shot(megatron);
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("la vida de Megatron deberia ser 520", 520, megatron.getLife());
 		optimusPrime.transform();		
 		optimusPrime.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 100", new Integer(100), optimusPrime.getActiveMode().getAttack());
-		optimusPrime.notifyNextTurn();
-		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
-		optimusPrime.transform();
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
+		optimusPrime.shot(megatron);
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("la vida de Megatron deberia ser 420", 420, megatron.getLife());
+		optimusPrime.notifyNextTurn();
+		optimusPrime.shot(megatron);
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("la vida de Megatron deberia ser 370", 370, megatron.getLife());
 	}
 
 	@Test

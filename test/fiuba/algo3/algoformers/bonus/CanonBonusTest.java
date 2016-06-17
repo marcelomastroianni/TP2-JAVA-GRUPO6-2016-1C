@@ -69,12 +69,12 @@ public class CanonBonusTest {
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();			
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
-		
+
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		Assert.assertEquals("El poder de ataque de algoformer deberia ser 50", new Integer(50), algofomerJugador1.getActiveMode().getAttack());
 		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
-		Assert.assertEquals("El poder de ataque de algoformer deberia ser 100", new Integer(100), algofomerJugador1.getActiveMode().getAttack());
+		Assert.assertTrue("Algoformer deberia tener dobleDamage ", algofomerJugador1.isDobleDamage());
 	}
 	
 

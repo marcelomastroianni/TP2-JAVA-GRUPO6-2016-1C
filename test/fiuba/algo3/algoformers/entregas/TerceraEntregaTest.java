@@ -193,39 +193,38 @@ public class TerceraEntregaTest {
 
 		Board board = new Board(20, 20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(2, 0));
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(3, 4));
 
 		Bonus dobleCanon1 = CanonBonus.createCanonBonus(new Position(2, 1));
-		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 3));
-		Bonus flash1 = BonusFlash.createBonusFlash(new Position(2, 5));
+		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 5));
+		Bonus flash1 = BonusFlash.createBonusFlash(new Position(2, 3));
 		Bonus flash2 = BonusFlash.createBonusFlash(new Position(2, 7));
 
 		board.add(frenzy);
+		board.add(optimus);
 		board.add(dobleCanon1);
 		board.add(dobleCanon2);
 		board.add(flash1);
 		board.add(flash2);
 
-		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 10",
-				new Integer(10), frenzy.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 10", new Integer(10), frenzy.getActiveMode().getAttack());
 		frenzy.move(new Position(2, 2), board);
-		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 20",
-				new Integer(20), frenzy.getActiveMode().getAttack());
 		frenzy.notifyNextTurn();
+		Assert.assertEquals("la vida de Optimus deberia ser 500", 500, optimus.getLife());
+		frenzy.shot(optimus);
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("la vida de Optimus deberia ser 480", 480, optimus.getLife());
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 2", new Integer(2), frenzy.getActiveMode().getSpeed());
 		frenzy.move(new Position(2, 4), board);
-		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 20",
-				new Integer(20), frenzy.getActiveMode().getAttack());
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",
-				new Integer(2), frenzy.getActiveMode().getSpeed());
 		frenzy.notifyNextTurn();
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6", new Integer(6), frenzy.getActiveMode().getSpeed());
+		frenzy.shot(optimus);
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("la vida de Optimus deberia ser 460", 460, optimus.getLife());
 		frenzy.move(new Position(2, 6), board);
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",
-				new Integer(6), frenzy.getActiveMode().getSpeed());
 		frenzy.notifyNextTurn();
 		frenzy.move(new Position(2, 12), board);
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",
-				new Integer(6), frenzy.getActiveMode().getSpeed());
-		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 20",
-				new Integer(20), frenzy.getActiveMode().getAttack());
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 6", new Integer(6), frenzy.getActiveMode().getSpeed());
 	}
 
 }

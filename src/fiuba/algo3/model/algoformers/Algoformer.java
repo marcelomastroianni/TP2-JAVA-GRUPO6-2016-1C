@@ -61,6 +61,10 @@ public class Algoformer implements Content {
 		}
 	}
 
+	public boolean isDobleDamage() {
+		return isDobleDamage;
+	}
+
 	public Mode getHumanoidMode() {
 		return humanoidMode;
 	}
@@ -86,18 +90,12 @@ public class Algoformer implements Content {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
-			if (!this.isDobleDamage && !this.isFlash)
-				this.changeMode();
-			else if (this.isDobleDamage && !this.isFlash) {
-				this.activeMode.changeAttackPower(0.5);
-				this.changeMode();
-				this.activeMode.changeAttackPower(2.0);
-			}
 			if (this.isFlash && !this.isDobleDamage) {
 				this.activeMode.changeSpeed(0.33);
 				this.changeMode();
 				this.activeMode.changeSpeed(3.0);
-			}
+			}else
+				this.changeMode();
 		}
 		this.haveBeenUsedInTurn = true;
 	}
@@ -156,7 +154,11 @@ public class Algoformer implements Content {
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
-			algoformer.downHealthPoints(this.activeMode.getAttack());
+			if (this.isDobleDamage) {
+				algoformer.downHealthPoints((this.activeMode.getAttack() * 2));
+			}else{
+				algoformer.downHealthPoints(this.activeMode.getAttack());
+			}
 			this.haveBeenUsedInTurn = true;
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
@@ -180,10 +182,9 @@ public class Algoformer implements Content {
 	}
 
 	public void dobleDamage(Integer turns) {
-		this.turnsDobleDamage = turns + 1;
 		if (!isDobleDamage){
-			this.isDobleDamage = true;			
-			this.activeMode.changeAttackPower(2.0);
+			this.turnsDobleDamage = turns + 1;
+			this.isDobleDamage = true;
 		}
 	}
 
@@ -218,7 +219,6 @@ public class Algoformer implements Content {
 			this.turnsDobleDamage -= 1;
 			if (this.turnsDobleDamage.equals(new Integer(0))) {
 				this.isDobleDamage = false;
-				this.activeMode.changeAttackPower(0.5);
 			}
 		}
 		if (isFlash) {
