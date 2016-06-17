@@ -19,7 +19,6 @@ public class Algoformer implements Content {
 	private Mode humanoidMode;
 	private Mode alternalMode;
 	private Mode activeMode;
-	private List<Bonus> bonusList = new ArrayList<>();
 	private Team team;
 	private boolean trapped = false;
 	private Integer turnsTrapped = 0;
