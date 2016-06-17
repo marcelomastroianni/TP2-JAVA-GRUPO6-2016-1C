@@ -197,34 +197,49 @@ public class TerceraEntregaTest {
 
 		Bonus dobleCanon1 = CanonBonus.createCanonBonus(new Position(2, 1));
 		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 5));
+		Bonus dobleCanon3 = CanonBonus.createCanonBonus(new Position(2, 9));
 		Bonus flash1 = BonusFlash.createBonusFlash(new Position(2, 3));
-		Bonus flash2 = BonusFlash.createBonusFlash(new Position(2, 7));
+		Bonus flash2 = BonusFlash.createBonusFlash(new Position(2, 10));
+		Bonus flash3 = BonusFlash.createBonusFlash(new Position(2, 11));
+
 
 		board.add(frenzy);
 		board.add(optimus);
 		board.add(dobleCanon1);
 		board.add(dobleCanon2);
+		board.add(dobleCanon3);
 		board.add(flash1);
 		board.add(flash2);
+		board.add(flash3);
 
 		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 10", new Integer(10), frenzy.getActiveMode().getAttack());
-		frenzy.move(new Position(2, 2), board);
+		frenzy.move(new Position(2, 2), board);			//agarra un DobleDamage por 3 turnos
 		frenzy.notifyNextTurn();
 		Assert.assertEquals("la vida de Optimus deberia ser 500", 500, optimus.getLife());
 		frenzy.shot(optimus);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn();						//Le quedan 2 turnos de DobleDamage
 		Assert.assertEquals("la vida de Optimus deberia ser 480", 480, optimus.getLife());
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2", new Integer(2), frenzy.getActiveMode().getSpeed());
-		frenzy.move(new Position(2, 4), board);
-		frenzy.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6", new Integer(6), frenzy.getActiveMode().getSpeed());
+		frenzy.move(new Position(2, 4), board);			//agarra un Flash por 3 turnos
+		frenzy.notifyNextTurn();						//Le quedan 1 turnos de DobleDamage y 3 de Flash
 		frenzy.shot(optimus);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn();						//Se quedo sin turnos de DobleDamage y 2 de Flash
 		Assert.assertEquals("la vida de Optimus deberia ser 460", 460, optimus.getLife());
-		frenzy.move(new Position(2, 6), board);
-		frenzy.notifyNextTurn();
-		frenzy.move(new Position(2, 12), board);
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6", new Integer(6), frenzy.getActiveMode().getSpeed());
+		frenzy.move(new Position(2, 9), board);			//agarra 2 DobleDamage por 3 turnos
+		frenzy.notifyNextTurn();						//Le quedan 3 turnos de DobleDamage y 1 de Flash
+		Assert.assertEquals("Frenzy deberia estar en la posicion (2,9)",new Position(2,9),frenzy.getPosition());
+		optimus.move(new Position(3,6), board);
+		optimus.notifyNextTurn();
+		frenzy.shot(optimus);
+		frenzy.notifyNextTurn();						//Se quedo sin turnos de Flash y 2 de DobleDamage
+		Assert.assertEquals("la vida de Optimus deberia ser 440", 440, optimus.getLife());
+		frenzy.move(new Position(2,10), board);			//agarra un Flash por 3 turnos
+		frenzy.notifyNextTurn();						//Le quedan 1 turnos de DobleDamage y 3 de Flash
+		frenzy.move(new Position(2,12), board);			//agarra el segundo Flash
+		frenzy.notifyNextTurn();						//Se quedo sin turnos de DobleDamage y 2 de Flash
+		frenzy.move(new Position(2,20), board);
+		frenzy.notifyNextTurn();						//Le quedan 1 turnos de DobleDamage
+		Assert.assertEquals("Frenzy deberia estar en la posicion (2,18)",new Position(2,18),frenzy.getPosition());
 	}
 
 }

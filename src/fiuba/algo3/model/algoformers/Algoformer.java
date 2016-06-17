@@ -90,11 +90,6 @@ public class Algoformer implements Content {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
-			if (this.isFlash && !this.isDobleDamage) {
-				this.activeMode.changeSpeed(0.33);
-				this.changeMode();
-				this.activeMode.changeSpeed(3.0);
-			}else
 				this.changeMode();
 		}
 		this.haveBeenUsedInTurn = true;
@@ -115,8 +110,12 @@ public class Algoformer implements Content {
 			Position previous;
 			Position next;
 			Surface nextSurface;
+			int speed = this.activeMode.getSpeed();
+			if (isFlash){
+				speed = speed *3;
+			}
 			while (position.hasNext(finalPosition)
-					&& this.stepsMovedInTurn < this.activeMode.getSpeed()) {
+					&& this.stepsMovedInTurn < speed) {
 				this.stepsMovedInTurn++;
 				previous = this.position;
 				next = this.position.next(finalPosition);
@@ -189,10 +188,9 @@ public class Algoformer implements Content {
 	}
 
 	public void haste(Integer turns) {
-		this.turnsFlash = turns + 1;
 		if (!isFlash){
+			this.turnsFlash = turns + 1;
 			this.isFlash = true;
-			this.activeMode.changeSpeed(3.0);
 		}
 	}
 	
@@ -225,7 +223,6 @@ public class Algoformer implements Content {
 			this.turnsFlash -= 1;
 			if (this.turnsFlash.equals(new Integer(0))) {
 				this.isFlash = false;
-				this.activeMode.changeSpeed(0.33);
 			}
 		}
 		if (isImmaculateBubble) {

@@ -234,44 +234,50 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testFlashActiveOn() throws InvalidPositionException{
+	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(10,10);
-		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
 
 		board.add(bumblebee);
 
 		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", new Integer(2), bumblebee.getActiveMode().getSpeed());
 		bumblebee.haste(3);
-		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", new Integer(6), bumblebee.getActiveMode().getSpeed());
+		bumblebee.move(new Position(1,7), board);
+		Assert.assertEquals("Bumblebee deberia estar en la posicion (1,7)",new Position(1,7),bumblebee.getPosition());
+
 	}
 
 	@Test
-	public void testMovementWithFlash() throws InvalidPositionException{
+	public void testMovementWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(20,20);
-		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(5,7));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
 
 		board.add(frenzy);
 
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
 		frenzy.haste(3);
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
 		frenzy.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		frenzy.move(new Position(1,7), board);
 		frenzy.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		Assert.assertEquals("Frenzy deberia estar en la posicion (1,7)",new Position(1,7),frenzy.getPosition());
+		frenzy.move(new Position(7,7), board);
 		frenzy.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 6",new Integer(6) ,frenzy.getActiveMode().getSpeed());
+		Assert.assertEquals("Frenzy deberia estar en la posicion (7,7)",new Position(7,7),frenzy.getPosition());
+		frenzy.move(new Position(7,13), board);
 		frenzy.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
+		Assert.assertEquals("Frenzy deberia estar en la posicion (7,13)",new Position(7,13),frenzy.getPosition());
+		frenzy.move(new Position(13,13), board);
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("Frenzy deberia estar en la posicion (9,13)",new Position(9,13),frenzy.getPosition());
 	}
 
 	@Test
 	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(20,20);
-		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(5,7));
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
 
 		board.add(bonecrusher);
 
@@ -280,16 +286,19 @@ public class AlgoformerTest {
 		bonecrusher.notifyNextTurn();
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
 		bonecrusher.haste(3);
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 24",new Integer(24) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.notifyNextTurn();
+		bonecrusher.move(new Position(2,6), board);
+		bonecrusher.notifyNextTurn();
+		Assert.assertEquals("Bonecrusher deberia estar en la posicion (2,6)",new Position(2,6),bonecrusher.getPosition());
 		bonecrusher.transform();
-		bonecrusher.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 3",new Integer(3) ,bonecrusher.getActiveMode().getSpeed());
-		bonecrusher.notifyNextTurn();
-		bonecrusher.notifyNextTurn();
 		bonecrusher.notifyNextTurn();
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
-		bonecrusher.transform();
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
+		bonecrusher.move(new Position(4,6), board);
+		bonecrusher.notifyNextTurn();
+		Assert.assertEquals("Bonecrusher deberia estar en la posicion (4,6)",new Position(4,6),bonecrusher.getPosition());
+		bonecrusher.move(new Position(6,6), board);
+		bonecrusher.notifyNextTurn();
+		Assert.assertEquals("Bonecrusher deberia estar en la posicion (5,6)",new Position(5,6),bonecrusher.getPosition());
 	}
 
 	@Test
