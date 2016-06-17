@@ -1,5 +1,7 @@
 package fiuba.algo3.algoformers;
 
+import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -275,7 +277,22 @@ public class AlgoformerTest {
 		bonecrusher.transform();
 		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
 	}
-	
+
+	@Test
+	public void testCantCross() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+
+		Board board = new Board(10, 10);
+		board.addCell(new Cell(new Position(2, 2), new SurfaceCloud()));
+		Algoformer frency = AlgoFormerFactory.getFrenzy(new Position(2,1));
+
+		board.add(frency);
+		frency.transform();
+		frency.notifyNextTurn();
+		frency.move(new Position(2,7), board);
+		Assert.assertEquals("Frency deberia estar en la posicion 2,1",new Position(2,1), frency.getPosition());
+
+	}
+
 	
 }
 
