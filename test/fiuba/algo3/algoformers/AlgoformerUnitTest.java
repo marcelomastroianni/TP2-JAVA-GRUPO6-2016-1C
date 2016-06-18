@@ -45,7 +45,7 @@ public class AlgoformerUnitTest {
 	@Test
 	public void reduceLifeTest() {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
-		algoformer.reduceLife();
+		algoformer.reduceLifeFivePercent();
 		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",475,algoformer.getLife());
 	}
 	

@@ -25,12 +25,12 @@ public class SurfaceThorn implements Surface {
 
 	@Override
 	public void crossedByModeHumanoid(Algoformer algoformer) {
-		algoformer.reduceLife();
+		algoformer.reduceLifeFivePercent();
 	}
 
 	@Override
 	public void crossedByModeAlternalTerrestrial(Algoformer algoformer) {
-		algoformer.reduceLife();
+		algoformer.reduceLifeFivePercent();
 	}
 
 	@Override

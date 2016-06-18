@@ -98,7 +98,7 @@ public class Algoformer implements Content {
 		this.activeMode = (this.activeMode.equals(this.humanoidMode)) ? this.alternalMode : this.humanoidMode;
 	}
 
-	public void reduceLife() {
+	public void reduceLifeFivePercent() {
 		this.life = (int) (this.life * 0.95);
 	}
 

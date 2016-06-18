@@ -48,7 +48,7 @@ public class BonecrusherTest {
 	
 	@Test
 	public void reduceLifeTest() {
-		bonecrusher.reduceLife();
+		bonecrusher.reduceLifeFivePercent();
 		Assert.assertEquals("Algoformer deberia tener una vida de 475 puntos",190,bonecrusher.getLife());
 
 	}
