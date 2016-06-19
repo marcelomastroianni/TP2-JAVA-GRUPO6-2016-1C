@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers.game;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Nothing;
@@ -13,6 +14,11 @@ import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoExceptio
 import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.surfaces.SuperficiePantano;
+import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
+import fiuba.algo3.model.surfaces.SurfaceCloud;
+import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
+import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 public class Game {
 	Player player1;
@@ -61,6 +67,36 @@ public class Game {
 		this.board.add(megatron);
 		this.board.add(bonecrusher);
 		this.board.add(frenzy);				
+				
+		//Superficies
+		this.board.addCell(new Cell(new Position(2,2), new SurfaceThorn()));
+		this.board.addCell(new Cell(new Position(3,2), new SurfaceThorn()));
+		this.board.addCell(new Cell(new Position(4,2), new SurfaceThorn()));
+		this.board.addCell(new Cell(new Position(2,3), new SurfaceThorn()));
+		this.board.addCell(new Cell(new Position(3,3), new SurfaceThorn()));
+		this.board.addCell(new Cell(new Position(4,3), new SurfaceThorn()));
+		
+		this.board.addCell(new Cell(new Position(5,5), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(6,5), new SurfaceCloud()));
+		
+		this.board.addCell(new Cell(new Position(2,8), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
+		
+		this.board.addCell(new Cell(new Position(8,4), new SurfaceAndromedaNebula()));
+		this.board.addCell(new Cell(new Position(12,8), new SurfaceAndromedaNebula()));
+		
+		this.board.addCell(new Cell(new Position(7,0), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(8,0), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(9,0), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(10,0), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(7,1), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(8,1), new SurfacePsionicStorm()));
+		this.board.addCell(new Cell(new Position(9,1), new SurfacePsionicStorm()));
+		this.board.addCell(new Cell(new Position(10,1), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(7,2), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(8,2), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(9,2), new SurfaceCloud()));
+		this.board.addCell(new Cell(new Position(10,2), new SurfaceCloud()));
 	}
 	
 	public Player getPlayer1() {
