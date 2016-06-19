@@ -37,36 +37,14 @@ public class AlgoformerApp extends Application {
 	        
 	        final Game game = new Game();
 	        game.init();
-	        
+	       
 	        Canvas canvas = new Canvas(1400, 900);
 	        final GameView gameView = new GameView(game, canvas);
 	        
 	        final GameController gameController = new GameController(game, gameView); 
-	        
-	        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, 
-	                new EventHandler<MouseEvent>() {
-	                    @Override
-	                    public void handle(MouseEvent t) {
-	                    	int x_celda = (int) (t.getX() / ViewConstants.CELL_WIDTH);
-	                    	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);
-	                    	
-	                    	gameController.selectCell(new Position(x_celda,y_celda));
-	                    	System.out.println("(" + x_celda +  "," + y_celda +  ")");
-	                    	
-	                        if (t.getClickCount() >1) {
-	                        	try {
-	                    			game.moverAlgoformer( new Position(0,0), new Position(4,0));
-	                    			gameView.update();
-	                    		} catch (UsuarioNoSeleccionoAlgoformerException 
-	                    				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
-	                    				| AlgoformerUsadoEsteTurnoException e) {
-	                    			// TODO Auto-generated catch block
-	                    			e.printStackTrace();
-	                    		}
-	                        }  
-	                    }
-	                });
-	        
+	        	        
+	        gameController.registerClickEvents(canvas);
+	        	       	       
 	        Group canvasContainer = new Group();
 		    canvasContainer.getChildren().add(canvas);
 
