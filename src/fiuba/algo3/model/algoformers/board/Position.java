@@ -43,19 +43,19 @@ public class Position {
 			return false;
 		return true;
 	}
-	
+
 	public boolean isInRange(int xLength, int yLength){
 		return(Y>=0 && Y < yLength && X >=0  && X < xLength );
-		
-		
+
+
 	}
 
 
-	private Integer getX(){
+	public Integer getX(){
 		return X;
 	}
 
-	private Integer getY(){
+	public Integer getY(){
 		return Y;
 	}
 
@@ -66,27 +66,27 @@ public class Position {
 	public Position next(Position finalPosition) {
 		int xNext = 0;
 		int yNext = 0;
-		
+
 		if (this.getX()>finalPosition.getX()){
-			xNext = this.getX() - 1;		
+			xNext = this.getX() - 1;
 		}
 		if (this.getX()<finalPosition.getX()){
-			xNext = this.getX() + 1;		
+			xNext = this.getX() + 1;
 		}
 		if (this.getX()==finalPosition.getX()){
-			xNext = this.getX();		
+			xNext = this.getX();
 		}
-		
+
 		if (this.getY()>finalPosition.getY()){
-			yNext = this.getY() - 1;		
+			yNext = this.getY() - 1;
 		}
 		if (this.getY()<finalPosition.getY()){
-			yNext = this.getY() + 1;		
+			yNext = this.getY() + 1;
 		}
 		if (this.getY()==finalPosition.getY()){
-			yNext = this.getY();		
+			yNext = this.getY();
 		}
-		
+
 		return new Position(xNext,yNext);
 	}
 
