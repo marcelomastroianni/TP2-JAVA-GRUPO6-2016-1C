@@ -1,13 +1,20 @@
 package fiuba.algo3.view;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
+import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
+import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -22,37 +29,20 @@ public class GameView  {
 
 	private Canvas canvas;
 	private Game game;
-	
-
+	private Map<Position,CellView> listaCellViews = new HashMap<>();
     public GameView(Game game,Canvas canvas) {        
         this.game = game;
         this.canvas = canvas;
-        this.update();
+        this.update();      
     }
     
     public void update(){
-    	  this.drawCells();
-          this.drawAlgoformers();    
-          this.drawChispaSupreama();
+    	  this.drawCells();   
     }
     
-    private void drawAlgoformers(){    	     	
-    	 List<Algoformer> listaAlgoformersPlayer1 = this.game.getPlayer1().getAlgoformers();
-    	 for (Algoformer algoformer:listaAlgoformersPlayer1){
-    		 RobotView robotView = new RobotView(algoformer,canvas);
-             robotView.draw();
-    	 }
-    	 List<Algoformer> listaAlgoformersPlayer2 = this.game.getPlayer2().getAlgoformers();
-    	 for (Algoformer algoformer:listaAlgoformersPlayer2){
-    		 RobotView robotView = new RobotView(algoformer,canvas);
-             robotView.draw();
-    	 }
-    }
-    
-    private void drawChispaSupreama(){    	  
-    	ChispaSuprema chispaSuprema = (ChispaSuprema) this.game.getBoard().getContent(this.game.getBoard().getCentralPosition());    	
-    	ChispaSupremaView chispaSupremaView = new ChispaSupremaView(chispaSuprema, canvas);
-    	chispaSupremaView.draw();	
+    public void toggleSelectCell(Position position){
+    	listaCellViews.get(position).toggleSelect();
+		listaCellViews.get(position).update(); 
     }
     
     private void drawCells(){    	    
@@ -63,7 +53,8 @@ public class GameView  {
     	  Position position = (Position) thisEntry.getKey();
     	  Cell cell = (Cell) thisEntry.getValue();    	
     	  CellView cellView = new CellView(cell,canvas);
-    	  cellView.draw();
+    	  cellView.update();
+    	  listaCellViews.put(position, cellView);
     	}    
     }
 }

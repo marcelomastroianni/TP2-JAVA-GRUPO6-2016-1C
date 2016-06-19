@@ -1,5 +1,6 @@
 package fiuba.algo3.controller;
 
+import fiuba.algo3.controller.GameController.Action;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -15,24 +16,16 @@ public class MoveButtonHandler implements EventHandler<ActionEvent> {
 
 	GameView view;
 	Game game;
+	GameController controller;
 
-    public MoveButtonHandler(GameView view,Game game) {
+    public MoveButtonHandler(GameView view,Game game,GameController controller) {
         this.view = view;
         this.game = game;
+        this.controller = controller;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	try {
-			this.game.moverAlgoformer(game.getPlayer1(), new Position(0,0), new Position(4,0));
-			this.view.update();
-		} catch (UsuarioNoSeleccionoAlgoformerException | JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException
-				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
-				| AlgoformerUsadoEsteTurnoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    	
+    	this.controller.selectAction(Action.MOVERSE);    	    	    
     }
 }
