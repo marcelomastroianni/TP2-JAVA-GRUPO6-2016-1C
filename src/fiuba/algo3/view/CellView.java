@@ -16,10 +16,11 @@ public class CellView {
 	 }
 	 
 	 public void draw(){
+		 
 		GraphicsContext gc = canvas.getGraphicsContext2D();
     	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.jpg");    	
-    	gc.rect(cell.getPosition().getX()*50, cell.getPosition().getY()*50, 50, 50);
-    	gc.fillRect(cell.getPosition().getX()*50, cell.getPosition().getY()*50, 50, 50);
-    	gc.drawImage(imagen, cell.getPosition().getX()*50 + 1, cell.getPosition().getY()*50 + 1,48,48);
+    	gc.rect(cell.getPosition().getX()*ViewConstants.CELL_WIDTH, cell.getPosition().getY()*ViewConstants.CELL_HEIGHT, ViewConstants.CELL_WIDTH, ViewConstants.CELL_HEIGHT);
+    	gc.fillRect(cell.getPosition().getX()*ViewConstants.CELL_WIDTH, cell.getPosition().getY()*ViewConstants.CELL_HEIGHT, ViewConstants.CELL_WIDTH, ViewConstants.CELL_HEIGHT);
+    	gc.drawImage(imagen, cell.getPosition().getX()*ViewConstants.CELL_WIDTH + 1, cell.getPosition().getY()*ViewConstants.CELL_HEIGHT + 1,ViewConstants.CELL_WIDTH-2,ViewConstants.CELL_HEIGHT-2);
     }
 }

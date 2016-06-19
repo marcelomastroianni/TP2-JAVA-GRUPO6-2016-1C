@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import javafx.scene.canvas.Canvas;
@@ -27,7 +28,8 @@ public class PrincipalContainer extends BorderPane {
         this.game = game;
         this.initilizeCanvas();
         this.drawCells();
-        this.drawAlgoformers();        
+        this.drawAlgoformers();    
+        this.drawChispaSupreama();
     }
     
     private void drawAlgoformers(){    	     	
@@ -42,7 +44,13 @@ public class PrincipalContainer extends BorderPane {
              robotView.draw();
     	 }
     }
-
+    
+    private void drawChispaSupreama(){    	  
+    	ChispaSuprema chispaSuprema = (ChispaSuprema) this.game.getBoard().getContent(this.game.getBoard().getCentralPosition());    	
+    	ChispaSupremaView chispaSupremaView = new ChispaSupremaView(chispaSuprema, canvas);
+    	chispaSupremaView.draw();	
+    }
+    
     private void drawCells(){    	    
     	GraphicsContext gc = canvas.getGraphicsContext2D();
     	Iterator entries = this.game.getBoard().getCells().entrySet().iterator();

@@ -16,9 +16,23 @@ public class RobotView {
 
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-    	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
-    	int x = robot.getPosition().getX()*50;
-		int y =robot.getPosition().getY()*50;
-    	gc.drawImage(imagen,x ,y ,50,50);
+		Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
+		
+		if (this.robot.getNombre().equals("Optimus Prime"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
+		if (this.robot.getNombre().equals("Bumblebee"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/bumblebee.png");
+		if (this.robot.getNombre().equals("Ratchet"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/ratchet.png");
+		if (this.robot.getNombre().equals("Megatron"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/megatron.png");
+		if (this.robot.getNombre().equals("Bonecrusher"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/bonecrusher.png");
+		if (this.robot.getNombre().equals("Frenzy"))
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/frenzy.png");
+							
+    	int x = robot.getPosition().getX()*ViewConstants.CELL_WIDTH;
+		int y =robot.getPosition().getY()*ViewConstants.CELL_HEIGHT;
+    	gc.drawImage(imagen,x ,y ,ViewConstants.CELL_WIDTH,ViewConstants.CELL_HEIGHT);
 	}
 }
