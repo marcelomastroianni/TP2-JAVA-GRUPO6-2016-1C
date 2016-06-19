@@ -1,32 +1,33 @@
 package fiuba.algo3.view;
 
-
+import java.util.Iterator;
 import java.util.List;
-
-import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import java.util.Map.Entry;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-
-import javafx.scene.image.Image;
-
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-
 
 public class PrincipalContainer extends BorderPane {
 
 	private Canvas canvas;
 	private Game game;
 	
+	private void initilizeCanvas(){
+	    this.canvas = new Canvas(1400, 900);
+	    VBox contenedor = new VBox(canvas);
+	    this.setCenter(contenedor);
+	}
     public PrincipalContainer(Stage stage,Game game) {        
         this.game = game;
-        this.drawBoard();
-        this.drawAlgoformers();
+        this.initilizeCanvas();
+        this.drawCells();
+        this.drawAlgoformers();        
     }
     
     private void drawAlgoformers(){    	     	
@@ -35,7 +36,6 @@ public class PrincipalContainer extends BorderPane {
     		 RobotView robotView = new RobotView(algoformer,canvas);
              robotView.draw();
     	 }
-    	 
     	 List<Algoformer> listaAlgoformersPlayer2 = this.game.getPlayer2().getAlgoformers();
     	 for (Algoformer algoformer:listaAlgoformersPlayer2){
     		 RobotView robotView = new RobotView(algoformer,canvas);
@@ -43,23 +43,15 @@ public class PrincipalContainer extends BorderPane {
     	 }
     }
 
-    private void drawBoard() {
-    	 this.canvas = new Canvas(1400, 900);
-    	 GraphicsContext gc = canvas.getGraphicsContext2D();
-         for(int x= 0; x<=1350; x +=50){
-        	 for(int y = 0; y<=750; y+=50){
-        		 drawCell(gc, x, y);
-        	 }
-         }
-         VBox contenedor = new VBox(canvas);
-         this.setCenter(contenedor);
-
-    }
-    private void drawCell(GraphicsContext gc, int x, int y){
-    	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.jpg");
-    	
-    	gc.rect(x, y, 50, 50);
-    	gc.fillRect(x, y, 50, 50);
-    	gc.drawImage(imagen, x + 1, y + 1,48,48);
+    private void drawCells(){    	    
+    	GraphicsContext gc = canvas.getGraphicsContext2D();
+    	Iterator entries = this.game.getBoard().getCells().entrySet().iterator();
+    	while (entries.hasNext()) {
+    	  Entry thisEntry = (Entry) entries.next();
+    	  Position position = (Position) thisEntry.getKey();
+    	  Cell cell = (Cell) thisEntry.getValue();    	
+    	  CellView cellView = new CellView(cell,canvas);
+    	  cellView.draw();
+    	}    
     }
 }

@@ -13,6 +13,10 @@ public class Board {
 	Position centralPosition;
 	int xLength;
 	int yLength;
+	
+	public Map<Position,Cell> getCells(){
+		return matrix;
+	}
 
 	public Board( int rows,int columns){
 		this.matrix = new HashMap<>();

@@ -20,8 +20,8 @@ public class Game {
 	Board board;
 	Turn turn;
 	
-	int BOARD_X_LENGTH = 20;
-	int BOARD_Y_LENGTH = 20;
+	int BOARD_X_LENGTH = 14;
+	int BOARD_Y_LENGTH = 14;
 	
 
 	public void init() throws InvalidPositionException {

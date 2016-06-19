@@ -6,7 +6,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-
 public class CanvasAjustable extends Canvas{
 
 	public CanvasAjustable(double with, double height) {
@@ -27,7 +26,7 @@ public class CanvasAjustable extends Canvas{
 
             }
         });
-
+        
         heightProperty().addListener(listener);
     }
 
@@ -59,8 +58,4 @@ public class CanvasAjustable extends Canvas{
     public double prefHeight(double width) {
         return getHeight();
     }
-
 }
-
-
-

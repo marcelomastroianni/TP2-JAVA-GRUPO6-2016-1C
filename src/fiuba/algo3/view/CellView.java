@@ -13,18 +13,13 @@ public class CellView {
 	 public CellView(Cell cell, Canvas canvas){
 		 this.cell = cell;
 		 this.canvas = canvas;
-
 	 }
-
-	public void draw() {
+	 
+	 public void draw(){
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.png");
-		int x = cell.getPosition().getX()*50;
-		int y = cell.getPosition().getY()*50;		
-		gc.rect(x, y, 50, 50);
-    	gc.fillRect(x, y, 50, 50);
-    	gc.drawImage(imagen, x + 1, y + 1,48,48);
-	}
-
-
+    	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.jpg");    	
+    	gc.rect(cell.getPosition().getX()*50, cell.getPosition().getY()*50, 50, 50);
+    	gc.fillRect(cell.getPosition().getX()*50, cell.getPosition().getY()*50, 50, 50);
+    	gc.drawImage(imagen, cell.getPosition().getX()*50 + 1, cell.getPosition().getY()*50 + 1,48,48);
+    }
 }
