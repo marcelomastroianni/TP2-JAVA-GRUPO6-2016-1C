@@ -1,9 +1,12 @@
 package fiuba.algo3.view;
 
 
+import java.util.List;
+
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -18,11 +21,29 @@ import javafx.stage.Stage;
 public class PrincipalContainer extends BorderPane {
 
 	private Canvas canvas;
-    public PrincipalContainer(Stage stage) {
-        this.createBoard();
+	private Game game;
+	
+    public PrincipalContainer(Stage stage,Game game) {        
+        this.game = game;
+        this.drawBoard();
+        this.drawAlgoformers();
+    }
+    
+    private void drawAlgoformers(){    	     	
+    	 List<Algoformer> listaAlgoformersPlayer1 = this.game.getPlayer1().getAlgoformers();
+    	 for (Algoformer algoformer:listaAlgoformersPlayer1){
+    		 RobotView robotView = new RobotView(algoformer,canvas);
+             robotView.draw();
+    	 }
+    	 
+    	 List<Algoformer> listaAlgoformersPlayer2 = this.game.getPlayer2().getAlgoformers();
+    	 for (Algoformer algoformer:listaAlgoformersPlayer2){
+    		 RobotView robotView = new RobotView(algoformer,canvas);
+             robotView.draw();
+    	 }
     }
 
-    private void createBoard() {
+    private void drawBoard() {
     	 this.canvas = new Canvas(1400, 900);
     	 GraphicsContext gc = canvas.getGraphicsContext2D();
          for(int x= 0; x<=1350; x +=50){
@@ -30,7 +51,6 @@ public class PrincipalContainer extends BorderPane {
         		 drawCell(gc, x, y);
         	 }
          }
-         this.drawRobot();
          VBox contenedor = new VBox(canvas);
          this.setCenter(contenedor);
 
@@ -41,11 +61,5 @@ public class PrincipalContainer extends BorderPane {
     	gc.rect(x, y, 50, 50);
     	gc.fillRect(x, y, 50, 50);
     	gc.drawImage(imagen, x + 1, y + 1,48,48);
-    }
-
-    private void drawRobot(){
-    	 Algoformer robot = AlgoFormerFactory.getOptimusPrime(new Position(5, 5));
-    	 RobotView robotView = new RobotView(robot,canvas);
-         robotView.draw();
     }
 }
