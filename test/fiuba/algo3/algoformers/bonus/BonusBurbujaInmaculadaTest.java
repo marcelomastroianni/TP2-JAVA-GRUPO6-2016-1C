@@ -73,7 +73,7 @@ public class BonusBurbujaInmaculadaTest {
 		
 		//Turno Jugador 1
 				
-		game.moverAlgoformer(jugador1,new Position(0,0),new Position(4,0));
+		game.moverAlgoformer(new Position(0,0),new Position(4,0));
 		
 		Assert.assertTrue("Algoformer 1 deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
 		Assert.assertTrue("Algoformer 2 deberia estar en la posicion (3,0)",algofomerJugador2.getPosition().equals(new Position(3,0)));

@@ -18,6 +18,7 @@ public class Player {
 	}
 
 	public void addAlgoformer(Algoformer algoformer) {
+		algoformer.setPlayer(this);
 		this.algoformersList.add(algoformer);		
 	}
 

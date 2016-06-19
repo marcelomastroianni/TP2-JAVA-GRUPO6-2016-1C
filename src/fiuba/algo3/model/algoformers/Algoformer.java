@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -30,6 +31,7 @@ public class Algoformer implements Content {
 	private boolean haveBeenUsedInTurn = false;
 	private boolean isImmaculateBubble = false;
 	private Integer turnsImmaculateBubble = 0;
+	private Player player;
 
 	public enum Team {
 		AUTOBOTS, DECEPTICONS;
@@ -45,6 +47,13 @@ public class Algoformer implements Content {
 		this.position = position;
 		this.team = team;
 	}
+	
+	public void setPlayer(Player player){
+		this.player = player;
+	}
+	public Player getPlayer(){
+		return this.player;
+	}	
 
 	public String getNombre() {
 		return this.name;

@@ -130,16 +130,14 @@ public class Game {
 		this.turn.next();		
 	}
 	
-	public void moverAlgoformer(Player jugador, Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 	
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
 		}
 		
 		Content content = this.board.getContent(initialPosition);
-		if (!(this.turn.isActivePlayer(jugador))){
-			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
-		}
+	
 		
 		Algoformer algoformer;
 		
@@ -149,8 +147,8 @@ public class Game {
 			throw new UsuarioNoSeleccionoAlgoformerException();
 		}
 		
-		if (!jugador.hasAlgoformer(algoformer)){
-			throw new JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException();
+		if (!(this.turn.isActivePlayer(algoformer.getPlayer()))){
+			throw new JugadorNoPuedeJugarCuandoNoEsSuTurnoException();
 		}
 		
 		algoformer.move(finalPosition, this.board);

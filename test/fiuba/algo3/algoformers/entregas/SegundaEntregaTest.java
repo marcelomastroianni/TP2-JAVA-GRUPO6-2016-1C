@@ -343,14 +343,14 @@ public class SegundaEntregaTest {
 		megatron.notifyNextTurn();
 
 		// Turno jugador 1 se mueve a la nebulosa andromeda
-		game.moverAlgoformer(jugador1, new Position(0, 0), new Position(1, 0));
+		game.moverAlgoformer( new Position(0, 0), new Position(1, 0));
 		game.nextTurn();
 
 		// Turno jugador 2
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer(jugador1, new Position(1, 0), new Position(1, 1));
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado el 1° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -359,7 +359,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer(jugador1, new Position(1, 0), new Position(1, 1));
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado 2° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -368,7 +368,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer(jugador1, new Position(1, 0), new Position(1, 1));
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado 3° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -376,7 +376,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer(jugador1, new Position(1, 0), new Position(1, 1));
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer finalmente se movio", new Position(1, 1),
 				megatron.getPosition());
 		game.nextTurn();

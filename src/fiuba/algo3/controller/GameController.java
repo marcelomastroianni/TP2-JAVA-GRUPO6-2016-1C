@@ -59,8 +59,8 @@ public class GameController {
 	    		if (this.action == Action.MOVERSE){
 	    			try {
 	        			
-	    				game.moverAlgoformer(game.getPlayer1(), positionSelected1, positionSelected2);
-	    			} catch (UsuarioNoSeleccionoAlgoformerException | JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException
+	    				game.moverAlgoformer( positionSelected1, positionSelected2);
+	    			} catch (UsuarioNoSeleccionoAlgoformerException 
 	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
 	    					| AlgoformerUsadoEsteTurnoException e) {
 	    				// TODO Auto-generated catch block

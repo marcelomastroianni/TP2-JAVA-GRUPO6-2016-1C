@@ -55,9 +55,9 @@ public class AlgoformerApp extends Application {
 	                    	
 	                        if (t.getClickCount() >1) {
 	                        	try {
-	                    			game.moverAlgoformer(game.getPlayer1(), new Position(0,0), new Position(4,0));
+	                    			game.moverAlgoformer( new Position(0,0), new Position(4,0));
 	                    			gameView.update();
-	                    		} catch (UsuarioNoSeleccionoAlgoformerException | JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException
+	                    		} catch (UsuarioNoSeleccionoAlgoformerException 
 	                    				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
 	                    				| AlgoformerUsadoEsteTurnoException e) {
 	                    			// TODO Auto-generated catch block
