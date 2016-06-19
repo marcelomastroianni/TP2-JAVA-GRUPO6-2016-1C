@@ -8,28 +8,32 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class PrincipalContainer extends BorderPane {
+public class GameView  {
 
 	private Canvas canvas;
 	private Game game;
 	
-	private void initilizeCanvas(){
-	    this.canvas = new Canvas(1400, 900);
-	    VBox contenedor = new VBox(canvas);
-	    this.setCenter(contenedor);
-	}
-    public PrincipalContainer(Stage stage,Game game) {        
+
+    public GameView(Game game,Canvas canvas) {        
         this.game = game;
-        this.initilizeCanvas();
-        this.drawCells();
-        this.drawAlgoformers();    
-        this.drawChispaSupreama();
+        this.canvas = canvas;
+        this.update();
+    }
+    
+    public void update(){
+    	  this.drawCells();
+          this.drawAlgoformers();    
+          this.drawChispaSupreama();
     }
     
     private void drawAlgoformers(){    	     	

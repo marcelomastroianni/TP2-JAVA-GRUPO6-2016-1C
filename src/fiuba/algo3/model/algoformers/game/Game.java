@@ -76,6 +76,8 @@ public class Game {
 		this.board.addCell(new Cell(new Position(3,3), new SurfaceThorn()));
 		this.board.addCell(new Cell(new Position(4,3), new SurfaceThorn()));
 		
+		this.board.addCell(new Cell(new Position(2,0), new SurfaceCloud()));
+		
 		this.board.addCell(new Cell(new Position(5,5), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(6,5), new SurfaceCloud()));
 		
