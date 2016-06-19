@@ -302,7 +302,7 @@ public class GameTest {
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());        
 		//Turno jugador 1
-		game.transformaraAlgoformer(jugador1,new Position(0,0));
+		game.transformaraAlgoformer(new Position(0,0));
 		
 		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser humanoide", algofomerJugador2.getActiveMode(), algofomerJugador2.getHumanoidMode());
@@ -310,7 +310,7 @@ public class GameTest {
 		game.nextTurn();
 		
 		//Turno jugador 2
-		game.transformaraAlgoformer(jugador2,new Position(1,0));
+		game.transformaraAlgoformer(new Position(1,0));
 		
 		 
 		Assert.assertEquals("Modo algoformer 1 deberia ser alterno", algofomerJugador1.getActiveMode(), algofomerJugador1.getAlternalMode());
@@ -319,7 +319,7 @@ public class GameTest {
 		game.nextTurn();
 		
 		//Turno jugador 1
-		game.transformaraAlgoformer(jugador1,new Position(0,0));
+		game.transformaraAlgoformer(new Position(0,0));
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
 	}
@@ -397,7 +397,7 @@ public class GameTest {
 		game.nextTurn();
 		
 		//Turno jugador 2
-		game.transformaraAlgoformer(jugador2,new Position(10,0));
+		game.transformaraAlgoformer(new Position(10,0));
 		
 		Assert.assertEquals("Modo algoformer 1 deberia ser humanoide", algofomerJugador1.getActiveMode(), algofomerJugador1.getHumanoidMode());
 		Assert.assertEquals("Modo algoformer 2 deberia ser alterno", algofomerJugador2.getActiveMode(), algofomerJugador2.getAlternalMode());
@@ -464,7 +464,7 @@ public class GameTest {
 		
 		//Turno jugador 
 		game.moverAlgoformer(new Position(0,2),new Position(1,2));
-		game.transformaraAlgoformer(jugador1,new Position(1,2));
+		game.transformaraAlgoformer(new Position(1,2));
 	}
 
 	@Test(expected=InvalidPositionException.class)

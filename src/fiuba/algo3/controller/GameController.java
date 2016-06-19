@@ -40,9 +40,9 @@ public class GameController {
 	    		if (this.action == Action.TRANSFORMARSE){
 	    				        			
 	    			try {
-						game.transformaraAlgoformer(game.getPlayer1(), positionSelected1);
+						game.transformaraAlgoformer(positionSelected1);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-							| JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException | InvalidPositionException
+						 | InvalidPositionException
 							| AlgoformerUsadoEsteTurnoException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
