@@ -25,7 +25,6 @@ public class RobotView {
     	int x = robot.getPosition().getX()*50;
 		int y =robot.getPosition().getY()*50;
     	gc.drawImage(imagen,x ,y ,50,50);
-
 	}
 
 

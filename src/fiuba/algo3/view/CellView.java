@@ -20,9 +20,10 @@ public class CellView {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.png");
 		int x = cell.getPosition().getX()*50;
-		int y =cell.getPosition().getY()*50;
-		gc.drawImage(imagen,x ,y ,50,50);
-
+		int y =cell.getPosition().getY()*50;		
+		gc.rect(x, y, 50, 50);
+    	gc.fillRect(x, y, 50, 50);
+    	gc.drawImage(imagen, x + 1, y + 1,48,48);
 	}
 
 

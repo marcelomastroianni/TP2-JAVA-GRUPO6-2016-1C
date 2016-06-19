@@ -37,11 +37,14 @@ public class PrincipalContainer extends BorderPane {
     }
     private void drawCell(GraphicsContext gc, int x, int y){
     	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/roca.jpg");
-    	gc.drawImage(imagen, x, y,50,50);
+    	
+    	gc.rect(x, y, 50, 50);
+    	gc.fillRect(x, y, 50, 50);
+    	gc.drawImage(imagen, x + 1, y + 1,48,48);
     }
 
     private void drawRobot(){
-    	Algoformer robot = AlgoFormerFactory.getOptimusPrime(new Position(5, 5));
+    	 Algoformer robot = AlgoFormerFactory.getOptimusPrime(new Position(5, 5));
     	 RobotView robotView = new RobotView(robot,canvas);
          robotView.draw();
     }
