@@ -1,5 +1,6 @@
 package fiuba.algo3.view;
 
+import fiuba.algo3.controller.AttackButtonHandler;
 import fiuba.algo3.controller.GameController;
 import fiuba.algo3.controller.MoveButtonHandler;
 import fiuba.algo3.controller.NextTurnButtonHandler;
@@ -85,8 +86,12 @@ public class AlgoformerApp extends Application {
 	        TransformButtonHandler transformButtonHandler = new TransformButtonHandler(gameView, game, gameController);
 	        transformButton.setOnAction(transformButtonHandler);
 	        
-	        
-	        HBox contenedorHorizontal = new HBox(moveButton, transformButton,nextTurnButton);
+	        Button attackButton = new Button();
+	        attackButton.setText("Atacar");
+	        AttackButtonHandler attackButtonHandler = new AttackButtonHandler(gameView, game, gameController);
+	        attackButton.setOnAction(attackButtonHandler);
+	        	        
+	        HBox contenedorHorizontal = new HBox(moveButton, transformButton, attackButton, nextTurnButton);
 	        contenedorHorizontal.setSpacing(10);
 	        
 		    VBox contenedorPrincipal = new VBox(contenedorHorizontal, canvasContainer);
