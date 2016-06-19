@@ -5,7 +5,6 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 import fiuba.algo3.view.GameView;
@@ -70,9 +69,8 @@ public class GameController {
 	    		
 	    		if (this.action == Action.ATACAR){    			 
 					try {
-						game.dispararaAlgoformer(game.getPlayer1(), positionSelected1, positionSelected2);
+						game.dispararaAlgoformer(positionSelected1, positionSelected2);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-							| JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException
 							| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
 							| AlgoformerUsadoEsteTurnoException e) {
 						// TODO Auto-generated catch block

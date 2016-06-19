@@ -1,21 +1,16 @@
 package fiuba.algo3.algoformers.entregas;
 
 import static org.junit.Assert.*;
-
 import java.util.List;
-
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceThorn;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
-import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
@@ -23,7 +18,6 @@ import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
@@ -330,7 +324,7 @@ public class SegundaEntregaTest {
 
 	@Test
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
-			JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException {
+			 JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException {
 		Game game = new Game();
 		prepareGame(game);
 

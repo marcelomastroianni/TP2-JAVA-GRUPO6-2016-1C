@@ -11,7 +11,6 @@ import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 import org.junit.Assert;
@@ -50,7 +49,7 @@ public class BonusBurbujaInmaculadaTest {
 	}
 	
 	@Test
-	public void testCapturarBonusBurbujaInmaculada() throws JugadorNoPuedeUtilizarAlgoformerQueNoEsSuyoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testCapturarBonusBurbujaInmaculada() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Game game = new Game();		
 		prepareGame(game);
 		
@@ -84,7 +83,7 @@ public class BonusBurbujaInmaculadaTest {
 		game.nextTurn();
 		//Turno Jugador 2
 		
-		game.dispararaAlgoformer(jugador2, new Position(3,0), new Position(2,0));
+		game.dispararaAlgoformer( new Position(3,0), new Position(2,0));
 		
 		Assert.assertEquals("Vida de Algoformer 1 deberia ser 500", 500, algofomerJugador1.getLife());
 		Assert.assertEquals("Vida de Algoformer 2 deberia ser 550", 550, algofomerJugador2.getLife());
@@ -95,7 +94,7 @@ public class BonusBurbujaInmaculadaTest {
 		game.nextTurn();
 		//Turno Jugador 2
 		
-		game.dispararaAlgoformer(jugador2, new Position(3,0), new Position(2,0));
+		game.dispararaAlgoformer( new Position(3,0), new Position(2,0));
 		
 		Assert.assertEquals("Vida de Algoformer 1 deberia ser 500", 500, algofomerJugador1.getLife());
 		Assert.assertEquals("Vida de Algoformer 2 deberia ser 550", 550, algofomerJugador2.getLife());
@@ -107,7 +106,7 @@ public class BonusBurbujaInmaculadaTest {
 		game.nextTurn();
 		//Turno Jugador 2
 		
-		game.dispararaAlgoformer(jugador2, new Position(3,0), new Position(2,0));
+		game.dispararaAlgoformer( new Position(3,0), new Position(2,0));
 		
 		Assert.assertEquals("Vida de Algoformer 1 deberia ser 490", 490, algofomerJugador1.getLife());
 		Assert.assertEquals("Vida de Algoformer 2 deberia ser 550", 550, algofomerJugador2.getLife());
