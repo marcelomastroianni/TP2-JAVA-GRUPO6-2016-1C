@@ -31,6 +31,7 @@ public class GameController {
 	
 	public void selectAction(Action action){
 		this.action = action;
+		this.view.updateAction(this.action);
 	}
 	
 	public void selectCell(Position position){          	 
@@ -92,9 +93,12 @@ public class GameController {
 		}		 		     											
 	}
 
+
+	
 	public void nextTurn() {
 		this.clearSelectedCells();
 		this.game.nextTurn();		
+		this.view.updateTurn();				
 	}
 
 	public void dobleClickCell(Position position) {

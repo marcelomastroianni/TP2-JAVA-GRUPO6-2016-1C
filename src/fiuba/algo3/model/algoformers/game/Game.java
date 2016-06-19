@@ -110,6 +110,17 @@ public class Game {
 	public Board getBoard() {
 		return this.board;
 	}
+	
+	public Turn getTurn() {
+		return this.turn;
+	}
+	
+	public String getActivePlayer(){
+		if(this.getTurn().isActivePlayer(this.getPlayer1()))
+			return "Jugador 1";
+		else
+			return "Jugador 2";
+	}
 		
 	public void setBoard(Board board){
 		this.board = board;

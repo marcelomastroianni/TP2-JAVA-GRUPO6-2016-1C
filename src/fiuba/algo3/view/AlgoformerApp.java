@@ -18,7 +18,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -70,13 +72,44 @@ public class AlgoformerApp extends Application {
 	        	        
 	        HBox contenedorHorizontal = new HBox(moveButton, transformButton, attackButton, nextTurnButton);
 	        contenedorHorizontal.setSpacing(10);
+	        contenedorHorizontal.setPadding(new Insets(20));
 	        
 		    VBox contenedorPrincipal = new VBox(contenedorHorizontal, canvasContainer);
 	        contenedorPrincipal.setSpacing(10);
 	        contenedorPrincipal.setPadding(new Insets(20));
+	        
+	     
+
+	        Label lblActionSelectedTitle = new Label();
+	        lblActionSelectedTitle.setText("Accion Seleccionada:");
+
+	        Label lblActionSelected = new Label();
+	        lblActionSelected.setText("");
+	        
+	        Label lblTurnoTitle = new Label();
+	        lblTurnoTitle.setText("Turno Jugador:");
+
+	        Label lblTurno = new Label();
+	        lblTurno.setText("");
+	        
+	     	    
+	        gameView.setLblActionSelected(lblActionSelected);
+	        gameView.setLblTurno(lblTurno);
+	        
+	        gameView.updateTurn();
+	        
+	        VBox leftPane = new VBox(lblActionSelectedTitle,lblActionSelected,lblTurnoTitle,lblTurno);
+	        leftPane.setSpacing(10);
+	        leftPane.setPadding(new Insets(20));
+	        
+	        BorderPane borderPane = new BorderPane();
+	        
+	        borderPane.setLeft(leftPane);
+	        borderPane.setTop(contenedorHorizontal);
+	        borderPane.setCenter(canvasContainer);
 	        	        	        	        	      
 	        //PrincipalContainer contenedorPrincipal = new PrincipalContainer(stage,game);	
-	        Scene playScene = new Scene(contenedorPrincipal, 640, 480);
+	        Scene playScene = new Scene(borderPane, 640, 480);
 
 	        stage.setScene(playScene);
 	        stage.setFullScreen(true);

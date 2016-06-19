@@ -4,22 +4,47 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import fiuba.algo3.controller.GameController.Action;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 
 public class GameView  {
 
 	private Canvas canvas;
 	private Game game;
 	private Map<Position,CellView> listaCellViews = new HashMap<>();
-    public GameView(Game game,Canvas canvas) {        
-        this.game = game;
-        this.canvas = canvas;
-        this.update();      
-    }
+	
+	Label lblActionSelected;
+	Label lblTurno;
+	
+	public GameView(Game game,Canvas canvas) {        
+	        this.game = game;
+	        this.canvas = canvas;
+	        this.update();      
+	}
+	  
+	public void setLblActionSelected(Label lblActionSelected ){
+		this.lblActionSelected = lblActionSelected;
+	}
+	
+	public void updateAction(Action action){
+		if (action == Action.ATACAR)
+			this.lblActionSelected.setText("Atacar");
+		if (action == Action.MOVERSE)
+			this.lblActionSelected.setText("Mover");
+		if (action == Action.TRANSFORMARSE)
+			this.lblActionSelected.setText("Transformar");
+	}
+	
+	public void updateTurn(){
+		this.lblTurno.setText(this.game.getActivePlayer());
+	}
+  
     
     public void update(){
     	  this.drawCells();   
@@ -42,4 +67,8 @@ public class GameView  {
     	  listaCellViews.put(position, cellView);
     	}    
     }
+
+	public void setLblTurno(Label lblTurno) {
+		this.lblTurno = lblTurno;		
+	}
 }
