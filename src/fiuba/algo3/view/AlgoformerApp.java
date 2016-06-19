@@ -3,6 +3,7 @@ package fiuba.algo3.view;
 import fiuba.algo3.controller.GameController;
 import fiuba.algo3.controller.MoveButtonHandler;
 import fiuba.algo3.controller.NextTurnButtonHandler;
+import fiuba.algo3.controller.TransformButtonHandler;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -76,10 +77,16 @@ public class AlgoformerApp extends Application {
 	        
 	        Button nextTurnButton = new Button();
 	        nextTurnButton.setText("Siguiente Turno");
-	        NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(gameView, game);
+	        NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(gameView, game,gameController);
 	        nextTurnButton.setOnAction(nextTurnButtonHandler);
 	  
-	        HBox contenedorHorizontal = new HBox(moveButton, nextTurnButton);
+	        Button transformButton = new Button();
+	        transformButton.setText("Transformar");
+	        TransformButtonHandler transformButtonHandler = new TransformButtonHandler(gameView, game, gameController);
+	        transformButton.setOnAction(transformButtonHandler);
+	        
+	        
+	        HBox contenedorHorizontal = new HBox(moveButton, transformButton,nextTurnButton);
 	        contenedorHorizontal.setSpacing(10);
 	        
 		    VBox contenedorPrincipal = new VBox(contenedorHorizontal, canvasContainer);
