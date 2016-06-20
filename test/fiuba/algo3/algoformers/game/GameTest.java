@@ -34,7 +34,7 @@ public class GameTest {
 	int BOARD_X_LENGTH = 20;
 	int BOARD_Y_LENGTH = 20;
 
-	private void prepareGame(Game game) throws InvalidPositionException{
+	private void prepareGame(Game game){
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
@@ -719,5 +719,27 @@ public class GameTest {
 
 	}
 
+
+	@Test
+	public void cathsChispaSupremaTest(){
+		Game game = new Game();
+		Player player1 = new Player(game, "Juan");
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		player1.addAlgoformer(algoformer);
+
+		Board board = new Board(5,5);
+		board.add(algoformer);
+
+		ChispaSuprema chispaSuprema = new ChispaSuprema(new Position(2,0));
+		board.add(chispaSuprema);
+
+		try{
+			algoformer.move(new Position(2,0),board);
+		}catch(GameOverException e){
+			Assert.assertEquals(e.getMessage(),"Felicitaciones Juan has ganado!!!!" );
+		}
+
+	}
 }
+
 

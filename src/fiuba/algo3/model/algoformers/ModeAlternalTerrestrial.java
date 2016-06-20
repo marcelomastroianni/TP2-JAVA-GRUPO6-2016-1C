@@ -3,10 +3,12 @@ package fiuba.algo3.model.algoformers;
 import java.util.ArrayList;
 
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class ModeAlternalTerrestrial extends Mode{
-	
+
 	public ModeAlternalTerrestrial( Integer attack, Integer strikingDistance, Integer speed) {
 		super(attack,strikingDistance,speed);
 	}
@@ -15,9 +17,15 @@ public class ModeAlternalTerrestrial extends Mode{
 	public boolean canCrossSurface(Surface surface) {
 		return surface.canBeCrossedByModeAlternalTerrestrial();
 	}
-	
+
 	@Override
 	public void crossSurface(Surface surface, Algoformer algoformer) {
 		surface.crossedByModeAlternalTerrestrial(algoformer);
+	}
+
+	@Override
+	public void collideWithChispaSuprema(ChispaSuprema chispaSuprema, Player player) {
+		// en modo alterno no se puede tomar la chispa suprema
+
 	}
 }

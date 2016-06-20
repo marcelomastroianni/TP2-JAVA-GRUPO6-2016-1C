@@ -1,6 +1,7 @@
 package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Player;
@@ -246,6 +247,12 @@ public class Algoformer implements Content {
 	@Override
 	public void collideWithAlgoformer(Algoformer algoformer){
 		throw new InvalidPositionException();
+	}
+
+
+	public void collideWithChiapaSuprema(ChispaSuprema chispaSuprema) {
+		this.activeMode.collideWithChispaSuprema(chispaSuprema, player );
+
 	}
 
 }

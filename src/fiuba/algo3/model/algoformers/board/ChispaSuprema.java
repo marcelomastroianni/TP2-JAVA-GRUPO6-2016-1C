@@ -17,7 +17,7 @@ public class ChispaSuprema implements Content {
 
 	@Override
 	public void collideWithAlgoformer(Algoformer algoformer) {
-
+		algoformer.collideWithChiapaSuprema(this);
 
 	}
 
