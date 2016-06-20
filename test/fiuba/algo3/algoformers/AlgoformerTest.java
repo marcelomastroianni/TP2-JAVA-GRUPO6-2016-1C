@@ -360,5 +360,16 @@ public class AlgoformerTest {
 		optimusPrime.shot(ratchet);
 		Assert.assertEquals("la vida de Frenzy deberia ser 150", 150, ratchet.getLife());
 	}
+
+	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
+	public void testAlgoformeNoPuedeTransformarseSiEstaAtrapado(){
+		Board board = new Board(10, 10);
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,1));
+
+		board.add(megatron);
+
+		megatron.trap(3);
+		megatron.transform();
+	}
 }
 
