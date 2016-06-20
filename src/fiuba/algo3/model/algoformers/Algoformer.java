@@ -47,13 +47,13 @@ public class Algoformer implements Content {
 		this.position = position;
 		this.team = team;
 	}
-	
+
 	public void setPlayer(Player player){
 		this.player = player;
 	}
 	public Player getPlayer(){
 		return this.player;
-	}	
+	}
 
 	public String getNombre() {
 		return this.name;
@@ -66,6 +66,10 @@ public class Algoformer implements Content {
 	public void downHealthPoints(Integer damage) {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
+		}
+		if(this.life < 1){
+			this.player.notifyDeadAlgoformer(this);
+
 		}
 	}
 
@@ -113,7 +117,7 @@ public class Algoformer implements Content {
 
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
-			throw new AlgoformerUsadoEsteTurnoException();		
+			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
 			Position previous;
 			Position next;
@@ -146,11 +150,11 @@ public class Algoformer implements Content {
 			}
 		}
 	}
-	
+
 	public void reduceSpeedFiftyPercent(){
 		this.stepsMovedInTurn++;
 	}
-	
+
 	public void reduceAttackPowerFortyPercent(){
 		this.activeMode.changeAttackPower(0.6);
 	}
@@ -201,11 +205,11 @@ public class Algoformer implements Content {
 			this.isFlash = true;
 		}
 	}
-	
+
 	public void protectWithImmaculateBubble(Integer turns) {
 		this.turnsImmaculateBubble = turns;
 		if (!this.isImmaculateBubble){
-			this.isImmaculateBubble = true;			
+			this.isImmaculateBubble = true;
 		}
 	}
 
@@ -237,7 +241,7 @@ public class Algoformer implements Content {
 			this.turnsImmaculateBubble -= 1;
 			if (this.turnsImmaculateBubble.equals(new Integer(0))) {
 				this.isImmaculateBubble = false;
-			
+
 			}
 		}
 		this.stepsMovedInTurn = 0;

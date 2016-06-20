@@ -26,7 +26,7 @@ public class AlgoformerTest {
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",new Position(2,0),algoformer.getPosition());
 
 		algoformer.notifyNextTurn();
-		algoformer.move(new Position(0,0),board);	
+		algoformer.move(new Position(0,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",new Position(0,0),algoformer.getPosition());
 
 		algoformer.notifyNextTurn();
@@ -59,56 +59,56 @@ public class AlgoformerTest {
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(0,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la izquierda",new Position(0,0),algoformer.getPosition());
-	}	
-	
+	}
+
 	@Test
 	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException{
 		Board board = new Board(100,100);
 		int speed1 = 2;
-		
-		Mode mode1 = new ModeHumanoid(50,2,speed1);	
-		Algoformer algoformer = new Algoformer("Algoformer 1", mode1,mode1,500,new Position(0,0), Algoformer.Team.AUTOBOTS);			
-		
+
+		Mode mode1 = new ModeHumanoid(50,2,speed1);
+		Algoformer algoformer = new Algoformer("Algoformer 1", mode1,mode1,500,new Position(0,0), Algoformer.Team.AUTOBOTS);
+
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",new Position(0,0),algoformer.getPosition());
-		
+
 		algoformer.move(new Position(3,0),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,0)",new Position(2,0),algoformer.getPosition());
 
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(3,0),board);
-		Assert.assertEquals("Algoformer deberia estar en la posicion (3,0)",new Position(3,0),algoformer.getPosition());				
-						
+		Assert.assertEquals("Algoformer deberia estar en la posicion (3,0)",new Position(3,0),algoformer.getPosition());
+
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (5,2)",new Position(5,2),algoformer.getPosition());
-					
+
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (7,4)",new Position(7,4),algoformer.getPosition());
-				
+
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (9,6)",new Position(9,6),algoformer.getPosition());
-		
+
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (10,8)",new Position(10,8),algoformer.getPosition());
-		
+
 		algoformer.notifyNextTurn();
 		algoformer.move(new Position(10,10),board);
 		Assert.assertEquals("Algoformer deberia estar en la posicion (10,10)",new Position(10,10),algoformer.getPosition());
-		
+
 		int speed2 = 7;
-		Mode mode2 = new ModeHumanoid(50,2,speed2);	
-		Algoformer algoformer2 = new Algoformer("Algoformer 2 ", mode2,mode2,500,new Position(50,50), Algoformer.Team.AUTOBOTS);			
+		Mode mode2 = new ModeHumanoid(50,2,speed2);
+		Algoformer algoformer2 = new Algoformer("Algoformer 2 ", mode2,mode2,500,new Position(50,50), Algoformer.Team.AUTOBOTS);
 		board.add(algoformer2);
-		
+
 		Assert.assertEquals("Algoformer 2 deberia estar en su posicion inicial",new Position(50,50),algoformer2.getPosition());
-		
+
 		algoformer2.notifyNextTurn();
 		algoformer2.move(new Position(40,60),board);
 		Assert.assertEquals("Algoformer 2 deberia estar en la posicion (43,57)",new Position(43,57),algoformer2.getPosition());
-		
+
 		algoformer2.notifyNextTurn();
 		algoformer2.move(new Position(40,60),board);
 		Assert.assertEquals("Algoformer 2 deberia estar en la posicion (40,60)",new Position(40,60),algoformer2.getPosition());
@@ -146,7 +146,7 @@ public class AlgoformerTest {
 		algoformer2.shot(algoformer1);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
-	
+
 	@Test
 	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
@@ -221,7 +221,7 @@ public class AlgoformerTest {
 		optimusPrime.shot(megatron);
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("la vida de Megatron deberia ser 520", 520, megatron.getLife());
-		optimusPrime.transform();		
+		optimusPrime.transform();
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.shot(megatron);
@@ -317,5 +317,6 @@ public class AlgoformerTest {
 	}
 
 	
+
 }
 

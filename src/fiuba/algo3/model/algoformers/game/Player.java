@@ -8,23 +8,23 @@ import fiuba.algo3.model.algoformers.Algoformer;
 public class Player {
 
 	List<Algoformer> algoformersList;
-	
+
 	public Player(){
 		algoformersList = new ArrayList<Algoformer>();
 	}
-	
+
 	public List<Algoformer> getAlgoformers() {
 		return this.algoformersList;
 	}
 
 	public void addAlgoformer(Algoformer algoformer) {
 		algoformer.setPlayer(this);
-		this.algoformersList.add(algoformer);		
+		this.algoformersList.add(algoformer);
 	}
 
 	public boolean hasAlgoformer(Algoformer algoformer) {
 		boolean hasAlgoformer = false;
-			
+
 		for(Algoformer algoforrmerItem:this.algoformersList){
 			if(algoformer.equals(algoforrmerItem)){
 				hasAlgoformer = true;
@@ -38,5 +38,10 @@ public class Player {
 		for(Algoformer algoformer : algoformersList){
 			algoformer.notifyNextTurn();
 		}
+	}
+
+	public void notifyDeadAlgoformer(Algoformer algoformer) {
+		this.algoformersList.remove(algoformer);
+
 	}
 }

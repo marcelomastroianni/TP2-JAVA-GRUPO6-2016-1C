@@ -1,5 +1,7 @@
 package fiuba.algo3.algoformers;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +11,8 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
@@ -89,4 +93,7 @@ public class AlgoformerUnitTest {
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer2.transform();
 	}
+	
+	
+	
 }
