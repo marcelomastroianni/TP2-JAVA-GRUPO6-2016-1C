@@ -7,6 +7,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
 import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -104,7 +105,7 @@ public class Game {
 		this.board.addCell(new Cell(new Position(10,2), new SurfaceCloud()));
 		
 		this.board.add(new CanonBonus(new Position(4,4)));
-		
+		this.board.add(new BonusBurbujaInmaculada(new Position(3,1)));
 		this.board.add(new BonusFlash(new Position(2,5)));
 		
 	}
