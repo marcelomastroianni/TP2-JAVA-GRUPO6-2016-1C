@@ -2,6 +2,7 @@ package fiuba.algo3.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
@@ -344,6 +345,20 @@ public class AlgoformerTest {
 		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
 		optimusPrime.shot(frenzy);
 		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
+	}
+
+	@Test
+	public void testAlgoformeNoPuedeAtacarAAlguienDelMismoEquipo(){
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,2));
+
+		board.add(optimusPrime);
+		board.add(ratchet);
+
+		Assert.assertEquals("la vida de Frenzy deberia ser 150", 150, ratchet.getLife());
+		optimusPrime.shot(ratchet);
+		Assert.assertEquals("la vida de Frenzy deberia ser 150", 150, ratchet.getLife());
 	}
 }
 
