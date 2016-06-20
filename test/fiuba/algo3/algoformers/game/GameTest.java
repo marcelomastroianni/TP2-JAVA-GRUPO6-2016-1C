@@ -721,7 +721,7 @@ public class GameTest {
 
 
 	@Test
-	public void cathsChispaSupremaTest(){
+	public void catchChispaSupremaTest(){
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -738,6 +738,37 @@ public class GameTest {
 		}catch(GameOverException e){
 			Assert.assertEquals(e.getMessage(),"Felicitaciones Juan has ganado!!!!" );
 		}
+
+	}
+
+	@Test
+	public void cantCathcChispaSupremaTest(){
+		Game game = new Game();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
+		Turn turn = new Turn(player1, player2);
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		player1.addAlgoformer(algoformer);
+
+		Board board = new Board(5,5);
+		board.add(algoformer);
+
+
+		ChispaSuprema chispaSuprema = new ChispaSuprema(new Position(2,0));
+		board.add(chispaSuprema);
+
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+
+
+		algoformer.transform();
+		game.nextTurn();
+		game.nextTurn();
+		algoformer.move(new Position(2,0),board);
+
 
 	}
 }
