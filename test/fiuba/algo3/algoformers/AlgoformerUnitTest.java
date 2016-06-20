@@ -2,6 +2,7 @@ package fiuba.algo3.algoformers;
 
 import java.util.List;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +41,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void transformationTest() throws AlgoformerUsadoEsteTurnoException {
+	public void transformationTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getFrenzy(new Position(0, 0));
 		algoformer.transform();
 		Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
@@ -54,14 +55,14 @@ public class AlgoformerUnitTest {
 	}
 	
 	@Test
-	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException{
+	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		Assert.assertTrue(algoformer.getActiveMode() instanceof ModeAlternalAerial);
 	}
 	
 	@Test
-	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException{
+	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		algoformer.getActiveMode().changeAttackPower(0.6);
@@ -88,7 +89,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException{
+	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer2.transform();

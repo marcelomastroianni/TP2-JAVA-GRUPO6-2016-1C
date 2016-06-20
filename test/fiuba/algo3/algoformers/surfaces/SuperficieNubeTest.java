@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers.surfaces;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -28,7 +29,7 @@ public class SuperficieNubeTest {
 	}
 	
 	@Test
-	public void testCruzarSuperficieNube() throws AlgoformerUsadoEsteTurnoException{
+	public void testCruzarSuperficieNube() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieNube = new SurfaceCloud();				
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie nube", superficieNube.canBeCrossedByModeHumanoid());

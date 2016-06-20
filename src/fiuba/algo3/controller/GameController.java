@@ -4,11 +4,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
-import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.exceptions.*;
 import fiuba.algo3.view.GameView;
 import fiuba.algo3.view.ViewConstants;
 import javafx.event.EventHandler;
@@ -60,7 +56,7 @@ public class GameController {
 	    			try {
 						game.transformaraAlgoformer(positionSelected1);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-						 | InvalidPositionException
+						 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException
 							| AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
 					}
@@ -77,7 +73,7 @@ public class GameController {
 	    			try {
 	        			
 	    				game.moverAlgoformer( positionSelected1, positionSelected2);
-	    			} catch (UsuarioNoSeleccionoAlgoformerException 
+	    			} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
 	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
 	    					| AlgoformerUsadoEsteTurnoException e) {
 	    				e.printStackTrace();
@@ -126,7 +122,7 @@ public class GameController {
 			this.game.transformaraAlgoformer(position);
 			this.view.update(); 
 		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-			 | InvalidPositionException
+			 | InvalidPositionException |AlgoformerAtrapadoEsteTurnoException
 				| AlgoformerUsadoEsteTurnoException e) {
 			e.printStackTrace();		
 		}

@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers.board;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class SurfaceTest {
 	}	
 	
 	@Test
-	public void crossThornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{	
+	public void crossThornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
@@ -36,7 +37,7 @@ public class SurfaceTest {
 	}
 	
 	@Test
-	public void startInthornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{	
+	public void startInthornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		board.addCell(new Cell(new Position(0, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
@@ -47,7 +48,7 @@ public class SurfaceTest {
 	}
 	
 	@Test
-	public void endInthornDontReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{	
+	public void endInthornDontReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));

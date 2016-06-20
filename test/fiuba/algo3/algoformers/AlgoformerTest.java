@@ -1,6 +1,7 @@
 package fiuba.algo3.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,7 +17,7 @@ import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class AlgoformerTest {
 	@Test
-	public void testMovement() throws AlgoformerUsadoEsteTurnoException{
+	public void testMovement() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -39,7 +40,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void diagonalMovementTest() throws AlgoformerUsadoEsteTurnoException{
+	public void diagonalMovementTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -62,7 +63,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException{
+	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(100,100);
 		int speed1 = 2;
 
@@ -115,7 +116,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testTransform() throws AlgoformerUsadoEsteTurnoException{
+	public void testTransform() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
         algoformer.transform();
@@ -204,7 +205,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(5,5);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
@@ -234,7 +235,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
@@ -249,7 +250,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMovementWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void testMovementWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
@@ -274,7 +275,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
@@ -302,7 +303,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testCantCross() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void testCantCross() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(10, 10);
 		board.addCell(new Cell(new Position(2, 2), new SurfaceCloud()));
