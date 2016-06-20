@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import fiuba.algo3.controller.GameController.Action;
+import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
@@ -21,6 +22,13 @@ public class GameView  {
 	
 	Label lblActionSelected;
 	Label lblTurno;
+	Label lblAlgoformerTitle;
+	Label lblAlgoformerLife;
+	Label lblAlgoformerName;	
+	Label lblAlgoformerAttack;
+	Label lblAlgoformerStrikingDistance;
+	Label lblAlgoformerSpeed;
+	Label lblAlgoformerPosition;
 	
 	public GameView(Game game,Canvas canvas) {        
 	        this.game = game;
@@ -33,6 +41,8 @@ public class GameView  {
 	}
 	
 	public void updateAction(Action action){
+		if (action == Action.SIN_ACCION)
+			this.lblActionSelected.setText("");
 		if (action == Action.ATACAR)
 			this.lblActionSelected.setText("Atacar");
 		if (action == Action.MOVERSE)
@@ -44,8 +54,31 @@ public class GameView  {
 	public void updateTurn(){
 		this.lblTurno.setText(this.game.getActivePlayer());
 	}
-  
-    
+	
+	public void updateAlgoformerSelected(Algoformer algoformer){
+		if (algoformer!=null){
+			this.lblAlgoformerTitle.setText("Algoformer Seleccionado:");
+			this.lblAlgoformerName.setText("Name: " + algoformer.getNombre());
+			this.lblAlgoformerLife.setText("Life: " + Integer.toString(algoformer.getLife()));
+			this.lblAlgoformerAttack.setText("Attack: " + Integer.toString(algoformer.getActiveMode().getAttack()));
+			this.lblAlgoformerStrikingDistance.setText("Striking Distance: " + Integer.toString(algoformer.getActiveMode().getStrikingDistance()));
+			this.lblAlgoformerSpeed.setText("Speed: " + Integer.toString(algoformer.getActiveMode().getSpeed()));
+			this.lblAlgoformerPosition.setText("Position: " + algoformer.getPosition().toString());
+		}else{
+			this.clearAlgoformerSelected();
+		}		
+	}
+	
+	public void clearAlgoformerSelected(){
+		this.lblAlgoformerTitle.setText("Algoformer Seleccionado:");
+		this.lblAlgoformerName.setText("");
+		this.lblAlgoformerLife.setText("");
+		this.lblAlgoformerAttack.setText("");
+		this.lblAlgoformerStrikingDistance.setText("");
+		this.lblAlgoformerSpeed.setText("");
+		this.lblAlgoformerPosition.setText("");
+	}
+      
     public void update(){
     	  this.drawCells();   
     }
@@ -70,5 +103,34 @@ public class GameView  {
 
 	public void setLblTurno(Label lblTurno) {
 		this.lblTurno = lblTurno;		
+	}
+
+	public void setLblAlgoformerLife(Label lblAlgoformerLife) {
+		this.lblAlgoformerLife = lblAlgoformerLife;		
+	}
+
+	public void setLblAlgoformerName(Label lblAlgoformerName) {	
+		this.lblAlgoformerName = lblAlgoformerName;
+	}
+
+	public void setLblAlgoformerTitle(Label lblAlgoformerTitle) {
+		this.lblAlgoformerTitle = lblAlgoformerTitle;		
+	}
+
+	public void setLblAlgoformerAttack(Label lblAlgoformerAttack) {
+		this.lblAlgoformerAttack = lblAlgoformerAttack;
+	}
+
+	public void setLblAlgoformerStrikingDistance(Label lblAlgoformerStrikingDistance) {
+		this.lblAlgoformerStrikingDistance = lblAlgoformerStrikingDistance;
+	}
+
+	public void setLblAlgoformerSpeed(Label lblAlgoformerSpeed) {
+		this.lblAlgoformerSpeed = lblAlgoformerSpeed;
+	}
+	
+
+	public void setLblAlgoformerPosition(Label lblAlgoformerPosition) {
+		this.lblAlgoformerPosition = lblAlgoformerPosition;
 	}
 }

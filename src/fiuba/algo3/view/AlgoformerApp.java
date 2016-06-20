@@ -37,6 +37,16 @@ public class AlgoformerApp extends Application {
 		private Label lblActionSelected;
 		private Label lblTurnoTitle;
 		private Label lblTurno;
+		private Label lblAlgoformerTitle;
+		private Label lblAlgoformerName;
+		private Label lblAlgoformerLife;
+		private Label lblAlgoformerAttack;		
+		private Label lblAlgoformerStrikingDistance;
+		private Label lblAlgoformerSpeed;
+		private Label lblAlgoformerPosition;
+		
+		private Label lblBlankLine1;
+		private Label lblBlankLine2;
 		
 		private Game game;
 		private GameView gameView;
@@ -48,38 +58,36 @@ public class AlgoformerApp extends Application {
 
 		private void createControls(){
 			this.canvas = new Canvas(1400, 900);
-      	      
-			this.canvasContainer = new Group();
-			this.canvasContainer.getChildren().add(canvas);
-
-			this.moveButton = new Button();
-			this.moveButton.setText("Mover");
-	      	        
-			this.nextTurnButton = new Button();
-			this.nextTurnButton.setText("Siguiente Turno");
-	   	  
-			this.transformButton = new Button();
-			this.transformButton.setText("Transformar");	       
+      	      	
+			this.moveButton = new Button("Mover");   	        
+			this.nextTurnButton = new Button("Siguiente Turno");
+			this.transformButton = new Button("Transformar");       
+			this.attackButton = new Button("Atacar");
 	        
-			this.attackButton = new Button();
-			this.attackButton.setText("Atacar");
+			this.lblActionSelectedTitle = new Label("Accion Seleccionada:");
+			this.lblActionSelected = new Label("");
 	        
-			this.lblActionSelectedTitle = new Label();
-			this.lblActionSelectedTitle.setText("Accion Seleccionada:");
-
-			this.lblActionSelected = new Label();
-			this.lblActionSelected.setText("");
-	        
-			this.lblTurnoTitle = new Label();
-			this.lblTurnoTitle.setText("Turno Jugador:");
-
-			this.lblTurno = new Label();
-			this.lblTurno.setText("");
+			this.lblTurnoTitle = new Label("Turno Jugador:");
+			this.lblTurno = new Label("");
+			
+			this.lblBlankLine1 = new Label("");
+			this.lblBlankLine2 = new Label("");
+			
+			this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
+			this.lblAlgoformerName = new Label("");
+			this.lblAlgoformerLife = new Label("");
+			this.lblAlgoformerAttack = new Label("");
+			this.lblAlgoformerStrikingDistance = new Label("");
+			this.lblAlgoformerSpeed = new Label("");
+			this.lblAlgoformerPosition = new Label("");
 		}
 		
 		private void initilizeLayout(final Stage stage){
 			stage.setTitle("Algoformers");
         	      
+			this.canvasContainer = new Group();
+			this.canvasContainer.getChildren().add(canvas);
+			
 	        HBox contenedorHorizontal = new HBox(this.moveButton, this.transformButton, this.attackButton, this.nextTurnButton);
 	        contenedorHorizontal.setSpacing(10);
 	        contenedorHorizontal.setPadding(new Insets(20));
@@ -88,7 +96,20 @@ public class AlgoformerApp extends Application {
 	        contenedorPrincipal.setSpacing(10);
 	        contenedorPrincipal.setPadding(new Insets(20));
 	        	    	 	        	     	    	        	        
-	        VBox leftPane = new VBox(this.lblActionSelectedTitle,this.lblActionSelected,this.lblTurnoTitle,this.lblTurno);
+	        VBox leftPane = new VBox(this.lblActionSelectedTitle,
+	        						this.lblActionSelected,
+	        						this.lblBlankLine1,
+	        						this.lblTurnoTitle,
+	        						this.lblTurno,
+	        						this.lblBlankLine2,
+	        						this.lblAlgoformerTitle,
+	        						this.lblAlgoformerName,
+	        						this.lblAlgoformerLife,
+	        						this.lblAlgoformerAttack,
+	        						this.lblAlgoformerStrikingDistance,
+	        						this.lblAlgoformerSpeed,
+	        						this.lblAlgoformerPosition);
+	        	     
 	        leftPane.setSpacing(10);
 	        leftPane.setPadding(new Insets(20));
 	        
@@ -112,7 +133,14 @@ public class AlgoformerApp extends Application {
 	        this.gameView = new GameView(this.game, this.canvas);	        
 	        this.gameController = new GameController(this.game, this.gameView); 	        	        	           
 	        this.gameView.setLblActionSelected(this.lblActionSelected);
-	        this.gameView.setLblTurno(this.lblTurno);	        
+	        this.gameView.setLblTurno(this.lblTurno);
+	        this.gameView.setLblAlgoformerTitle(this.lblAlgoformerTitle);
+	        this.gameView.setLblAlgoformerName(this.lblAlgoformerName);
+	        this.gameView.setLblAlgoformerLife(this.lblAlgoformerLife);
+	        this.gameView.setLblAlgoformerAttack(this.lblAlgoformerAttack);
+	        this.gameView.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);
+	        this.gameView.setLblAlgoformerSpeed(this.lblAlgoformerSpeed);
+	        this.gameView.setLblAlgoformerPosition(this.lblAlgoformerPosition);
 	        this.gameView.updateTurn();			
 		}
 		

@@ -1,5 +1,7 @@
 package fiuba.algo3.controller;
 
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -19,6 +21,7 @@ public class GameController {
 	private Action action = Action.SIN_ACCION; 
 	private Game game;
 	private GameView view;
+	private Algoformer algoformerSelected;
 	
 	public enum Action {
 		SIN_ACCION, MOVERSE, TRANSFORMARSE, ATACAR;
@@ -34,12 +37,25 @@ public class GameController {
 		this.view.updateAction(this.action);
 	}
 	
-	public void selectCell(Position position){          	 
+	private void clearAction(){
+		this.action = Action.SIN_ACCION;
+		this.view.updateAction(this.action);
+	}
+	public void selectCell(Position position){       
+		
+		try{
+			this.algoformerSelected = (Algoformer) this.game.getBoard().getContent(position);
+			this.view.updateAlgoformerSelected(algoformerSelected);
+		}catch(ClassCastException ex){
+			this.algoformerSelected = null;
+			this.view.clearAlgoformerSelected();
+		}
+		
 		if (this.action != Action.SIN_ACCION){
 			if (this.positionSelected1 == null){
 	    		this.positionSelected1 =position;
 	    		this.view.toggleSelectCell(this.positionSelected1);
-	    		
+	    			    			    		
 	    		if (this.action == Action.TRANSFORMARSE){      			
 	    			try {
 						game.transformaraAlgoformer(positionSelected1);
@@ -48,7 +64,9 @@ public class GameController {
 							| AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
 					}
-	    			this.clearSelectedCells();	  
+	    			this.clearSelectedCells();
+	    			this.clearAction();
+	    			this.view.updateAlgoformerSelected(algoformerSelected);
 	    		}
 	    		
 	    	}else if (this.positionSelected2 == null){
@@ -64,6 +82,7 @@ public class GameController {
 	    					| AlgoformerUsadoEsteTurnoException e) {
 	    				e.printStackTrace();
 	    			}
+	    			this.clearAction();
 	    		}
 	    		
 	    		if (this.action == Action.ATACAR){    			 
@@ -73,7 +92,8 @@ public class GameController {
 							| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
 							| AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
-					}    		
+					}    
+					this.clearAction();
 	    		}
 	    		
 	    		this.clearSelectedCells();	    
