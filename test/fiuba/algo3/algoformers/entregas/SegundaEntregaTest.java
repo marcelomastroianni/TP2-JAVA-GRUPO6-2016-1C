@@ -319,7 +319,7 @@ public class SegundaEntregaTest {
 	 * @throws InvalidPositionException
 	 */
 
-	@Test
+	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
 			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
@@ -341,8 +341,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
-			catch (AlgoformerAtrapadoEsteTurnoException e) {}
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado el 1° turno", new Position(1, 0),megatron.getPosition());
 		game.nextTurn();
 
@@ -350,8 +349,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
-			catch (AlgoformerAtrapadoEsteTurnoException e) {}
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado 2° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -360,8 +358,7 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
-			catch (AlgoformerAtrapadoEsteTurnoException e) {}
+		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
 		Assert.assertEquals("el algoformer deberia estar atrapado 3° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();

@@ -316,7 +316,7 @@ public class AlgoformerTest {
 		Assert.assertEquals("Frency deberia estar en la posicion 2,1",new Position(2,1), frency.getPosition());
 
 	}
-	@Test
+	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
 	public void testAlgoformeNoPuedeMoversePorqueYaFueUsadoEnElTurno() throws AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(10, 10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
@@ -326,10 +326,24 @@ public class AlgoformerTest {
 		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,1",new Position(1,1), bumblebee.getPosition());
 		bumblebee.move(new Position(1,3),board);
 		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,3",new Position(1,3), bumblebee.getPosition());
-		try{bumblebee.move(new Position(1,5),board);}
-			catch (AlgoformerUsadoEsteTurnoException e){}
+		bumblebee.move(new Position(1,5),board);
 		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,3",new Position(1,3), bumblebee.getPosition());
 	}
 
+	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
+	public void testAlgoformeNoPuedeAtacarPorqueYaFueUsadoEnElTurno(){
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,2));
+
+		board.add(optimusPrime);
+		board.add(frenzy);
+
+		Assert.assertEquals("la vida de Frenzy deberia ser 400", 400, frenzy.getLife());
+		optimusPrime.shot(frenzy);
+		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
+		optimusPrime.shot(frenzy);
+		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
+	}
 }
 
