@@ -25,15 +25,17 @@ public class PositionTest {
 	@Test
 	public void getDistanceTest(){
 		Position position1 = new Position(0,0);
-		Position position2 = new Position(0,1);
-		Assert.assertEquals(position1.distance(position2),new Double(1));			
+		Position position2 = new Position(0,2);
+		Assert.assertTrue(position1.inAttackDistance(position2,2));
+		Assert.assertFalse(position1.inAttackDistance(position2,1));
 	}
 	
 	@Test
 	public void getDistanceTest2(){
 		Position position1 = new Position(0,0);
 		Position position2 = new Position(4,3);
-		Assert.assertEquals(position1.distance(position2),new Double(5));			
+		Assert.assertTrue(position1.inAttackDistance(position2,4));
+		Assert.assertFalse(position1.inAttackDistance(position2,3));
 	}
 	
 	@Test

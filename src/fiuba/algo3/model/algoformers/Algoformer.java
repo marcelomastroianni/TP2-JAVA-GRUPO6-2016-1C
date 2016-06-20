@@ -73,10 +73,6 @@ public class Algoformer implements Content {
 		}
 	}
 
-	public boolean isDobleDamage() {
-		return isDobleDamage;
-	}
-
 	public Mode getHumanoidMode() {
 		return humanoidMode;
 	}
@@ -186,8 +182,7 @@ public class Algoformer implements Content {
 
 	private void resolveShootingDistance(Algoformer algoformer)
 			throws InvalidStrikeException {
-		if (this.position.distance(algoformer.getPosition()) > this.activeMode
-				.getStrikingDistance()) {
+		if (!this.position.inAttackDistance(algoformer.getPosition(),this.activeMode.getStrikingDistance())){
 			throw new InvalidStrikeException();
 		}
 	}

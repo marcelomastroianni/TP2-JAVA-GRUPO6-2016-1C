@@ -9,8 +9,9 @@ public class Position {
 		this.Y = Y;
 	}
 
-	public Double distance(Position position){
-		return Math.sqrt(Math.pow(this.X - position.getX(), 2) + Math.pow(this.Y - position.getY(), 2) );
+	public boolean inAttackDistance(Position position, int range ){
+		return (this.X + range >= position.getX() && this.X - range <= position.getX() &&
+		this.Y + range >= position.getY() && this.Y - range <= position.getY());
 	}
 
 	@Override
