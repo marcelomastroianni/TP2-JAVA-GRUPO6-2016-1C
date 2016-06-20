@@ -18,18 +18,37 @@ public class RobotView {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
 		
-		if (this.robot.getNombre().equals("Optimus Prime"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
-		if (this.robot.getNombre().equals("Bumblebee"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/bumblebee.png");
-		if (this.robot.getNombre().equals("Ratchet"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/ratchet.png");
-		if (this.robot.getNombre().equals("Megatron"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/megatron.png");
-		if (this.robot.getNombre().equals("Bonecrusher"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/bonecrusher.png");
-		if (this.robot.getNombre().equals("Frenzy"))
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/frenzy.png");
+		if (this.robot.getNombre().equals("Optimus Prime")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_optimusprime.png");
+			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
+				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_optimusprime_alternal.png");
+		}
+			
+		if (this.robot.getNombre().equals("Bumblebee")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bumblebee.png");			
+			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
+				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bumblebee_alternal.png");			
+		}
+					
+		if (this.robot.getNombre().equals("Ratchet")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_ratchet.png");						
+			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
+				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_ratchet_alternal.png");
+		}
+					
+		if (this.robot.getNombre().equals("Megatron")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_megatron.png");			
+			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
+				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_megatron_alternal.png");
+		}
+					
+		if (this.robot.getNombre().equals("Bonecrusher")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher.png");
+		}
+					
+		if (this.robot.getNombre().equals("Frenzy")){
+			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_frenzy.png");
+		}			
 							
     	int x = robot.getPosition().getX()*ViewConstants.CELL_WIDTH;
 		int y =robot.getPosition().getY()*ViewConstants.CELL_HEIGHT;
