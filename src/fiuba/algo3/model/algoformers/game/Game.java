@@ -33,8 +33,8 @@ public class Game {
 
 
 	public void init() throws InvalidPositionException {
-		this.player1 = new Player(this);
-		this.player2 = new Player(this);
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		this.turn = new Turn(this.player1, this.player2);
 
