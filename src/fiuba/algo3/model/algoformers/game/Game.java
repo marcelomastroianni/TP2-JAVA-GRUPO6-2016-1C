@@ -33,8 +33,9 @@ public class Game {
 
 
 	public void init() throws InvalidPositionException {
-		Player player1 = new Player(game, "Juan");
-		Player player2 = new Player(game, "Maria");
+		Game game = new Game();
+		this.player1 = new Player(game, "Juan");
+		this.player2 = new Player(game, "Maria");
 		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		this.turn = new Turn(this.player1, this.player2);
 
@@ -48,13 +49,13 @@ public class Game {
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(board.getXLength()-1,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(board.getXLength()-1,2));
 
-		this.player1.addAlgoformer(optimusPrime);
-		this.player1.addAlgoformer(bumblebee);
-		this.player1.addAlgoformer(ratchet);
+		player1.addAlgoformer(optimusPrime);
+		player1.addAlgoformer(bumblebee);
+		player1.addAlgoformer(ratchet);
 
-		this.player2.addAlgoformer(megatron);
-		this.player2.addAlgoformer(bonecrusher);
-		this.player2.addAlgoformer(frenzy);
+		player2.addAlgoformer(megatron);
+		player2.addAlgoformer(bonecrusher);
+		player2.addAlgoformer(frenzy);
 
 		ChispaSuprema chispaSuprema = new ChispaSuprema(board.getCentralPosition());
 
