@@ -27,78 +27,68 @@ import javafx.stage.Stage;
 
 public class AlgoformerApp extends Application {
 
+		private Canvas canvas;
+		private Group canvasContainer;
+		private Button moveButton;
+		private Button nextTurnButton;
+		private Button transformButton;
+		private Button attackButton;
+		private Label lblActionSelectedTitle;
+		private Label lblActionSelected;
+		private Label lblTurnoTitle;
+		private Label lblTurno;
+		
+		private Game game;
+		private GameView gameView;
+		private GameController gameController;
 		
 		public static void main(String[] args) {
 	        launch(args);
 	    }
 
-	    @Override
-	    public void start(final Stage stage) throws Exception {
+		private void createControls(){
+			this.canvas = new Canvas(1400, 900);
+      	      
+			this.canvasContainer = new Group();
+			this.canvasContainer.getChildren().add(canvas);
 
-	        stage.setTitle("Algoformers");
+			this.moveButton = new Button();
+			this.moveButton.setText("Mover");
+	      	        
+			this.nextTurnButton = new Button();
+			this.nextTurnButton.setText("Siguiente Turno");
+	   	  
+			this.transformButton = new Button();
+			this.transformButton.setText("Transformar");	       
 	        
-	        final Game game = new Game();
-	        game.init();
-	       
-	        Canvas canvas = new Canvas(1400, 900);
-	        final GameView gameView = new GameView(game, canvas);
+			this.attackButton = new Button();
+			this.attackButton.setText("Atacar");
 	        
-	        final GameController gameController = new GameController(game, gameView); 
-	        	        
-	        gameController.registerClickEvents(canvas);
-	        	       	       
-	        Group canvasContainer = new Group();
-		    canvasContainer.getChildren().add(canvas);
+			this.lblActionSelectedTitle = new Label();
+			this.lblActionSelectedTitle.setText("Accion Seleccionada:");
 
-	        Button moveButton = new Button();
-	        moveButton.setText("Mover");
-	        MoveButtonHandler moveButtonHandler = new MoveButtonHandler(gameView, game, gameController);
-	        moveButton.setOnAction(moveButtonHandler);
+			this.lblActionSelected = new Label();
+			this.lblActionSelected.setText("");
 	        
-	        Button nextTurnButton = new Button();
-	        nextTurnButton.setText("Siguiente Turno");
-	        NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(gameView, game,gameController);
-	        nextTurnButton.setOnAction(nextTurnButtonHandler);
-	  
-	        Button transformButton = new Button();
-	        transformButton.setText("Transformar");
-	        TransformButtonHandler transformButtonHandler = new TransformButtonHandler(gameView, game, gameController);
-	        transformButton.setOnAction(transformButtonHandler);
-	        
-	        Button attackButton = new Button();
-	        attackButton.setText("Atacar");
-	        AttackButtonHandler attackButtonHandler = new AttackButtonHandler(gameView, game, gameController);
-	        attackButton.setOnAction(attackButtonHandler);
-	        	        
-	        HBox contenedorHorizontal = new HBox(moveButton, transformButton, attackButton, nextTurnButton);
+			this.lblTurnoTitle = new Label();
+			this.lblTurnoTitle.setText("Turno Jugador:");
+
+			this.lblTurno = new Label();
+			this.lblTurno.setText("");
+		}
+		
+		private void initilizeLayout(final Stage stage){
+			stage.setTitle("Algoformers");
+        	      
+	        HBox contenedorHorizontal = new HBox(this.moveButton, this.transformButton, this.attackButton, this.nextTurnButton);
 	        contenedorHorizontal.setSpacing(10);
 	        contenedorHorizontal.setPadding(new Insets(20));
 	        
-		    VBox contenedorPrincipal = new VBox(contenedorHorizontal, canvasContainer);
+		    VBox contenedorPrincipal = new VBox(contenedorHorizontal, this.canvasContainer);
 	        contenedorPrincipal.setSpacing(10);
 	        contenedorPrincipal.setPadding(new Insets(20));
-	        
-	     
-
-	        Label lblActionSelectedTitle = new Label();
-	        lblActionSelectedTitle.setText("Accion Seleccionada:");
-
-	        Label lblActionSelected = new Label();
-	        lblActionSelected.setText("");
-	        
-	        Label lblTurnoTitle = new Label();
-	        lblTurnoTitle.setText("Turno Jugador:");
-
-	        Label lblTurno = new Label();
-	        lblTurno.setText("");
-	        
-	     	    
-	        gameView.setLblActionSelected(lblActionSelected);
-	        gameView.setLblTurno(lblTurno);
-	        
-	        gameView.updateTurn();
-	        
-	        VBox leftPane = new VBox(lblActionSelectedTitle,lblActionSelected,lblTurnoTitle,lblTurno);
+	        	    	 	        	     	    	        	        
+	        VBox leftPane = new VBox(this.lblActionSelectedTitle,this.lblActionSelected,this.lblTurnoTitle,this.lblTurno);
 	        leftPane.setSpacing(10);
 	        leftPane.setPadding(new Insets(20));
 	        
@@ -106,14 +96,43 @@ public class AlgoformerApp extends Application {
 	        
 	        borderPane.setLeft(leftPane);
 	        borderPane.setTop(contenedorHorizontal);
-	        borderPane.setCenter(canvasContainer);
+	        borderPane.setCenter(this.canvasContainer);
 	        	        	        	        	      
-	        //PrincipalContainer contenedorPrincipal = new PrincipalContainer(stage,game);	
 	        Scene playScene = new Scene(borderPane, 640, 480);
 
 	        stage.setScene(playScene);
 	        stage.setFullScreen(true);
 
 	        stage.show();
+		}
+
+		private void initializeMVC() throws InvalidPositionException{
+			this.game = new Game();
+	        this.game.init();	       	       
+	        this.gameView = new GameView(this.game, this.canvas);	        
+	        this.gameController = new GameController(this.game, this.gameView); 	        	        	           
+	        this.gameView.setLblActionSelected(this.lblActionSelected);
+	        this.gameView.setLblTurno(this.lblTurno);	        
+	        this.gameView.updateTurn();			
+		}
+		
+		private void registerEvents(){
+			this.gameController.registerClickEvents(this.canvas);	   
+	        MoveButtonHandler moveButtonHandler = new MoveButtonHandler(this.gameView, this.game, this.gameController);
+	        this.moveButton.setOnAction(moveButtonHandler);
+	        NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(this.gameView, this.game,this.gameController);
+	        this.nextTurnButton.setOnAction(nextTurnButtonHandler);
+	        TransformButtonHandler transformButtonHandler = new TransformButtonHandler(this.gameView, this.game, this.gameController);
+	        this.transformButton.setOnAction(transformButtonHandler);
+	        AttackButtonHandler attackButtonHandler = new AttackButtonHandler(this.gameView, this.game, this.gameController);
+	        this.attackButton.setOnAction(attackButtonHandler);
+		}
+		
+	    @Override
+	    public void start(final Stage stage) throws Exception {
+	    	this.createControls();
+	    	this.initilizeLayout(stage);
+	    	this.initializeMVC();	        	        	      
+	    	this.registerEvents();	        	        	        
 	    }
 }
