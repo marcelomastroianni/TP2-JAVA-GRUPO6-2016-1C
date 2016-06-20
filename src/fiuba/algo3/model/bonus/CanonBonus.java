@@ -8,7 +8,7 @@ public class CanonBonus implements Bonus{
 	
 	private Position position;
 
-	private CanonBonus(Position position){
+	public CanonBonus(Position position){
 		this.position = position;
 	}
 	

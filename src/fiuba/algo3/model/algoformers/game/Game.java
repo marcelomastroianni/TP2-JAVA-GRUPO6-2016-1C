@@ -7,6 +7,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
@@ -97,6 +98,9 @@ public class Game {
 		this.board.addCell(new Cell(new Position(8,2), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(9,2), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(10,2), new SurfaceCloud()));
+		
+		this.board.add(new CanonBonus(new Position(4,4)));
+		
 	}
 	
 	public Player getPlayer1() {

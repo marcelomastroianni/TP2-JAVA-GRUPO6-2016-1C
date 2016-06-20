@@ -4,6 +4,7 @@ package fiuba.algo3.view;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
+import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
@@ -72,6 +73,12 @@ public class CellView {
     		ChispaSuprema chispaSuprema = (ChispaSuprema) this.cell.getContent();
     		ChispaSupremaView chispaSupremaView = new ChispaSupremaView(chispaSuprema, canvas);
     		chispaSupremaView.draw();
+    	}
+    	
+    	if (this.cell.getContent() instanceof Bonus){
+    		Bonus bonus = (Bonus) this.cell.getContent();
+    		BonusView bonusView = new BonusView(bonus, canvas);
+    		bonusView.draw();
     	}
     	
     }
