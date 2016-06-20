@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers.surfaces;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException{		
+	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficiePantano = new SuperficiePantano();				
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeHumanoid());
@@ -38,7 +39,7 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{		
+	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
@@ -55,7 +56,7 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{		
+	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
@@ -70,7 +71,7 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));

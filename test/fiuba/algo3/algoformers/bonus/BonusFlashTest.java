@@ -8,10 +8,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.bonus.BonusFlash;
-import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,7 +39,7 @@ public class BonusFlashTest {
 	}
 
 	@Test
-	public void testCapturarBonusFlash() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testCapturarBonusFlash() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
 

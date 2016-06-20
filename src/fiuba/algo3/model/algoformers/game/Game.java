@@ -10,12 +10,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
 import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.CanonBonus;
-import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.exceptions.*;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
@@ -152,7 +147,7 @@ public class Game {
 		this.turn.next();
 	}
 
-	public void moverAlgoformer(Position initialPosition, Position finalPosition){
+	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -210,7 +205,7 @@ public class Game {
 		algoformer.shot(algoformerDestino);
 	}
 
-	public void transformaraAlgoformer(Position position) {
+	public void transformaraAlgoformer(Position position) throws AlgoformerAtrapadoEsteTurnoException {
 
 		if (!this.board.isValidPosition(position)){
 			throw new InvalidPositionException();

@@ -8,11 +8,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
-import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
+import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,7 +45,7 @@ public class BonusBurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void testCapturarBonusBurbujaInmaculada() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void testCapturarBonusBurbujaInmaculada() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
 

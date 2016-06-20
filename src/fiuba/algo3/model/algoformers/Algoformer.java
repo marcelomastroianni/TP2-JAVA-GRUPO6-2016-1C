@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.bonus.Bonus;
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
@@ -95,12 +96,15 @@ public class Algoformer implements Content {
 		return team;
 	}
 
+
 	public void transform() {
+
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
 				this.changeMode();
-				//board.getContent(this.position).collideWithAlgoformer(this);
+		}else {
+			throw new AlgoformerAtrapadoEsteTurnoException();
 		}
 		this.haveBeenUsedInTurn = true;
 	}
@@ -113,7 +117,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * 0.95);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException {
+	public void move(Position finalPosition, Board board) {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
@@ -144,9 +148,9 @@ public class Algoformer implements Content {
 					}
 				} else{
 					break;
+				}
 			}
-			}
-		}
+		}else throw new AlgoformerAtrapadoEsteTurnoException();
 	}
 
 	public void reduceSpeedFiftyPercent(){

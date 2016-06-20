@@ -3,6 +3,7 @@ package fiuba.algo3.algoformers.entregas;
 import static org.junit.Assert.*;
 import java.util.List;
 import fiuba.algo3.model.algoformers.*;
+import fiuba.algo3.model.exceptions.*;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
@@ -15,10 +16,6 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
-import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 
@@ -31,7 +28,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
 		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
@@ -152,7 +149,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
@@ -188,7 +185,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
@@ -228,7 +225,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
@@ -251,7 +248,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -278,7 +275,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -300,7 +297,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceCloud()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceCloud()));
@@ -324,7 +321,7 @@ public class SegundaEntregaTest {
 
 	@Test
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
-			 JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException {
+			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -344,16 +341,17 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
-		Assert.assertEquals("el algoformer deberia estar atrapado el 1° turno", new Position(1, 0),
-				megatron.getPosition());
+		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
+			catch (AlgoformerAtrapadoEsteTurnoException e) {}
+		Assert.assertEquals("el algoformer deberia estar atrapado el 1° turno", new Position(1, 0),megatron.getPosition());
 		game.nextTurn();
 
 		// Turno jugador 2
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
+		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
+			catch (AlgoformerAtrapadoEsteTurnoException e) {}
 		Assert.assertEquals("el algoformer deberia estar atrapado 2° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -362,7 +360,8 @@ public class SegundaEntregaTest {
 		game.nextTurn();
 
 		// Turno jugador 1
-		game.moverAlgoformer( new Position(1, 0), new Position(1, 1));
+		try{game.moverAlgoformer( new Position(1, 0), new Position(1, 1));}
+			catch (AlgoformerAtrapadoEsteTurnoException e) {}
 		Assert.assertEquals("el algoformer deberia estar atrapado 3° turno", new Position(1, 0),
 				megatron.getPosition());
 		game.nextTurn();
@@ -384,7 +383,7 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
+	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
