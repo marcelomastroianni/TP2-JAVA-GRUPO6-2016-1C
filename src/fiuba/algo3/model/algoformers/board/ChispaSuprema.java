@@ -1,9 +1,11 @@
 package fiuba.algo3.model.algoformers.board;
 
+import fiuba.algo3.model.algoformers.Algoformer;
+
 public class ChispaSuprema implements Content {
 
 	Position position;
-	
+
 	public ChispaSuprema(Position position){
 		this.position = position;
 	}
@@ -12,10 +14,11 @@ public class ChispaSuprema implements Content {
 	public Position getPosition() {
 		return this.position;
 	}
-	
+
 	@Override
-	public void collideWithAlgoformer(Content algoformer) {
-		
+	public void collideWithAlgoformer(Algoformer algoformer) {
+
+
 	}
-	
+
 }

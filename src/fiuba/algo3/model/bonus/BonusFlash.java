@@ -7,7 +7,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 public class BonusFlash implements Bonus {
 
 	private Position position;
-	
+
 	public BonusFlash(Position position){
 		this.position = position;
 	}
@@ -15,16 +15,15 @@ public class BonusFlash implements Bonus {
 	public static BonusFlash createBonusFlash(Position position){
 		return new BonusFlash(position);
 	}
-	
+
 	@Override
 	public Position getPosition() {
 		return this.position;
 	}
 
 	@Override
-	public void collideWithAlgoformer(Content algoformer) {
-		Algoformer algo = (Algoformer)algoformer;
-		algo.haste(3);
+	public void collideWithAlgoformer(Algoformer algoformer) {
+		algoformer.haste(3);
 	}
 
 }
