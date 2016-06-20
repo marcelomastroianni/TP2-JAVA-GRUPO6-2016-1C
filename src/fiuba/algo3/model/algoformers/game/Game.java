@@ -7,6 +7,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -80,8 +81,11 @@ public class Game {
 		this.board.addCell(new Cell(new Position(5,5), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(6,5), new SurfaceCloud()));
 		
-		this.board.addCell(new Cell(new Position(2,8), new SuperficiePantano()));
-		this.board.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(2,7), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(3,7), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(5,1), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(6,1), new SuperficiePantano()));
+		
 		
 		this.board.addCell(new Cell(new Position(8,4), new SurfaceAndromedaNebula()));
 		this.board.addCell(new Cell(new Position(12,8), new SurfaceAndromedaNebula()));
@@ -100,6 +104,8 @@ public class Game {
 		this.board.addCell(new Cell(new Position(10,2), new SurfaceCloud()));
 		
 		this.board.add(new CanonBonus(new Position(4,4)));
+		
+		this.board.add(new BonusFlash(new Position(2,5)));
 		
 	}
 	

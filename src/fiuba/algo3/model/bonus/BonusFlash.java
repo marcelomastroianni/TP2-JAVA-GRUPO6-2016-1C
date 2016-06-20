@@ -8,7 +8,7 @@ public class BonusFlash implements Bonus {
 
 	private Position position;
 	
-	private BonusFlash(Position position){
+	public BonusFlash(Position position){
 		this.position = position;
 	}
 
