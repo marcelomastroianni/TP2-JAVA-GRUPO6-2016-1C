@@ -95,11 +95,12 @@ public class Algoformer implements Content {
 		return team;
 	}
 
-	public void transform() throws AlgoformerUsadoEsteTurnoException {
+	public void transform() {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
 				this.changeMode();
+				//board.getContent(this.position).collideWithAlgoformer(this);
 		}
 		this.haveBeenUsedInTurn = true;
 	}
