@@ -316,8 +316,20 @@ public class AlgoformerTest {
 		Assert.assertEquals("Frency deberia estar en la posicion 2,1",new Position(2,1), frency.getPosition());
 
 	}
+	@Test
+	public void testAlgoformeNoPuedeMoversePorqueYaFueUsadoEnElTurno() throws AlgoformerAtrapadoEsteTurnoException {
+		Board board = new Board(10, 10);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
 
-	
+		board.add(bumblebee);
+
+		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,1",new Position(1,1), bumblebee.getPosition());
+		bumblebee.move(new Position(1,3),board);
+		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,3",new Position(1,3), bumblebee.getPosition());
+		try{bumblebee.move(new Position(1,5),board);}
+			catch (AlgoformerUsadoEsteTurnoException e){}
+		Assert.assertEquals("Bumblebee deberia estar en la posicion 1,3",new Position(1,3), bumblebee.getPosition());
+	}
 
 }
 
