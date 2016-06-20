@@ -19,6 +19,7 @@ import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
 
@@ -34,8 +35,8 @@ public class GameTest {
 	int BOARD_Y_LENGTH = 20;
 
 	private void prepareGame(Game game) throws InvalidPositionException{
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -207,8 +208,8 @@ public class GameTest {
 	@Test
 	public void testDispararAAlgoformer() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -267,8 +268,8 @@ public class GameTest {
 	@Test
 	public void testTransformaraAlgoformer() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -326,8 +327,8 @@ public class GameTest {
 	@Test
 	public void testJugabilidad() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -522,8 +523,8 @@ public class GameTest {
 	public void testCapturarBonusDeUnaPosicionIntermediaLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
 
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -597,8 +598,8 @@ public class GameTest {
 	@Test
 	public void testCapturarBonusDeUnaPosicionFinalLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -671,6 +672,52 @@ public class GameTest {
 		game.dispararaAlgoformer( new Position(0,0), new Position(4,0));
 	}
 
+
+	@Test(expected =GameOverException.class)
+	public void playerLostTheGame() throws InvalidPositionException{
+		Game game = new Game();
+		prepareGame(game);
+
+
+		Player jugador1 = game.getPlayer1();
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(500);
+
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 350 puntos de vida",350,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(350);
+
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(150);
+
+
+	}
+
+	@Test
+	public void gameOverExceptionMessage() throws InvalidPositionException{
+		Game game = new Game();
+		prepareGame(game);
+
+
+		Player jugador1 = game.getPlayer1();
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(500);
+
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 350 puntos de vida",350,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(350);
+
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
+		try{
+			algoformersJugador1.get(0).downHealthPoints(150);
+		}catch(GameOverException e){
+			Assert.assertEquals(e.getMessage(),"Felicitaciones Maria has ganado!!!!" );
+
+
+		}
+
+
+	}
 
 }
 

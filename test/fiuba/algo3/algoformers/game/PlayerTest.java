@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 
 
@@ -15,7 +16,9 @@ public class PlayerTest {
 
 	@Test
 	public void testAgregarAlgoformers(){
-		Player jugador =  new Player();
+		Game game = new Game();
+		Player jugador = new Player(game, "Juan");
+
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));
@@ -34,7 +37,9 @@ public class PlayerTest {
 
 	@Test
 	public void testAlgoformerPerteneceAJugador(){
-		Player jugador =  new Player();
+		Game game = new Game();
+		Player jugador= new Player(game, "Juan");
+
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));
@@ -56,7 +61,9 @@ public class PlayerTest {
 
 	@Test
 	public void testKillAlgoformer(){
-		Player jugador =  new Player();
+		Game game = new Game();
+		Player jugador = new Player(game, "Juan");
+
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));

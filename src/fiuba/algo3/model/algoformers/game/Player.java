@@ -8,9 +8,13 @@ import fiuba.algo3.model.algoformers.Algoformer;
 public class Player {
 
 	List<Algoformer> algoformersList;
+	private Game game;
+	private String name;
 
-	public Player(){
+	public Player(Game game, String name){
 		algoformersList = new ArrayList<Algoformer>();
+		this.game = game;
+		this.name = name;
 	}
 
 	public List<Algoformer> getAlgoformers() {
@@ -42,6 +46,13 @@ public class Player {
 
 	public void notifyDeadAlgoformer(Algoformer algoformer) {
 		this.algoformersList.remove(algoformer);
+		if(this.algoformersList.size() < 1){
+			game.notifyPlayerLost(this);
+		}
 
+	}
+
+	public String getName() {
+		return this.name;
 	}
 }

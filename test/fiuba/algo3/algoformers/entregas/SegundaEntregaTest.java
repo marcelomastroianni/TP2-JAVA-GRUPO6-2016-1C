@@ -27,8 +27,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 1. Llenar una zona rocosa, verificar que todos los algoformers en todos
 	 * sus modos la atraviesen sin problemas
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -148,8 +148,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 2. Llenar una zona pantano, verificar que en modo humanoide no se pueda
 	 * atravesar.
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -184,8 +184,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 3. LLenar una zona pantano, verificar que en modo alterno las unidades
 	 * terrestres tardan el doble que rocoso
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -224,8 +224,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 4. LLenar una zona pantano, verificar que las unidades aéreas las
 	 * atraviesan sin problemas
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -247,8 +247,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 5. Llenar una zona de espinas verificar que todas las unidades terrestres
 	 * pierden un 5% de sus vida por cada casillero de estos que atraviesen
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -264,7 +264,7 @@ public class SegundaEntregaTest {
 
 		optimus.transform();
 		optimus.notifyNextTurn();
-		
+
 		optimus.move(new Position(1, 0), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertEquals("su vida se ve reducida 5% por un casillero de espinas", 428, optimus.getLife());
@@ -274,8 +274,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 6. LLenar una zona de espinas, verificar que unidades aéreas no tienen
 	 * problemas al atravesarlas.
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -287,7 +287,7 @@ public class SegundaEntregaTest {
 		tablero.add(megatron);
 		megatron.transform();
 		megatron.notifyNextTurn();
-		
+
 		megatron.move(new Position(3, 0), tablero);
 		megatron.notifyNextTurn();
 		Assert.assertEquals(550, megatron.getLife());
@@ -296,8 +296,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 7. Llenar una zona con nubes, verificar que las unidades aéreas las
 	 * atraviesan sin problemas.
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -318,8 +318,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 8. Llenar una zona de nebulosa de andrómeda, pasar una unidad aérea,
 	 * corroborar que quede 3 turnos atrapada, sin moverse
-	 * @throws AlgoformerUsadoEsteTurnoException 
-	 * @throws InvalidPositionException 
+	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws InvalidPositionException
 	 */
 
 	@Test
@@ -380,8 +380,8 @@ public class SegundaEntregaTest {
 	/**
 	 * 9. Llenar una zona de tormenta psiónica, pasar un algoformer alterno
 	 * aéreo, ver que baje su capacidad de ataque
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
 	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
@@ -393,7 +393,7 @@ public class SegundaEntregaTest {
 		tablero.add(megatron);
 		megatron.transform();
 		megatron.notifyNextTurn();
-		
+
 		megatron.move(new Position(2, 0), tablero);
 		megatron.notifyNextTurn();
 		Assert.assertEquals(
@@ -411,8 +411,8 @@ public class SegundaEntregaTest {
 	}
 
 	private void prepareGame(Game game) throws InvalidPositionException {
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceAndromedaNebula()));
 		Turn turn = new Turn(player1, player2);

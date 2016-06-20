@@ -14,15 +14,16 @@ public class TurnTest{
 
 	@Test
 	public void testNextTurn(){
-		Player jugador1 = new Player();
-		Player jugador2 = new Player();
+		Game game = new Game();
+		Player jugador1 = new Player(game, "Juan");
+		Player jugador2 = new Player(game, "Maria");
 		Turn turno = new Turn(jugador1,jugador2);
-		
+
 		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));
 		turno.next();
 		Assert.assertTrue("Jugador activo deberia ser jugador 2", turno.isActivePlayer(jugador2));
 		turno.next();
-		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));		
+		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));
 	}
 
 

@@ -19,43 +19,43 @@ import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 
 public class CanonBonusTest {
-	
+
 
 	int BOARD_X_LENGTH = 20;
 	int BOARD_Y_LENGTH = 20;
-	
+
 	private void prepareGame(Game game) throws InvalidPositionException{
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
-		
+
 		//Autobots:
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-												
+
 		player1.addAlgoformer(optimusPrime);
-		
+
 		//Autobots:
 		board.add(optimusPrime);
-		
+
 		game.setBoard(board);
 		game.setPlayer1(player1);
 		game.setPlayer2(player2);
 		game.setTurn(turn);
 	}
 	@Test
-	public void createCanonBonus(){	
+	public void createCanonBonus(){
 		CanonBonus canonBonus = CanonBonus.createCanonBonus(new Position(0,0));
-		Cell cell= new Cell(new Position(0,0), new SuperficieRocosa()); 
+		Cell cell= new Cell(new Position(0,0), new SuperficieRocosa());
 		cell.add(canonBonus);
 		Assert.assertEquals("la celda deberia contener un canonBonus",cell.getContent(), canonBonus);
 	}
-	
+
 	@Test
 	public void testCapturarCanonBonus() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException {
 		Game game = new Game();
-		Player player1 = new Player();
-		Player player2 = new Player();
+		Player player1 = new Player(game, "Juan");
+		Player player2 = new Player(game, "Maria");
 		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		Turn turn = new Turn(player1, player2);
 
@@ -103,7 +103,7 @@ public class CanonBonusTest {
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 190 puntos de vida",190,algofomerJugador2.getLife());
 	}
-	
 
-	
+
+
 }
