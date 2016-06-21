@@ -251,7 +251,7 @@ public class Algoformer implements Content {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer) throws InvalidPositionException{
+	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException{
 		throw new InvalidPositionException();
 	}
 

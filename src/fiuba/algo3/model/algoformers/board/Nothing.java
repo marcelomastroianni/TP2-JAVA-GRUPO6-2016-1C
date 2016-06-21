@@ -21,7 +21,7 @@ public class Nothing implements Content{
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer) {
+	public void collideWithAlgoformer(Content algoformer) {
 
 	}
 }

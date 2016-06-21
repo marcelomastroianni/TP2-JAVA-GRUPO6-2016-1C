@@ -17,8 +17,9 @@ public class ChispaSuprema implements Content {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer) throws GameOverException {
-		algoformer.collideWithChiapaSuprema(this);
+	public void collideWithAlgoformer(Content algoformer) throws GameOverException {
+		Algoformer algo = (Algoformer) algoformer;
+		algo.collideWithChiapaSuprema(this);
 
 	}
 

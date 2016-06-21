@@ -18,8 +18,9 @@ public class BonusBurbujaInmaculada implements Bonus {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer) {
-		algoformer.protectWithImmaculateBubble(2);
+	public void collideWithAlgoformer(Content algoformer) {
+		Algoformer algo = (Algoformer) algoformer;
+		algo.protectWithImmaculateBubble(2);
 	}
 
 }

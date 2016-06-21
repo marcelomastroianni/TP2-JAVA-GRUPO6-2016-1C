@@ -22,8 +22,9 @@ public class BonusFlash implements Bonus {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer) {
-		algoformer.haste(3);
+	public void collideWithAlgoformer(Content algoformer) {
+		Algoformer algo = (Algoformer) algoformer;
+		algo.haste(3);
 	}
 
 }
