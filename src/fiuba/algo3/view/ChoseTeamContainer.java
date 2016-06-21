@@ -5,8 +5,6 @@ import fiuba.algo3.controller.EnterButtonEventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,7 +20,10 @@ import javafx.stage.Stage;
 
 
 public class ChoseTeamContainer extends VBox{
-	Stage stage;
+
+	  Stage stage;
+
+
 	  public ChoseTeamContainer(Stage stage, Scene nextScene){
 		  super();
 
@@ -30,6 +31,7 @@ public class ChoseTeamContainer extends VBox{
 
 	        this.setStyle("-fx-background: #000000;");
 	        this.setAlignment(Pos.CENTER);
+
 
 	        Label title = new Label();
 	        title.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
