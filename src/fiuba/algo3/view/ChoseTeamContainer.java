@@ -45,20 +45,17 @@ public class ChoseTeamContainer extends VBox{
 	    	ImageView imageviewTeam1 = new ImageView();
 	    	imageviewTeam1.setImage(imagenAutobots);
 
-	        TilePane name1Tile = new TilePane(Orientation.HORIZONTAL);
-	        name1Tile.setTileAlignment(Pos.CENTER);
-	        name1Tile.setPrefColumns(2);
-
 	        Label namePlayer1 = new Label();
 	        namePlayer1.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 	        namePlayer1.setText("Nombre:");
 	        namePlayer1.setTextFill(Color.web("#66A7C5"));
 	        TextField inputNamePlayer1 = new TextField();
 
-	        name1Tile.getChildren().addAll(namePlayer1, inputNamePlayer1);
+	        HBox name1hbox = new HBox();
+	        name1hbox.getChildren().addAll(namePlayer1, inputNamePlayer1);
 
 	        VBox team1 = new VBox();
-	        team1.getChildren().addAll(imageviewTeam1, name1Tile);
+	        team1.getChildren().addAll(imageviewTeam1, name1hbox);
 
 
 	        ///////////////////////////////////////////////////////TEAM2
@@ -67,20 +64,17 @@ public class ChoseTeamContainer extends VBox{
 	    	ImageView imageviewTeam2 = new ImageView();
 	    	imageviewTeam2.setImage(imagenDecepticons);
 
-	        TilePane name2Tile = new TilePane(Orientation.HORIZONTAL);
-	        name2Tile.setTileAlignment(Pos.CENTER);
-	        name2Tile.setPrefColumns(2);
-
 	        Label namePlayer2 = new Label();
 	        namePlayer2.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 	        namePlayer2.setText("Nombre:");
 	        namePlayer2.setTextFill(Color.web("#66A7C5"));
 	        TextField inputNamePlayer2 = new TextField();
 
-	        name1Tile.getChildren().addAll(namePlayer2, inputNamePlayer2);
+	        HBox name2hbox = new HBox();
+	        name2hbox.getChildren().addAll(namePlayer2, inputNamePlayer2);
 
 	        VBox team2 = new VBox();
-	        team2.getChildren().addAll(imageviewTeam2, name2Tile);
+	        team2.getChildren().addAll(imageviewTeam2, name2hbox);
 
 	        HBox hbox = new HBox();
 		    hbox.getChildren().addAll(team1, team2);

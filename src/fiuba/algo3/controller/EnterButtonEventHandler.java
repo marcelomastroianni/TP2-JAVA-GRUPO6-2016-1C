@@ -12,18 +12,20 @@ public class EnterButtonEventHandler implements EventHandler<ActionEvent> {
 
 	private Stage stage;
 	private Scene proximaEscena;
+	private TextField inputNamePlayer1;
+	private TextField inputNamePlayer2;
 
 	public EnterButtonEventHandler(Stage stage,TextField inputNamePlayer1,TextField inputNamePlayer2, Scene nextScene) {
-		String namePlayer1 = inputNamePlayer1.getText();
-		String namePlayer2 = inputNamePlayer2.getText();
-		this.stage = stage;
+		this.inputNamePlayer1 = inputNamePlayer1;
+		this.inputNamePlayer2 = inputNamePlayer2;
 		this.proximaEscena = nextScene;
-		System.out.println("jugador1: "+namePlayer1);
-		System.out.println("jugador2: "+namePlayer2);
+
 	}
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
+		System.out.println("jugador1: "+inputNamePlayer1.getText());
+		System.out.println("jugador2: "+inputNamePlayer2.getText());
 		stage.setScene(proximaEscena);
 		stage.setFullScreenExitHint("Exit");
 		stage.setFullScreen(true);
