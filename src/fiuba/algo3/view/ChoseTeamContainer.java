@@ -42,47 +42,47 @@ public class ChoseTeamContainer extends VBox{
 
 	        /////////////////////////////////////////////////////TEAM1
 
+	        Label autobots = new Label();
+	        autobots.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+	        autobots.setText("AUTOBOTS");
+	        autobots.setTextFill(Color.web("#BA0707"));
+
 	    	Image imagenAutobots = new Image("file:src/fiuba/algo3/vista/pictures/autobots.jpg");
 	    	ImageView imageviewTeam1 = new ImageView();
 	    	imageviewTeam1.setImage(imagenAutobots);
 
-	        Label namePlayer1 = new Label();
-	        namePlayer1.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-	        namePlayer1.setText("Nombre:");
-	        namePlayer1.setTextFill(Color.web("#66A7C5"));
 	        TextField textFieldName1 = new TextField();
-	        textFieldName1.setPromptText("ingrese el nombre del primer jugador");
+	        textFieldName1.setPromptText("ingrese el nombre del primer jugador1");
 	        textFieldName1.setPrefWidth(300);
 
-	        HBox name1hbox = new HBox(2);
-	        name1hbox.getChildren().addAll(namePlayer1, textFieldName1);
 
-	        VBox team1 = new VBox(2);
-	        team1.getChildren().addAll(imageviewTeam1, name1hbox);
+	        VBox team1 = new VBox(3);
+	        team1.setAlignment(Pos.CENTER);
+	        team1.getChildren().addAll(autobots, imageviewTeam1, textFieldName1);
 
 
 	        ///////////////////////////////////////////////////////TEAM2
+
+	        Label decepticons = new Label();
+	        decepticons.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+	        decepticons.setText("DECEPTICONS");
+	        decepticons.setTextFill(Color.web("#870FA8"));
 
 	        Image imagenDecepticons = new Image("file:src/fiuba/algo3/vista/pictures/decepticons.jpg");
 	    	ImageView imageviewTeam2 = new ImageView();
 	    	imageviewTeam2.setImage(imagenDecepticons);
 
-	        Label namePlayer2 = new Label();
-	        namePlayer2.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-	        namePlayer2.setText("Nombre:");
-	        namePlayer2.setTextFill(Color.web("#66A7C5"));
 	        TextField textFieldName2 = new TextField();
-	        textFieldName2.setPromptText("ingrese el nombre del segundo jugador");
+	        textFieldName2.setPromptText("ingrese el nombre del segundo jugador2");
 	        textFieldName2.setPrefWidth(300);
 
-	        HBox name2hbox = new HBox(2);
-	        name2hbox.getChildren().addAll(namePlayer2, textFieldName2);
-
-	        VBox team2 = new VBox(2);
-	        team2.getChildren().addAll(imageviewTeam2, name2hbox);
+	        VBox team2 = new VBox(3);
+	        team2.setAlignment(Pos.CENTER);
+	        team2.getChildren().addAll(decepticons, imageviewTeam2, textFieldName2);
 
 
 	        HBox hbox = new HBox(2);
+	        hbox.setAlignment(Pos.CENTER);
 		    hbox.getChildren().addAll(team1, team2);
 		    hbox.setMargin(team2,  new Insets(0,0,0,100));
 
