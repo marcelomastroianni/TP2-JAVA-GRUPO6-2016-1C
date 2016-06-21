@@ -2,7 +2,7 @@ package fiuba.algo3.view;
 
 
 import fiuba.algo3.controller.EnterButtonEventHandler;
-import javafx.geometry.Orientation;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
+
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -24,7 +24,8 @@ public class ChoseTeamContainer extends VBox{
 	  Stage stage;
 
 
-	  public ChoseTeamContainer(Stage stage, Scene nextScene){
+	  @SuppressWarnings("static-access")
+	public ChoseTeamContainer(Stage stage, Scene nextScene){
 		  super();
 
 	        this.stage = stage;
@@ -49,12 +50,14 @@ public class ChoseTeamContainer extends VBox{
 	        namePlayer1.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 	        namePlayer1.setText("Nombre:");
 	        namePlayer1.setTextFill(Color.web("#66A7C5"));
-	        TextField inputNamePlayer1 = new TextField();
+	        TextField textFieldName1 = new TextField();
+	        textFieldName1.setPromptText("ingrese el nombre del primer jugador");
+	        textFieldName1.setPrefWidth(300);
 
-	        HBox name1hbox = new HBox();
-	        name1hbox.getChildren().addAll(namePlayer1, inputNamePlayer1);
+	        HBox name1hbox = new HBox(2);
+	        name1hbox.getChildren().addAll(namePlayer1, textFieldName1);
 
-	        VBox team1 = new VBox();
+	        VBox team1 = new VBox(2);
 	        team1.getChildren().addAll(imageviewTeam1, name1hbox);
 
 
@@ -68,26 +71,29 @@ public class ChoseTeamContainer extends VBox{
 	        namePlayer2.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 	        namePlayer2.setText("Nombre:");
 	        namePlayer2.setTextFill(Color.web("#66A7C5"));
-	        TextField inputNamePlayer2 = new TextField();
+	        TextField textFieldName2 = new TextField();
+	        textFieldName2.setPromptText("ingrese el nombre del segundo jugador");
+	        textFieldName2.setPrefWidth(300);
 
-	        HBox name2hbox = new HBox();
-	        name2hbox.getChildren().addAll(namePlayer2, inputNamePlayer2);
+	        HBox name2hbox = new HBox(2);
+	        name2hbox.getChildren().addAll(namePlayer2, textFieldName2);
 
-	        VBox team2 = new VBox();
+	        VBox team2 = new VBox(2);
 	        team2.getChildren().addAll(imageviewTeam2, name2hbox);
 
-	        HBox hbox = new HBox();
+
+	        HBox hbox = new HBox(2);
 		    hbox.getChildren().addAll(team1, team2);
-
-
+		    hbox.setMargin(team2,  new Insets(0,0,0,100));
 
 		    Button enterButton = new Button();
 		    enterButton.setText("Jugar");
 
-	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(stage,inputNamePlayer1, inputNamePlayer2, nextScene);
+	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(stage,textFieldName1, textFieldName2, nextScene);
 	        enterButton.setOnAction(enterButtonEventHandler);
 
 	        this.getChildren().addAll(title,hbox, enterButton);
+	        this.setMargin(hbox, new Insets(50,50,50,50));
 
 	  }
 }
