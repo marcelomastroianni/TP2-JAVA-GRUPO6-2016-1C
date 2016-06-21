@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.game.Player;
+import fiuba.algo3.model.exceptions.GameOverException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class ModeAlternalAerial extends Mode{
@@ -24,8 +26,8 @@ public class ModeAlternalAerial extends Mode{
 	}
 
 	@Override
-	public void collideWithChispaSuprema(ChispaSuprema chispaSuprema, Player player) {
+	public void collideWithChispaSuprema(Algoformer algoformer) throws InvalidPositionException, GameOverException {
 		// en modo alterno no se puede tomar la chispa suprema
-
+		throw new InvalidPositionException();
 	}
 }

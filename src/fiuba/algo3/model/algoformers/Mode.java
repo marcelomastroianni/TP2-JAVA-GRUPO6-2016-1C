@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.GameOverException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public abstract class Mode {
@@ -40,5 +41,5 @@ public abstract class Mode {
 
 	public abstract void crossSurface(Surface surface,Algoformer algoformer);
 
-	public abstract void collideWithChispaSuprema(ChispaSuprema chispaSuprema, Player player) throws GameOverException;
+	public abstract void collideWithChispaSuprema(Algoformer algoformer) throws InvalidPositionException, GameOverException;
 }

@@ -733,7 +733,8 @@ public class GameTest {
 		}catch(GameOverException e){
 			Assert.assertEquals(e.getMessage(),"Felicitaciones Juan has ganado!!!!" );
 		}
-
+		Assert.assertEquals("Algoformer deberia estar en la posicion de la chispa suprema",new Position(2,0),algoformer.getPosition());
+		Assert.assertEquals("La chispa suprema no deberia estar en el tablero",algoformer,board.getContent(new Position(2,0)));
 	}
 
 	@Test
@@ -761,7 +762,13 @@ public class GameTest {
 		game.nextTurn();
 		game.nextTurn();
 		algoformer.move(new Position(2,0),board);
-
+		
+		
+		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",new Position(1,0),algoformer.getPosition());
+		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",algoformer,board.getContent(new Position(1,0)));
+		
+		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",new Position(2,0),chispaSuprema.getPosition());
+		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",chispaSuprema,board.getContent(new Position(2,0)));		
 	}
 
 //	@Test(expected =GameOverException.class)

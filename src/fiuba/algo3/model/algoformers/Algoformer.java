@@ -137,12 +137,21 @@ public class Algoformer implements Content {
 				nextSurface = board.getSurface(next);
 				if (this.activeMode.canCrossSurface(nextSurface)) {
 					try {
-						board.getContent(next).collideWithAlgoformer(this);
-						this.position = next;
-						board.clearContent(previous);
-						board.add(this);
-						this.activeMode.crossSurface(nextSurface, this);
-						this.haveBeenUsedInTurn = true;
+						try{
+							board.getContent(next).collideWithAlgoformer(this);
+							this.position = next;
+							board.clearContent(previous);
+							board.add(this);
+							this.activeMode.crossSurface(nextSurface, this);
+							this.haveBeenUsedInTurn = true;
+						}catch(GameOverException gameOverException){
+							this.position = next;
+							board.clearContent(previous);
+							board.add(this);
+							this.activeMode.crossSurface(nextSurface, this);
+							this.haveBeenUsedInTurn = true;
+							throw gameOverException;
+						}						
 					} catch (InvalidPositionException ex) {
 						//Coliciono con otro Algoformer
 						break;
@@ -256,9 +265,12 @@ public class Algoformer implements Content {
 	}
 
 
-	public void collideWithChiapaSuprema(ChispaSuprema chispaSuprema) throws GameOverException {
-		this.activeMode.collideWithChispaSuprema(chispaSuprema, player );
-
+	public void collideWithChiapaSuprema() throws GameOverException, InvalidPositionException {
+		this.activeMode.collideWithChispaSuprema(this);
+	}
+	
+	public void notifyCathChispaSuprema() throws GameOverException {	
+		throw new GameOverException("Felicitaciones "+ this.player.getName()+" has ganado!!!!");
 	}
 
 }
