@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 
 public class ChoseTeamContainer extends VBox{
 	  Stage stage;
+	  
+	  private Image textura = new Image("file:src/vista/imagenes/textura.png");
 	  public ChoseTeamContainer(Stage stage, Scene nextScene){
 		  
 		  super();
@@ -28,7 +30,7 @@ public class ChoseTeamContainer extends VBox{
 	        this.stage = stage;
 
 	        this.setAlignment(Pos.CENTER);
-	        Image imagen = new Image("file:src/vista/imagenes/textura.png");
+	        Image imagen = textura;
 	        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 	        this.setBackground(new Background(imagenDeFondo));
 

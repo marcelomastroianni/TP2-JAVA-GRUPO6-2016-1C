@@ -20,6 +20,14 @@ public class CellView {
 	 private Canvas canvas;
 	 private boolean selected;
 	 
+	 //Carga de imagenes
+	 private Image supRocosa = new Image("file:src/fiuba/algo3/vista/pictures/superficie_rocasa.jpg");
+	 private Image supEspinas = new Image("file:src/fiuba/algo3/vista/pictures/superficie_espinas_2.jpg");
+	 private Image supNubes = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nubes.jpg");
+	 private Image supPantano = new Image("file:src/fiuba/algo3/vista/pictures/superficie_pantano_2.jpg");
+	 private Image supAndromeda = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nebulosa_andromeda.jpg");
+	 private Image supPsionica = new Image("file:src/fiuba/algo3/vista/pictures/superficie_tormenta_psionica.jpg");
+	 
 	 public CellView(Cell cell, Canvas canvas){
 		 this.cell = cell;
 		 this.canvas = canvas;
@@ -36,22 +44,22 @@ public class CellView {
 	 public void update(){
 		 
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-    	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_rocasa.jpg"); 
+    	Image imagen = supRocosa; 
     	
     	if (this.cell.getSurface() instanceof SurfaceThorn)    	
-    		imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_espinas_2.jpg");
+    		imagen = supEspinas;
     	
     	if (this.cell.getSurface() instanceof SurfaceCloud)    	
-    		imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nubes.jpg");
+    		imagen = supNubes;
     	
       	if (this.cell.getSurface() instanceof SuperficiePantano)    	
-    		imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_pantano_2.jpg");
+    		imagen = supPantano;
     	
     	if (this.cell.getSurface() instanceof SurfaceAndromedaNebula)    	
-    		imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nebulosa_andromeda.jpg");
+    		imagen = supAndromeda;
       	
     	if (this.cell.getSurface() instanceof SurfacePsionicStorm)    	
-    		imagen = new Image("file:src/fiuba/algo3/vista/pictures/superficie_tormenta_psionica.jpg");
+    		imagen = supPsionica;
     	
     	if (this.selected)
     		gc.setFill(Color.BLUE);

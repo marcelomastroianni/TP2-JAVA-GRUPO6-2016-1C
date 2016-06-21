@@ -10,6 +10,10 @@ import javafx.scene.image.Image;
 public class BonusView {
 	 private Bonus bonus;
 	 private Canvas canvas;
+	 
+	 private Image cannon = new Image("file:src/fiuba/algo3/vista/pictures/bonus_doble_cannon.png");
+	 private Image flash = new Image("file:src/fiuba/algo3/vista/pictures/bonus_flash.png");
+	 private Image bubble = new Image("file:src/fiuba/algo3/vista/pictures/bonus_burbuja_inmaculada.png");
 
 	 public BonusView(Bonus bonus, Canvas canvas){
 		 this.bonus = bonus;
@@ -18,13 +22,13 @@ public class BonusView {
 
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-	   	Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/bonus_doble_cannon.png");
+	   	Image imagen = cannon;
 	   		   	
 	   	if (this.bonus instanceof BonusFlash){
-	   		imagen = new Image("file:src/fiuba/algo3/vista/pictures/bonus_flash.png");
+	   		imagen = flash;
 	   	}
 	   	if (this.bonus instanceof BonusBurbujaInmaculada){
-	   		imagen = new Image("file:src/fiuba/algo3/vista/pictures/bonus_burbuja_inmaculada.png");
+	   		imagen = bubble;
 	   	}	   	
 	   		   	
 	   	int x = bonus.getPosition().getX()*ViewConstants.CELL_WIDTH;
