@@ -1,17 +1,19 @@
 package fiuba.algo3.view;
 
+
 import fiuba.algo3.controller.EnterButtonEventHandler;
-import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,30 +22,76 @@ import javafx.stage.Stage;
 
 
 public class ChoseTeamContainer extends VBox{
-	  Stage stage;
+	Stage stage;
 	  public ChoseTeamContainer(Stage stage, Scene nextScene){
-		  
 		  super();
 
 	        this.stage = stage;
 
+	        this.setStyle("-fx-background: #000000;");
 	        this.setAlignment(Pos.CENTER);
-	        Image imagen = new Image("file:src/vista/imagenes/textura.png");
-	        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-	        this.setBackground(new Background(imagenDeFondo));
 
-	        Button enterButton = new Button();
-	       enterButton.setText("Jugar");
+	        Label title = new Label();
+	        title.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+	        title.setText("Bienvenidos a Algoformer Game");
+	        title.setTextFill(Color.web("#66A7C5"));
 
-	        Label etiqueta = new Label();
-	        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-	        etiqueta.setText("Bienvenidos a Algoformer Game");
-	        etiqueta.setTextFill(Color.web("#66A7C5"));
 
-	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(stage, nextScene);
+	        /////////////////////////////////////////////////////TEAM1
+
+	    	Image imagenAutobots = new Image("file:src/fiuba/algo3/vista/pictures/autobots.jpg");
+	    	ImageView imageviewTeam1 = new ImageView();
+	    	imageviewTeam1.setImage(imagenAutobots);
+
+	        TilePane name1Tile = new TilePane(Orientation.HORIZONTAL);
+	        name1Tile.setTileAlignment(Pos.CENTER);
+	        name1Tile.setPrefColumns(2);
+
+	        Label namePlayer1 = new Label();
+	        namePlayer1.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+	        namePlayer1.setText("Nombre:");
+	        namePlayer1.setTextFill(Color.web("#66A7C5"));
+	        TextField inputNamePlayer1 = new TextField();
+
+	        name1Tile.getChildren().addAll(namePlayer1, inputNamePlayer1);
+
+	        VBox team1 = new VBox();
+	        team1.getChildren().addAll(imageviewTeam1, name1Tile);
+
+
+	        ///////////////////////////////////////////////////////TEAM2
+
+	        Image imagenDecepticons = new Image("file:src/fiuba/algo3/vista/pictures/decepticons.jpg");
+	    	ImageView imageviewTeam2 = new ImageView();
+	    	imageviewTeam2.setImage(imagenDecepticons);
+
+	        TilePane name2Tile = new TilePane(Orientation.HORIZONTAL);
+	        name2Tile.setTileAlignment(Pos.CENTER);
+	        name2Tile.setPrefColumns(2);
+
+	        Label namePlayer2 = new Label();
+	        namePlayer2.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+	        namePlayer2.setText("Nombre:");
+	        namePlayer2.setTextFill(Color.web("#66A7C5"));
+	        TextField inputNamePlayer2 = new TextField();
+
+	        name1Tile.getChildren().addAll(namePlayer2, inputNamePlayer2);
+
+	        VBox team2 = new VBox();
+	        team2.getChildren().addAll(imageviewTeam2, name2Tile);
+
+	        HBox hbox = new HBox();
+		    hbox.getChildren().addAll(team1, team2);
+
+
+
+		    Button enterButton = new Button();
+		    enterButton.setText("Jugar");
+
+	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(stage,inputNamePlayer1, inputNamePlayer2, nextScene);
 	        enterButton.setOnAction(enterButtonEventHandler);
 
-	        this.getChildren().addAll(etiqueta,enterButton);
-		  
+	        this.getChildren().addAll(title,hbox, enterButton);
+
 	  }
 }

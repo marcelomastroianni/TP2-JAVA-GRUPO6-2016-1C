@@ -14,7 +14,7 @@ public class AlgoformerApp extends Application {
 	    public void start(final Stage stage) throws Exception {
 	        stage.setTitle("Algoformers");
 	        GameContainer juego = new GameContainer(stage);
-	        Scene playScene = new Scene(juego,3000,3000);
+	        Scene playScene = new Scene(juego,1200,800);
 	        ChoseTeamContainer ChoseTeamContainer  = new ChoseTeamContainer(stage, playScene);
 	        Scene escenaElegirEquipo = new Scene(ChoseTeamContainer, 640, 480);
 	        stage.setScene(escenaElegirEquipo);
