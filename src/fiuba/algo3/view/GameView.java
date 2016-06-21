@@ -12,6 +12,8 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 
 public class GameView  {
@@ -193,4 +195,12 @@ public class GameView  {
 	public void setLblAlgoformerBonusInmaculateBubble(Label lblAlgoformerBonusInmaculateBubble) {
 		this.lblAlgoformerBonusInmaculateBubble = lblAlgoformerBonusInmaculateBubble;
 	}	
+	
+	public void showGameFinish(String playerWinner){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("El juego ha terminado");
+		alert.setHeaderText(playerWinner);
+		alert.setContentText("");
+		alert.showAndWait();
+	}
 }

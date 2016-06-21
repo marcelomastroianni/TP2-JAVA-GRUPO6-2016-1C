@@ -73,8 +73,13 @@ public class GameController {
 	        			
 	    				game.moverAlgoformer( positionSelected1, positionSelected2);
 	    			} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
-	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException | GameOverException e) {
+	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException e) {
 	    				e.printStackTrace();
+	    			}
+	    			catch(GameOverException gameOverException){
+	    				this.clearSelectedCells();	    
+	    	    		this.view.update(); 
+	    				this.view.showGameFinish(gameOverException.getMessage());
 	    			}
 	    			this.clearAction();
 	    		}
@@ -84,9 +89,14 @@ public class GameController {
 						game.dispararaAlgoformer(positionSelected1, positionSelected2);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
 							| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
-							| AlgoformerUsadoEsteTurnoException | GameOverException e) {
+							| AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
 					}    
+					catch(GameOverException gameOverException){
+	    				this.clearSelectedCells();	    
+	    	    		this.view.update(); 
+	    				this.view.showGameFinish(gameOverException.getMessage());
+	    			}
 					this.clearAction();
 	    		}
 	    		
@@ -116,13 +126,13 @@ public class GameController {
 	}
 
 	public void dobleClickCell(Position position) throws AlgoformerUsadoEsteTurnoException {
-		try {
+		/*try {
 			this.game.transformaraAlgoformer(position);
 			this.view.update(); 
 		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
 			 | InvalidPositionException |AlgoformerAtrapadoEsteTurnoException e) {
 			e.printStackTrace();		
-		}
+		}*/
 	}
 	
 	public void registerClickEvents(Canvas canvas){
