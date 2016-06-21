@@ -189,7 +189,7 @@ public class Algoformer implements Content {
 
 	private void resolveShootingDistance(Algoformer algoformer)
 			throws InvalidStrikeException {
-		if (!this.position.inAttackDistance(algoformer.getPosition(),this.activeMode.getStrikingDistance())){
+		if (!this.position.isInDistance(algoformer.getPosition(),this.activeMode.getStrikingDistance())){
 			throw new InvalidStrikeException();
 		}
 	}

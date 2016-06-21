@@ -9,9 +9,9 @@ public class Position {
 		this.Y = Y;
 	}
 
-	public boolean inAttackDistance(Position position, int range ){
-		return (this.X + range >= position.getX() && this.X - range <= position.getX() &&
-		this.Y + range >= position.getY() && this.Y - range <= position.getY());
+	public boolean isInDistance(Position position, int distance){
+		return (this.X + distance >= position.getX() && this.X - distance <= position.getX() &&
+		this.Y + distance >= position.getY() && this.Y - distance <= position.getY());
 	}
 
 	@Override
