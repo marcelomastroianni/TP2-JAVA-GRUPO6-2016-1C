@@ -56,8 +56,7 @@ public class GameController {
 	    			try {
 						game.transformaraAlgoformer(positionSelected1);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-						 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException
-							| AlgoformerUsadoEsteTurnoException e) {
+						 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException | AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
 					}
 	    			this.clearSelectedCells();
@@ -74,8 +73,7 @@ public class GameController {
 	        			
 	    				game.moverAlgoformer( positionSelected1, positionSelected2);
 	    			} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
-	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException
-	    					| AlgoformerUsadoEsteTurnoException e) {
+	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException | GameOverException e) {
 	    				e.printStackTrace();
 	    			}
 	    			this.clearAction();
@@ -86,7 +84,7 @@ public class GameController {
 						game.dispararaAlgoformer(positionSelected1, positionSelected2);
 					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
 							| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
-							| AlgoformerUsadoEsteTurnoException e) {
+							| AlgoformerUsadoEsteTurnoException | GameOverException e) {
 						e.printStackTrace();
 					}    
 					this.clearAction();
@@ -117,13 +115,12 @@ public class GameController {
 		this.view.updateTurn();				
 	}
 
-	public void dobleClickCell(Position position) {
+	public void dobleClickCell(Position position) throws AlgoformerUsadoEsteTurnoException {
 		try {
 			this.game.transformaraAlgoformer(position);
 			this.view.update(); 
 		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-			 | InvalidPositionException |AlgoformerAtrapadoEsteTurnoException
-				| AlgoformerUsadoEsteTurnoException e) {
+			 | InvalidPositionException |AlgoformerAtrapadoEsteTurnoException e) {
 			e.printStackTrace();		
 		}
 	}
@@ -140,7 +137,12 @@ public class GameController {
 	                    	System.out.println("(" + x_celda +  "," + y_celda +  ")");
 	                    	
 	                        if (t.getClickCount() >1) {
-	                        	dobleClickCell(new Position(x_celda,y_celda));	                        	
+	                        	try {
+									dobleClickCell(new Position(x_celda,y_celda));
+								} catch (AlgoformerUsadoEsteTurnoException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}	                        	
 	                        }  
 	                    }
 	                });

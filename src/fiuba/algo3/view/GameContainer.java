@@ -6,6 +6,7 @@ import fiuba.algo3.controller.MoveButtonHandler;
 import fiuba.algo3.controller.NextTurnButtonHandler;
 import fiuba.algo3.controller.TransformButtonHandler;
 import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -117,7 +118,12 @@ public class GameContainer extends BorderPane{
 
 	private void initializeMVC(){
 		this.game = new Game();
-        this.game.init();
+        try {
+			this.game.init();
+		} catch (InvalidPositionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         this.gameView = new GameView(this.game, this.canvas);
         this.gameController = new GameController(this.game, this.gameView);
         this.gameView.setLblActionSelected(this.lblActionSelected);

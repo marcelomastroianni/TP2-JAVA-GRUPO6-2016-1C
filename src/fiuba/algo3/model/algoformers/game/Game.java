@@ -147,7 +147,7 @@ public class Game {
 		this.turn.next();
 	}
 
-	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException {
+	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, GameOverException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -171,7 +171,7 @@ public class Game {
 		algoformer.move(finalPosition, this.board);
 	}
 
-	public void dispararaAlgoformer( Position initialPosition, Position finalPosition) {
+	public void dispararaAlgoformer( Position initialPosition, Position finalPosition) throws InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerUsadoEsteTurnoException, GameOverException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -205,7 +205,7 @@ public class Game {
 		algoformer.shot(algoformerDestino);
 	}
 
-	public void transformaraAlgoformer(Position position) throws AlgoformerAtrapadoEsteTurnoException {
+	public void transformaraAlgoformer(Position position) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException {
 
 		if (!this.board.isValidPosition(position)){
 			throw new InvalidPositionException();
@@ -229,7 +229,7 @@ public class Game {
 		algoformer.transform();
 	}
 
-	public void notifyPlayerLost(Player player) {
+	public void notifyPlayerLost(Player player) throws GameOverException {
 		Player winner;
 		if(player.equals(player1)){
 			winner = player2;

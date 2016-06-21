@@ -8,6 +8,7 @@ import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
@@ -65,7 +66,7 @@ public class Algoformer implements Content {
 		return activeMode;
 	}
 
-	public void downHealthPoints(Integer damage) {
+	public void downHealthPoints(Integer damage) throws GameOverException {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
 		}
@@ -97,7 +98,7 @@ public class Algoformer implements Content {
 	}
 
 
-	public void transform() {
+	public void transform() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
@@ -117,7 +118,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * 0.95);
 	}
 
-	public void move(Position finalPosition, Board board) {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.trapped) {
@@ -161,7 +162,7 @@ public class Algoformer implements Content {
 		this.activeMode.changeAttackPower(0.6);
 	}
 
-	public void shot(Algoformer algoformer) throws AlgoformerUsadoEsteTurnoException {
+	public void shot(Algoformer algoformer) throws AlgoformerUsadoEsteTurnoException, GameOverException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		try {
@@ -250,12 +251,12 @@ public class Algoformer implements Content {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Algoformer algoformer){
+	public void collideWithAlgoformer(Algoformer algoformer) throws InvalidPositionException{
 		throw new InvalidPositionException();
 	}
 
 
-	public void collideWithChiapaSuprema(ChispaSuprema chispaSuprema) {
+	public void collideWithChiapaSuprema(ChispaSuprema chispaSuprema) throws GameOverException {
 		this.activeMode.collideWithChispaSuprema(chispaSuprema, player );
 
 	}

@@ -22,7 +22,7 @@ public class ModeHumanoid extends Mode {
 	}
 
 	@Override
-	public void collideWithChispaSuprema(ChispaSuprema chispaSuprema, Player winner) {
+	public void collideWithChispaSuprema(ChispaSuprema chispaSuprema, Player winner) throws GameOverException {
 		throw new GameOverException("Felicitaciones "+ winner.getName()+" has ganado!!!!");
 
 	}
