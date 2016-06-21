@@ -24,7 +24,7 @@ public class Algoformer implements Content {
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
-	private boolean trapped = false;
+	private boolean isTrapped = false;
 	private Integer turnsTrapped = 0;
 	private boolean isDobleDamage = false;
 	private Integer turnsDobleDamage = 0;
@@ -102,7 +102,7 @@ public class Algoformer implements Content {
 
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.trapped) {
+		if (!this.isTrapped) {
 				this.changeMode();
 		}else {
 			throw new AlgoformerAtrapadoEsteTurnoException();
@@ -121,14 +121,11 @@ public class Algoformer implements Content {
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.trapped) {
+		if (!this.isTrapped) {
 			Position previous;
 			Position next;
 			Surface nextSurface;
-			int speed = this.activeMode.getSpeed();
-			if (isFlash){
-				speed = speed *3;
-			}
+			int speed = this.getSpeed();
 			while (position.hasNext(finalPosition)
 					&& this.stepsMovedInTurn < speed) {
 				this.stepsMovedInTurn++;
@@ -177,11 +174,7 @@ public class Algoformer implements Content {
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
-			if (this.isDobleDamage) {
-				algoformer.downHealthPoints((this.activeMode.getAttack() * 2));
-			}else{
-				algoformer.downHealthPoints(this.activeMode.getAttack());
-			}
+			algoformer.downHealthPoints(this.getAttack());
 			this.haveBeenUsedInTurn = true;
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
@@ -198,7 +191,7 @@ public class Algoformer implements Content {
 
 	private void resolveShootingDistance(Algoformer algoformer)
 			throws InvalidStrikeException {
-		if (!this.position.isInDistance(algoformer.getPosition(),this.activeMode.getStrikingDistance())){
+		if (!this.position.isInDistance(algoformer.getPosition(),this.getStrikingDistance())){
 			throw new InvalidStrikeException();
 		}
 	}
@@ -225,15 +218,15 @@ public class Algoformer implements Content {
 	}
 
 	public void trap(Integer turns) {
-		this.trapped = true;
+		this.isTrapped = true;
 		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
 	}
 
 	public void notifyNextTurn() {
-		if (trapped) {
+		if (isTrapped) {
 			this.turnsTrapped -= 1;
 			if (this.turnsTrapped.equals(new Integer(0))) {
-				this.trapped = false;
+				this.isTrapped = false;
 			}
 		}
 		if (isDobleDamage) {
@@ -264,7 +257,6 @@ public class Algoformer implements Content {
 		throw new InvalidPositionException();
 	}
 
-
 	public void collideWithChiapaSuprema() throws GameOverException, InvalidPositionException {
 		this.activeMode.collideWithChispaSuprema(this);
 	}
@@ -272,5 +264,60 @@ public class Algoformer implements Content {
 	public void notifyCathChispaSuprema() throws GameOverException {	
 		throw new GameOverException("Felicitaciones "+ this.player.getName()+" has ganado!!!!");
 	}
+	
+	public int getAttack(){
+		int attack = this.activeMode.getAttack();
+		if (this.isDobleDamage) {
+			attack = (attack * 2);
+		}
+		return attack;
+	}
+	
+	public int getSpeed(){
+		if (this.isFlash){
+			return (this.activeMode.getSpeed() *3);
+		}else{
+			return this.activeMode.getSpeed();
+		}			
+	}
+	
+	public int getStrikingDistance(){
+		return this.activeMode.getStrikingDistance();
+	}
+	
+	public boolean isTrapped(){
+		return this.isTrapped;
+	}
+	
+	public int getTurnsTrapped(){
+		return this.turnsTrapped;
+	}
+	
+	public boolean isDobleDamage(){
+		return this.isDobleDamage;
+	}
+	
+	public int getTurnsDobleDamage(){
+		return this.turnsDobleDamage;
+	}
+	
+	public boolean isFlash(){
+		return this.isFlash;
+	}
+	
+	public int getTurnsFlash(){
+		return this.turnsFlash;
+	}
 
+	public boolean isImmaculateBubble(){
+		return this.isImmaculateBubble;
+	}
+	
+	public int getTurnsImmaculateBubble(){
+		return this.turnsImmaculateBubble;
+	}	
+
+	public boolean isBonus(){
+		return (this.isFlash || this.isDobleDamage || this.isImmaculateBubble);
+	}
 }

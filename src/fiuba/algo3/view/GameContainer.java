@@ -40,7 +40,13 @@ public class GameContainer extends BorderPane{
 	private Label lblAlgoformerStrikingDistance;
 	private Label lblAlgoformerSpeed;
 	private Label lblAlgoformerPosition;
-
+	
+	private Label lblAlgoformerStateTrapped;	
+	private Label lblAlgoformerBonusTitle;
+	private Label lblAlgoformerBonusDobleCannon;
+	private Label lblAlgoformerBonusFlash;
+	private Label lblAlgoformerBonusInmaculateBubble;
+	
 	private Label lblBlankLine1;
 	private Label lblBlankLine2;
 
@@ -79,6 +85,13 @@ public class GameContainer extends BorderPane{
 		this.lblAlgoformerStrikingDistance = new Label("");
 		this.lblAlgoformerSpeed = new Label("");
 		this.lblAlgoformerPosition = new Label("");
+		
+		this.lblAlgoformerStateTrapped = new Label("");;	
+		this.lblAlgoformerBonusTitle = new Label("");;
+		this.lblAlgoformerBonusDobleCannon = new Label("");;
+		this.lblAlgoformerBonusFlash = new Label("");;
+		this.lblAlgoformerBonusInmaculateBubble = new Label("");;
+		
 	}
 
 	private void initilizeLayout(Stage stage){
@@ -107,7 +120,12 @@ public class GameContainer extends BorderPane{
         						this.lblAlgoformerAttack,
         						this.lblAlgoformerStrikingDistance,
         						this.lblAlgoformerSpeed,
-        						this.lblAlgoformerPosition);
+        						this.lblAlgoformerPosition,
+        						this.lblAlgoformerStateTrapped,
+        						this.lblAlgoformerBonusTitle,
+        						this.lblAlgoformerBonusDobleCannon,
+        						this.lblAlgoformerBonusFlash,
+        						this.lblAlgoformerBonusInmaculateBubble);                	
 
         leftPane.setSpacing(10);
         leftPane.setPadding(new Insets(20));
@@ -134,7 +152,13 @@ public class GameContainer extends BorderPane{
         this.gameView.setLblAlgoformerAttack(this.lblAlgoformerAttack);
         this.gameView.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);
         this.gameView.setLblAlgoformerSpeed(this.lblAlgoformerSpeed);
-        this.gameView.setLblAlgoformerPosition(this.lblAlgoformerPosition);
+        this.gameView.setLblAlgoformerPosition(this.lblAlgoformerPosition);        
+        this.gameView.setLblAlgoformerBonusTitle(this.lblAlgoformerBonusTitle);
+        this.gameView.setLblAlgoformerBonusFlash(this.lblAlgoformerBonusFlash);
+        this.gameView.setLblAlgoformerBonusDobleCannon(this.lblAlgoformerBonusDobleCannon);
+        this.gameView.setLblAlgoformerBonusInmaculateBubble(this.lblAlgoformerBonusInmaculateBubble);
+        this.gameView.setLblAlgoformerStateTrapped(this.lblAlgoformerStateTrapped);
+        
         this.gameView.updateTurn();
 	}
 

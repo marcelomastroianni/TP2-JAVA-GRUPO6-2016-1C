@@ -28,7 +28,12 @@ public class GameView  {
 	Label lblAlgoformerAttack;
 	Label lblAlgoformerStrikingDistance;
 	Label lblAlgoformerSpeed;
-	Label lblAlgoformerPosition;
+	Label lblAlgoformerPosition;	
+	Label lblAlgoformerStateTrapped;	
+	Label lblAlgoformerBonusTitle;
+	Label lblAlgoformerBonusDobleCannon;
+	Label lblAlgoformerBonusFlash;
+	Label lblAlgoformerBonusInmaculateBubble;
 	
 	public GameView(Game game,Canvas canvas) {        
 	        this.game = game;
@@ -60,10 +65,41 @@ public class GameView  {
 			this.lblAlgoformerTitle.setText("Algoformer Seleccionado:");
 			this.lblAlgoformerName.setText("Name: " + algoformer.getNombre());
 			this.lblAlgoformerLife.setText("Life: " + Integer.toString(algoformer.getLife()));
-			this.lblAlgoformerAttack.setText("Attack: " + Integer.toString(algoformer.getActiveMode().getAttack()));
-			this.lblAlgoformerStrikingDistance.setText("Striking Distance: " + Integer.toString(algoformer.getActiveMode().getStrikingDistance()));
-			this.lblAlgoformerSpeed.setText("Speed: " + Integer.toString(algoformer.getActiveMode().getSpeed()));
+			this.lblAlgoformerAttack.setText("Attack: " + Integer.toString(algoformer.getAttack()));
+			this.lblAlgoformerStrikingDistance.setText("Striking Distance: " + Integer.toString(algoformer.getStrikingDistance()));
+			this.lblAlgoformerSpeed.setText("Speed: " + Integer.toString(algoformer.getSpeed()));
 			this.lblAlgoformerPosition.setText("Position: " + algoformer.getPosition().toString());
+
+			if (algoformer.isTrapped()){			
+				this.lblAlgoformerStateTrapped.setText("Trapped (" + Integer.toString(algoformer.getTurnsTrapped()) + " turns left)." );
+			}else{
+				this.lblAlgoformerStateTrapped.setText("");		
+			}
+				
+			if (algoformer.isBonus()){			
+				this.lblAlgoformerBonusTitle.setText("Bonus:");
+			}else{
+				this.lblAlgoformerBonusTitle.setText("");	
+			}
+						
+			if (algoformer.isDobleDamage()){			
+				this.lblAlgoformerBonusDobleCannon.setText("Doble Cannon (" + Integer.toString(algoformer.getTurnsDobleDamage()) + " turns left)." );
+			}else{
+				this.lblAlgoformerBonusDobleCannon.setText("");
+			}
+			
+			if (algoformer.isFlash()){			
+				this.lblAlgoformerBonusFlash.setText("Flash (" + Integer.toString(algoformer.getTurnsFlash()) + " turns left)." );
+			}else{
+				this.lblAlgoformerBonusFlash.setText("");
+			}
+
+			if (algoformer.isImmaculateBubble()){			
+				this.lblAlgoformerBonusInmaculateBubble.setText("Immaculate Bubble (" + Integer.toString(algoformer.getTurnsImmaculateBubble()) + " turns left)." );
+			}else{
+				this.lblAlgoformerBonusInmaculateBubble.setText("");
+			}
+					
 		}else{
 			this.clearAlgoformerSelected();
 		}		
@@ -77,6 +113,11 @@ public class GameView  {
 		this.lblAlgoformerStrikingDistance.setText("");
 		this.lblAlgoformerSpeed.setText("");
 		this.lblAlgoformerPosition.setText("");
+		this.lblAlgoformerStateTrapped.setText("");	
+		this.lblAlgoformerBonusTitle.setText("");
+		this.lblAlgoformerBonusDobleCannon.setText("");
+		this.lblAlgoformerBonusFlash.setText("");
+		this.lblAlgoformerBonusInmaculateBubble.setText("");
 	}
       
     public void update(){
@@ -129,8 +170,27 @@ public class GameView  {
 		this.lblAlgoformerSpeed = lblAlgoformerSpeed;
 	}
 	
-
 	public void setLblAlgoformerPosition(Label lblAlgoformerPosition) {
 		this.lblAlgoformerPosition = lblAlgoformerPosition;
 	}
+		
+	public void setLblAlgoformerStateTrapped(Label lblAlgoformerStateTrapped) {
+		this.lblAlgoformerStateTrapped = lblAlgoformerStateTrapped;
+	}
+	
+	public void setLblAlgoformerBonusTitle(Label lblAlgoformerBonusTitle) {
+		this.lblAlgoformerBonusTitle = lblAlgoformerBonusTitle;
+	}
+	
+	public void setLblAlgoformerBonusDobleCannon(Label lblAlgoformerBonusDobleCannon) {
+		this.lblAlgoformerBonusDobleCannon = lblAlgoformerBonusDobleCannon;
+	}
+	
+	public void setLblAlgoformerBonusFlash(Label lblAlgoformerBonusFlash) {
+		this.lblAlgoformerBonusFlash = lblAlgoformerBonusFlash;
+	}
+	
+	public void setLblAlgoformerBonusInmaculateBubble(Label lblAlgoformerBonusInmaculateBubble) {
+		this.lblAlgoformerBonusInmaculateBubble = lblAlgoformerBonusInmaculateBubble;
+	}	
 }

@@ -125,9 +125,9 @@ public class Game {
 
 	public String getActivePlayer(){
 		if(this.getTurn().isActivePlayer(this.getPlayer1()))
-			return "Jugador 1";
+			return "Jugador 1 ( " + this.getPlayer1().getName() + " )";
 		else
-			return "Jugador 2";
+			return "Jugador 2 ( " + this.getPlayer2().getName() + " )";
 	}
 
 	public void setBoard(Board board){
