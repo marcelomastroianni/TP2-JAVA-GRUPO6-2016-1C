@@ -58,6 +58,19 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
+	public void testModoHumanoideMantieneAttackPower() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		tablero.add(megatron);
+		megatron.move(new Position(2,0), tablero);
+		megatron.notifyNextTurn();
+		Assert.assertEquals("algoformer humanoide debe mantener el mismo poder de ataque",new Integer(10),megatron.getActiveMode().getAttack());
+
+
+	}
+
+	@Test
 	public void testModoAereoAlternoCruzaSuperficieTormentaPsionicaPeroPierdePoderDeAtaque() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
