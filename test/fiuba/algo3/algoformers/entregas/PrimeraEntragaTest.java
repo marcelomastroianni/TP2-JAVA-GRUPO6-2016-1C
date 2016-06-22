@@ -74,7 +74,7 @@ public class PrimeraEntragaTest {
 	@Test
 	public void test04() throws InvalidPositionException{
 		Game game = new Game();
-		game.init();
+		game.init("Juan", "Maria");
 
 		Player jugador1 = game.getPlayer1();
 		Assert.assertTrue("El juego deberia tener un jugador 1",jugador1!=null);
