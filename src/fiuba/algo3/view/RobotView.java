@@ -16,12 +16,12 @@ public class RobotView {
 
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image imagen = new Image("file:src/fiuba/algo3/vista/pictures/optimusPrime.png");
+		Image imagen = ImageFactory.getAlgoformerOtimusPrime();
 		
 		if (this.robot.getNombre().equals("Optimus Prime")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_optimusprime.png");
+			imagen = ImageFactory.getAlgoformerOtimusPrime();
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
-				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_optimusprime_alternal.png");
+				imagen = ImageFactory.getAlgoformerOtimusPrimeAlternal();
 		}
 			
 		if (this.robot.getNombre().equals("Bumblebee")){

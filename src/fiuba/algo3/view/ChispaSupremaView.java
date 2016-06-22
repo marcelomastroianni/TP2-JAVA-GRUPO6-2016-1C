@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 public class ChispaSupremaView {
 	 private ChispaSuprema chispaSuprema;
 	 private Canvas canvas;
-	 private Image chispaSupremaImage = new Image("file:src/fiuba/algo3/vista/pictures/chispa-suprema.png");
+	 private Image chispaSupremaImage = ImageFactory.getChispaSuprema();
 
 	 public ChispaSupremaView(ChispaSuprema chispaSuprema, Canvas canvas){
 		 this.chispaSuprema = chispaSuprema;

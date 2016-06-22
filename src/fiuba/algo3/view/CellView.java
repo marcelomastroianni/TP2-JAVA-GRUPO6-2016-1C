@@ -21,12 +21,12 @@ public class CellView {
 	 private boolean selected;
 	 
 	 //Carga de imagenes
-	 private Image supRocosa = new Image("file:src/fiuba/algo3/vista/pictures/superficie_rocasa.jpg");
-	 private Image supEspinas = new Image("file:src/fiuba/algo3/vista/pictures/superficie_espinas_2.jpg");
-	 private Image supNubes = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nubes.jpg");
-	 private Image supPantano = new Image("file:src/fiuba/algo3/vista/pictures/superficie_pantano_2.jpg");
-	 private Image supAndromeda = new Image("file:src/fiuba/algo3/vista/pictures/superficie_nebulosa_andromeda.jpg");
-	 private Image supPsionica = new Image("file:src/fiuba/algo3/vista/pictures/superficie_tormenta_psionica.jpg");
+	 private Image supRocosa = ImageFactory.getSupRocosa();
+	 private Image supEspinas = ImageFactory.getSupEspinas();
+	 private Image supNubes = ImageFactory.getSupNubes();
+	 private Image supPantano = ImageFactory.getSupPantano();
+	 private Image supAndromeda = ImageFactory.getSupAndromeda();
+	 private Image supPsionica = ImageFactory.getSupPsionica();
 	 
 	 public CellView(Cell cell, Canvas canvas){
 		 this.cell = cell;

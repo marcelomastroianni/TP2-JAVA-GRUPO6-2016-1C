@@ -11,9 +11,9 @@ public class BonusView {
 	 private Bonus bonus;
 	 private Canvas canvas;
 	 
-	 private Image cannon = new Image("file:src/fiuba/algo3/vista/pictures/bonus_doble_cannon.png");
-	 private Image flash = new Image("file:src/fiuba/algo3/vista/pictures/bonus_flash.png");
-	 private Image bubble = new Image("file:src/fiuba/algo3/vista/pictures/bonus_burbuja_inmaculada.png");
+	 private Image cannon = ImageFactory.getBonusDobleCannon();
+	 private Image flash = ImageFactory.getBonusFlash();
+	 private Image bubble = ImageFactory.getBonusBubble();
 
 	 public BonusView(Bonus bonus, Canvas canvas){
 		 this.bonus = bonus;
