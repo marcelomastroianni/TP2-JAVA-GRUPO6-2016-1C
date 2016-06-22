@@ -5,6 +5,7 @@ import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.*;
+import fiuba.algo3.view.AlgoformerApp;
 import fiuba.algo3.view.GameView;
 import fiuba.algo3.view.ViewConstants;
 import javafx.event.EventHandler;
@@ -18,14 +19,16 @@ public class GameController {
 	private Game game;
 	private GameView view;
 	private Algoformer algoformerSelected;
+	private AlgoformerApp app;
 	
 	public enum Action {
 		SIN_ACCION, MOVERSE, TRANSFORMARSE, ATACAR;
 	}
 	
-	public GameController(Game game,GameView view){
+	public GameController(Game game,GameView view,AlgoformerApp app){
 		this.game = game;
 		this.view = view;
+		this.app = app;
 	}
 	
 	public void selectAction(Action action){
@@ -80,6 +83,8 @@ public class GameController {
 	    				this.clearSelectedCells();	    
 	    	    		this.view.update(); 
 	    				this.view.showGameFinish(gameOverException.getMessage());
+	    				this.app.setChooseTeamScene();
+	    				
 	    			}
 	    			this.clearAction();
 	    		}
@@ -96,6 +101,7 @@ public class GameController {
 	    				this.clearSelectedCells();	    
 	    	    		this.view.update(); 
 	    				this.view.showGameFinish(gameOverException.getMessage());
+	    				this.app.setChooseTeamScene();
 	    			}
 					this.clearAction();
 	    		}

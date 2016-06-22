@@ -1,5 +1,6 @@
 package fiuba.algo3.controller;
 
+import fiuba.algo3.view.AlgoformerApp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,25 +11,21 @@ import javafx.stage.Stage;
 public class EnterButtonEventHandler implements EventHandler<ActionEvent> {
 
 
-	private Stage stage;
-	private Scene proximaEscena;
 	private TextField inputNamePlayer1;
 	private TextField inputNamePlayer2;
+	AlgoformerApp app;
 
-	public EnterButtonEventHandler(Stage stage,TextField inputNamePlayer1,TextField inputNamePlayer2, Scene nextScene) {
+	public EnterButtonEventHandler(TextField inputNamePlayer1,TextField inputNamePlayer2,AlgoformerApp app) {
 		this.inputNamePlayer1 = inputNamePlayer1;
 		this.inputNamePlayer2 = inputNamePlayer2;
-		this.proximaEscena = nextScene;
+		this.app = app;
 
 	}
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
-		System.out.println("jugador1: "+inputNamePlayer1.getText());
-		System.out.println("jugador2: "+inputNamePlayer2.getText());
-		stage.setScene(proximaEscena);
-		stage.setFullScreenExitHint("Exit");
-		stage.setFullScreen(true);
+		String namePlayer1 = inputNamePlayer1.getText();
+		String namePlayer2 = inputNamePlayer2.getText();				
+		this.app.setGameScene(namePlayer1,namePlayer2);
 	}
-
 }

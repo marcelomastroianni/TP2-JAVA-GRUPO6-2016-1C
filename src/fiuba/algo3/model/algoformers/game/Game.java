@@ -28,9 +28,12 @@ public class Game {
 
 
 	public void init() throws InvalidPositionException {
+		init("Juan","Maria");
+	}
+	public void init(String namePlayer1,String namePlayer2) throws InvalidPositionException {
 		Game game = new Game();
-		this.player1 = new Player(game, "Juan");
-		this.player2 = new Player(game, "Maria");
+		this.player1 = new Player(game, namePlayer1);
+		this.player2 = new Player(game, namePlayer2);
 		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
 		this.turn = new Turn(this.player1, this.player2);
 

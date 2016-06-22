@@ -55,31 +55,26 @@ public class GameContainer extends BorderPane {
 	private GameView gameView;
 	private GameController gameController;
 
-	public GameContainer(Stage stage) {
+	public GameContainer(AlgoformerApp app,String namePlayer1,String namePlayer2) {
 		this.createControls();
-		this.initilizeLayout(stage);
-		this.initializeMVC();
+		this.initilizeLayout();
+		this.initializeMVC(app,namePlayer1,namePlayer2);
 		this.registerEvents();
 		this.setConsola();
 	}
 
 	private void createControls() {
 		this.canvas = new Canvas(1400, 900);
-
 		this.moveButton = new Button("Mover");
 		this.nextTurnButton = new Button("Siguiente Turno");
 		this.transformButton = new Button("Transformar");
 		this.attackButton = new Button("Atacar");
-
 		this.lblActionSelectedTitle = new Label("Accion Seleccionada:");
 		this.lblActionSelected = new Label("");
-
 		this.lblTurnoTitle = new Label("Turno Jugador:");
 		this.lblTurno = new Label("");
-
 		this.lblBlankLine1 = new Label("");
 		this.lblBlankLine2 = new Label("");
-
 		this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
 		this.lblAlgoformerName = new Label("");
 		this.lblAlgoformerLife = new Label("");
@@ -87,38 +82,33 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerStrikingDistance = new Label("");
 		this.lblAlgoformerSpeed = new Label("");
 		this.lblAlgoformerPosition = new Label("");
-
 		this.lblAlgoformerStateTrapped = new Label("");
-		;
 		this.lblAlgoformerBonusTitle = new Label("");
-		;
 		this.lblAlgoformerBonusDobleCannon = new Label("");
-		;
-		this.lblAlgoformerBonusFlash = new Label("");
-		;
+		this.lblAlgoformerBonusFlash = new Label("");	
 		this.lblAlgoformerBonusInmaculateBubble = new Label("");
-		;
-
 	}
 
-	private void initilizeLayout(Stage stage) {
-		stage.setTitle("Algoformers");
-
+	private void initilizeLayout() {
+	
 		this.canvasContainer = new Group();
 		this.canvasContainer.getChildren().add(canvas);
 
 		HBox contenedorHorizontal = new HBox(this.moveButton,
-				this.transformButton, this.attackButton, this.nextTurnButton);
+												this.transformButton, 
+												this.attackButton, 
+												this.nextTurnButton);
 		contenedorHorizontal.setSpacing(10);
 		contenedorHorizontal.setPadding(new Insets(20));
 
 		VBox contenedorPrincipal = new VBox(contenedorHorizontal,
-				this.canvasContainer);
+											this.canvasContainer);
 		contenedorPrincipal.setSpacing(10);
 		contenedorPrincipal.setPadding(new Insets(20));
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
-				this.lblActionSelected);
+									this.lblActionSelected);
+		
 		actionBox.setStyle("-fx-padding: 10;"
 				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
@@ -130,13 +120,18 @@ public class GameContainer extends BorderPane {
 				+ "-fx-border-radius: 5;" + "-fx-border-color: blue;");
 
 		VBox algoformerBox = new VBox(this.lblAlgoformerTitle,
-				this.lblAlgoformerName, this.lblAlgoformerLife,
-				this.lblAlgoformerAttack, this.lblAlgoformerStrikingDistance,
-				this.lblAlgoformerSpeed, this.lblAlgoformerPosition,
-				this.lblAlgoformerStateTrapped, this.lblAlgoformerBonusTitle,
-				this.lblAlgoformerBonusDobleCannon,
-				this.lblAlgoformerBonusFlash,
-				this.lblAlgoformerBonusInmaculateBubble);
+										this.lblAlgoformerName, 
+										this.lblAlgoformerLife,
+										this.lblAlgoformerAttack, 
+										this.lblAlgoformerStrikingDistance,
+										this.lblAlgoformerSpeed, 
+										this.lblAlgoformerPosition,
+										this.lblAlgoformerStateTrapped, 
+										this.lblAlgoformerBonusTitle,
+										this.lblAlgoformerBonusDobleCannon,
+										this.lblAlgoformerBonusFlash,
+										this.lblAlgoformerBonusInmaculateBubble);
+		
 		algoformerBox.setStyle("-fx-padding: 10;"
 				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
@@ -151,51 +146,42 @@ public class GameContainer extends BorderPane {
 		this.setCenter(this.canvasContainer);
 	}
 
-	private void initializeMVC() {
+	private void initializeMVC(AlgoformerApp app,String namePlayer1,String namePlayer2) {
 		this.game = new Game();
 		try {
-			this.game.init();
+			this.game.init(namePlayer1,namePlayer2);
 		} catch (InvalidPositionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.gameView = new GameView(this.game, this.canvas);
-		this.gameController = new GameController(this.game, this.gameView);
+		this.gameController = new GameController(this.game, this.gameView,app);
 		this.gameView.setLblActionSelected(this.lblActionSelected);
 		this.gameView.setLblTurno(this.lblTurno);
 		this.gameView.setLblAlgoformerTitle(this.lblAlgoformerTitle);
 		this.gameView.setLblAlgoformerName(this.lblAlgoformerName);
 		this.gameView.setLblAlgoformerLife(this.lblAlgoformerLife);
 		this.gameView.setLblAlgoformerAttack(this.lblAlgoformerAttack);
-		this.gameView
-				.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);
+		this.gameView.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);
 		this.gameView.setLblAlgoformerSpeed(this.lblAlgoformerSpeed);
 		this.gameView.setLblAlgoformerPosition(this.lblAlgoformerPosition);
 		this.gameView.setLblAlgoformerBonusTitle(this.lblAlgoformerBonusTitle);
 		this.gameView.setLblAlgoformerBonusFlash(this.lblAlgoformerBonusFlash);
-		this.gameView
-				.setLblAlgoformerBonusDobleCannon(this.lblAlgoformerBonusDobleCannon);
-		this.gameView
-				.setLblAlgoformerBonusInmaculateBubble(this.lblAlgoformerBonusInmaculateBubble);
-		this.gameView
-				.setLblAlgoformerStateTrapped(this.lblAlgoformerStateTrapped);
-
+		this.gameView.setLblAlgoformerBonusDobleCannon(this.lblAlgoformerBonusDobleCannon);
+		this.gameView.setLblAlgoformerBonusInmaculateBubble(this.lblAlgoformerBonusInmaculateBubble);
+		this.gameView.setLblAlgoformerStateTrapped(this.lblAlgoformerStateTrapped);
 		this.gameView.updateTurn();
 	}
 
 	private void registerEvents() {
 		this.gameController.registerClickEvents(this.canvas);
-		MoveButtonHandler moveButtonHandler = new MoveButtonHandler(
-				this.gameView, this.game, this.gameController);
+		MoveButtonHandler moveButtonHandler = new MoveButtonHandler(this.gameView, this.game, this.gameController);
 		this.moveButton.setOnAction(moveButtonHandler);
-		NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(
-				this.gameView, this.game, this.gameController);
+		NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(this.gameView, this.game, this.gameController);
 		this.nextTurnButton.setOnAction(nextTurnButtonHandler);
-		TransformButtonHandler transformButtonHandler = new TransformButtonHandler(
-				this.gameView, this.game, this.gameController);
+		TransformButtonHandler transformButtonHandler = new TransformButtonHandler(this.gameView, this.game, this.gameController);
 		this.transformButton.setOnAction(transformButtonHandler);
-		AttackButtonHandler attackButtonHandler = new AttackButtonHandler(
-				this.gameView, this.game, this.gameController);
+		AttackButtonHandler attackButtonHandler = new AttackButtonHandler(this.gameView, this.game, this.gameController);
 		this.attackButton.setOnAction(attackButtonHandler);
 	}
 
@@ -204,12 +190,10 @@ public class GameContainer extends BorderPane {
 		etiqueta.setText("consola...");
 		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 		etiqueta.setTextFill(Color.WHITE);
-
 		VBox contenedorConsola = new VBox(etiqueta);
 		contenedorConsola.setSpacing(10);
 		contenedorConsola.setPadding(new Insets(15));
 		contenedorConsola.setStyle("-fx-background-color: black;");
-
 		this.setBottom(contenedorConsola);
 	}
 

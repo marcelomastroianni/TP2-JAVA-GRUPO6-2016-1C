@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AlgoformerApp extends Application {
-
 		Stage stage;
 		Scene playScene;
 		Scene escenaElegirEquipo;
@@ -18,27 +17,29 @@ public class AlgoformerApp extends Application {
 		
 		private void createControls(final Stage stage){
 			this.stage = stage;
-	    	this.stage.setTitle("Algoformers");
-	        this.juego = new GameContainer(this.stage);
-	        this.playScene = new Scene(this.juego,1200,800);
-	        this.ChoseTeamContainer  = new ChoseTeamContainer(this.stage, this.playScene);
-	        this.escenaElegirEquipo = new Scene(this.ChoseTeamContainer, 640, 480);	 
-	        this.stage.show();
+	    	this.stage.setTitle("Algoformers");		    	
 		}
 
 	    @Override
 	    public void start(final Stage stage) throws Exception {
 	    	this.createControls(stage);
-	        this.setGameScene();
+	        this.setChooseTeamScene();
 	    }
 	    
-	    public void setGameScene(){
-	    	this.stage.setScene(this.playScene);
-	        this.stage.setFullScreen(true);
+	    public void setGameScene(String namePlayer1,String namePlayer2){
+	    	this.juego = new GameContainer(this,namePlayer1,namePlayer2);
+	    	this.playScene = new Scene(this.juego,1200,800);
+	    	this.stage.setScene(this.playScene);	    
+	    	this.stage.setFullScreen(true);
+	    	this.stage.show();
+	        
 	    }
 	    
 	    public void setChooseTeamScene(){
+	        this.ChoseTeamContainer  = new ChoseTeamContainer(this);
+	        this.escenaElegirEquipo = new Scene(this.ChoseTeamContainer, 1200,800);	 
 	    	this.stage.setScene(this.escenaElegirEquipo);
-	        this.stage.setFullScreen(true);
+	    	this.stage.setFullScreen(true);
+	    	this.stage.show();
 	    }
 }
