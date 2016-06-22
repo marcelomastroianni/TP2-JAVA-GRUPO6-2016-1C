@@ -1,8 +1,10 @@
 package fiuba.algo3.view;
 
+import fiuba.algo3.controller.AplicacionOnExitPressEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 
 public class AlgoformerApp extends Application {
 		Stage stage;
@@ -32,6 +34,10 @@ public class AlgoformerApp extends Application {
 	    	this.playScene = new Scene(this.juego,1000,500);
 	    	this.stage.setScene(this.playScene);
 	    	this.stage.setFullScreen(true);
+
+	    	AplicacionOnExitPressEventHandler aplicacionOnKeyPressEventHandler = new AplicacionOnExitPressEventHandler(stage, this.juego.getMenuBar());
+	        playScene.setOnKeyPressed( aplicacionOnKeyPressEventHandler);
+
 	    	this.stage.show();
 
 	    }

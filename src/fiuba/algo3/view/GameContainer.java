@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -75,6 +76,9 @@ public class GameContainer extends BorderPane {
 	private void setMenu(Stage stage) {
 	        this.menuBar = new AlgoformerMenuBar(stage);
 	        this.setTop(menuBar);
+	}
+	public AlgoformerMenuBar getMenuBar(){
+		return this.menuBar;
 	}
 
 	private void createControls() {

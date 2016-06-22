@@ -1,5 +1,6 @@
 package fiuba.algo3.view;
 
+import fiuba.algo3.controller.FullScreenEventHandler;
 import fiuba.algo3.controller.GetOutOptionEventHandler;
 import fiuba.algo3.controller.InfoOptionEventHandler;
 import javafx.scene.control.Menu;
@@ -12,6 +13,8 @@ import javafx.stage.Stage;
 
 public class AlgoformerMenuBar extends MenuBar{
 
+	MenuItem fullScreenOption;
+
 	public AlgoformerMenuBar(Stage stage){
 	    	Menu fileMenu = new Menu("Archivo");
 	        MenuItem  getOutOption = new MenuItem("Salir");
@@ -20,6 +23,11 @@ public class AlgoformerMenuBar extends MenuBar{
 	        fileMenu.getItems().addAll(getOutOption);
 
 	        Menu viewMenu = new Menu("Ver");
+	        fullScreenOption = new MenuItem("Pantalla completa");
+	        FullScreenEventHandler fullScreenOptionHandler = new FullScreenEventHandler(stage, fullScreenOption);
+	        fullScreenOption.setOnAction(fullScreenOptionHandler );
+	        fullScreenOption.setDisable(true);
+	        viewMenu.getItems().add(fullScreenOption);
 
 	        Menu helpMenu = new Menu("Ayuda");
 	        MenuItem infoOption = new MenuItem("Acerca de...");
@@ -29,6 +37,11 @@ public class AlgoformerMenuBar extends MenuBar{
 
 	        this.getMenus().addAll(fileMenu, viewMenu, helpMenu);
 	}
+
+	 public void maximizedApp() {
+		 fullScreenOption.setDisable(false);
+
+	    }
 
 
 }
