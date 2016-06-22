@@ -20,17 +20,17 @@ import fiuba.algo3.model.surfaces.Surface;
 public class SuperficieTormentaPsionicaTest {
 
 	@Test
-	public void testCrearSuperficieTormentaPsionica(){		
-		Surface superficieTormentaPsionica = new SurfacePsionicStorm();		
-		Cell casillero = new Cell(new Position(0,0),superficieTormentaPsionica);		
-		Assert.assertEquals("La superficie del casillero deberia ser Superficie Tormenta Psionica", superficieTormentaPsionica, casillero.getSurface());		
+	public void testCrearSuperficieTormentaPsionica(){
+		Surface superficieTormentaPsionica = new SurfacePsionicStorm();
+		Cell casillero = new Cell(new Position(0,0),superficieTormentaPsionica);
+		Assert.assertEquals("La superficie del casillero deberia ser Superficie Tormenta Psionica", superficieTormentaPsionica, casillero.getSurface());
 	}
 
 	@Test
 	public void testModoAlternoTerrestreNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfacePsionicStorm()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		optimus.transform();
 		optimus.notifyNextTurn();
@@ -40,23 +40,23 @@ public class SuperficieTormentaPsionicaTest {
 		Assert.assertTrue("Algoformer no deberia estar en la posicion (4,3)",tablero.isEmpty(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
-		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);												
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
 	}
-	
+
 	@Test
 	public void testModoHumanoideNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfacePsionicStorm()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
 		optimus.move(new Position(4,3), tablero);
 		Assert.assertTrue("Algoformer no deberia estar en la posicion (4,3)",tablero.isEmpty(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
-		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);							
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
 	}
-	
+
 	@Test
 	public void testModoAereoAlternoCruzaSuperficieTormentaPsionicaPeroPierdePoderDeAtaque() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Board tablero = new Board(10, 10);
@@ -67,8 +67,8 @@ public class SuperficieTormentaPsionicaTest {
 		megatron.notifyNextTurn();
 		megatron.move(new Position(2,0), tablero);
 		megatron.notifyNextTurn();
-		//Assert.assertEquals(33,megatron.getActiveMode().getAttack());
+		Assert.assertEquals("algoformer alterno aereo deberia reducirse su poder de ataque al pasar por la tormenta psionica",new Integer(33),megatron.getActiveMode().getAttack());
 	}
 
-	
+
 }
