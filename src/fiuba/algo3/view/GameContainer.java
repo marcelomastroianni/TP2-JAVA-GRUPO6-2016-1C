@@ -70,7 +70,6 @@ public class GameContainer extends BorderPane {
 		this.initilizeLayout();
 		this.initializeMVC(app,namePlayer1,namePlayer2);
 		this.registerEvents();
-		this.setConsola();
 	}
 
 	private void setMenu(Stage stage) {
@@ -112,17 +111,12 @@ public class GameContainer extends BorderPane {
 		this.canvasContainer = new Group();
 		this.canvasContainer.getChildren().add(canvas);
 
-		HBox contenedorHorizontal = new HBox(this.moveButton,
+		HBox hboxActionButtons = new HBox(this.moveButton,
 												this.transformButton,
 												this.attackButton,
 												this.nextTurnButton);
-		contenedorHorizontal.setSpacing(10);
-		contenedorHorizontal.setPadding(new Insets(20));
-
-		VBox contenedorPrincipal = new VBox(this.menuBar,
-											this.canvasContainer,contenedorHorizontal);
-		contenedorPrincipal.setSpacing(10);
-		contenedorPrincipal.setPadding(new Insets(20));
+		hboxActionButtons.setSpacing(10);
+		hboxActionButtons.setPadding(new Insets(20));
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
 									this.lblActionSelected);
@@ -155,13 +149,13 @@ public class GameContainer extends BorderPane {
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
 				+ "-fx-border-color: blue;");
 
-		VBox container = new VBox();
-		container.getChildren().add(actionBox);
-		container.getChildren().add(turnBox);
-		container.getChildren().add(algoformerBox);
-		this.setLeft(container);
+		VBox infoPanel = new VBox();
+		infoPanel.getChildren().add(actionBox);
+		infoPanel.getChildren().add(turnBox);
+		infoPanel.getChildren().add(algoformerBox);
+		this.setLeft(infoPanel);
 		this.setTop(this.menuBar);
-		this.setBottom(contenedorHorizontal);
+		this.setBottom(hboxActionButtons);
 		this.setCenter(this.canvasContainer);
 	}
 
@@ -204,17 +198,6 @@ public class GameContainer extends BorderPane {
 		this.attackButton.setOnAction(attackButtonHandler);
 	}
 
-	private void setConsola() {
-		Label etiqueta = new Label();
-		etiqueta.setText("consola...");
-		etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-		etiqueta.setTextFill(Color.WHITE);
-		VBox contenedorConsola = new VBox(etiqueta);
-		contenedorConsola.setSpacing(10);
-		contenedorConsola.setPadding(new Insets(15));
-		contenedorConsola.setStyle("-fx-background-color: black;");
-		this.setBottom(contenedorConsola);
-	}
 
 
 

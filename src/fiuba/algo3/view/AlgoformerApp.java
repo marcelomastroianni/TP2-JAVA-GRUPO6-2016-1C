@@ -29,7 +29,7 @@ public class AlgoformerApp extends Application {
 
 	    public void setGameScene(String namePlayer1,String namePlayer2){
 	    	this.juego = new GameContainer(this,namePlayer1,namePlayer2);
-	    	this.playScene = new Scene(this.juego,1200,800);
+	    	this.playScene = new Scene(this.juego,1000,500);
 	    	this.stage.setScene(this.playScene);
 	    	this.stage.setFullScreen(true);
 	    	this.stage.show();
