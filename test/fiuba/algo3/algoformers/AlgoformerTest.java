@@ -372,5 +372,31 @@ public class AlgoformerTest {
 		megatron.trap(3);
 		megatron.transform();
 	}
+
+	@Test
+	public void testIsTrapped() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(frenzy);
+
+		frenzy.trap(3);
+		Assert.assertTrue("frenzy deberia estar atrapado",frenzy.isTrapped());
+
+	}
+
+	@Test
+	public void testTurnsIsTrapped() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(frenzy);
+
+		frenzy.trap(3);
+		frenzy.notifyNextTurn();
+		Assert.assertEquals("frenzy deberia estar atrapado por 3 turnos",3,frenzy.getTurnsTrapped());
+
+	}
+
 }
 
