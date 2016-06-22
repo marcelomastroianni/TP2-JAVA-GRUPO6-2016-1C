@@ -27,9 +27,6 @@ public class Game {
 	int BOARD_Y_LENGTH = 14;
 
 
-	public void init() throws InvalidPositionException {
-		init("Juan","Maria");
-	}
 	public void init(String namePlayer1,String namePlayer2) throws InvalidPositionException {
 		Game game = new Game();
 		this.player1 = new Player(game, namePlayer1);

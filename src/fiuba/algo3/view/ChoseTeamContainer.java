@@ -25,7 +25,7 @@ public class ChoseTeamContainer extends VBox{
 	@SuppressWarnings("static-access")
 	public ChoseTeamContainer(AlgoformerApp app){
 		  	super();
-		  	
+
 	        this.setStyle("-fx-background: #000000;");
 	        this.setAlignment(Pos.CENTER);
 
@@ -46,7 +46,7 @@ public class ChoseTeamContainer extends VBox{
 	    	imageviewTeam1.setImage(imagenAutobots);
 
 	        TextField textFieldName1 = new TextField();
-	        textFieldName1.setPromptText("ingrese el nombre del primer jugador1");
+	        textFieldName1.setPromptText("ingrese el nombre del primer jugador");
 	        textFieldName1.setPrefWidth(300);
 
 	        VBox team1 = new VBox(3);
@@ -65,7 +65,7 @@ public class ChoseTeamContainer extends VBox{
 	    	imageviewTeam2.setImage(imagenDecepticons);
 
 	        TextField textFieldName2 = new TextField();
-	        textFieldName2.setPromptText("ingrese el nombre del segundo jugador2");
+	        textFieldName2.setPromptText("ingrese el nombre del segundo jugador");
 	        textFieldName2.setPrefWidth(300);
 
 	        VBox team2 = new VBox(3);

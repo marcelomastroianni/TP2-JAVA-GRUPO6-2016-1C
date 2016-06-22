@@ -22,7 +22,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+
 public class GameContainer extends BorderPane {
+
+	private AlgoformerMenuBar menuBar;
 
 	private Canvas canvas;
 	private Group canvasContainer;
@@ -56,12 +59,18 @@ public class GameContainer extends BorderPane {
 	private GameController gameController;
 
 	public GameContainer(AlgoformerApp app,String namePlayer1,String namePlayer2) {
+		this.setMenu();
 		this.createControls();
 		this.initilizeLayout();
 		this.initializeMVC(app,namePlayer1,namePlayer2);
 		this.registerEvents();
 		this.setConsola();
 	}
+
+	private void setMenu() {
+	        this.menuBar = new AlgoformerMenuBar();
+	        this.setTop(menuBar);
+	    }
 
 	private void createControls() {
 		this.canvas = new Canvas(1400, 900);
@@ -85,18 +94,18 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerStateTrapped = new Label("");
 		this.lblAlgoformerBonusTitle = new Label("");
 		this.lblAlgoformerBonusDobleCannon = new Label("");
-		this.lblAlgoformerBonusFlash = new Label("");	
+		this.lblAlgoformerBonusFlash = new Label("");
 		this.lblAlgoformerBonusInmaculateBubble = new Label("");
 	}
 
 	private void initilizeLayout() {
-	
+
 		this.canvasContainer = new Group();
 		this.canvasContainer.getChildren().add(canvas);
 
 		HBox contenedorHorizontal = new HBox(this.moveButton,
-												this.transformButton, 
-												this.attackButton, 
+												this.transformButton,
+												this.attackButton,
 												this.nextTurnButton);
 		contenedorHorizontal.setSpacing(10);
 		contenedorHorizontal.setPadding(new Insets(20));
@@ -108,7 +117,7 @@ public class GameContainer extends BorderPane {
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
 									this.lblActionSelected);
-		
+
 		actionBox.setStyle("-fx-padding: 10;"
 				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
@@ -120,18 +129,18 @@ public class GameContainer extends BorderPane {
 				+ "-fx-border-radius: 5;" + "-fx-border-color: blue;");
 
 		VBox algoformerBox = new VBox(this.lblAlgoformerTitle,
-										this.lblAlgoformerName, 
+										this.lblAlgoformerName,
 										this.lblAlgoformerLife,
-										this.lblAlgoformerAttack, 
+										this.lblAlgoformerAttack,
 										this.lblAlgoformerStrikingDistance,
-										this.lblAlgoformerSpeed, 
+										this.lblAlgoformerSpeed,
 										this.lblAlgoformerPosition,
-										this.lblAlgoformerStateTrapped, 
+										this.lblAlgoformerStateTrapped,
 										this.lblAlgoformerBonusTitle,
 										this.lblAlgoformerBonusDobleCannon,
 										this.lblAlgoformerBonusFlash,
 										this.lblAlgoformerBonusInmaculateBubble);
-		
+
 		algoformerBox.setStyle("-fx-padding: 10;"
 				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
