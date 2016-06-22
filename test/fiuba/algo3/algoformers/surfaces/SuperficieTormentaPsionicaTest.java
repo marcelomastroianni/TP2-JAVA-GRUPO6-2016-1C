@@ -67,7 +67,6 @@ public class SuperficieTormentaPsionicaTest {
 		megatron.notifyNextTurn();
 		Assert.assertEquals("algoformer humanoide debe mantener el mismo poder de ataque",new Integer(10),megatron.getActiveMode().getAttack());
 
-
 	}
 
 	@Test
@@ -81,6 +80,24 @@ public class SuperficieTormentaPsionicaTest {
 		megatron.move(new Position(2,0), tablero);
 		megatron.notifyNextTurn();
 		Assert.assertEquals("algoformer alterno aereo deberia reducirse su poder de ataque al pasar por la tormenta psionica",new Integer(33),megatron.getActiveMode().getAttack());
+	}
+
+	@Test
+	public void testModoAereoAlternoEsInmuneAlCruzaSuperficieTormentaPsionicaPorSegundaVez() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+		Board tablero = new Board(10, 10);
+		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		tablero.add(megatron);
+		megatron.transform();
+		megatron.notifyNextTurn();
+		megatron.move(new Position(2,0), tablero);
+		megatron.notifyNextTurn();
+		Assert.assertEquals("algoformer alterno aereo deberia reducirse su poder de ataque al pasar por la tormenta psionica",new Integer(33),megatron.getActiveMode().getAttack());
+		megatron.notifyNextTurn();
+		megatron.move(new Position(0,0), tablero);
+		Assert.assertEquals("algoformer alterno aereo deberia mantener su poder de ataque al pasar por segunda vez por una tormenta psionica",new Integer(33),megatron.getActiveMode().getAttack());
+
+
 	}
 
 

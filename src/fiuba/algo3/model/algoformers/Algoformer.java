@@ -24,15 +24,16 @@ public class Algoformer implements Content {
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
-	private boolean isTrapped = false;
 	private Integer turnsTrapped = 0;
-	private boolean isDobleDamage = false;
 	private Integer turnsDobleDamage = 0;
-	private boolean isFlash = false;
 	private Integer turnsFlash = 0;
 	private Integer stepsMovedInTurn = 0;
-	private boolean haveBeenUsedInTurn = false;
-	private boolean isImmaculateBubble = false;
+	private boolean hasCrossPsionicStorm;
+	private boolean haveBeenUsedInTurn;
+	private boolean isImmaculateBubble;
+	private boolean isFlash;
+	private boolean isDobleDamage;
+	private boolean isTrapped;
 	private Integer turnsImmaculateBubble = 0;
 	private Player player;
 
@@ -49,6 +50,13 @@ public class Algoformer implements Content {
 		this.life = life;
 		this.position = position;
 		this.team = team;
+
+		hasCrossPsionicStorm = false;
+		haveBeenUsedInTurn = false;
+		isImmaculateBubble = false;
+		isFlash = false;
+		isDobleDamage = false;
+		isTrapped = false;
 	}
 
 	public void setPlayer(Player player){
@@ -148,7 +156,7 @@ public class Algoformer implements Content {
 							this.activeMode.crossSurface(nextSurface, this);
 							this.haveBeenUsedInTurn = true;
 							throw gameOverException;
-						}						
+						}
 					} catch (InvalidPositionException ex) {
 						//Coliciono con otro Algoformer
 						break;
@@ -165,7 +173,10 @@ public class Algoformer implements Content {
 	}
 
 	public void reduceAttackPowerFortyPercent(){
-		this.activeMode.changeAttackPower(0.6);
+		if(!this.hasCrossPsionicStorm){
+			this.activeMode.changeAttackPower(0.6);
+			this.hasCrossPsionicStorm = true;
+		}
 	}
 
 	public void shot(Algoformer algoformer) throws AlgoformerUsadoEsteTurnoException, GameOverException {
@@ -260,11 +271,11 @@ public class Algoformer implements Content {
 	public void collideWithChiapaSuprema() throws GameOverException, InvalidPositionException {
 		this.activeMode.collideWithChispaSuprema(this);
 	}
-	
-	public void notifyCathChispaSuprema() throws GameOverException {	
+
+	public void notifyCathChispaSuprema() throws GameOverException {
 		throw new GameOverException("Felicitaciones "+ this.player.getName()+" has ganado!!!!");
 	}
-	
+
 	public int getAttack(){
 		int attack = this.activeMode.getAttack();
 		if (this.isDobleDamage) {
@@ -272,39 +283,39 @@ public class Algoformer implements Content {
 		}
 		return attack;
 	}
-	
+
 	public int getSpeed(){
 		if (this.isFlash){
 			return (this.activeMode.getSpeed() *3);
 		}else{
 			return this.activeMode.getSpeed();
-		}			
+		}
 	}
-	
+
 	public int getStrikingDistance(){
 		return this.activeMode.getStrikingDistance();
 	}
-	
+
 	public boolean isTrapped(){
 		return this.isTrapped;
 	}
-	
+
 	public int getTurnsTrapped(){
 		return this.turnsTrapped;
 	}
-	
+
 	public boolean isDobleDamage(){
 		return this.isDobleDamage;
 	}
-	
+
 	public int getTurnsDobleDamage(){
 		return this.turnsDobleDamage;
 	}
-	
+
 	public boolean isFlash(){
 		return this.isFlash;
 	}
-	
+
 	public int getTurnsFlash(){
 		return this.turnsFlash;
 	}
@@ -312,10 +323,10 @@ public class Algoformer implements Content {
 	public boolean isImmaculateBubble(){
 		return this.isImmaculateBubble;
 	}
-	
+
 	public int getTurnsImmaculateBubble(){
 		return this.turnsImmaculateBubble;
-	}	
+	}
 
 	public boolean isBonus(){
 		return (this.isFlash || this.isDobleDamage || this.isImmaculateBubble);
