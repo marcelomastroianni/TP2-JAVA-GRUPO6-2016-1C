@@ -14,6 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -115,6 +116,10 @@ public class GameContainer extends BorderPane {
 		this.canvasContainer = new Group();
 		this.canvasContainer.getChildren().add(canvas);
 
+		ScrollPane scrollPane = new ScrollPane();
+		scrollPane.setPrefSize(120, 120);
+		scrollPane.setContent(canvasContainer);
+
 		HBox hboxActionButtons = new HBox(this.moveButton,
 												this.transformButton,
 												this.attackButton,
@@ -160,7 +165,7 @@ public class GameContainer extends BorderPane {
 		this.setLeft(infoPanel);
 		this.setTop(this.menuBar);
 		this.setBottom(hboxActionButtons);
-		this.setCenter(this.canvasContainer);
+		this.setCenter(scrollPane);
 	}
 
 	private void initializeMVC(AlgoformerApp app,String namePlayer1,String namePlayer2) {
