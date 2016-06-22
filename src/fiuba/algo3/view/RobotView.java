@@ -25,33 +25,33 @@ public class RobotView {
 		}
 			
 		if (this.robot.getNombre().equals("Bumblebee")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bumblebee.png");			
+			imagen = ImageFactory.getAlgoformerBumblebee();			
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
-				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bumblebee_alternal.png");			
+				imagen = ImageFactory.getAlgoformerBumblebeeAlternal();			
 		}
 					
 		if (this.robot.getNombre().equals("Ratchet")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_ratchet.png");						
+			imagen = ImageFactory.getAlgoformerRatchet();						
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
-				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_ratchet_alternal.png");
+				imagen = ImageFactory.getAlgoformerRatchetAlternal();
 		}
 					
 		if (this.robot.getNombre().equals("Megatron")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_megatron.png");			
+			imagen = ImageFactory.getAlgoformerMegatron();			
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
-				imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_megatron_alternal.png");
+				imagen = ImageFactory.getAlgoformerMegatronAlternal();
 		}
 					
 		if (this.robot.getNombre().equals("Bonecrusher")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher.png");
+			imagen = ImageFactory.getAlgoformerBonecrusher();
 		}
 					
 		if (this.robot.getNombre().equals("Frenzy")){
-			imagen = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_frenzy.png");
+			imagen = ImageFactory.getAlgoformerFrenzy();
 		}			
 							
-    	int x = robot.getPosition().getX()*ViewConstants.CELL_WIDTH;
-		int y =robot.getPosition().getY()*ViewConstants.CELL_HEIGHT;
+    	int x = robot.getPosition().getX() * ViewConstants.CELL_WIDTH;
+		int y =robot.getPosition().getY() * ViewConstants.CELL_HEIGHT;
     	gc.drawImage(imagen,x ,y ,ViewConstants.CELL_WIDTH,ViewConstants.CELL_HEIGHT);
 	}
 }
