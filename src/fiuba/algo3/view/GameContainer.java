@@ -111,8 +111,8 @@ public class GameContainer extends BorderPane {
 		contenedorHorizontal.setSpacing(10);
 		contenedorHorizontal.setPadding(new Insets(20));
 
-		VBox contenedorPrincipal = new VBox(contenedorHorizontal,
-											this.canvasContainer);
+		VBox contenedorPrincipal = new VBox(this.menuBar,
+											this.canvasContainer,contenedorHorizontal);
 		contenedorPrincipal.setSpacing(10);
 		contenedorPrincipal.setPadding(new Insets(20));
 
