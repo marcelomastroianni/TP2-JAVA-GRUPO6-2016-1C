@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 
 public class AlgoformerMenuBar extends MenuBar{
 
-	public AlgoformerMenuBar(){
+	public AlgoformerMenuBar(Stage stage){
 	    	Menu fileMenu = new Menu("Archivo");
 	        MenuItem  getOutOption = new MenuItem("Salir");
 	        GetOutOptionEventHandler getOutOptionEventHandler= new GetOutOptionEventHandler();
 	        getOutOption.setOnAction(getOutOptionEventHandler);
 	        fileMenu.getItems().addAll(getOutOption);
 
-	        Menu seeMenu = new Menu("Ver");
+	        Menu viewMenu = new Menu("Ver");
 
 	        Menu helpMenu = new Menu("Ayuda");
 	        MenuItem infoOption = new MenuItem("Acerca de...");
@@ -27,10 +27,8 @@ public class AlgoformerMenuBar extends MenuBar{
 	        infoOption.setOnAction(infoHandler);
 	        helpMenu.getItems().addAll(infoOption);
 
-
-
-
-	        this.getMenus().addAll(fileMenu, seeMenu, helpMenu);
+	        this.getMenus().addAll(fileMenu, viewMenu, helpMenu);
 	}
+
 
 }

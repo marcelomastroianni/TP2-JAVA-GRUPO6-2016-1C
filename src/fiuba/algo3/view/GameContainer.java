@@ -23,6 +23,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 
+
 public class GameContainer extends BorderPane {
 
 	private AlgoformerMenuBar menuBar;
@@ -59,7 +60,7 @@ public class GameContainer extends BorderPane {
 	private GameController gameController;
 
 	public GameContainer(AlgoformerApp app,String namePlayer1,String namePlayer2) {
-		this.setMenu();
+		this.setMenu(app.getStage());
 		this.createControls();
 		this.initilizeLayout();
 		this.initializeMVC(app,namePlayer1,namePlayer2);
@@ -67,10 +68,10 @@ public class GameContainer extends BorderPane {
 		this.setConsola();
 	}
 
-	private void setMenu() {
-	        this.menuBar = new AlgoformerMenuBar();
+	private void setMenu(Stage stage) {
+	        this.menuBar = new AlgoformerMenuBar(stage);
 	        this.setTop(menuBar);
-	    }
+	}
 
 	private void createControls() {
 		this.canvas = new Canvas(1400, 900);
@@ -151,7 +152,8 @@ public class GameContainer extends BorderPane {
 		container.getChildren().add(turnBox);
 		container.getChildren().add(algoformerBox);
 		this.setLeft(container);
-		this.setTop(contenedorHorizontal);
+		this.setTop(this.menuBar);
+		this.setBottom(contenedorHorizontal);
 		this.setCenter(this.canvasContainer);
 	}
 
@@ -205,5 +207,7 @@ public class GameContainer extends BorderPane {
 		contenedorConsola.setStyle("-fx-background-color: black;");
 		this.setBottom(contenedorConsola);
 	}
+
+
 
 }
