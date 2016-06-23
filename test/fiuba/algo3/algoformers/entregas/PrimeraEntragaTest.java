@@ -118,10 +118,10 @@ public class PrimeraEntragaTest {
 		board.add(algoformer2);
 
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
-		algoformer2.shot(algoformer1);
+		algoformer2.shot(algoformer1,board);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 
 	}

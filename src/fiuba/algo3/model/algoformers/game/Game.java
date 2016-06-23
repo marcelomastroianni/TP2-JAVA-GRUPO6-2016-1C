@@ -202,7 +202,7 @@ public class Game {
 			throw new UsuarioNoSeleccionoAlgoformerAQuienDispararException();
 		}
 
-		algoformer.shot(algoformerDestino);
+		algoformer.shot(algoformerDestino,this.board);
 	}
 
 	public void transformaraAlgoformer(Position position) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException {

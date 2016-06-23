@@ -143,10 +143,10 @@ public class AlgoformerTest {
 		board.add(algoformer2);
 
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
-		algoformer2.shot(algoformer1);
+		algoformer2.shot(algoformer1,board);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 	}
 
@@ -161,7 +161,7 @@ public class AlgoformerTest {
 		board.add(algoformer2);
 
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
 	}
 
@@ -177,7 +177,7 @@ public class AlgoformerTest {
 
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, frenzy.getLife());
 		bumblebee.dobleDamage(2);
-		bumblebee.shot(frenzy);
+		bumblebee.shot(frenzy,board);
 		Assert.assertEquals("La vida de Frenzy deberia ser 320", 320, frenzy.getLife());
 	}
 
@@ -195,14 +195,14 @@ public class AlgoformerTest {
 		bumblebee.dobleDamage(2);
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, frenzy.getLife());
-		bumblebee.shot(frenzy);
+		bumblebee.shot(frenzy,board);
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 320", 320, frenzy.getLife());
-		bumblebee.shot(frenzy);
+		bumblebee.shot(frenzy,board);
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 240", 240, frenzy.getLife());
 		bumblebee.notifyNextTurn();
-		bumblebee.shot(frenzy);
+		bumblebee.shot(frenzy,board);
 		Assert.assertEquals("La vida de Frenzy deberia ser 200", 200, frenzy.getLife());
 	}
 
@@ -221,17 +221,17 @@ public class AlgoformerTest {
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
 		optimusPrime.dobleDamage(2);
 		Assert.assertEquals("la vida de Megatron deberia ser 550", 550, megatron.getLife());
-		optimusPrime.shot(megatron);
+		optimusPrime.shot(megatron,board);
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("la vida de Megatron deberia ser 520", 520, megatron.getLife());
 		optimusPrime.transform();
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
-		optimusPrime.shot(megatron);
+		optimusPrime.shot(megatron,board);
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("la vida de Megatron deberia ser 420", 420, megatron.getLife());
 		optimusPrime.notifyNextTurn();
-		optimusPrime.shot(megatron);
+		optimusPrime.shot(megatron,board);
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("la vida de Megatron deberia ser 370", 370, megatron.getLife());
 	}
@@ -360,9 +360,9 @@ public class AlgoformerTest {
 		board.add(frenzy);
 
 		Assert.assertEquals("la vida de Frenzy deberia ser 400", 400, frenzy.getLife());
-		optimusPrime.shot(frenzy);
+		optimusPrime.shot(frenzy,board);
 		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
-		optimusPrime.shot(frenzy);
+		optimusPrime.shot(frenzy,board);
 		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
 	}
 
@@ -376,7 +376,7 @@ public class AlgoformerTest {
 		board.add(ratchet);
 
 		Assert.assertEquals("la vida de Frenzy deberia ser 150", 150, ratchet.getLife());
-		optimusPrime.shot(ratchet);
+		optimusPrime.shot(ratchet,board);
 		Assert.assertEquals("la vida de Frenzy deberia ser 150", 150, ratchet.getLife());
 	}
 

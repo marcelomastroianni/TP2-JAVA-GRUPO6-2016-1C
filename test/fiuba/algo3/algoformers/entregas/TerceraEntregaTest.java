@@ -49,57 +49,57 @@ public class TerceraEntregaTest {
 		// Primer Turno
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500,
 				algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 480", 480,
 				algoformer2.getLife());
 		// Segundo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 460", 460,
 				algoformer2.getLife());
 		// Tercer Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 440", 440,
 				algoformer2.getLife());
 		// Cuarto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 430", 430,
 				algoformer2.getLife());
 		// Quinto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 420", 420,
 				algoformer2.getLife());
 		// Sexto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 410", 410,
 				algoformer2.getLife());
 		// Septimo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 400", 400,
 				algoformer2.getLife());
 		// Octavo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 390", 390,
 				algoformer2.getLife());
 		// Noveno Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 380", 380,
 				algoformer2.getLife());
 		// Decimo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 370", 370,
 				algoformer2.getLife());
 		// Onceavo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 360", 360,
 				algoformer2.getLife());
@@ -112,54 +112,54 @@ public class TerceraEntregaTest {
 		// Prueba Algoformer en modo Alterno
 		// Primer Turno
 		Assert.assertEquals("La vida de Optimus deberia ser 360", 360,algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 310", 310,algoformer2.getLife());
 		// Segundo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 260", 260,algoformer2.getLife());
 		// Tercer Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 210", 210,algoformer2.getLife());
 		// Cuarto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 185", 185,
 				algoformer2.getLife());
 		// Quinto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 160", 160,
 				algoformer2.getLife());
 		// Sexto Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 135", 135,
 				algoformer2.getLife());
 		// Septimo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 110", 110,
 				algoformer2.getLife());
 		// Octavo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 85", 85,
 				algoformer2.getLife());
 		// Noveno Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Optimus deberia ser 60", 60,
 				algoformer2.getLife());
 		// Decimo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		algoformer1.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 35", 35,
 				algoformer2.getLife());
 		// Onceavo Turno
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		Assert.assertEquals("La vida de Optimus deberia ser 10", 10,
 				algoformer2.getLife());
 	}
@@ -220,13 +220,13 @@ public class TerceraEntregaTest {
 		frenzy.move(new Position(2, 2), board);			//agarra un DobleDamage por 3 turnos
 		frenzy.notifyNextTurn();
 		Assert.assertEquals("la vida de Optimus deberia ser 500", 500, optimus.getLife());
-		frenzy.shot(optimus);
+		frenzy.shot(optimus,board);
 		frenzy.notifyNextTurn();						//Le quedan 2 turnos de DobleDamage
 		Assert.assertEquals("la vida de Optimus deberia ser 480", 480, optimus.getLife());
 		Assert.assertEquals("La velocidad de Frenzy deberia ser 2", new Integer(2), frenzy.getActiveMode().getSpeed());
 		frenzy.move(new Position(2, 4), board);			//agarra un Flash por 3 turnos
 		frenzy.notifyNextTurn();						//Le quedan 1 turnos de DobleDamage y 3 de Flash
-		frenzy.shot(optimus);
+		frenzy.shot(optimus,board);
 		frenzy.notifyNextTurn();						//Se quedo sin turnos de DobleDamage y 2 de Flash
 		Assert.assertEquals("la vida de Optimus deberia ser 460", 460, optimus.getLife());
 		frenzy.move(new Position(2, 9), board);			//agarra 2 DobleDamage por 3 turnos
@@ -234,7 +234,7 @@ public class TerceraEntregaTest {
 		Assert.assertEquals("Frenzy deberia estar en la posicion (2,9)",new Position(2,9),frenzy.getPosition());
 		optimus.move(new Position(3,6), board);
 		optimus.notifyNextTurn();
-		frenzy.shot(optimus);
+		frenzy.shot(optimus,board);
 		frenzy.notifyNextTurn();						//Se quedo sin turnos de Flash y 2 de DobleDamage
 		Assert.assertEquals("la vida de Optimus deberia ser 440", 440, optimus.getLife());
 		frenzy.move(new Position(2,10), board);			//agarra un Flash por 3 turnos

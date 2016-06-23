@@ -10,6 +10,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.GameOverException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 
 public class PlayerTest {
@@ -61,8 +62,9 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void testKillAlgoformer() throws GameOverException{
+	public void testKillAlgoformer() throws GameOverException, InvalidPositionException{
 		Game game = new Game();
+		game.init("Juan", "Maria");
 		Player jugador = new Player(game, "Juan");
 
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -77,7 +79,7 @@ public class PlayerTest {
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
 
-		optimusPrime.downHealthPoints(500);
+		optimusPrime.downHealthPoints(500,game.getBoard());
 
 		Assert.assertFalse("Algoformer ya no deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
 

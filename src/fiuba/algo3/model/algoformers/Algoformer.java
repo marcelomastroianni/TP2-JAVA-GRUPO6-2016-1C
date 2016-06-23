@@ -74,13 +74,17 @@ public class Algoformer implements Content {
 		return activeMode;
 	}
 
-	public void downHealthPoints(Integer damage) throws GameOverException {
+	public void downHealthPoints(Integer damage, Board board) throws GameOverException {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
 		}
 		if(this.life < 1){
+			try {
+				board.clearContent(this.getPosition());
+			} catch (InvalidPositionException e) {
+				e.printStackTrace();
+			}
 			this.player.notifyDeadAlgoformer(this);
-
 		}
 	}
 
@@ -179,13 +183,13 @@ public class Algoformer implements Content {
 		}
 	}
 
-	public void shot(Algoformer algoformer) throws AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, GameOverException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
-			algoformer.downHealthPoints(this.getAttack());
+			algoformer.downHealthPoints(this.getAttack(),board);
 			this.haveBeenUsedInTurn = true;
 		} catch (InvalidStrikeException e) {
 			// System.err.print(e.getMessage());
