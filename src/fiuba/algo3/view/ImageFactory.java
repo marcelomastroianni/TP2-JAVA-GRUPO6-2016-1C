@@ -114,7 +114,7 @@ public class ImageFactory {
 	public static Image getAlgoformerBonecrusher() {
 		if (algoformerBonecrusher == null) {
 			algoformerBonecrusher = new Image(
-					"file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher.png");
+					"file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher.gif");
 		}
 		return algoformerBonecrusher;
 	}
@@ -126,7 +126,7 @@ public class ImageFactory {
 	public static Image getAlgoformerFrenzy() {
 		if (algoformerFrenzy == null) {
 			algoformerFrenzy = new Image(
-					"file:src/fiuba/algo3/vista/pictures/algoformer_frenzy.png");
+					"file:src/fiuba/algo3/vista/pictures/algoformer_frenzy.gif");
 		}
 		return algoformerFrenzy;
 	}
