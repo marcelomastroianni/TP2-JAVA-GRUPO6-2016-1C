@@ -17,41 +17,41 @@ public class RobotView {
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		Image imagen = ImageFactory.getAlgoformerOtimusPrime();
-		
+
 		if (this.robot.getNombre().equals("Optimus Prime")){
 			imagen = ImageFactory.getAlgoformerOtimusPrime();
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
 				imagen = ImageFactory.getAlgoformerOtimusPrimeAlternal();
 		}
-			
+
 		if (this.robot.getNombre().equals("Bumblebee")){
-			imagen = ImageFactory.getAlgoformerBumblebee();			
+			imagen = ImageFactory.getAlgoformerBumblebee();
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
-				imagen = ImageFactory.getAlgoformerBumblebeeAlternal();			
+				imagen = ImageFactory.getAlgoformerBumblebeeAlternal();
 		}
-					
+
 		if (this.robot.getNombre().equals("Ratchet")){
-			imagen = ImageFactory.getAlgoformerRatchet();						
+			imagen = ImageFactory.getAlgoformerRatchet();
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
 				imagen = ImageFactory.getAlgoformerRatchetAlternal();
 		}
-					
+
 		if (this.robot.getNombre().equals("Megatron")){
-			imagen = ImageFactory.getAlgoformerMegatron();			
+			imagen = ImageFactory.getAlgoformerMegatron();
 			if (this.robot.getActiveMode().equals(this.robot.getAlternalMode()))
 				imagen = ImageFactory.getAlgoformerMegatronAlternal();
 		}
-					
+
 		if (this.robot.getNombre().equals("Bonecrusher")){
 			imagen = ImageFactory.getAlgoformerBonecrusher();
 		}
-					
+
 		if (this.robot.getNombre().equals("Frenzy")){
 			imagen = ImageFactory.getAlgoformerFrenzy();
-		}			
-							
+		}
+
     	int x = robot.getPosition().getX() * ViewConstants.CELL_WIDTH;
 		int y =robot.getPosition().getY() * ViewConstants.CELL_HEIGHT;
-    	gc.drawImage(imagen,x ,y ,ViewConstants.CELL_WIDTH,ViewConstants.CELL_HEIGHT);
+    	gc.drawImage(imagen,x ,y ,ViewConstants.ALGO_WIDTH,ViewConstants.ALGO_HEIGHT);
 	}
 }
