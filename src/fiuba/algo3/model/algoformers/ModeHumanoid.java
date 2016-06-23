@@ -24,6 +24,5 @@ public class ModeHumanoid extends Mode {
 	@Override
 	public void collideWithChispaSuprema(Algoformer algoformer) throws  InvalidPositionException, GameOverException {
 		algoformer.notifyCathChispaSuprema();
-		
 	}
 }

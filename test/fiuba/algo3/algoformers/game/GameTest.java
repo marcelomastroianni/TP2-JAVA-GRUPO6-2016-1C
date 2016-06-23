@@ -684,8 +684,6 @@ public class GameTest {
 
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
 		algoformersJugador1.get(0).downHealthPoints(150);
-
-
 	}
 
 	@Test
@@ -707,11 +705,7 @@ public class GameTest {
 			algoformersJugador1.get(0).downHealthPoints(150);
 		}catch(GameOverException e){
 			Assert.assertEquals(e.getMessage(),"Felicitaciones Maria has ganado!!!!" );
-
-
 		}
-
-
 	}
 
 
@@ -735,6 +729,38 @@ public class GameTest {
 		}
 		Assert.assertEquals("Algoformer deberia estar en la posicion de la chispa suprema",new Position(2,0),algoformer.getPosition());
 		Assert.assertEquals("La chispa suprema no deberia estar en el tablero",algoformer,board.getContent(new Position(2,0)));
+	}
+
+	@Test
+	public void aerialModeCantCathcChispaSupremaTest() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException {
+		Game game = new Game();
+		Player player1 = new Player(game, "Jose");
+		Player player2 = new Player(game, "Jorge");
+		Turn turn = new Turn(player1, player2);
+		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
+		player1.addAlgoformer(algoformer);
+
+		Board board = new Board(5,5);
+		board.add(algoformer);
+
+
+		ChispaSuprema chispaSuprema = new ChispaSuprema(new Position(2,0));
+		board.add(chispaSuprema);
+
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+		algoformer.transform();
+		game.nextTurn();
+		game.nextTurn();
+		algoformer.move(new Position(2,0),board);
+
+		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",algoformer,board.getContent(new Position(1,0)));
+
+		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",new Position(2,0),chispaSuprema.getPosition());
+		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",chispaSuprema,board.getContent(new Position(2,0)));
 	}
 
 	@Test

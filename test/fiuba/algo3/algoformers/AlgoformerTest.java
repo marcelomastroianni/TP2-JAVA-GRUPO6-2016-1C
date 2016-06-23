@@ -237,6 +237,24 @@ public class AlgoformerTest {
 	}
 
 	@Test
+	public void testImmaculateBubbleActiveOn() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,1));
+
+		board.add(ratchet);
+
+		Assert.assertFalse("Ratchet no deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
+		ratchet.protectWithImmaculateBubble(2);
+		Assert.assertTrue("Ratchet deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,ratchet.getTurnsImmaculateBubble());
+		ratchet.notifyNextTurn();
+		Assert.assertTrue("Ratchet deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 1 turno",1,ratchet.getTurnsImmaculateBubble());
+		ratchet.protectWithImmaculateBubble(2);
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,ratchet.getTurnsImmaculateBubble());
+	}
+
+	@Test
 	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 
 		Board board = new Board(10,10);
@@ -397,6 +415,26 @@ public class AlgoformerTest {
 	}
 
 	@Test
+	public void testAlgoformeIsntTrapped() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
+
+		board.add(bumblebee);
+
+		Assert.assertFalse("Bumblebee no deberia estar atrapado",bumblebee.isTrapped());
+		bumblebee.trap(3);
+		bumblebee.notifyNextTurn();
+		Assert.assertTrue("Bumblebee deberia estar atrapado ",bumblebee.isTrapped());
+		Assert.assertEquals("Bumblebee deberia estar atrapado por 3 turnos",3,bumblebee.getTurnsTrapped());
+		bumblebee.notifyNextTurn();
+		Assert.assertEquals("Bumblebee deberia estar atrapado por 3 turnos",2,bumblebee.getTurnsTrapped());
+		bumblebee.notifyNextTurn();
+		Assert.assertEquals("Bumblebee deberia estar atrapado por 3 turnos",1,bumblebee.getTurnsTrapped());
+		bumblebee.notifyNextTurn();
+		Assert.assertFalse("Bumblebee no deberia estar atrapado",bumblebee.isTrapped());
+	}
+
+	@Test
 	public void testIsDobleDamage() throws InvalidPositionException {
 		Board board = new Board(10, 10);
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
@@ -449,7 +487,7 @@ public class AlgoformerTest {
 
 		board.add(superion);
 
-		superion.protectWithImmaculateBubble(3);
+		superion.protectWithImmaculateBubble(2);
 		Assert.assertTrue("Superion deberia tener burbuja inmaculada",superion.isImmaculateBubble());
 	}
 
@@ -465,7 +503,29 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testAlgoformeHasBonus() throws InvalidPositionException {
+	public void testAlgoformeHasFlashBonus() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(frenzy);
+
+		frenzy.haste(3);
+		Assert.assertTrue("Frenzy deberia tener bonus de flash",frenzy.isBonus());
+	}
+
+	@Test
+	public void testAlgoformeHasImmaculateBubbleBonus() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(frenzy);
+
+		frenzy.protectWithImmaculateBubble(2);
+		Assert.assertTrue("Frenzy deberia tener bonus de burbuja inmaculada",frenzy.isBonus());
+	}
+
+	@Test
+	public void testAlgoformeHasAnyBonus() throws InvalidPositionException {
 		Board board = new Board(10, 10);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
 
@@ -479,6 +539,5 @@ public class AlgoformerTest {
 		frenzy.haste(3);
 		Assert.assertTrue("Frenzy deberia tener bonus",frenzy.isBonus());
 	}
-
 }
 
