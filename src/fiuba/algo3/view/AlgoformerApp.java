@@ -49,7 +49,7 @@ public class AlgoformerApp extends Application {
 	    public void setChooseTeamScene(){
 	        this.ChoseTeamContainer  = new ChoseTeamContainer(this);
 	        this.escenaElegirEquipo = new Scene(this.ChoseTeamContainer, 1200,800);
-	        escenaElegirEquipo.getStylesheets().add(css);
+	        
 	    	this.stage.setScene(this.escenaElegirEquipo);
 	    	this.stage.setFullScreen(true);
 	    	this.stage.show();

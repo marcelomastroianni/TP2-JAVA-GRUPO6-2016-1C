@@ -78,6 +78,8 @@ public class ChoseTeamContainer extends VBox{
 		    hbox.setMargin(team2,  new Insets(0,0,0,100));
 
 		    Button enterButton = new Button();
+		    String css = this.getClass().getResource("DarckTheme.css").toExternalForm();
+		    enterButton.getStylesheets().add(css);
 		    enterButton.setText("Jugar");
 
 	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(textFieldName1, textFieldName2, app);
