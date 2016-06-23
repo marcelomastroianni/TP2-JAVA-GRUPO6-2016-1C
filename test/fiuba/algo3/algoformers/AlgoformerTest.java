@@ -416,8 +416,30 @@ public class AlgoformerTest {
 
 		bumblebee.dobleDamage(3);
 		bumblebee.notifyNextTurn();
-		Assert.assertEquals("Bumblebee deberia estar atrapado por 3 turnos",3,bumblebee.getTurnsDobleDamage());
+		Assert.assertEquals("Bumblebee deberia tener DobleDamage por 3 turnos",3,bumblebee.getTurnsDobleDamage());
 	}
 
+	@Test
+	public void testIsFlash() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,1));
+
+		board.add(megatron);
+
+		megatron.haste(3);
+		Assert.assertTrue("Megatron deberia tener flash",megatron.isFlash());
+	}
+
+	@Test
+	public void testTurnsIsFlash() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+
+		board.add(optimusPrime);
+
+		optimusPrime.haste(3);
+		optimusPrime.notifyNextTurn();
+		Assert.assertEquals("OptimusPrime deberia tener flash por 3 turnos",3,optimusPrime.getTurnsFlash());
+	}
 }
 
