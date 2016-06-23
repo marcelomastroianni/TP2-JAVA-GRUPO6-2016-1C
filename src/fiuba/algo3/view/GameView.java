@@ -71,7 +71,7 @@ public class GameView  {
 
 			Image algoformerSelected = ImageFactory.getAlgoformer(algoformer.getNombre());
 			GraphicsContext gc = this.algoformerPic.getGraphicsContext2D();
-			gc.drawImage(algoformerSelected, 5, 5);
+			gc.drawImage(algoformerSelected, 0, 0,90,90);
 
 			this.lblAlgoformerLife.setText("Life: " + Integer.toString(algoformer.getLife()));
 			this.lblAlgoformerAttack.setText("Attack: " + Integer.toString(algoformer.getAttack()));

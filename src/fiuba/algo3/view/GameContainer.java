@@ -100,7 +100,7 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
 		this.lblAlgoformerTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
 		this.lblAlgoformerName = new Label("");
-		this.algoformerPic = new Canvas(20,20);
+		this.algoformerPic = new Canvas(100,100);
 		this.lblAlgoformerLife = new Label("");
 		this.lblAlgoformerAttack = new Label("");
 		this.lblAlgoformerStrikingDistance = new Label("");
