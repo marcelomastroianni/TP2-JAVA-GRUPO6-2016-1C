@@ -490,16 +490,26 @@ public class GameTest {
 	}
 
 	@Test(expected=InvalidPositionException.class)
-	public void testInvalidInitialPosition() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testInvalidInitialPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, GameOverException {
 		Game game = new Game();
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
 
 		//Turno jugador
-		game.moverAlgoformer(new Position(-1,0),new Position(2,0));
+		game.dispararaAlgoformer(new Position(-1,0),new Position(2,0));
 	}
 
+	@Test(expected=InvalidPositionException.class)
+	public void testInvalidFinalPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, GameOverException {
+		Game game = new Game();
+		prepareGame(game);
+
+		Player jugador1 = game.getPlayer1();
+
+		//Turno jugador
+		game.dispararaAlgoformer(new Position(0,0),new Position(0,-2));
+	}
 	@Test
 	public void testColicionarConAlgoformer() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Game game = new Game();
