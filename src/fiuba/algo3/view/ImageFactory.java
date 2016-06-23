@@ -170,7 +170,7 @@ public class ImageFactory {
 	public static Image getSupRocosa() {
 		if (supRocosa == null) {
 			supRocosa = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_rocasa.jpg");
+					"file:src/fiuba/algo3/vista/pictures/superficie_rocosa2.gif");
 		}
 		return supRocosa;
 	}
@@ -178,7 +178,7 @@ public class ImageFactory {
 	public static Image getSupEspinas() {
 		if (supEspinas == null) {
 			supEspinas = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_espinas_2.jpg");
+					"file:src/fiuba/algo3/vista/pictures/superficie_espinosa.png");
 		}
 		return supEspinas;
 	}
@@ -186,7 +186,7 @@ public class ImageFactory {
 	public static Image getSupNubes() {
 		if (supNubes == null) {
 			supNubes = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_nubes.jpg");
+					"file:src/fiuba/algo3/vista/pictures/superficie_nubes.png");
 		}
 		return supNubes;
 	}
@@ -194,7 +194,7 @@ public class ImageFactory {
 	public static Image getSupPantano() {
 		if (supPantano == null) {
 			supPantano = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_pantano_2.jpg");
+					"file:src/fiuba/algo3/vista/pictures/superficie_pantanosa.png");
 		}
 		return supPantano;
 	}
