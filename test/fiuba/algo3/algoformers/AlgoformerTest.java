@@ -381,8 +381,7 @@ public class AlgoformerTest {
 		board.add(frenzy);
 
 		frenzy.trap(3);
-		Assert.assertTrue("frenzy deberia estar atrapado",frenzy.isTrapped());
-
+		Assert.assertTrue("Frenzy deberia estar atrapado",frenzy.isTrapped());
 	}
 
 	@Test
@@ -394,8 +393,30 @@ public class AlgoformerTest {
 
 		frenzy.trap(3);
 		frenzy.notifyNextTurn();
-		Assert.assertEquals("frenzy deberia estar atrapado por 3 turnos",3,frenzy.getTurnsTrapped());
+		Assert.assertEquals("Frenzy deberia estar atrapado por 3 turnos",3,frenzy.getTurnsTrapped());
+	}
 
+	@Test
+	public void testIsDobleDamage() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
+
+		board.add(bonecrusher);
+
+		bonecrusher.dobleDamage(3);
+		Assert.assertTrue("Bonecrusher deberia tener DobleDamage",bonecrusher.isDobleDamage());
+	}
+
+	@Test
+	public void testTurnsIsDobleDamage() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
+
+		board.add(bumblebee);
+
+		bumblebee.dobleDamage(3);
+		bumblebee.notifyNextTurn();
+		Assert.assertEquals("Bumblebee deberia estar atrapado por 3 turnos",3,bumblebee.getTurnsDobleDamage());
 	}
 
 }
