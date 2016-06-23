@@ -8,6 +8,7 @@ import fiuba.algo3.controller.TransformButtonHandler;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -23,6 +24,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -122,12 +124,21 @@ public class GameContainer extends BorderPane {
 		scrollPane.setPrefSize(120, 120);
 		scrollPane.setContent(canvasContainer);
 
-		VBox actionButtonsBox = new VBox(this.moveButton,
+		this.moveButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		transformButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		attackButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		nextTurnButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+
+		TilePane actionButtonsBox = new TilePane(Orientation.VERTICAL);
+		actionButtonsBox.setHgap(10.0);
+		actionButtonsBox.setVgap(8.0);
+		actionButtonsBox.setPadding(new Insets(20));
+		actionButtonsBox.getChildren().addAll(this.moveButton,
 												this.transformButton,
 												this.attackButton,
 												this.nextTurnButton);
-		actionButtonsBox.setSpacing(10);
-		actionButtonsBox.setPadding(new Insets(20));
+
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
 									this.lblActionSelected);
