@@ -47,7 +47,7 @@ public class GameContainer extends BorderPane {
 	private Label lblTurno;
 	private Label lblAlgoformerTitle;
 	private Label lblAlgoformerName;
-	private Canvas algoformerPic;
+	private Canvas algoformerSelectedCanvas;
 	private Label lblAlgoformerLife;
 	private Label lblAlgoformerAttack;
 	private Label lblAlgoformerStrikingDistance;
@@ -100,7 +100,7 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
 		this.lblAlgoformerTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
 		this.lblAlgoformerName = new Label("");
-		this.algoformerPic = new Canvas(100,100);
+		this.algoformerSelectedCanvas = new Canvas(100,100);
 		this.lblAlgoformerLife = new Label("");
 		this.lblAlgoformerAttack = new Label("");
 		this.lblAlgoformerStrikingDistance = new Label("");
@@ -131,19 +131,25 @@ public class GameContainer extends BorderPane {
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
 									this.lblActionSelected);
-
 		actionBox.setStyle("-fx-padding: 10;"
-				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
-				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
-				+ "-fx-border-color: blue;");
+				+"-fx-background-color:#1d1d1d;"
+				+ "-fx-border-style: solid inside;"
+				+ "-fx-border-width: 2;"
+				+ "-fx-border-insets: 5;"
+				+ "-fx-border-radius: 5;"
+				+ "-fx-border-color: white;");
 
 		VBox turnBox = new VBox(this.lblTurnoTitle, this.lblTurno);
-		turnBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;"
-				+ "-fx-border-width: 2;" + "-fx-border-insets: 5;"
-				+ "-fx-border-radius: 5;" + "-fx-border-color: blue;");
+		turnBox.setStyle("-fx-padding: 10;"
+		+"-fx-background-color:#1d1d1d;"
+		+ "-fx-border-style: solid inside;"
+		+ "-fx-border-width: 2;"
+		+ "-fx-border-insets: 5;"
+		+ "-fx-border-radius: 5;"
+		+ "-fx-border-color: white;");
 
 		VBox algoformerBox = new VBox(this.lblAlgoformerTitle,
-										this.algoformerPic,
+										this.algoformerSelectedCanvas,
 										this.lblAlgoformerName,
 										this.lblAlgoformerLife,
 										this.lblAlgoformerAttack,
@@ -157,9 +163,12 @@ public class GameContainer extends BorderPane {
 										this.lblAlgoformerBonusInmaculateBubble);
 
 		algoformerBox.setStyle("-fx-padding: 10;"
-				+ "-fx-border-style: solid inside;" + "-fx-border-width: 2;"
-				+ "-fx-border-insets: 5;" + "-fx-border-radius: 5;"
-				+ "-fx-border-color: blue;");
+				+"-fx-background-color:#1d1d1d;"
+				+ "-fx-border-style: solid inside;"
+				+ "-fx-border-width: 2;"
+				+ "-fx-border-insets: 5;"
+				+ "-fx-border-radius: 5;"
+				+ "-fx-border-color: white;");
 
 		VBox infoPanel = new VBox();
 		infoPanel.getChildren().add(actionBox);
@@ -185,7 +194,7 @@ public class GameContainer extends BorderPane {
 		this.gameView.setLblTurno(this.lblTurno);
 		this.gameView.setLblAlgoformerTitle(this.lblAlgoformerTitle);
 		this.gameView.setLblAlgoformerName(this.lblAlgoformerName);
-		this.gameView.setAlgoformerPic(algoformerPic);
+		this.gameView.setAlgoformerPic(algoformerSelectedCanvas);
 		this.gameView.setLblAlgoformerLife(this.lblAlgoformerLife);
 		this.gameView.setLblAlgoformerAttack(this.lblAlgoformerAttack);
 		this.gameView.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);

@@ -28,7 +28,8 @@ public class GameView  {
 	Label lblAlgoformerTitle;
 	Label lblAlgoformerLife;
 	Label lblAlgoformerName;
-	Canvas algoformerPic;
+	Canvas algoformerSelectedCanvas;
+	GraphicsContext gc;
 	Label lblAlgoformerAttack;
 	Label lblAlgoformerStrikingDistance;
 	Label lblAlgoformerSpeed;
@@ -70,8 +71,7 @@ public class GameView  {
 			this.lblAlgoformerName.setText("Name: " + algoformer.getNombre());
 
 			Image algoformerSelected = ImageFactory.getAlgoformer(algoformer.getNombre());
-			GraphicsContext gc = this.algoformerPic.getGraphicsContext2D();
-			gc.drawImage(algoformerSelected, 0, 0,90,90);
+			this.gc.drawImage(algoformerSelected, 0, 0,90,90);
 
 			this.lblAlgoformerLife.setText("Life: " + Integer.toString(algoformer.getLife()));
 			this.lblAlgoformerAttack.setText("Attack: " + Integer.toString(algoformer.getAttack()));
@@ -116,6 +116,7 @@ public class GameView  {
 
 	public void clearAlgoformerSelected(){
 		this.lblAlgoformerTitle.setText("Algoformer Seleccionado:");
+		this.gc.clearRect(0, 0, 100, 0);
 		this.lblAlgoformerName.setText("");
 		this.lblAlgoformerLife.setText("");
 		this.lblAlgoformerAttack.setText("");
@@ -167,9 +168,9 @@ public class GameView  {
 		this.lblAlgoformerTitle = lblAlgoformerTitle;
 	}
 
-	public void setAlgoformerPic(Canvas algoformerPic){
-		this.algoformerPic = algoformerPic;
-
+	public void setAlgoformerPic(Canvas algoformerSelectedCanvas){
+		this.algoformerSelectedCanvas = algoformerSelectedCanvas;
+		this.gc = this.algoformerSelectedCanvas.getGraphicsContext2D();
 	}
 	public void setLblAlgoformerAttack(Label lblAlgoformerAttack) {
 		this.lblAlgoformerAttack = lblAlgoformerAttack;
