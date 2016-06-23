@@ -35,7 +35,7 @@ public class GameContainer extends BorderPane {
 
 	private AlgoformerMenuBar menuBar;
 
-	private Canvas canvas;
+	private Canvas boardCanvas;
 	private Group canvasContainer;
 	private Button moveButton;
 	private Button nextTurnButton;
@@ -47,6 +47,7 @@ public class GameContainer extends BorderPane {
 	private Label lblTurno;
 	private Label lblAlgoformerTitle;
 	private Label lblAlgoformerName;
+	private Canvas algoformerPic;
 	private Label lblAlgoformerLife;
 	private Label lblAlgoformerAttack;
 	private Label lblAlgoformerStrikingDistance;
@@ -83,7 +84,7 @@ public class GameContainer extends BorderPane {
 	}
 
 	private void createControls() {
-		this.canvas = new Canvas(1400, 900);
+		this.boardCanvas = new Canvas(1400, 900);
 		this.moveButton = new Button("Mover");
 		this.nextTurnButton = new Button("Siguiente Turno");
 		this.transformButton = new Button("Transformar");
@@ -99,6 +100,7 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
 		this.lblAlgoformerTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
 		this.lblAlgoformerName = new Label("");
+		this.algoformerPic = new Canvas(20,20);
 		this.lblAlgoformerLife = new Label("");
 		this.lblAlgoformerAttack = new Label("");
 		this.lblAlgoformerStrikingDistance = new Label("");
@@ -114,7 +116,7 @@ public class GameContainer extends BorderPane {
 	private void initilizeLayout() {
 
 		this.canvasContainer = new Group();
-		this.canvasContainer.getChildren().add(canvas);
+		this.canvasContainer.getChildren().add(boardCanvas);
 
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setPrefSize(120, 120);
@@ -141,6 +143,7 @@ public class GameContainer extends BorderPane {
 				+ "-fx-border-radius: 5;" + "-fx-border-color: blue;");
 
 		VBox algoformerBox = new VBox(this.lblAlgoformerTitle,
+										this.algoformerPic,
 										this.lblAlgoformerName,
 										this.lblAlgoformerLife,
 										this.lblAlgoformerAttack,
@@ -176,12 +179,13 @@ public class GameContainer extends BorderPane {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.gameView = new GameView(this.game, this.canvas);
+		this.gameView = new GameView(this.game, this.boardCanvas);
 		this.gameController = new GameController(this.game, this.gameView,app);
 		this.gameView.setLblActionSelected(this.lblActionSelected);
 		this.gameView.setLblTurno(this.lblTurno);
 		this.gameView.setLblAlgoformerTitle(this.lblAlgoformerTitle);
 		this.gameView.setLblAlgoformerName(this.lblAlgoformerName);
+		this.gameView.setAlgoformerPic(algoformerPic);
 		this.gameView.setLblAlgoformerLife(this.lblAlgoformerLife);
 		this.gameView.setLblAlgoformerAttack(this.lblAlgoformerAttack);
 		this.gameView.setLblAlgoformerStrikingDistance(this.lblAlgoformerStrikingDistance);
@@ -196,7 +200,7 @@ public class GameContainer extends BorderPane {
 	}
 
 	private void registerEvents() {
-		this.gameController.registerClickEvents(this.canvas);
+		this.gameController.registerClickEvents(this.boardCanvas);
 		MoveButtonHandler moveButtonHandler = new MoveButtonHandler(this.gameView, this.game, this.gameController);
 		this.moveButton.setOnAction(moveButtonHandler);
 		NextTurnButtonHandler nextTurnButtonHandler = new NextTurnButtonHandler(this.gameView, this.game, this.gameController);
