@@ -408,7 +408,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testTurnsIsDobleDamage() throws InvalidPositionException {
+	public void testTurnsDobleDamage() throws InvalidPositionException {
 		Board board = new Board(10, 10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
 
@@ -431,7 +431,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testTurnsIsFlash() throws InvalidPositionException {
+	public void testTurnsFlash() throws InvalidPositionException {
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 
@@ -441,5 +441,44 @@ public class AlgoformerTest {
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("OptimusPrime deberia tener flash por 3 turnos",3,optimusPrime.getTurnsFlash());
 	}
+
+	@Test
+	public void testIsImmaculateBubble() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer superion = AlgoFormerFactory.getSuperion(new Position(1,1));
+
+		board.add(superion);
+
+		superion.protectWithImmaculateBubble(3);
+		Assert.assertTrue("Superion deberia tener burbuja inmaculada",superion.isImmaculateBubble());
+	}
+
+	@Test
+	public void testTurnsImmaculateBubble() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer menasor = AlgoFormerFactory.getMenasor(new Position(1,1));
+
+		board.add(menasor);
+
+		menasor.protectWithImmaculateBubble(2);
+		Assert.assertEquals("Menasor deberia tener burbuja inmaculada por 2 turnos",2,menasor.getTurnsImmaculateBubble());
+	}
+
+	@Test
+	public void testAlgoformeHasBonus() throws InvalidPositionException {
+		Board board = new Board(10, 10);
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(frenzy);
+
+		Assert.assertFalse("Frenzy no deberia tener ningun bonus",frenzy.isBonus());
+		frenzy.dobleDamage(3);
+		Assert.assertTrue("Frenzy deberia tener bonus",frenzy.isBonus());
+		frenzy.protectWithImmaculateBubble(2);
+		Assert.assertTrue("Frenzy deberia tener bonus",frenzy.isBonus());
+		frenzy.haste(3);
+		Assert.assertTrue("Frenzy deberia tener bonus",frenzy.isBonus());
+	}
+
 }
 
