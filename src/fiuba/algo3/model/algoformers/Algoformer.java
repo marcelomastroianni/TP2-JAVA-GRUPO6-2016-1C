@@ -139,7 +139,8 @@ public class Algoformer implements Content {
 			Surface nextSurface;
 			int speed = this.getSpeed();
 			while (position.hasNext(finalPosition)
-					&& this.stepsMovedInTurn < speed) {
+					&& this.stepsMovedInTurn < speed 
+					&& (!this.isTrapped)) {
 				this.stepsMovedInTurn++;
 				previous = this.position;
 				next = this.position.next(finalPosition);

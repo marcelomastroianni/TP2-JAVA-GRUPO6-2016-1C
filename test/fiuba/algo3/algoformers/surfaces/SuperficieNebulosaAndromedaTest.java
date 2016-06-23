@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
@@ -56,6 +57,23 @@ public class SuperficieNebulosaAndromedaTest {
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);							
+	}
+	
+	@Test
+	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+		Board tablero = new Board(20,20);
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));		
+		tablero.add(ratchet);
+		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeHumanoid);
+		ratchet.transform();
+		ratchet.notifyNextTurn();
+		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeAlternalAerial);
+		ratchet.move(new Position(4,3), tablero);
+		Assert.assertTrue("Algoformer no deberia estar en la posicion (2,3)",tablero.isEmpty(new Position(2,3)));
+		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",ratchet.getPosition().equals(new Position(2,3)));
+		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",ratchet.getPosition().equals(new Position(3,3)));
+		Assert.assertEquals("Algoformer deberia estar en la posicion (3,3)",tablero.getContent(new Position(3,3)),ratchet);							
 	}
 
 }
