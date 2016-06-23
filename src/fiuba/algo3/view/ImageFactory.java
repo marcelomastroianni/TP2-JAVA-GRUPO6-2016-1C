@@ -29,6 +29,24 @@ public class ImageFactory {
 	private static Image algoformerFrenzy;
 	private static Image algoformerFrenzyAlternal;
 
+	public static Image getAlgoformer(String name) {
+		switch(name){
+		case("Optimus Prime"):
+			return getAlgoformerOtimusPrime();
+		case("Bumblebee"):
+			return getAlgoformerBumblebee();
+		case("Ratchet"):
+			return getAlgoformerRatchet();
+		case("Megatron"):
+			return getAlgoformerMegatron();
+		case("Bonecrusher"):
+			return getAlgoformerBonecrusher();
+		case("Frenzy"):
+			return getAlgoformerFrenzy();
+		}
+		throw new RuntimeException("error al cargar imagen de algoformer");
+	}
+
 	public static Image getAlgoformerOtimusPrime() {
 		if (algoformerOptimusprime == null) {
 			algoformerOptimusprime = new Image(
