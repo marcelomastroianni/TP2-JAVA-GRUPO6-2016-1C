@@ -11,7 +11,7 @@ public class InfoOptionEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
-        alert.setHeaderText("Integrantes:\n Marcelo Mastroinanni\n Nicolas Deciancio\n Ariel Manzione\n Jazmin Ferreiro");
+        alert.setHeaderText("Integrantes:\n Marcelo Mastroinanni  (88782)\n Nicolas Deciancio  (92150)\n Ariel Manzione (95716)\n Jazmin Ferreiro (97266)");
         String mensaje = "75.07 Algoritmos y  programación III.";
         alert.setContentText(mensaje);
         alert.show();

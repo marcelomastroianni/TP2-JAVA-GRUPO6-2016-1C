@@ -1,4 +1,13 @@
 
+.pane {
+    -fx-background-color: #8fbc8f;
+}
+
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+
 .vbox{
 	-fx-padding: 10;
 	-fx-background-color:#1d1d1d;
@@ -18,6 +27,8 @@
 	-fx-border-radius: 5;
 	-fx-border-color: white;
 }
+
+
 .menu-bar {
     -fx-background-color: derive(#1d1d1d,20%);
 }
@@ -29,8 +40,18 @@
     -fx-opacity: 0.6;
 }
 
-.background {
-    -fx-background-color: #1d1d1d;
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
 }
 
 .button {
