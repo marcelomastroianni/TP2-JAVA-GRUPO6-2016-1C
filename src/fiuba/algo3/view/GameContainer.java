@@ -122,12 +122,12 @@ public class GameContainer extends BorderPane {
 		scrollPane.setPrefSize(120, 120);
 		scrollPane.setContent(canvasContainer);
 
-		HBox hboxActionButtons = new HBox(this.moveButton,
+		VBox actionButtonsBox = new VBox(this.moveButton,
 												this.transformButton,
 												this.attackButton,
 												this.nextTurnButton);
-		hboxActionButtons.setSpacing(10);
-		hboxActionButtons.setPadding(new Insets(20));
+		actionButtonsBox.setSpacing(10);
+		actionButtonsBox.setPadding(new Insets(20));
 
 		VBox actionBox = new VBox(this.lblActionSelectedTitle,
 									this.lblActionSelected);
@@ -171,12 +171,9 @@ public class GameContainer extends BorderPane {
 				+ "-fx-border-color: white;");
 
 		VBox infoPanel = new VBox();
-		infoPanel.getChildren().add(actionBox);
-		infoPanel.getChildren().add(turnBox);
-		infoPanel.getChildren().add(algoformerBox);
+		infoPanel.getChildren().addAll(actionButtonsBox,actionBox,turnBox,algoformerBox);
 		this.setLeft(infoPanel);
 		this.setTop(this.menuBar);
-		this.setBottom(hboxActionButtons);
 		this.setCenter(scrollPane);
 	}
 
