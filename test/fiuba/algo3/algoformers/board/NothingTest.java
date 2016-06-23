@@ -16,4 +16,9 @@ public class NothingTest {
 		Assert.assertEquals(nada1,nada2);
 	}
 
+	@Test
+	public void testPosition() {
+		Content nothing = new Nothing(new Position(0, 0));
+		Assert.assertEquals(nothing.getPosition(), new Position(0, 0));
+	}
 }

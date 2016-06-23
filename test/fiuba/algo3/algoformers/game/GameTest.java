@@ -142,6 +142,22 @@ public class GameTest {
 		game.moverAlgoformer(new Position(1,0),new Position(4,0));
 	}
 
+	@Test
+	public void testActivePlayer() throws InvalidPositionException {
+		Game game = new Game();
+		Player player1 = new Player(game, "Florencia");
+		Player player2 = new Player(game, "Sofia");
+		Turn turn = new Turn(player1, player2);
+
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+		Assert.assertEquals(game.getActivePlayer(),"Jugador 1 ( Florencia )" );
+		game.nextTurn();
+		Assert.assertEquals(game.getActivePlayer(),"Jugador 2 ( Sofia )" );
+	}
+
 	@Test(expected=JugadorNoPuedeJugarCuandoNoEsSuTurnoException.class)
 	public void testJugadorIntentaMoverAlgoformerQueNoEsSuyo() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Game game = new Game();
@@ -473,6 +489,17 @@ public class GameTest {
 		game.moverAlgoformer(new Position(0,2),new Position(-2,0));
 	}
 
+	@Test(expected=InvalidPositionException.class)
+	public void testInvalidInitialPosition() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+		Game game = new Game();
+		prepareGame(game);
+
+		Player jugador1 = game.getPlayer1();
+
+		//Turno jugador
+		game.moverAlgoformer(new Position(-1,0),new Position(2,0));
+	}
+
 	@Test
 	public void testColicionarConAlgoformer() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
 		Game game = new Game();
@@ -653,6 +680,111 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 320 puntos de vida",320,algofomerJugador2.getLife());
 	}
 
+	@Test
+	public void testShotExceptions() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, GameOverException {
+		Game game = new Game();
+		Player player1 = new Player(game, "Carlos");
+		Player player2 = new Player(game, "Brenda");
+		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		Turn turn = new Turn(player1, player2);
+
+		//Autobots:
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		//Decepticons:
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,0));
+
+		player1.addAlgoformer(optimusPrime);
+		player2.addAlgoformer(megatron);
+
+		//Autobots:
+		board.add(optimusPrime);
+		//Decepticons:
+		board.add(megatron);
+
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+		Player jugador1 = game.getPlayer1();
+		Player jugador2 = game.getPlayer2();
+
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		Algoformer algofomerJugador2 = algoformersJugador2.get(0);
+
+		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (1,0)",algofomerJugador2.getPosition().equals(new Position(1,0)));
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algofomerJugador1.getLife());
+		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
+		//Turno jugador 1
+		try{
+			game.dispararaAlgoformer(new Position(0,0),new Position(-1,0));
+		}catch(InvalidPositionException e){}
+
+		try{
+			game.dispararaAlgoformer(new Position(5,0),new Position(1,0));
+		}catch(UsuarioNoSeleccionoAlgoformerException e){}
+
+		try{
+			game.dispararaAlgoformer(new Position(1,0),new Position(0,0));
+		}catch(JugadorNoPuedeJugarCuandoNoEsSuTurnoException e){}
+
+		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (1,0)",algofomerJugador2.getPosition().equals(new Position(1,0)));
+	}
+
+	@Test
+	public void testTransforExceptions() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, AlgoformerUsadoEsteTurnoException {
+		Game game = new Game();
+		Player player1 = new Player(game, "Felipe");
+		Player player2 = new Player(game, "Diego");
+		Board board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		Turn turn = new Turn(player1, player2);
+
+		//Autobots:
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		//Decepticons:
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,0));
+
+		player1.addAlgoformer(optimusPrime);
+		player2.addAlgoformer(megatron);
+
+		//Autobots:
+		board.add(optimusPrime);
+		//Decepticons:
+		board.add(megatron);
+
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+		Player jugador1 = game.getPlayer1();
+		Player jugador2 = game.getPlayer2();
+
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
+		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
+		Algoformer algofomerJugador2 = algoformersJugador2.get(0);
+
+		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
+		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (1,0)",algofomerJugador2.getPosition().equals(new Position(1,0)));
+		try{
+			game.transformaraAlgoformer(new Position(-1,0));
+		}catch(InvalidPositionException e){}
+
+		try{
+			game.transformaraAlgoformer(new Position(2,0));
+		}catch(UsuarioNoSeleccionoAlgoformerException e){}
+
+		try{
+			game.transformaraAlgoformer(new Position(1,0));
+		}catch(JugadorNoPuedeJugarCuandoNoEsSuTurnoException e){}
+
+	}
+
 	@Test(expected=UsuarioNoSeleccionoAlgoformerAQuienDispararException.class)
 	public void testUsuarioNoSeleccionoAlgoformerAQuienDisparar() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException {
 		Game game = new Game();
@@ -692,19 +824,19 @@ public class GameTest {
 		prepareGame(game);
 
 
-		Player jugador1 = game.getPlayer1();
-		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
-		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algoformersJugador1.get(0).getLife());
-		algoformersJugador1.get(0).downHealthPoints(500);
+		Player jugador2 = game.getPlayer2();
+		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 550 puntos de vida",550,algoformersJugador2.get(0).getLife());
+		algoformersJugador2.get(0).downHealthPoints(550);
 
-		Assert.assertEquals("Algoformer jugador 1 deberia tener 350 puntos de vida",350,algoformersJugador1.get(0).getLife());
-		algoformersJugador1.get(0).downHealthPoints(350);
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 200 puntos de vida",200,algoformersJugador2.get(0).getLife());
+		algoformersJugador2.get(0).downHealthPoints(200);
 
-		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 400 puntos de vida",400,algoformersJugador2.get(0).getLife());
 		try{
-			algoformersJugador1.get(0).downHealthPoints(150);
+			algoformersJugador2.get(0).downHealthPoints(400);
 		}catch(GameOverException e){
-			Assert.assertEquals(e.getMessage(),"Felicitaciones Maria has ganado!!!!" );
+			Assert.assertEquals(e.getMessage(),"Felicitaciones Juan has ganado!!!!" );
 		}
 	}
 

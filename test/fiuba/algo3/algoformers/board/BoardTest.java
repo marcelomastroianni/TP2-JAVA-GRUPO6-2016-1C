@@ -128,4 +128,15 @@ public class BoardTest {
 		Assert.assertTrue("frenzy no deberia estar en el tablero",tablero.isEmpty(new Position(1,1)));
 	}
 
+	@Test(expected=InvalidPositionException.class)
+	public void testInvalidPositionclearContent() throws InvalidPositionException{
+		Board tablero = new Board(5,5);
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1, 1));
+		tablero.add(bonecrusher);
+
+		Assert.assertTrue("Bonecrusher deberia estar en la posicion (1,1)", bonecrusher.getPosition().equals(new Position(1, 1)));
+		tablero.clearContent(new Position(-1,0));
+	}
+
+
 }

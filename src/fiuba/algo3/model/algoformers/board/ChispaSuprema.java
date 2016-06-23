@@ -21,7 +21,6 @@ public class ChispaSuprema implements Content {
 	public void collideWithAlgoformer(Content algoformer) throws GameOverException, InvalidPositionException {
 		Algoformer algo = (Algoformer) algoformer;
 		algo.collideWithChiapaSuprema();
-
 	}
 
 }
