@@ -1,7 +1,9 @@
 package fiuba.algo3.view;
 
 
+import fiuba.algo3.controller.AplicacionOnExitPressEventHandler;
 import fiuba.algo3.controller.EnterButtonEventHandler;
+import fiuba.algo3.controller.EnterPressEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -84,6 +86,9 @@ public class ChoseTeamContainer extends VBox{
 
 	        EnterButtonEventHandler enterButtonEventHandler = new EnterButtonEventHandler(textFieldName1, textFieldName2, app);
 	        enterButton.setOnAction(enterButtonEventHandler);
+
+	        EnterPressEventHandler EnterPressEventHandler = new EnterPressEventHandler(textFieldName1, textFieldName2, app);
+	        this.setOnKeyPressed( EnterPressEventHandler );
 
 	        this.getChildren().addAll(title,hbox, enterButton);
 	        this.setMargin(hbox, new Insets(50,50,50,50));
