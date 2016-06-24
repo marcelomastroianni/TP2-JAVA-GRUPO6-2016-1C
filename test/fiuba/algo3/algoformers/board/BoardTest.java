@@ -36,16 +36,9 @@ public class BoardTest {
 	}
 
 	@Test
-	public void isEmptyTest(){
-		Assert.assertTrue(board.isEmpty(firstPosition));
-		Assert.assertTrue(board.isEmpty(lastPosition));
-	}
-
-	@Test
 	public void addContentTest() throws InvalidPositionException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(4,4));
 		board.add(optimusPrime);
-		Assert.assertTrue(board.isEmpty(firstPosition));
 		Assert.assertEquals(optimusPrime, board.getContent(lastPosition));
 	}
 
@@ -61,16 +54,6 @@ public class BoardTest {
 		board.add(optimusPrime);
 	}
 	
-	@Test(expected= InvalidPositionException.class)
-	public void addContentInOccupiedPositionTest() throws InvalidPositionException{
-		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,0));
-		board.add(optimusPrime);
-		Algoformer megatron= AlgoFormerFactory.getMegatron(new Position(2,0));
-		board.add(megatron);
-	}
-	
-
-
 	@Test
 	public void testValidPosition(){
 		Board tablero = new Board(21,20);	
@@ -125,7 +108,7 @@ public class BoardTest {
 
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,1)", frenzy.getPosition().equals(new Position(1, 1)));
 		tablero.remove(frenzy);
-		Assert.assertTrue("frenzy no deberia estar en el tablero",tablero.isEmpty(new Position(1,1)));
+		Assert.assertEquals("frenzy no deberia estar en el tablero",new Nothing(new Position(1,1)), tablero.getContent(new Position(1,1)));
 	}
 
 	@Test(expected=InvalidPositionException.class)

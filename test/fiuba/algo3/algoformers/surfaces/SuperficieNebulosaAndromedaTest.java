@@ -11,6 +11,7 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -38,7 +39,7 @@ public class SuperficieNebulosaAndromedaTest {
 		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
 		optimus.move(new Position(4,3), tablero);
 		optimus.notifyNextTurn();
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (4,3)",tablero.isEmpty(new Position(4,3)));
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)),  tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);												
@@ -52,7 +53,8 @@ public class SuperficieNebulosaAndromedaTest {
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
 		optimus.move(new Position(4,3), tablero);
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (4,3)",tablero.isEmpty(new Position(4,3)));
+		
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)), tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);							
@@ -69,10 +71,9 @@ public class SuperficieNebulosaAndromedaTest {
 		ratchet.notifyNextTurn();
 		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeAlternalAerial);
 		ratchet.move(new Position(4,3), tablero);
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (2,3)",tablero.isEmpty(new Position(2,3)));
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (2,3)",new Nothing(new Position(2,3)), tablero.getContent(new Position(2,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",ratchet.getPosition().equals(new Position(2,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",ratchet.getPosition().equals(new Position(3,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (3,3)",tablero.getContent(new Position(3,3)),ratchet);							
 	}
-
 }

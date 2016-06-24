@@ -12,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
@@ -160,7 +161,7 @@ public class SegundaEntregaTest {
 		optimus.move(new Position(3, 3), tablero);
 		optimus.notifyNextTurn();
 
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (3,3)", tablero.isEmpty(new Position(3, 3)));
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (3,3)",new Nothing(new Position(3,3)),  tablero.getContent(new Position(3, 3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",
 				optimus.getPosition().equals(new Position(3, 3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",

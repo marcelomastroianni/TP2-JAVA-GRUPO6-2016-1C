@@ -123,7 +123,7 @@ public class GameTest {
 
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		game.moverAlgoformer(new Position(0,0),new Position(4,0));
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (0,0)", game.getBoard().isEmpty(new Position(0,0)));
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (0,0)",new Nothing(new Position(0,0)),  game.getBoard().getContent(new Position(0,0)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,0)",algofomerJugador1.getPosition().equals(new Position(2,0)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,0)",algofomerJugador1, game.getBoard().getContent(new Position(2,0)));
 	}
