@@ -16,7 +16,7 @@ public class RobotView {
 
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		Image imagen = ImageFactory.drowAlgoformer(algoformer);
+		Image imagen = ImageFactory.drawAlgoformer(algoformer);
     	int x = algoformer.getPosition().getX() * ViewConstants.CELL_WIDTH;
 		int y =algoformer.getPosition().getY() * ViewConstants.CELL_HEIGHT;
     	gc.drawImage(imagen,x ,y ,ViewConstants.ALGO_WIDTH,ViewConstants.ALGO_HEIGHT);

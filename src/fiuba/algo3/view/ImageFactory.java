@@ -32,7 +32,7 @@ public class ImageFactory {
 	private static Image algoformerFrenzyAlternal;
 	private static Image algoformerMenasor;
 
-	public static Image drowAlgoformer(Algoformer algoformer){
+	public static Image drawAlgoformer(Algoformer algoformer){
 		switch(algoformer.getNombre()){
 		case("Optimus Prime"):
 			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
@@ -232,7 +232,7 @@ public class ImageFactory {
 	public static Image getSupRocosa() {
 		if (supRocosa == null) {
 			supRocosa = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_rocosa2.gif");
+					"file:src/fiuba/algo3/vista/pictures/superficie_rocosa.png");
 		}
 		return supRocosa;
 	}

@@ -72,7 +72,7 @@ public class GameView  {
 			this.lblAlgoformerTitle.setText("Algoformer Seleccionado:");
 			this.lblAlgoformerName.setText("Name: " + algoformer.getNombre());
 
-			Image algoformerSelected = ImageFactory.drowAlgoformer(algoformer);
+			Image algoformerSelected = ImageFactory.drawAlgoformer(algoformer);
 			this.gc.clearRect(0, 0, 100, 100);
 			this.gc.drawImage(algoformerSelected, 0, 0,90,90);
 
