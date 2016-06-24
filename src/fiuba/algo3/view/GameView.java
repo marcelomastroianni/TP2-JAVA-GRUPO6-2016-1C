@@ -40,6 +40,7 @@ public class GameView  {
 	Label lblAlgoformerBonusDobleCannon;
 	Label lblAlgoformerBonusFlash;
 	Label lblAlgoformerBonusInmaculateBubble;
+	Label lblException;
 
 	public GameView(Game game,Canvas canvas) {
 	        this.game = game;
@@ -209,6 +210,10 @@ public class GameView  {
 	public void setLblAlgoformerBonusInmaculateBubble(Label lblAlgoformerBonusInmaculateBubble) {
 		this.lblAlgoformerBonusInmaculateBubble = lblAlgoformerBonusInmaculateBubble;
 	}
+	public void setExceptionMessage(Label lblException) {
+		this.lblException = lblException;
+
+	}
 
 	public void showGameFinish(String playerWinner){
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -217,4 +222,6 @@ public class GameView  {
 		alert.setContentText("");
 		alert.showAndWait();
 	}
+
+
 }

@@ -166,8 +166,8 @@ public class ImageFactory {
 	}
 
 	public static Image getAlgoformerBonecrusherAlternal() {
-		if (algoformerBonecrusher == null) {
-			algoformerBonecrusher = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher_alternal.png");
+		if (algoformerBonecrusherAlternal == null) {
+			algoformerBonecrusherAlternal = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher_alternal.png");
 		}
 		return algoformerBonecrusherAlternal;
 	}
@@ -181,8 +181,8 @@ public class ImageFactory {
 	}
 
 	public static Image getAlgoformerFrenzyAlternal() {
-		if (algoformerFrenzy == null) {
-			algoformerFrenzy = new Image(
+		if (algoformerFrenzyAlternal == null) {
+			algoformerFrenzyAlternal = new Image(
 					"file:src/fiuba/algo3/vista/pictures/algoformer_frenzy_alternal.png");
 		}
 		return algoformerFrenzyAlternal;

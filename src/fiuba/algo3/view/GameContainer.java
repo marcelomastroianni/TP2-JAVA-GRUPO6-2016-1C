@@ -55,6 +55,7 @@ public class GameContainer extends BorderPane {
 	private Label lblAlgoformerStrikingDistance;
 	private Label lblAlgoformerSpeed;
 	private Label lblAlgoformerPosition;
+	private Label lblException;
 
 	private Label lblAlgoformerStateTrapped;
 	private Label lblAlgoformerBonusTitle;
@@ -108,6 +109,7 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerStrikingDistance = new Label("");
 		this.lblAlgoformerSpeed = new Label("");
 		this.lblAlgoformerPosition = new Label("");
+		this.lblException = new Label("");
 		this.lblAlgoformerStateTrapped = new Label("");
 		this.lblAlgoformerBonusTitle = new Label("");
 		this.lblAlgoformerBonusDobleCannon = new Label("");
@@ -171,7 +173,8 @@ public class GameContainer extends BorderPane {
 										this.lblAlgoformerBonusTitle,
 										this.lblAlgoformerBonusDobleCannon,
 										this.lblAlgoformerBonusFlash,
-										this.lblAlgoformerBonusInmaculateBubble);
+										this.lblAlgoformerBonusInmaculateBubble,
+										this.lblException);
 
 		algoformerBox.setStyle("-fx-padding: 10;"
 				+"-fx-background-color:#1d1d1d;"
@@ -214,6 +217,7 @@ public class GameContainer extends BorderPane {
 		this.gameView.setLblAlgoformerBonusInmaculateBubble(this.lblAlgoformerBonusInmaculateBubble);
 		this.gameView.setLblAlgoformerStateTrapped(this.lblAlgoformerStateTrapped);
 		this.gameView.updateTurn();
+		this.gameView.setExceptionMessage(this.lblException);
 	}
 
 	private void registerEvents() {
