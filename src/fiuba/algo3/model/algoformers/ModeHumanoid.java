@@ -1,7 +1,6 @@
 package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -22,7 +21,7 @@ public class ModeHumanoid extends Mode {
 	}
 
 	@Override
-	public void collideWithChispaSuprema(Algoformer algoformer) throws  InvalidPositionException, GameOverException {
+	public void collideWithChispaSuprema(Algoformer algoformer) throws  InvalidPositionException {
 		algoformer.notifyCathChispaSuprema();
 	}
 }

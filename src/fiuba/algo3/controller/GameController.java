@@ -40,6 +40,7 @@ public class GameController {
 		this.action = Action.SIN_ACCION;
 		this.view.updateAction(this.action);
 	}
+	
 	public void selectCell(Position position){       
 		
 		try{
@@ -79,13 +80,14 @@ public class GameController {
 	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException e) {
 	    				e.printStackTrace();
 	    			}
-	    			catch(GameOverException gameOverException){
+	    			
+	    			if (game.isOver()){
 	    				this.clearSelectedCells();	    
 	    	    		this.view.update(); 
-	    				this.view.showGameFinish(gameOverException.getMessage());
+	    				this.view.showGameFinish(game.getWinner());
 	    				this.app.setChooseTeamScene();
-	    				
 	    			}
+	    					    					    		
 	    			this.clearAction();
 	    		}
 	    		
@@ -97,10 +99,10 @@ public class GameController {
 							| AlgoformerUsadoEsteTurnoException e) {
 						e.printStackTrace();
 					}    
-					catch(GameOverException gameOverException){
+					if (game.isOver()){
 	    				this.clearSelectedCells();	    
 	    	    		this.view.update(); 
-	    				this.view.showGameFinish(gameOverException.getMessage());
+	    				this.view.showGameFinish(game.getWinner());
 	    				this.app.setChooseTeamScene();
 	    			}
 					this.clearAction();
@@ -123,44 +125,21 @@ public class GameController {
 		}		 		     											
 	}
 
-
-	
 	public void nextTurn() {
 		this.clearSelectedCells();
 		this.game.nextTurn();		
 		this.view.updateTurn();				
 	}
 
-	public void dobleClickCell(Position position) throws AlgoformerUsadoEsteTurnoException {
-		/*try {
-			this.game.transformaraAlgoformer(position);
-			this.view.update(); 
-		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-			 | InvalidPositionException |AlgoformerAtrapadoEsteTurnoException e) {
-			e.printStackTrace();		
-		}*/
-	}
-	
 	public void registerClickEvents(Canvas canvas){
 		 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, 
-	                new EventHandler<MouseEvent>() {
-	                    @Override
-	                    public void handle(MouseEvent t) {
-	                    	int x_celda = (int) (t.getX() / ViewConstants.CELL_WIDTH);
-	                    	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);
-	                    	
-	                    	selectCell(new Position(x_celda,y_celda));
-	                    	System.out.println("(" + x_celda +  "," + y_celda +  ")");
-	                    	
-	                        if (t.getClickCount() >1) {
-	                        	try {
-									dobleClickCell(new Position(x_celda,y_celda));
-								} catch (AlgoformerUsadoEsteTurnoException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}	                        	
-	                        }  
-	                    }
-	                });
+            new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent t) {
+                	int x_celda = (int) (t.getX() / ViewConstants.CELL_WIDTH);
+                	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);	                    		                    	
+					selectCell(new Position(x_celda,y_celda));						  
+                }
+            });
 	}
 }
