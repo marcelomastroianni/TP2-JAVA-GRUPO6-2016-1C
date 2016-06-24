@@ -1,8 +1,8 @@
 package fiuba.algo3.view;
 
 import fiuba.algo3.model.bonus.Bonus;
-import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
-import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.BubbleBonus;
+import fiuba.algo3.model.bonus.FlashBonus;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -25,13 +25,13 @@ public class BonusView {
 	   	Image imagen = cannon;
 	   
 	   	try{
-	   		BonusFlash bonusFlash = (BonusFlash)this.bonus;
+	   		FlashBonus bonusFlash = (FlashBonus)this.bonus;
 	   		imagen = flash;
 	   	}
 	   	catch(ClassCastException ex){	   		
 	   	}	   	
 		try{
-			BonusBurbujaInmaculada bonusBurbuja = (BonusBurbujaInmaculada)this.bonus;
+			BubbleBonus bonusBurbuja = (BubbleBonus)this.bonus;
 	   		imagen = bubble;
 	   	}
 	   	catch(ClassCastException ex){	   		

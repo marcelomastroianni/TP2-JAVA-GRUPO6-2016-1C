@@ -17,7 +17,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.bonus.Bonus;
-import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.FlashBonus;
 import fiuba.algo3.model.bonus.CanonBonus;
 
 import fiuba.algo3.model.surfaces.SurfaceThorn;

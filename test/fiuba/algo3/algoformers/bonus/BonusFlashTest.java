@@ -7,7 +7,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
-import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.FlashBonus;
 import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class BonusFlashTest {
 		Game game = new Game();
 		prepareGame(game);
 
-		game.getBoard().add(BonusFlash.createBonusFlash(new Position(1,0)));
+		game.getBoard().add(FlashBonus.createBonusFlash(new Position(1,0)));
 
 		Player jugador1 = game.getPlayer1();
 		Player jugador2 = game.getPlayer2();

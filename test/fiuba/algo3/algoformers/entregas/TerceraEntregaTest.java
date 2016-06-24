@@ -1,7 +1,8 @@
 package fiuba.algo3.algoformers.entregas;
 
-import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.BubbleBonus;
 import fiuba.algo3.model.bonus.CanonBonus;
+import fiuba.algo3.model.bonus.FlashBonus;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
@@ -20,9 +21,9 @@ public class TerceraEntregaTest {
 	 * enemigo, el algoformer captura el bonus y ataca al enemigo verificando
 	 * que causa el doble de daño durante 10 turnos. a. Repetir para el modo
 	 * alterno.
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
-	 * @throws GameOverException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -39,7 +40,7 @@ public class TerceraEntregaTest {
 		board.add(algoformer2);
 		board.add(dobleCanon1);
 		board.add(dobleCanon2);
-		
+
 
 		algoformer1.move(new Position(2, 1), board);
 		algoformer1.notifyNextTurn();
@@ -107,7 +108,7 @@ public class TerceraEntregaTest {
 		algoformer1.notifyNextTurn();
 		algoformer1.move(new Position(2,2), board);
 		algoformer1.notifyNextTurn();
-		
+
 		// Prueba Algoformer en modo Alterno
 		// Primer Turno
 		Assert.assertEquals("La vida de Optimus deberia ser 360", 360,algoformer2.getLife());
@@ -169,9 +170,42 @@ public class TerceraEntregaTest {
 	 * primer algoformer, este no recibe daños, repetir hasta 2 turnos propios,
 	 * continuar y verificar que en el 3ro sí reciba daño. a. Realizar el mismo
 	 * test en modo alterno.
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerAtrapadoEsteTurnoException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test02() {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+
+		Board board = new Board(5, 5);
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
+		Bonus burbuja = new BubbleBonus(new Position(0,1));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+		board.add(burbuja);
+
+		//primer turno
+		algoformer1.move(new Position(0,1), board);
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 500);
+
+		//segundo turno
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 500);
+
+		//tercer turno
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 490);
+
+
 	}
 
 	/**
@@ -187,9 +221,9 @@ public class TerceraEntregaTest {
 	 * 4. Test boundary cases (Si ya tiene un bonus de un tipo que no pueda
 	 * agarrar otro del mismo tipo, Atrapar 2 bonus distintos verifcar ambos
 	 * comportamientos, etc…)
-	 * @throws InvalidPositionException 
-	 * @throws AlgoformerUsadoEsteTurnoException 
-	 * @throws GameOverException 
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -201,9 +235,9 @@ public class TerceraEntregaTest {
 		Bonus dobleCanon1 = CanonBonus.createCanonBonus(new Position(2, 1));
 		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 5));
 		Bonus dobleCanon3 = CanonBonus.createCanonBonus(new Position(2, 9));
-		Bonus flash1 = BonusFlash.createBonusFlash(new Position(2, 3));
-		Bonus flash2 = BonusFlash.createBonusFlash(new Position(2, 10));
-		Bonus flash3 = BonusFlash.createBonusFlash(new Position(2, 11));
+		Bonus flash1 = FlashBonus.createBonusFlash(new Position(2, 3));
+		Bonus flash2 = FlashBonus.createBonusFlash(new Position(2, 10));
+		Bonus flash3 = FlashBonus.createBonusFlash(new Position(2, 11));
 
 
 		board.add(frenzy);

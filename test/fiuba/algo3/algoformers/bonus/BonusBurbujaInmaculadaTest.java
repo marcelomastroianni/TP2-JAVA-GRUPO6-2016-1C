@@ -7,7 +7,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
-import fiuba.algo3.model.bonus.BonusBurbujaInmaculada;
+import fiuba.algo3.model.bonus.BubbleBonus;
 import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -49,7 +49,7 @@ public class BonusBurbujaInmaculadaTest {
 		Game game = new Game();
 		prepareGame(game);
 
-		game.getBoard().add(new BonusBurbujaInmaculada (new Position(1,0)));
+		game.getBoard().add(new BubbleBonus (new Position(1,0)));
 
 		Player jugador1 = game.getPlayer1();
 		Player jugador2 = game.getPlayer2();
@@ -97,7 +97,13 @@ public class BonusBurbujaInmaculadaTest {
 
 
 		game.nextTurn();
-		//Turno Jugador 1
+		//primer Turno Jugador 1
+
+		game.nextTurn();
+		//Turno Jugador 2
+		
+		game.nextTurn();
+		//segundo Turno Jugador 1
 
 		game.nextTurn();
 		//Turno Jugador 2

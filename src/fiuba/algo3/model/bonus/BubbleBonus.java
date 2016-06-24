@@ -4,16 +4,12 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 
-public class BonusFlash implements Bonus {
+public class BubbleBonus implements Bonus {
 
 	private Position position;
 
-	public BonusFlash(Position position){
+	public BubbleBonus(Position position){
 		this.position = position;
-	}
-
-	public static BonusFlash createBonusFlash(Position position){
-		return new BonusFlash(position);
 	}
 
 	@Override
@@ -24,7 +20,7 @@ public class BonusFlash implements Bonus {
 	@Override
 	public void collideWithAlgoformer(Content algoformer) {
 		Algoformer algo = (Algoformer) algoformer;
-		algo.haste(3);
+		algo.protectWithImmaculateBubble(3);
 	}
 
 }
