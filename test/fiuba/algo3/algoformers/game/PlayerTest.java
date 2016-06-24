@@ -9,7 +9,6 @@ import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 
@@ -62,7 +61,7 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void testKillAlgoformer() throws GameOverException, InvalidPositionException{
+	public void testKillAlgoformer() throws InvalidPositionException{
 		Game game = new Game();
 		game.init("Juan", "Maria");
 		Player jugador = new Player(game, "Juan");

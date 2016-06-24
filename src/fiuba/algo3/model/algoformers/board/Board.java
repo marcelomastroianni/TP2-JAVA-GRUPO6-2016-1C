@@ -34,20 +34,12 @@ public class Board {
 		return this.matrix.get(position).getContent();
 	}
 
-	public boolean isEmpty(Position position) {
-		return this.getContent(position) instanceof Nothing;
-	}
-
 	public boolean isValidPosition(Position position) {
 		return position.isInRange(xLength,yLength);
 	}
 	
-	private boolean isOccupiedPosition(Position position) {
-		return(getContent(position) instanceof Algoformer);
-	}
-
 	public void add(Content content) throws InvalidPositionException {
-		if(!isValidPosition(content.getPosition()) || (content instanceof Algoformer && isOccupiedPosition(content.getPosition()))){
+		if(!isValidPosition(content.getPosition())){
 			throw new InvalidPositionException();
 		}
 		matrix.get(content.getPosition()).add(content);

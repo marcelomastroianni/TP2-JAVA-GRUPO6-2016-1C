@@ -52,7 +52,7 @@ public class CanonBonusTest {
 	}
 
 	@Test
-	public void testCapturarCanonBonus() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testCapturarCanonBonus() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
@@ -86,7 +86,7 @@ public class CanonBonusTest {
 		Algoformer algofomerJugador2 = algoformersJugador2.get(0);
 
 		Assert.assertTrue("Algoformer del jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
-		Assert.assertEquals("El poder de ataque de algoformer deberia ser 5", new Integer(5), algofomerJugador1.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataque de algoformer deberia ser 5", 5, algofomerJugador1.getAttack());
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 200 puntos de vida",200,algofomerJugador2.getLife());
 

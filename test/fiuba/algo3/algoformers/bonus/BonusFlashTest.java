@@ -39,7 +39,7 @@ public class BonusFlashTest {
 	}
 
 	@Test
-	public void testCapturarBonusFlash() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testCapturarBonusFlash() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -52,7 +52,7 @@ public class BonusFlashTest {
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
-		Assert.assertEquals("Velocidad de Algoformer deberia ser 2", new Integer(2), algofomerJugador1.getActiveMode().getSpeed());
+		Assert.assertEquals("Velocidad de Algoformer deberia ser 2", 2, algofomerJugador1.getSpeed());
 		game.moverAlgoformer(new Position(0,0),new Position(4,0));
 		game.nextTurn();
 		game.nextTurn();

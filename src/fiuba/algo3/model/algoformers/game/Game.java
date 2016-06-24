@@ -25,6 +25,9 @@ public class Game {
 
 	int BOARD_X_LENGTH = 14;
 	int BOARD_Y_LENGTH = 14;
+	
+	boolean isOver = false;
+	Player winner;
 
 
 	public void init(String namePlayer1,String namePlayer2) throws InvalidPositionException {
@@ -106,6 +109,14 @@ public class Game {
 
 	}
 
+	public boolean isOver(){
+		return this.isOver;
+	}
+	
+	public Player getWinner(){
+		return this.winner;
+	}
+	
 	public Player getPlayer1() {
 		return this.player1;
 	}
@@ -126,7 +137,7 @@ public class Game {
 		if(this.getTurn().isActivePlayer(this.getPlayer1()))
 			return "Jugador 1: " + this.getPlayer1().getName();
 		else
-			return "Jugador 2:" + this.getPlayer2().getName();
+			return "Jugador 2: " + this.getPlayer2().getName();
 	}
 
 	public void setBoard(Board board){
@@ -146,7 +157,7 @@ public class Game {
 		this.turn.next();
 	}
 
-	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -170,7 +181,7 @@ public class Game {
 		algoformer.move(finalPosition, this.board);
 	}
 
-	public void dispararaAlgoformer( Position initialPosition, Position finalPosition) throws InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void dispararaAlgoformer( Position initialPosition, Position finalPosition) throws InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerUsadoEsteTurnoException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();
@@ -228,15 +239,18 @@ public class Game {
 		algoformer.transform();
 	}
 
-	public void notifyPlayerLost(Player player) throws GameOverException {
-		Player winner;
+	public void notifyPlayerWin(Player player) {		
+		this.winner = player;		
+		this.isOver = true;		
+	}
+	
+	public void notifyPlayerLost(Player player) {
 		if(player.equals(player1)){
-			winner = player2;
+			this.winner = player2;
 		}else{
-			winner = player1;
-		}
-		throw new GameOverException("Felicitaciones "+ winner.getName()+" has ganado!!!!");
-
+			this.winner = player1;
+		}		
+		this.isOver = true;
 	}
 
 }

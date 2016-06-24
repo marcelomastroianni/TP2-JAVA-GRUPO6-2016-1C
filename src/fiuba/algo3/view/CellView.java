@@ -5,6 +5,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.bonus.Bonus;
+import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
@@ -46,20 +47,40 @@ public class CellView {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
     	Image imagen = supRocosa;
 
-    	if (this.cell.getSurface() instanceof SurfaceThorn)
-    		imagen = supEspinas;
+       	try{
+       		SurfaceThorn sup = (SurfaceThorn)this.cell.getSurface();
+	   		imagen = supEspinas;
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-    	if (this.cell.getSurface() instanceof SurfaceCloud)
-    		imagen = supNubes;
+      	try{
+      		SurfaceCloud sup = (SurfaceCloud)this.cell.getSurface();
+	   		imagen = supNubes;
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-      	if (this.cell.getSurface() instanceof SuperficiePantano)
-    		imagen = supPantano;
+      	try{
+      		SuperficiePantano sup = (SuperficiePantano)this.cell.getSurface();
+	   		imagen = supPantano;
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-    	if (this.cell.getSurface() instanceof SurfaceAndromedaNebula)
-    		imagen = supAndromeda;
+    	try{
+    		SurfaceAndromedaNebula sup = (SurfaceAndromedaNebula)this.cell.getSurface();
+	   		imagen = supAndromeda;
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-    	if (this.cell.getSurface() instanceof SurfacePsionicStorm)
-    		imagen = supPsionica;
+    	try{
+    		SurfacePsionicStorm sup = (SurfacePsionicStorm)this.cell.getSurface();
+	   		imagen = supPsionica;
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
     	if (this.selected)
     		gc.setFill(Color.BLUE);
@@ -71,23 +92,28 @@ public class CellView {
     	gc.drawImage(imagen, cell.getPosition().getX()*ViewConstants.CELL_WIDTH + 1, cell.getPosition().getY()*ViewConstants.CELL_HEIGHT + 1,ViewConstants.CELL_WIDTH-2,ViewConstants.CELL_HEIGHT-2);
 
 
-    	if (this.cell.getContent() instanceof Algoformer){
-    		Algoformer algoformer = (Algoformer) this.cell.getContent();
+    	try{
+    		Algoformer algoformer = (Algoformer)this.cell.getContent();
     		RobotView robotView = new RobotView(algoformer, canvas);
     		robotView.draw();
-    	}
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-    	if (this.cell.getContent() instanceof ChispaSuprema){
+    	try{
     		ChispaSuprema chispaSuprema = (ChispaSuprema) this.cell.getContent();
     		ChispaSupremaView chispaSupremaView = new ChispaSupremaView(chispaSuprema, canvas);
     		chispaSupremaView.draw();
-    	}
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
 
-    	if (this.cell.getContent() instanceof Bonus){
+    	try{
     		Bonus bonus = (Bonus) this.cell.getContent();
     		BonusView bonusView = new BonusView(bonus, canvas);
     		bonusView.draw();
-    	}
-
+	   	}
+	   	catch(ClassCastException ex){
+	   	}
     }
 }

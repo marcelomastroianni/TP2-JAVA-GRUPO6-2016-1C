@@ -11,9 +11,9 @@ import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
 import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SuperficiePantano;
 import fiuba.algo3.model.surfaces.Surface;
@@ -40,16 +40,16 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(3,3), tablero);
 		
-		Assert.assertTrue("Algoformer no deberia estar en la posicion (3,3)",tablero.isEmpty(new Position(3,3)));
+		Assert.assertEquals("Algoformer no deberia estar en la posicion (3,3)",new Nothing(new Position(3,3)), tablero.getContent(new Position(3,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
@@ -57,22 +57,22 @@ public class SuperficiePantanoTest {
 	}
 	
 	@Test
-	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);		
+		Assert.assertTrue(optimus.isHumanoidMode());		
 		optimus.transform();
 		optimus.notifyNextTurn();
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(3,3), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));		
 	}
 	
 	@Test
-	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
@@ -82,7 +82,7 @@ public class SuperficiePantanoTest {
 
 		optimus.transform();
 		optimus.notifyNextTurn();
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(10,3), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (5,3)",optimus.getPosition().equals(new Position(5,3)));
@@ -92,7 +92,7 @@ public class SuperficiePantanoTest {
 		tablero.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
 		bumblebee.transform();
 		bumblebee.notifyNextTurn();
-		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(bumblebee.isAlternalMode());
 		bumblebee.move(new Position(10,8), tablero);
 		bumblebee.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (6,8)",bumblebee.getPosition().equals(new Position(6,8)));

@@ -23,14 +23,20 @@ public class BonusView {
 	public void draw() {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 	   	Image imagen = cannon;
-	   		   	
-	   	if (this.bonus instanceof BonusFlash){
+	   
+	   	try{
+	   		BonusFlash bonusFlash = (BonusFlash)this.bonus;
 	   		imagen = flash;
 	   	}
-	   	if (this.bonus instanceof BonusBurbujaInmaculada){
-	   		imagen = bubble;
+	   	catch(ClassCastException ex){	   		
 	   	}	   	
-	   		   	
+		try{
+			BonusBurbujaInmaculada bonusBurbuja = (BonusBurbujaInmaculada)this.bonus;
+	   		imagen = bubble;
+	   	}
+	   	catch(ClassCastException ex){	   		
+	   	}
+	  	   
 	   	int x = bonus.getPosition().getX()*ViewConstants.CELL_WIDTH;
 		int y = bonus.getPosition().getY()*ViewConstants.CELL_HEIGHT;
 	   	gc.drawImage(imagen,x ,y ,ViewConstants.CELL_WIDTH,ViewConstants.CELL_HEIGHT);

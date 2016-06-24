@@ -37,14 +37,14 @@ public class AlgoformerUnitTest {
 	@Test
 	public void activeModeTest() {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0, 0));
-		Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+		Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
 	}
 
 	@Test
 	public void transformationTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getFrenzy(new Position(0, 0));
 		algoformer.transform();
-		Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+		Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode() );
 	}
 	
 	@Test
@@ -58,22 +58,22 @@ public class AlgoformerUnitTest {
 	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
-		Assert.assertTrue(algoformer.getActiveMode() instanceof ModeAlternalAerial);
+		Assert.assertTrue(algoformer.isAlternalMode());
 	}
 	
 	@Test
 	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
-		algoformer.getActiveMode().changeAttackPower(0.6);
-		Assert.assertEquals("el algoformer debe tener su poder de ataque reducido un 40 %",new Integer(33),algoformer.getActiveMode().getAttack() );
+		algoformer.reduceAttackPowerFortyPercent();
+		Assert.assertEquals("el algoformer debe tener su poder de ataque reducido un 40 %",33,algoformer.getAttack() );
 	}
 	
 	@Test
 	public void duplicateAttackPowerTest() {
-		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
-		algoformer.getActiveMode().changeAttackPower(2.0);
-		Assert.assertEquals("Algoformer deberia tener un poder de ataque de 100 puntos",new Integer(100),algoformer.getActiveMode().getAttack());
+		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));	
+		algoformer.dobleDamage(2);
+		Assert.assertEquals("Algoformer deberia tener un poder de ataque de 100 puntos",100,algoformer.getAttack());
 	}
 	
 	@Test

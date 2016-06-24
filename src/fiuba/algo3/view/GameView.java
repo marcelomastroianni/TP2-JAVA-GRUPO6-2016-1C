@@ -10,6 +10,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.Player;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
@@ -215,10 +216,10 @@ public class GameView  {
 
 	}
 
-	public void showGameFinish(String playerWinner){
+	public void showGameFinish(Player winner){
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("El juego ha terminado");
-		alert.setHeaderText(playerWinner);
+		alert.setHeaderText("Felicitaciones " + winner.getName() + " has ganado!!!");
 		alert.setContentText("");
 		alert.showAndWait();
 	}

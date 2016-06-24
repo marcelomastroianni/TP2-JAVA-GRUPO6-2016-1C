@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.exceptions.GameOverException;
 
 public class Player {
 
@@ -45,12 +44,16 @@ public class Player {
 		}
 	}
 
-	public void notifyDeadAlgoformer(Algoformer algoformer) throws GameOverException {
+	public void notifyDeadAlgoformer(Algoformer algoformer) {
 		this.algoformersList.remove(algoformer);
 		if(this.algoformersList.size() < 1){
-			game.notifyPlayerLost(this);
+			this.game.notifyPlayerLost(this);
 		}
 
+	}
+	
+	public void notifyAlgoformerCathChispaSuprema()  {
+		this.game.notifyPlayerWin(this);
 	}
 
 	public String getName() {

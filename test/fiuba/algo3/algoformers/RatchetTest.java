@@ -10,7 +10,6 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class RatchetTest {
@@ -29,7 +28,7 @@ public class RatchetTest {
 	}
 
 	@Test
-	public void speedTest() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void speedTest() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		board.add(ratchet);
 		ratchet.move(new Position(1,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),
@@ -37,7 +36,7 @@ public class RatchetTest {
 	}
 
 	@Test
-	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		ratchet.transform();
 		ratchet.notifyNextTurn();
 		board.add(ratchet);

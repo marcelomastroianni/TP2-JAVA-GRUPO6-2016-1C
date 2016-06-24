@@ -14,12 +14,11 @@ import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class AlgoformerTest {
 	@Test
-	public void testMovement() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testMovement() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -42,7 +41,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void diagonalMovementTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void diagonalMovementTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
@@ -65,7 +64,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testLargeDistanceMovement() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(100,100);
 		int speed1 = 2;
 
@@ -120,20 +119,20 @@ public class AlgoformerTest {
 	@Test
 	public void testTransform() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
 	}
 
 	@Test
-	public void testShootingToAnotherAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException{
+	public void testShootingToAnotherAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
@@ -151,7 +150,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException{
+	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getBumblebee(new Position(2,0));
@@ -166,7 +165,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void testDobleDamageActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -182,7 +181,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -191,7 +190,7 @@ public class AlgoformerTest {
 		board.add(bumblebee);
 		board.add(frenzy);
 
-		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", new Integer(40), bumblebee.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de bumblebee deberia ser 40", 40, bumblebee.getAttack());
 		bumblebee.dobleDamage(2);
 		bumblebee.notifyNextTurn();
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, frenzy.getLife());
@@ -207,7 +206,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(5,5);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
@@ -215,10 +214,10 @@ public class AlgoformerTest {
 		board.add(optimusPrime);
 		board.add(megatron);
 
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", 50, optimusPrime.getAttack());
 		optimusPrime.transform();
 		optimusPrime.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", new Integer(15), optimusPrime.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 15", 15, optimusPrime.getAttack());
 		optimusPrime.dobleDamage(2);
 		Assert.assertEquals("la vida de Megatron deberia ser 550", 550, megatron.getLife());
 		optimusPrime.shot(megatron,board);
@@ -226,7 +225,7 @@ public class AlgoformerTest {
 		Assert.assertEquals("la vida de Megatron deberia ser 520", 520, megatron.getLife());
 		optimusPrime.transform();
 		optimusPrime.notifyNextTurn();
-		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 50", new Integer(50), optimusPrime.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de optimusPrime deberia ser 100", 100, optimusPrime.getAttack());
 		optimusPrime.shot(megatron,board);
 		optimusPrime.notifyNextTurn();
 		Assert.assertEquals("la vida de Megatron deberia ser 420", 420, megatron.getLife());
@@ -255,14 +254,14 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testFlashActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
 
 		board.add(bumblebee);
 
-		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", new Integer(2), bumblebee.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Bumblebee deberia ser 2", 2, bumblebee.getSpeed());
 		bumblebee.haste(3);
 		bumblebee.move(new Position(1,7), board);
 		Assert.assertEquals("Bumblebee deberia estar en la posicion (1,7)",new Position(1,7),bumblebee.getPosition());
@@ -270,14 +269,14 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMovementWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testMovementWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
 
 		board.add(frenzy);
 
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",new Integer(2) ,frenzy.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 2",2 ,frenzy.getSpeed());
 		frenzy.haste(3);
 		frenzy.notifyNextTurn();
 		frenzy.move(new Position(1,7), board);
@@ -295,17 +294,17 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testSwitchModeWithFlash() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
 
 		board.add(bonecrusher);
 
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",1 ,bonecrusher.getSpeed());
 		bonecrusher.transform();
 		bonecrusher.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",new Integer(8) ,bonecrusher.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 8",8 ,bonecrusher.getSpeed());
 		bonecrusher.haste(3);
 		bonecrusher.notifyNextTurn();
 		bonecrusher.move(new Position(2,6), board);
@@ -313,7 +312,7 @@ public class AlgoformerTest {
 		Assert.assertEquals("Bonecrusher deberia estar en la posicion (2,6)",new Position(2,6),bonecrusher.getPosition());
 		bonecrusher.transform();
 		bonecrusher.notifyNextTurn();
-		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 1",new Integer(1) ,bonecrusher.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Bonecrusher deberia ser 3",3 ,bonecrusher.getSpeed());
 		bonecrusher.move(new Position(4,6), board);
 		bonecrusher.notifyNextTurn();
 		Assert.assertEquals("Bonecrusher deberia estar en la posicion (4,6)",new Position(4,6),bonecrusher.getPosition());
@@ -323,7 +322,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testCantCross() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testCantCross() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(10, 10);
 		board.addCell(new Cell(new Position(2, 2), new SurfaceCloud()));
@@ -337,7 +336,7 @@ public class AlgoformerTest {
 
 	}
 	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
-	public void testAlgoformeNoPuedeMoversePorqueYaFueUsadoEnElTurno() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void testAlgoformeNoPuedeMoversePorqueYaFueUsadoEnElTurno() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Board board = new Board(10, 10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,1));
 
@@ -351,7 +350,7 @@ public class AlgoformerTest {
 	}
 
 	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
-	public void testAlgoformeNoPuedeAtacarPorqueYaFueUsadoEnElTurno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException{
+	public void testAlgoformeNoPuedeAtacarPorqueYaFueUsadoEnElTurno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,2));
@@ -367,7 +366,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testAlgoformeNoPuedeAtacarAAlguienDelMismoEquipo() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, GameOverException{
+	public void testAlgoformeNoPuedeAtacarAAlguienDelMismoEquipo() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,2));

@@ -1,20 +1,14 @@
 package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Player;
-import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Algoformer implements Content {
 	private String name;
@@ -71,11 +65,15 @@ public class Algoformer implements Content {
 		return this.name;
 	}
 
-	public Mode getActiveMode() {
-		return activeMode;
+	public boolean isHumanoidMode(){
+		return this.activeMode.equals(this.humanoidMode);
 	}
-
-	public void downHealthPoints(Integer damage, Board board) throws GameOverException {
+	
+	public boolean isAlternalMode(){
+		return this.activeMode.equals(this.alternalMode);
+	}
+	
+	public void downHealthPoints(Integer damage, Board board) {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
 		}
@@ -87,14 +85,6 @@ public class Algoformer implements Content {
 			}
 			this.player.notifyDeadAlgoformer(this);
 		}
-	}
-
-	public Mode getHumanoidMode() {
-		return humanoidMode;
-	}
-
-	public Mode getAlternalMode() {
-		return alternalMode;
 	}
 
 	public int getLife() {
@@ -131,7 +121,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * 0.95);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (!this.isTrapped) {
@@ -147,22 +137,13 @@ public class Algoformer implements Content {
 				next = this.position.next(finalPosition);
 				nextSurface = board.getSurface(next);
 				if (this.activeMode.canCrossSurface(nextSurface)) {
-					try {
-						try{
-							board.getContent(next).collideWithAlgoformer(this);
-							this.position = next;
-							board.clearContent(previous);
-							board.add(this);
-							this.activeMode.crossSurface(nextSurface, this);
-							this.haveBeenUsedInTurn = true;
-						}catch(GameOverException gameOverException){
-							this.position = next;
-							board.clearContent(previous);
-							board.add(this);
-							this.activeMode.crossSurface(nextSurface, this);
-							this.haveBeenUsedInTurn = true;
-							throw gameOverException;
-						}
+					try {						
+						board.getContent(next).collideWithAlgoformer(this);
+						this.position = next;
+						board.clearContent(previous);
+						board.add(this);
+						this.activeMode.crossSurface(nextSurface, this);
+						this.haveBeenUsedInTurn = true;					
 					} catch (InvalidPositionException ex) {
 						//Coliciono con otro Algoformer
 						break;
@@ -179,13 +160,10 @@ public class Algoformer implements Content {
 	}
 
 	public void reduceAttackPowerFortyPercent(){
-		if(!this.hasCrossPsionicStorm){
-			this.activeMode.changeAttackPower(0.6);
-			this.hasCrossPsionicStorm = true;
-		}
+		this.hasCrossPsionicStorm = true;
 	}
 
-	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, GameOverException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		try {
@@ -274,18 +252,21 @@ public class Algoformer implements Content {
 		throw new InvalidPositionException();
 	}
 
-	public void collideWithChiapaSuprema() throws GameOverException, InvalidPositionException {
+	public void collideWithChiapaSuprema() throws InvalidPositionException {
 		this.activeMode.collideWithChispaSuprema(this);
 	}
 
-	public void notifyCathChispaSuprema() throws GameOverException {
-		throw new GameOverException("Felicitaciones "+ this.player.getName()+" has ganado!!!!");
+	public void notifyCathChispaSuprema() {
+		this.player.notifyAlgoformerCathChispaSuprema();	
 	}
 
 	public int getAttack(){
 		int attack = this.activeMode.getAttack();
 		if (this.isDobleDamage) {
 			attack = (attack * 2);
+		}
+		if (this.hasCrossPsionicStorm && this.activeMode.equals(this.alternalMode)){
+			attack =  (int) (attack * 0.6);
 		}
 		return attack;
 	}

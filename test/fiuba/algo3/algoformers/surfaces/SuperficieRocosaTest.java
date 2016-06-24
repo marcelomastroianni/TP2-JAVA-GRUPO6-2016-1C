@@ -14,7 +14,6 @@ import org.junit.Test;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
-import fiuba.algo3.model.exceptions.GameOverException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
@@ -44,7 +43,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoHumanoideCruzaSuperficieRocosa() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testModoHumanoideCruzaSuperficieRocosa() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
@@ -53,7 +52,7 @@ public class SuperficieRocosaTest {
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1, 5));
 		tablero.add(bumblebee);
 
-		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(bumblebee.isHumanoidMode());
 		Assert.assertTrue("bumblebee deberia estar en la posicion (1,5)", bumblebee.getPosition().equals(new Position(1, 5)));
 
 		bumblebee.move(new Position(3, 5), tablero);
@@ -62,7 +61,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoAlternoCruzaSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, GameOverException {
+	public void testModoAlternoCruzaSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
@@ -73,7 +72,7 @@ public class SuperficieRocosaTest {
 		frenzy.notifyNextTurn();
 		tablero.add(frenzy);
 
-		Assert.assertTrue(frenzy.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(frenzy.isAlternalMode());
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
 
 		frenzy.move(new Position(3, 5), tablero);
