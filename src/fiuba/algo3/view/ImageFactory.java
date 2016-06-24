@@ -74,7 +74,7 @@ public class ImageFactory {
 			}
 		case("Frenzy"):
 			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
-				return getAlgoformerBumblebeeAlternal();
+				return getAlgoformerFrenzyAlternal();
 			}
 			else{
 				return getAlgoformerFrenzy();
