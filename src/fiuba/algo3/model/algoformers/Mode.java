@@ -1,10 +1,5 @@
 package fiuba.algo3.model.algoformers;
 
-import java.util.ArrayList;
-
-import fiuba.algo3.model.algoformers.board.Cell;
-import fiuba.algo3.model.algoformers.board.ChispaSuprema;
-import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -32,10 +27,6 @@ public abstract class Mode {
 
 	public Integer getSpeed(){
 		return speed;
-	}
-
-	public void changeAttackPower(Double porcentage) {
-		this.attack =  (int) (this.attack *porcentage);
 	}
 
 	public abstract boolean canCrossSurface(Surface surface);

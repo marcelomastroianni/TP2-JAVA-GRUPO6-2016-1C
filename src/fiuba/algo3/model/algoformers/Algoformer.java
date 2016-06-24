@@ -1,19 +1,14 @@
 package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Player;
-import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.surfaces.Surface;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Algoformer implements Content {
 	private String name;
@@ -165,10 +160,7 @@ public class Algoformer implements Content {
 	}
 
 	public void reduceAttackPowerFortyPercent(){
-		if(!this.hasCrossPsionicStorm){
-			this.activeMode.changeAttackPower(0.6);
-			this.hasCrossPsionicStorm = true;
-		}
+		this.hasCrossPsionicStorm = true;
 	}
 
 	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException {
@@ -272,6 +264,9 @@ public class Algoformer implements Content {
 		int attack = this.activeMode.getAttack();
 		if (this.isDobleDamage) {
 			attack = (attack * 2);
+		}
+		if (this.hasCrossPsionicStorm && this.activeMode.equals(this.alternalMode)){
+			attack =  (int) (attack * 0.6);
 		}
 		return attack;
 	}
