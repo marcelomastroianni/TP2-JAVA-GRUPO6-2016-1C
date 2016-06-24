@@ -14,11 +14,13 @@ public abstract class Mode {
 	protected Integer attack;
 	protected Integer strikingDistance;
 	protected Integer speed;
+	protected String imagePath;
 
 	public Mode(Integer attack, Integer strikingDistance, Integer speed) {
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
+		this.imagePath = imagePath;
 	}
 
 	public Integer getAttack(){

@@ -1,5 +1,6 @@
 package fiuba.algo3.view;
 
+import fiuba.algo3.model.algoformers.Algoformer;
 import javafx.scene.image.Image;
 
 public class ImageFactory {
@@ -22,27 +23,64 @@ public class ImageFactory {
 	private static Image algoformerBumblebeeAlternal;
 	private static Image algoformerRatchet;
 	private static Image algoformerRatchetAlternal;
+	private static Image algoformerSuperion;
 	private static Image algoformerMegatron;
 	private static Image algoformerMegatronAlternal;
 	private static Image algoformerBonecrusher;
 	private static Image algoformerBonecrusherAlternal;
 	private static Image algoformerFrenzy;
 	private static Image algoformerFrenzyAlternal;
+	private static Image algoformerMenasor;
 
-	public static Image getAlgoformer(String name) {
-		switch(name){
+	public static Image drowAlgoformer(Algoformer algoformer){
+		switch(algoformer.getNombre()){
 		case("Optimus Prime"):
-			return getAlgoformerOtimusPrime();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerOptimusPrimeAlternal();
+			}
+			else{
+				return getAlgoformerOtimusPrime();
+			}
+
 		case("Bumblebee"):
-			return getAlgoformerBumblebee();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerBumblebeeAlternal();
+			}
+			else{
+				return getAlgoformerBumblebee();
+			}
 		case("Ratchet"):
-			return getAlgoformerRatchet();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerRatchetAlternal();
+			}
+			else{
+				return getAlgoformerRatchet();
+			}
+		case("Superion"):
+			return getAlgoformerSuperion();
 		case("Megatron"):
-			return getAlgoformerMegatron();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerMegatronAlternal();
+			}
+			else{
+				return getAlgoformerMegatron();
+			}
 		case("Bonecrusher"):
-			return getAlgoformerBonecrusher();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerBonecrusherAlternal();
+			}
+			else{
+				return getAlgoformerBonecrusher();
+			}
 		case("Frenzy"):
-			return getAlgoformerFrenzy();
+			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+				return getAlgoformerBumblebeeAlternal();
+			}
+			else{
+				return getAlgoformerFrenzy();
+			}
+		case("Menasor"):
+			return getAlgoformerMenasor();
 		}
 		throw new RuntimeException("error al cargar imagen de algoformer");
 	}
@@ -55,7 +93,7 @@ public class ImageFactory {
 		return algoformerOptimusprime;
 	}
 
-	public static Image getAlgoformerOtimusPrimeAlternal() {
+	public static Image getAlgoformerOptimusPrimeAlternal() {
 		if (algoformerOptimusprimeAlternal == null) {
 			algoformerOptimusprimeAlternal = new Image(
 					"file:src/fiuba/algo3/vista/pictures/algoformer_optimusprime_alternal.png");
@@ -95,6 +133,14 @@ public class ImageFactory {
 		return algoformerRatchetAlternal;
 	}
 
+	private static Image getAlgoformerSuperion() {
+		if (algoformerSuperion == null) {
+			algoformerSuperion = new Image(
+					"file:src/fiuba/algo3/vista/pictures/algoformer_superion.png");
+		}
+		return algoformerOptimusprime;
+
+	}
 	public static Image getAlgoformerMegatron() {
 		if (algoformerMegatron == null) {
 			algoformerMegatron = new Image(
@@ -120,6 +166,9 @@ public class ImageFactory {
 	}
 
 	public static Image getAlgoformerBonecrusherAlternal() {
+		if (algoformerBonecrusher == null) {
+			algoformerBonecrusher = new Image("file:src/fiuba/algo3/vista/pictures/algoformer_bonecrusher_alternal.png");
+		}
 		return algoformerBonecrusherAlternal;
 	}
 
@@ -132,8 +181,21 @@ public class ImageFactory {
 	}
 
 	public static Image getAlgoformerFrenzyAlternal() {
+		if (algoformerFrenzy == null) {
+			algoformerFrenzy = new Image(
+					"file:src/fiuba/algo3/vista/pictures/algoformer_frenzy_alternal.png");
+		}
 		return algoformerFrenzyAlternal;
 	}
+
+	private static Image getAlgoformerMenasor() {
+		if (algoformerMenasor== null) {
+			algoformerMenasor = new Image(
+					"file:src/fiuba/algo3/vista/pictures/algoformer_menasor.gif");
+		}
+		return algoformerMenasor;
+	}
+
 
 	public static Image getChispaSuprema() {
 		if (chispaSupremaImage == null) {
