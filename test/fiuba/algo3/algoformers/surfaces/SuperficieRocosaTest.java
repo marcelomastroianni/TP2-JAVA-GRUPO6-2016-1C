@@ -52,7 +52,7 @@ public class SuperficieRocosaTest {
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1, 5));
 		tablero.add(bumblebee);
 
-		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(bumblebee.isHumanoidMode());
 		Assert.assertTrue("bumblebee deberia estar en la posicion (1,5)", bumblebee.getPosition().equals(new Position(1, 5)));
 
 		bumblebee.move(new Position(3, 5), tablero);
@@ -72,7 +72,7 @@ public class SuperficieRocosaTest {
 		frenzy.notifyNextTurn();
 		tablero.add(frenzy);
 
-		Assert.assertTrue(frenzy.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(frenzy.isAlternalMode());
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
 
 		frenzy.move(new Position(3, 5), tablero);

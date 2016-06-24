@@ -215,14 +215,14 @@ public class TerceraEntregaTest {
 		board.add(flash2);
 		board.add(flash3);
 
-		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 10", new Integer(10), frenzy.getActiveMode().getAttack());
+		Assert.assertEquals("El poder de ataquer de Frenzy deberia ser 10", 10, frenzy.getAttack());
 		frenzy.move(new Position(2, 2), board);			//agarra un DobleDamage por 3 turnos
 		frenzy.notifyNextTurn();
 		Assert.assertEquals("la vida de Optimus deberia ser 500", 500, optimus.getLife());
 		frenzy.shot(optimus,board);
 		frenzy.notifyNextTurn();						//Le quedan 2 turnos de DobleDamage
 		Assert.assertEquals("la vida de Optimus deberia ser 480", 480, optimus.getLife());
-		Assert.assertEquals("La velocidad de Frenzy deberia ser 2", new Integer(2), frenzy.getActiveMode().getSpeed());
+		Assert.assertEquals("La velocidad de Frenzy deberia ser 2", 2, frenzy.getSpeed());
 		frenzy.move(new Position(2, 4), board);			//agarra un Flash por 3 turnos
 		frenzy.notifyNextTurn();						//Le quedan 1 turnos de DobleDamage y 3 de Flash
 		frenzy.shot(optimus,board);

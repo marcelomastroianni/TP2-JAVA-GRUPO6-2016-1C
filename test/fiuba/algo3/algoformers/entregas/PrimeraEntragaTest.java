@@ -38,16 +38,16 @@ public class PrimeraEntragaTest {
 	@Test
 	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
         algoformer.notifyNextTurn();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
 	}
 
 

@@ -35,7 +35,7 @@ public class ImageFactory {
 	public static Image drowAlgoformer(Algoformer algoformer){
 		switch(algoformer.getNombre()){
 		case("Optimus Prime"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerOptimusPrimeAlternal();
 			}
 			else{
@@ -43,14 +43,14 @@ public class ImageFactory {
 			}
 
 		case("Bumblebee"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerBumblebeeAlternal();
 			}
 			else{
 				return getAlgoformerBumblebee();
 			}
 		case("Ratchet"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerRatchetAlternal();
 			}
 			else{
@@ -59,21 +59,21 @@ public class ImageFactory {
 		case("Superion"):
 			return getAlgoformerSuperion();
 		case("Megatron"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerMegatronAlternal();
 			}
 			else{
 				return getAlgoformerMegatron();
 			}
 		case("Bonecrusher"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerBonecrusherAlternal();
 			}
 			else{
 				return getAlgoformerBonecrusher();
 			}
 		case("Frenzy"):
-			if(algoformer.getActiveMode().equals(algoformer.getAlternalMode())){
+			if(algoformer.isAlternalMode()){
 				return getAlgoformerFrenzyAlternal();
 			}
 			else{

@@ -70,10 +70,14 @@ public class Algoformer implements Content {
 		return this.name;
 	}
 
-	public Mode getActiveMode() {
-		return activeMode;
+	public boolean isHumanoidMode(){
+		return this.activeMode.equals(this.humanoidMode);
 	}
-
+	
+	public boolean isAlternalMode(){
+		return this.activeMode.equals(this.alternalMode);
+	}
+	
 	public void downHealthPoints(Integer damage, Board board) {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
@@ -86,14 +90,6 @@ public class Algoformer implements Content {
 			}
 			this.player.notifyDeadAlgoformer(this);
 		}
-	}
-
-	public Mode getHumanoidMode() {
-		return humanoidMode;
-	}
-
-	public Mode getAlternalMode() {
-		return alternalMode;
 	}
 
 	public int getLife() {

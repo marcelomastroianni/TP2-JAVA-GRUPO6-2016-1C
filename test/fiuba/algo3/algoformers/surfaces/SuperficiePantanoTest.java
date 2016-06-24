@@ -46,7 +46,7 @@ public class SuperficiePantanoTest {
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(3,3), tablero);
 		
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (3,3)",new Nothing(new Position(3,3)), tablero.getContent(new Position(3,3)));
@@ -62,10 +62,10 @@ public class SuperficiePantanoTest {
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);		
+		Assert.assertTrue(optimus.isHumanoidMode());		
 		optimus.transform();
 		optimus.notifyNextTurn();
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(3,3), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));		
@@ -82,7 +82,7 @@ public class SuperficiePantanoTest {
 
 		optimus.transform();
 		optimus.notifyNextTurn();
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(10,3), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (5,3)",optimus.getPosition().equals(new Position(5,3)));
@@ -92,7 +92,7 @@ public class SuperficiePantanoTest {
 		tablero.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
 		bumblebee.transform();
 		bumblebee.notifyNextTurn();
-		Assert.assertTrue(bumblebee.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(bumblebee.isAlternalMode());
 		bumblebee.move(new Position(10,8), tablero);
 		bumblebee.notifyNextTurn();
 		Assert.assertTrue("Algoformer deberia estar en la posicion (6,8)",bumblebee.getPosition().equals(new Position(6,8)));

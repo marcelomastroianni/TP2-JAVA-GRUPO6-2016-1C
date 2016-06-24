@@ -36,7 +36,7 @@ public class SuperficieNebulosaAndromedaTest {
 		tablero.add(optimus);
 		optimus.transform();
 		optimus.notifyNextTurn();
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeAlternalTerrestrial);
+		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(4,3), tablero);
 		optimus.notifyNextTurn();
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)),  tablero.getContent(new Position(4,3)));
@@ -51,7 +51,7 @@ public class SuperficieNebulosaAndromedaTest {
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(4,3), tablero);
 		
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)), tablero.getContent(new Position(4,3)));
@@ -66,10 +66,10 @@ public class SuperficieNebulosaAndromedaTest {
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));		
 		tablero.add(ratchet);
-		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeHumanoid);
+		Assert.assertTrue(ratchet.isHumanoidMode());
 		ratchet.transform();
 		ratchet.notifyNextTurn();
-		Assert.assertTrue(ratchet.getActiveMode() instanceof ModeAlternalAerial);
+		Assert.assertTrue(ratchet.isAlternalMode());
 		ratchet.move(new Position(4,3), tablero);
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (2,3)",new Nothing(new Position(2,3)), tablero.getContent(new Position(2,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",ratchet.getPosition().equals(new Position(2,3)));
