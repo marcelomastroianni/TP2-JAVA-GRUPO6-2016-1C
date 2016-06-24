@@ -126,7 +126,7 @@ public class Game {
 		if(this.getTurn().isActivePlayer(this.getPlayer1()))
 			return "Jugador 1: " + this.getPlayer1().getName();
 		else
-			return "Jugador 2:" + this.getPlayer2().getName();
+			return "Jugador 2: " + this.getPlayer2().getName();
 	}
 
 	public void setBoard(Board board){

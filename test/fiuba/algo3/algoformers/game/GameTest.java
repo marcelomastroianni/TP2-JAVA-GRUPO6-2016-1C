@@ -153,9 +153,9 @@ public class GameTest {
 		game.setPlayer2(player2);
 		game.setTurn(turn);
 
-		Assert.assertEquals(game.getActivePlayer(),"Jugador 1 ( Florencia )" );
+		Assert.assertEquals(game.getActivePlayer(),"Jugador 1: Florencia" );
 		game.nextTurn();
-		Assert.assertEquals(game.getActivePlayer(),"Jugador 2 ( Sofia )" );
+		Assert.assertEquals(game.getActivePlayer(),"Jugador 2: Sofia" );
 	}
 
 	@Test(expected=JugadorNoPuedeJugarCuandoNoEsSuTurnoException.class)
