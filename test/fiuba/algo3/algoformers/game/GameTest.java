@@ -908,6 +908,40 @@ public class GameTest {
 	}
 
 	@Test
+	public void testPlayer2CatchChispaSupremaTest() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+		Game game = new Game();
+		Board board = new Board(5,5);
+		Player player1 = new Player(game, "Luis");
+		Player player2 = new Player(game, "Gloria");
+		Turn turn = new Turn(player1, player2);
+
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,0));
+		ChispaSuprema chispaSuprema = new ChispaSuprema(new Position(2,0));
+
+
+		player1.addAlgoformer(optimusPrime);
+		player2.addAlgoformer(megatron);
+		board.add(optimusPrime);
+		board.add(megatron);
+		board.add(chispaSuprema);
+
+		game.setBoard(board);
+		game.setPlayer1(player1);
+		game.setPlayer2(player2);
+		game.setTurn(turn);
+
+		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
+		game.nextTurn();
+		megatron.move(new Position(2,0),board);
+
+		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
+		Assert.assertEquals("Jugador 2 deberia ser el ganador",game.getPlayer2(),game.getWinner());
+		Assert.assertEquals("Algoformer deberia estar en la posicion de la chispa suprema",new Position(2,0),megatron.getPosition());
+		Assert.assertEquals("La chispa suprema no deberia estar en el tablero",megatron,board.getContent(new Position(2,0)));
+	}
+
+	@Test
 	public void aerialModeCantCathcChispaSupremaTest() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Jose");
