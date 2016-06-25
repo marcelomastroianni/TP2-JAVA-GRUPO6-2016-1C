@@ -251,6 +251,7 @@ public class Game {
 			Algoformer algoformer2 = algoformersList.get(1);
 			Algoformer algoformer3 = algoformersList.get(2);
 			Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer1, algoformer2);
+			combinado.setPlayer(this.getActivePlayer());
 			this.getActivePlayer().notifyDeadAlgoformer(algoformer1);
 			this.getActivePlayer().notifyDeadAlgoformer(algoformer2);
 			this.getActivePlayer().notifyDeadAlgoformer(algoformer3);

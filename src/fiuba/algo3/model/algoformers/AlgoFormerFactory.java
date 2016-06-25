@@ -26,7 +26,9 @@ public class AlgoFormerFactory {
 
 	public static Algoformer getSuperion(Position position) {
 		Mode humanoidMode = new ModeHumanoid(100,2,3);
-		return new Algoformer("Superion", humanoidMode,humanoidMode,100,position, Algoformer.Team.AUTOBOTS);
+		Algoformer algoformer = new Algoformer("Superion", humanoidMode,humanoidMode,100,position, Algoformer.Team.AUTOBOTS);
+		algoformer.setCombinado();
+		return algoformer;
 	}
 
 	//Decepticons:

@@ -79,7 +79,7 @@ public class MansorAndSuperionTest {
 	public void combinedSuperionTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
-		Algoformer algoformerCombinado = (Algoformer) game.getBoard().getContent(new Position(0,0));
+		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(0,0));
 		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
 		Assert.assertEquals(player1.getAlgoformers().size(), 1);
 		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
@@ -93,40 +93,69 @@ public class MansorAndSuperionTest {
 		game.nextTurn();
 		//Turno jugador 2
 		game.combinar();
-		Assert.assertTrue(game.getBoard().getContent(new Position(9,1)) instanceof Nothing);
-		Algoformer algoformerCombinado = (Algoformer) game.getBoard().getContent(new Position(9,0));
+		Assert.assertTrue(board.getContent(new Position(9,1)) instanceof Nothing);
+		Algoformer algoformerCombinado = (Algoformer)board.getContent(new Position(9,0));
 		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
 		Assert.assertEquals(player2.getAlgoformers().size(), 1);
 		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
 	}
 
 	@Test
-	public void deadAlgoformerCantMerge() throws InvalidPositionException, MuyLejosException{
+	public void deadAlgoformerCantMerge() throws InvalidPositionException{
 		bumblebee.downHealthPoints(350, board);
 		Assert.assertEquals(player1.getAlgoformers().size(), 2);
 		game.combinar();
 		Assert.assertEquals(player1.getAlgoformers().size(), 2);
+		Assert.assertTrue(board.getContent(new Position(0,0)) instanceof Algoformer);
+		Assert.assertTrue(board.getContent(new Position(0,2)) instanceof Algoformer);
+	}
+
+	@Test
+	public void combinedTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+		game.combinar();
+		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
+		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(0,0));
+		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
+		Assert.assertEquals(player1.getAlgoformers().size(), 1);
+		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+		game.nextTurn();
+
+		//primer turno jugador2
+		Assert.assertEquals(game.getActivePlayer(),player2);
+		game.nextTurn();
+
+		//primer turno jugador 1
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		Assert.assertEquals(algoformerCombinado.getPlayer(), player1);
+		game.moverAlgoformer(new Position(0,0), new Position(3,3));
+		algoformerCombinado = (Algoformer) board.getContent(new Position(3,3));
+		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
+		Assert.assertEquals(player1.getAlgoformers().size(), 1);
+		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+		game.nextTurn();
+
+//		//segundo turno jugador2
+//		game.nextTurn();
+//
+//		//segundo turno jugador 1
+//		game.moverAlgoformer(new Position(3,3), new Position(3,0));
+//		algoformerCombinado = (Algoformer) board.getContent(new Position(3,0));
+//		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
+//		Assert.assertEquals(player1.getAlgoformers().size(), 1);
+//		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+//		game.nextTurn();
+//
+//		//tercer turno jugador2
+//		game.nextTurn();
+//
+//		//tercer turno
+//		game.moverAlgoformer(new Position(3,3), new Position(3,0));
+//		Assert.assertEquals(player1.getAlgoformers().size(), 3);
+//		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(),"OptimusPrime");
+//		game.nextTurn();
+
 	}
 
 
-//	@Test
-//	public void superionTestDistance() throws InvalidPositionException{
-//		Game game = new Game();
-//		Player player1 = new Player(game, "Juan");
-//
-//
-//		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-//		Algoformer algoformer2 = AlgoFormerFactory.getBumblebee(new Position(0,1));
-//		Algoformer algoformer3 = AlgoFormerFactory.getRatchet(new Position(3,3));
-//
-//
-//		player1.addAlgoformer(algoformer1);
-//		player1.addAlgoformer(algoformer2);
-//		player1.addAlgoformer(algoformer3);
-//
-//
-//		player1.mergeTransformers(new Board(10,10));
-//		Assert.assertEquals(player1.getAlgoformers().size(), 3);
-//	}
 
 }

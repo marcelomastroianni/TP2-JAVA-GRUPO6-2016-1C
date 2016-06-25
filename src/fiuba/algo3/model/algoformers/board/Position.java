@@ -90,9 +90,13 @@ public class Position {
 
 		return new Position(xNext,yNext);
 	}
-	
+
 	public String toString(){
 		return "(" + Integer.toString(X)  + "," + Integer.toString(Y) + ")";
+	}
+
+	public Position next() {
+		return new Position(X,Y+1);
 	}
 
 }

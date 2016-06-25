@@ -19,17 +19,20 @@ public class Algoformer implements Content {
 	private Mode alternalMode;
 	private Mode activeMode;
 	private Team team;
-	private Integer turnsTrapped = 0;
-	private Integer turnsDobleDamage = 0;
-	private Integer turnsFlash = 0;
-	private Integer stepsMovedInTurn = 0;
+	private Integer turnsTrapped;
+	private Integer turnsDobleDamage;
+	private Integer turnsFlash;
+	private Integer turnsCombined;
+	private Integer stepsMovedInTurn;
+	private Integer turnsImmaculateBubble;
 	private boolean hasCrossPsionicStorm;
 	private boolean haveBeenUsedInTurn;
 	private boolean isImmaculateBubble;
 	private boolean isFlash;
 	private boolean isDobleDamage;
 	private boolean isTrapped;
-	private Integer turnsImmaculateBubble = 0;
+	private boolean isCombined;
+
 	private Player player;
 
 	public enum Team {
@@ -52,6 +55,14 @@ public class Algoformer implements Content {
 		isFlash = false;
 		isDobleDamage = false;
 		isTrapped = false;
+		isCombined = false;
+
+		turnsTrapped = 0;
+		turnsDobleDamage = 0;
+		turnsFlash = 0;
+		turnsCombined = 0;
+		stepsMovedInTurn = 0;
+		turnsImmaculateBubble = 0;
 	}
 
 
@@ -244,6 +255,26 @@ public class Algoformer implements Content {
 
 			}
 		}
+		if (isCombined) {
+			this.turnsCombined -= 1;
+			if (this.turnsCombined.equals(new Integer(0))) {
+				this.isCombined = false;
+				if(this.team.equals(team.AUTOBOTS)){
+					player.notifyDeadAlgoformer(this);
+					player.addAlgoformer(AlgoFormerFactory.getOptimusPrime(this.position));
+					player.addAlgoformer(AlgoFormerFactory.getBumblebee(this.position.next()));
+					player.addAlgoformer(AlgoFormerFactory.getRatchet(this.position.next().next()));
+				}else{
+					player.notifyDeadAlgoformer(this);
+					player.addAlgoformer(AlgoFormerFactory.getOptimusPrime(this.position));
+					player.addAlgoformer(AlgoFormerFactory.getBumblebee(this.position.next()));
+					player.addAlgoformer(AlgoFormerFactory.getRatchet(this.position.next().next()));
+
+
+				}
+			}
+		}
+
 		this.stepsMovedInTurn = 0;
 		this.haveBeenUsedInTurn = false;
 	}
@@ -326,11 +357,20 @@ public class Algoformer implements Content {
 			board.clearContent(algoformer2.getPosition());
 			board.clearContent(this.position);
 			if(this.team.equals(team.AUTOBOTS)){
-				board.add(AlgoFormerFactory.getSuperion(this.position));
-				return AlgoFormerFactory.getSuperion(this.position);
+				Algoformer algoformerCombinado = AlgoFormerFactory.getSuperion(this.position);
+				board.add(algoformerCombinado);
+				return algoformerCombinado;
 			}
-			board.add(AlgoFormerFactory.getMenasor(this.position));
-			return AlgoFormerFactory.getMenasor(this.position);
+			Algoformer algoformerCombinado = AlgoFormerFactory.getMenasor(this.position);
+			board.add(algoformerCombinado);
+			return algoformerCombinado;
+	}
+
+
+	public void setCombinado() {
+		this.isCombined = true;
+		this.turnsCombined = 2;
+
 	}
 
 
