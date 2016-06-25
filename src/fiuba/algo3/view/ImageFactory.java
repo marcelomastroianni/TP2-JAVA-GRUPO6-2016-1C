@@ -136,9 +136,9 @@ public class ImageFactory {
 	private static Image getAlgoformerSuperion() {
 		if (algoformerSuperion == null) {
 			algoformerSuperion = new Image(
-					"file:src/fiuba/algo3/vista/pictures/algoformer_superion.png");
+					"file:src/fiuba/algo3/vista/pictures/algoformer_superion.gif");
 		}
-		return algoformerOptimusprime;
+		return algoformerSuperion;
 
 	}
 	public static Image getAlgoformerMegatron() {
