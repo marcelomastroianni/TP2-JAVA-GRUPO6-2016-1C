@@ -3,6 +3,7 @@ package fiuba.algo3.algoformers;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
+import fiuba.algo3.model.exceptions.MuyLejosException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
@@ -540,19 +541,32 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMergeAlgoformersSuperion(){
+	public void testMergeAlgoformersSuperion() throws MuyLejosException{
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer bumblebee= AlgoFormerFactory.getBumblebee(new Position(0,1));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,0));
 
-		Assert.assertEquals(optimusPrime.getMergedAlgoformer().getNombre(), "Superion");
-		Assert.assertEquals(optimusPrime.getMergedAlgoformer().getPosition(), new Position(0,0));
+		Assert.assertEquals(optimusPrime.getMergedAlgoformer(bumblebee, ratchet).getNombre(), "Superion");
+		Assert.assertEquals(optimusPrime.getMergedAlgoformer(bumblebee, ratchet).getPosition(), new Position(0,0));
 	}
 
 	@Test
-	public void testMergeAlgoformersMenasor(){
+	public void testMergeAlgoformersMenasor() throws MuyLejosException{
 		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Algoformer bone= AlgoFormerFactory.getBonecrusher(new Position(0,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,0));
 
-		Assert.assertEquals(megatron.getMergedAlgoformer().getNombre(), "Menasor");
-		Assert.assertEquals(megatron.getMergedAlgoformer().getPosition(), new Position(0,0));
+		Assert.assertEquals(megatron.getMergedAlgoformer(bone,frenzy).getNombre(), "Menasor");
+		Assert.assertEquals(megatron.getMergedAlgoformer(bone,frenzy).getPosition(), new Position(0,0));
+	}
+
+	@Test(expected=MuyLejosException.class)
+	public void testMergeTooFar() throws MuyLejosException{
+		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Algoformer bone= AlgoFormerFactory.getBonecrusher(new Position(0,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(3,3));
+
+		megatron.getMergedAlgoformer(bone,frenzy);
 	}
 }
 

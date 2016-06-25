@@ -8,6 +8,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
+import fiuba.algo3.model.exceptions.MuyLejosException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Algoformer implements Content {
@@ -320,10 +321,13 @@ public class Algoformer implements Content {
 	}
 
 
-	public Algoformer getMergedAlgoformer() {
-		if(this.team.equals(team.AUTOBOTS)){
-			return AlgoFormerFactory.getSuperion(this.position);
+	public Algoformer getMergedAlgoformer(Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosException {
+		if(this.position.isInDistance(algoformer1.getPosition(), 1) && this.position.isInDistance(algoformer2.getPosition(), 1)){
+			if(this.team.equals(team.AUTOBOTS)){
+				return AlgoFormerFactory.getSuperion(this.position);
+			}
+			return AlgoFormerFactory.getMenasor(this.position);
 		}
-		return AlgoFormerFactory.getMenasor(this.position);
+		throw new MuyLejosException("Los algoformers están muy lejos para convinarse. Deben estar a una posicion de distancia");
 	}
 }
