@@ -236,7 +236,7 @@ public class GameContainer extends BorderPane {
 		AttackButtonHandler attackButtonHandler = new AttackButtonHandler(this.gameView, this.game, this.gameController);
 		this.attackButton.setOnAction(attackButtonHandler);
 		MergeButtonHandler mergeButtonHandler = new MergeButtonHandler(this.gameView, this.game, this.gameController);
-		this.attackButton.setOnAction(mergeButtonHandler);
+		this.mergeButton.setOnAction(mergeButtonHandler);
 	}
 
 
