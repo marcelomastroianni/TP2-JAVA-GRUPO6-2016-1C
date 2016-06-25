@@ -383,6 +383,58 @@ public class AlgoformerTest {
 	}
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
+	public void testAlgoformeNoPuedeAtacarMientrasEstaTrapado() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,2));
+
+		board.add(optimusPrime);
+		board.add(megatron);
+
+		optimusPrime.trap(3);
+		optimusPrime.shot(megatron,board);
+	}
+
+	@Test(expected=AlgoformerCombinandoseEsteTurnoException.class)
+	public void testAlgoformeNoPuedeAtacarMientrasSeTransforma() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,2));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,0));
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2,1));
+
+		board.add(optimusPrime);
+		board.add(bumblebee);
+		board.add(ratchet);
+		board.add(megatron);
+
+		optimusPrime.trap(3);
+		Algoformer superion = optimusPrime.getMergedAlgoformer(board,bumblebee,ratchet);
+		superion.shot(megatron,board);
+	}
+
+	@Test
+	public void testReturnTurnsCombined() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+		Board board = new Board(10, 10);
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,2));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,0));
+
+		board.add(optimusPrime);
+		board.add(bumblebee);
+		board.add(ratchet);
+
+		Assert.assertEquals("Turno de combinacion tiene que ser 0",0, optimusPrime.getTurnsCombining());
+		Algoformer superion = optimusPrime.getMergedAlgoformer(board,bumblebee,ratchet);
+		superion.notifyNextTurn();
+		Assert.assertEquals("Turno de combinacion tiene que ser 1",2, superion.getTurnsCombining());
+		superion.notifyNextTurn();
+		Assert.assertEquals("Turno de combinacion tiene que ser 1",1, superion.getTurnsCombining());
+		superion.notifyNextTurn();
+		Assert.assertEquals("Turno de combinacion tiene que ser 1",0, superion.getTurnsCombining());
+	}
+
+	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
 	public void testAlgoformeNoPuedeTransformarseSiEstaAtrapado() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board board = new Board(10, 10);
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,1));
