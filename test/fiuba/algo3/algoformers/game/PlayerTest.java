@@ -86,5 +86,36 @@ public class PlayerTest {
 
 	}
 
+	@Test
+	public void testCombinarAlgoformers() throws InvalidPositionException{
+		Game game = new Game();
+		game.init("Juan", "Maria");
+		Player jugador = new Player(game, "Juan");
+
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));
+
+		jugador.addAlgoformer(optimusPrime);
+		jugador.addAlgoformer(bumblebee);
+		jugador.addAlgoformer(frenzy);
+
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
+		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
+
+		jugador.combinar(AlgoFormerFactory.getMenasor(new Position(0,0)));
+
+		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
+		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
+		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
+
+
+		Assert.assertEquals("el jugador deberia tener un solo algoformer",1, jugador.getAlgoformers().size());
+		Assert.assertEquals("el algoformer deberia ser mansor","Menasor", jugador.getAlgoformers().get(0).getNombre());
+
+
+	}
+
 
 }

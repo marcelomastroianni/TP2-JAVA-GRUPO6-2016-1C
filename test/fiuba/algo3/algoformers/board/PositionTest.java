@@ -3,6 +3,9 @@ package fiuba.algo3.algoformers.board;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
+import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 
 public class PositionTest {
@@ -125,6 +128,20 @@ public class PositionTest {
 
 
 	}
+
+	@Test
+	public void testCanMergeVerticalLine(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(0,1);
+		Position position3 = new Position(0,2);
+		Assert.assertTrue(position1.canMerge(position2, position3));
+		Assert.assertTrue(position2.canMerge(position1, position3));
+		Assert.assertTrue(position3.canMerge(position1, position2));
+
+	}
+
+
+
 
 
 

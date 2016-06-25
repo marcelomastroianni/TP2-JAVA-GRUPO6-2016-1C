@@ -354,6 +354,8 @@ public class Algoformer implements Content {
 			board.add(algoformerCombinado);
 			return algoformerCombinado;
 	}
+	
+
 
 
 	public void setCombinado() {

@@ -120,6 +120,8 @@ public class BoardTest {
 		Assert.assertTrue("Bonecrusher deberia estar en la posicion (1,1)", bonecrusher.getPosition().equals(new Position(1, 1)));
 		tablero.clearContent(new Position(-1,0));
 	}
+	
+	
 
 
 }

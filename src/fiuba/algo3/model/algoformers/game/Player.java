@@ -74,4 +74,10 @@ public class Player {
 		return this.name;
 	}
 
+	public void combinar(Algoformer fusion) {
+		this.algoformersList = new ArrayList<Algoformer>();
+		this.addAlgoformer(fusion);
+
+	}
+
 }

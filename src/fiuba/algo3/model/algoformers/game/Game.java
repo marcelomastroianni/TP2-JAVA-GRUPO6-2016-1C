@@ -252,10 +252,7 @@ public class Game {
 			Algoformer algoformer3 = algoformersList.get(2);
 			Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer2, algoformer3);
 			combinado.setPlayer(this.getActivePlayer());
-			this.getActivePlayer().notifyDeadAlgoformer(algoformer1);
-			this.getActivePlayer().notifyDeadAlgoformer(algoformer2);
-			this.getActivePlayer().notifyDeadAlgoformer(algoformer3);
-			this.getActivePlayer().addAlgoformer(combinado);
+			this.getActivePlayer().combinar(combinado);
 		}
 		catch(MuyLejosException |IndexOutOfBoundsException e){
 			System.out.print(e.getMessage());
