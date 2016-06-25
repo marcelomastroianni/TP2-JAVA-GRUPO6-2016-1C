@@ -47,8 +47,6 @@ public class Position {
 
 	public boolean isInRange(int xLength, int yLength){
 		return(Y>=0 && Y < yLength && X >=0  && X < xLength );
-
-
 	}
 
 
@@ -94,10 +92,4 @@ public class Position {
 	public String toString(){
 		return "(" + Integer.toString(X)  + "," + Integer.toString(Y) + ")";
 	}
-
-
-
-
-
-
 }

@@ -78,7 +78,7 @@ public class BoardTest {
 	@Test
 	public void testGetBoardSize(){			
 		Assert.assertEquals("Deberia poder obtenerse la dimension X del tablero",XBOARDLENGTH, board.getXLength());
-		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",YBOARDLENGTH, board.getXLength());
+		Assert.assertEquals("Deberia poder obtenerse la dimension Y del tablero",YBOARDLENGTH, board.getYLength());
 	}
 
 	@Test

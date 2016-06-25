@@ -59,6 +59,11 @@ public class PositionTest {
 		Assert.assertFalse(position.isInRange(5,6));
 	}
 
+	@Test
+	public void testGiveMePosition(){
+		Position position = new Position(7,5);
+		Assert.assertEquals("(7,5)", position.toString());
+	}
 
 	@Test
 	public void testIteradorPosicion(){
@@ -124,15 +129,5 @@ public class PositionTest {
 		Assert.assertFalse("No Deberia haber una posicion siguiente", position.hasNext(finalPosition));
 		position = position.next(finalPosition);
 		Assert.assertEquals("La posicion siguiente deberia ser (10,10).", new Position(10,10), position);
-
-
-
 	}
-
-
-
-
-
-
-
 }

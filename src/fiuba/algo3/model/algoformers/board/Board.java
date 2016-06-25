@@ -53,9 +53,6 @@ public class Board {
 	}
 
 	public void remove(Content content) throws InvalidPositionException {
-		if(!isValidPosition(content.getPosition())){
-			throw new InvalidPositionException();
-		}
 		matrix.get(content.getPosition()).removeContent();
 	}
 
