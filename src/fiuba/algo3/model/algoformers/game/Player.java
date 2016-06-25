@@ -3,7 +3,9 @@ package fiuba.algo3.model.algoformers.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Position;
 
 public class Player {
 
@@ -51,12 +53,18 @@ public class Player {
 		}
 
 	}
-	
+
 	public void notifyAlgoformerCathChispaSuprema()  {
 		this.game.notifyPlayerWin(this);
 	}
 
 	public String getName() {
 		return this.name;
+	}
+
+	public void mergeTransformers() {
+		Position position = this.algoformersList.get(0).getPosition();
+		this.algoformersList = new ArrayList<Algoformer>();
+		this.addAlgoformer(AlgoFormerFactory.getSuperion(position));
 	}
 }
