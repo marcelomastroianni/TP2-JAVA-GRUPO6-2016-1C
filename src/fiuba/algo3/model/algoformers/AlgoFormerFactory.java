@@ -53,7 +53,9 @@ public class AlgoFormerFactory {
 
 	public static Algoformer getMenasor(Position position) {
 		Mode humanoidMode = new ModeHumanoid(115,2,2);
-		return new Algoformer("Menasor", humanoidMode,humanoidMode,400,position, Algoformer.Team.DECEPTICONS);
+		Algoformer algoformer = new Algoformer("Menasor", humanoidMode,humanoidMode,400,position, Algoformer.Team.DECEPTICONS);
+		algoformer.setCombinado();
+		return algoformer;
 	}
 
 }
