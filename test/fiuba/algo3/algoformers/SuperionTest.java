@@ -35,6 +35,7 @@ public class SuperionTest {
 
 
 		player1.mergeTransformers();
+		Assert.assertEquals(player1.getAlgoformers().size(), 1);
 		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
 	}
 

@@ -68,11 +68,11 @@ public class Algoformer implements Content {
 	public boolean isHumanoidMode(){
 		return this.activeMode.equals(this.humanoidMode);
 	}
-	
+
 	public boolean isAlternalMode(){
 		return this.activeMode.equals(this.alternalMode);
 	}
-	
+
 	public void downHealthPoints(Integer damage, Board board) {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
@@ -137,13 +137,13 @@ public class Algoformer implements Content {
 				next = this.position.next(finalPosition);
 				nextSurface = board.getSurface(next);
 				if (this.activeMode.canCrossSurface(nextSurface)) {
-					try {						
+					try {
 						board.getContent(next).collideWithAlgoformer(this);
 						this.position = next;
 						board.clearContent(previous);
 						board.add(this);
 						this.activeMode.crossSurface(nextSurface, this);
-						this.haveBeenUsedInTurn = true;					
+						this.haveBeenUsedInTurn = true;
 					} catch (InvalidPositionException ex) {
 						//Coliciono con otro Algoformer
 						break;
@@ -257,7 +257,7 @@ public class Algoformer implements Content {
 	}
 
 	public void notifyCathChispaSuprema() {
-		this.player.notifyAlgoformerCathChispaSuprema();	
+		this.player.notifyAlgoformerCathChispaSuprema();
 	}
 
 	public int getAttack(){
@@ -317,5 +317,13 @@ public class Algoformer implements Content {
 
 	public boolean isBonus(){
 		return (this.isFlash || this.isDobleDamage || this.isImmaculateBubble);
+	}
+
+
+	public Algoformer getMergedAlgoformer() {
+		if(this.team.equals(team.AUTOBOTS)){
+			return AlgoFormerFactory.getSuperion(this.position);
+		}
+		return AlgoFormerFactory.getMenasor(this.position);
 	}
 }

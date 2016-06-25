@@ -538,5 +538,14 @@ public class AlgoformerTest {
 		frenzy.haste(3);
 		Assert.assertTrue("Frenzy deberia tener bonus",frenzy.isBonus());
 	}
+
+	@Test
+	public void testMergeAlgoformers(){
+		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,0));
+
+		Assert.assertEquals(optimusPrime.getMergedAlgoformer().getNombre(), "Superion");
+	}
 }
 
