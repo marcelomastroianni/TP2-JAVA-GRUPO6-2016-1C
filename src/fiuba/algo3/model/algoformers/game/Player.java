@@ -63,8 +63,8 @@ public class Player {
 	}
 
 	public void mergeTransformers() {
-		Position position = this.algoformersList.get(0).getPosition();
+		Algoformer algoformer = this.algoformersList.get(0);
 		this.algoformersList = new ArrayList<Algoformer>();
-		this.addAlgoformer(AlgoFormerFactory.getSuperion(position));
+		this.addAlgoformer(algoformer.getMergedAlgoformer());
 	}
 }

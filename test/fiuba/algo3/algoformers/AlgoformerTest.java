@@ -540,12 +540,19 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMergeAlgoformers(){
+	public void testMergeAlgoformersSuperion(){
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
-		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,0));
 
 		Assert.assertEquals(optimusPrime.getMergedAlgoformer().getNombre(), "Superion");
+		Assert.assertEquals(optimusPrime.getMergedAlgoformer().getPosition(), new Position(0,0));
+	}
+
+	@Test
+	public void testMergeAlgoformersMenasor(){
+		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+
+		Assert.assertEquals(megatron.getMergedAlgoformer().getNombre(), "Menasor");
+		Assert.assertEquals(megatron.getMergedAlgoformer().getPosition(), new Position(0,0));
 	}
 }
 

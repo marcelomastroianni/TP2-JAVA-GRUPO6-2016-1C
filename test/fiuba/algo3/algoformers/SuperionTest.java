@@ -18,7 +18,6 @@ public class SuperionTest {
 	public void superionTest() throws InvalidPositionException{
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
-		Player player2 = new Player(game, "Maria");
 		Board board = new Board(10,10);
 
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
