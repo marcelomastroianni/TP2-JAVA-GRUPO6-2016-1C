@@ -42,6 +42,7 @@ public class GameContainer extends BorderPane {
 	private Button moveButton;
 	private Button nextTurnButton;
 	private Button transformButton;
+	private Button mergeButton;
 	private Button attackButton;
 	private Label lblActionSelectedTitle;
 	private Label lblActionSelected;
@@ -91,6 +92,7 @@ public class GameContainer extends BorderPane {
 		this.moveButton = new Button("Mover");
 		this.nextTurnButton = new Button("Siguiente Turno");
 		this.transformButton = new Button("Transformar");
+		this.mergeButton = new Button("Combinar");
 		this.attackButton = new Button("Atacar");
 		this.lblActionSelectedTitle = new Label("Accion Seleccionada:");
 		this.lblActionSelectedTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
@@ -127,18 +129,20 @@ public class GameContainer extends BorderPane {
 		scrollPane.setContent(canvasContainer);
 
 		this.moveButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		transformButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		attackButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		nextTurnButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		this.transformButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		this.attackButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		this.mergeButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		this.nextTurnButton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 
 		TilePane actionButtonsBox = new TilePane(Orientation.VERTICAL);
-		actionButtonsBox.setHgap(10.0);
-		actionButtonsBox.setVgap(8.0);
-		actionButtonsBox.setPadding(new Insets(20));
+		actionButtonsBox.setHgap(8.0);
+		actionButtonsBox.setVgap(4.0);
+		actionButtonsBox.setPadding(new Insets(15));
 		actionButtonsBox.getChildren().addAll(this.moveButton,
 												this.transformButton,
 												this.attackButton,
+												this.mergeButton,
 												this.nextTurnButton);
 
 
