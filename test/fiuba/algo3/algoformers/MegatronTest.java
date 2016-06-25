@@ -1,5 +1,6 @@
 package fiuba.algo3.algoformers;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,8 @@ import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class MegatronTest {
 	private Board board;
@@ -26,22 +29,22 @@ public class MegatronTest {
 	}
 
 	@Test
-	public void speedTest() {
+	public void speedTest() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		board.add(megatron);
 		megatron.move(new Position(1,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(1, 0)),
-				megatron);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(1, 0),
+				megatron.getPosition());
 	}
 
 	@Test
-	public void speedAlternalModeTest() {
+	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
+
 		megatron.transform();
+		megatron.notifyNextTurn();
 		board.add(megatron);
 		megatron.move(new Position(8,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha", board.isEmpty(new Position(0, 0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", board.getContent(new Position(8, 0)),
-				megatron);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),
+				megatron.getPosition());
 
 	}
 

@@ -2,6 +2,7 @@ package fiuba.algo3.algoformers.entregas;
 
 import java.util.List;
 
+import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,13 +13,15 @@ import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
+import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 
 public class PrimeraEntragaTest {
 
 	//Se ubica un algoformer humanoide en un casillero, se pide que se mueva, se verifica
 	//nueva posición acorde a su modo.
 	@Test
-	public void test01(){
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -27,48 +30,51 @@ public class PrimeraEntragaTest {
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 
 		algoformer.move(new Position(2,0),board);
-		Assert.assertTrue("Algoformer deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
-		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",board.getContent(new Position(2,0)),algoformer);
+		Assert.assertEquals("Algoformer deberia haberse movido a la derecha",new Position(2,0),algoformer.getPosition());
 	}
 
 	//2. Se ubica un algoformer humanoide se lo transforma, se verifica que se pueda transformar
 	//en ambas direcciones.
 	@Test
-	public void test02(){
+	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, InvalidPositionException {
+		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        algoformer.notifyNextTurn();
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
         algoformer.transform();
-        Assert.assertEquals("Modo deberia ser humanoide", algoformer.getActiveMode(), algoformer.getHumanoidMode());
+        algoformer.notifyNextTurn();
+        Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
-        Assert.assertEquals("Modo deberia ser alterno", algoformer.getActiveMode(), algoformer.getAlternalMode());
+        algoformer.notifyNextTurn();
+        Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
 	}
 
 
 	//3. Se ubica un algoformer en su modo alterno y se pide que se mueva y se verifica que su
 	//nueva posición sea acorde.
 	@Test
-	public void test03(){
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 
 		board.add(algoformer);
 		algoformer.transform();
+		algoformer.notifyNextTurn();
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 		algoformer.move(new Position(5,0),board);
-		Assert.assertTrue("Algoformer alterno deberia haberse movido a la derecha",board.isEmpty(new Position(0,0)));
-		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",board.getContent(new Position(5,0)),algoformer);
-
+		algoformer.notifyNextTurn();
+		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",new Position(5,0),algoformer.getPosition());
 	}
 
 	//4. Crear una prueba de integración en la cual se pueda crear un juego, con 2 jugadores cada
 	//uno de ellos con sus 3 algoformers distribuidos en el tablero según el enunciado y la
 	//chispa suprema por el centro del tablero.
 	@Test
-	public void test04(){
+	public void test04() throws InvalidPositionException{
 		Game game = new Game();
-		game.init();
+		game.init("Juan", "Maria");
 
 		Player jugador1 = game.getPlayer1();
 		Assert.assertTrue("El juego deberia tener un jugador 1",jugador1!=null);
@@ -103,7 +109,7 @@ public class PrimeraEntragaTest {
 	//5. Combinaciones en modos de: Ubicar un autobot, ubicar un decepticon, pedir que se
 	//ataquen respetando ( y no ) las distancias verificando los daños ( o no daños ).
 	@Test
-	public void test05(){
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));
@@ -112,10 +118,10 @@ public class PrimeraEntragaTest {
 		board.add(algoformer2);
 
 		Assert.assertEquals("La vida de Optimus deberia ser 500", 500, algoformer2.getLife());
-		algoformer1.shot(algoformer2);
+		algoformer1.shot(algoformer2,board);
 		Assert.assertEquals("La vida de Optimus deberia ser 490", 490, algoformer2.getLife());
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
-		algoformer2.shot(algoformer1);
+		algoformer2.shot(algoformer1,board);
 		Assert.assertEquals("La vida de Frenzy deberia ser 400", 400, algoformer1.getLife());
 
 	}
