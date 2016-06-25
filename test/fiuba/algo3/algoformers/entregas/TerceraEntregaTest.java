@@ -208,6 +208,45 @@ public class TerceraEntregaTest {
 
 	}
 
+	@Test
+	public void test02Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+
+		Board board = new Board(5, 5);
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
+		Bonus burbuja = new BubbleBonus(new Position(0,1));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+		board.add(burbuja);
+
+		algoformer1.transform();
+		algoformer1.notifyNextTurn();
+		algoformer2.transform();
+		algoformer2.notifyNextTurn();
+
+		//primer turno
+		algoformer1.move(new Position(0,1), board);
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 500);
+
+		//segundo turno
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 500);
+
+		//tercer turno
+		algoformer1.notifyNextTurn();
+		algoformer2.shot(algoformer1, board);
+		algoformer2.notifyNextTurn();
+		Assert.assertEquals(algoformer1.getLife(), 445);
+
+
+	}
+
 	/**
 	 * 3. Ubico un algoformer, ubico un bonus flash, verifico que se mueve 3
 	 * veces más rápido durante 3 turnos propios. a. Repetir en modo alterno b.
