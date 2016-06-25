@@ -112,9 +112,10 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void combinedTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void superionTurnTes() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
+		Assert.assertTrue(game.getBoard().getContent(new Position(0,2)) instanceof Nothing);
 		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(0,0));
 		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
 		Assert.assertEquals(algoformerCombinado.getSpeed(), 3);
@@ -153,6 +154,57 @@ public class MansorAndSuperionTest {
 
 		//tercer turno
 		game.moverAlgoformer(new Position(3,0), new Position(3,3));
+		Assert.assertEquals(player1.getAlgoformers().size(), 3);
+		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(),"Optimus Prime");
+		game.nextTurn();
+
+	}
+
+	@Test
+	public void menasorTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+		game.nextTurn();
+
+		game.combinar();
+		Assert.assertTrue(game.getBoard().getContent(new Position(9,1)) instanceof Nothing);
+		Assert.assertTrue(game.getBoard().getContent(new Position(9,2)) instanceof Nothing);
+		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(9,0));
+		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
+		Assert.assertEquals(algoformerCombinado.getSpeed(), 2);
+		Assert.assertEquals(player2.getAlgoformers().size(), 1);
+		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+		game.nextTurn();
+
+		//primer turno jugador1
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		game.nextTurn();
+
+		//primer turno jugador2
+		Assert.assertEquals(game.getActivePlayer(),player2);
+		Assert.assertEquals(algoformerCombinado.getPlayer(), player2);
+		game.moverAlgoformer(new Position(9,0), new Position(9,2));
+		algoformerCombinado = (Algoformer) board.getContent(new Position(9,2));
+		Assert.assertEquals(algoformerCombinado.getSpeed(), 2);
+		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
+		Assert.assertEquals(player2.getAlgoformers().size(), 1);
+		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+		game.nextTurn();
+
+		//segundo turno jugador1
+		game.nextTurn();
+
+		//segundo turno jugador 2
+		game.moverAlgoformer(new Position(9,2), new Position(9,0));
+		algoformerCombinado = (Algoformer) board.getContent(new Position(9,0));
+		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
+		Assert.assertEquals(player2.getAlgoformers().size(), 1);
+		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+		game.nextTurn();
+
+		//tercer turno jugador1
+		game.nextTurn();
+
+		//tercer turno jugador2
+		game.moverAlgoformer(new Position(9,0), new Position(9,1));
 		Assert.assertEquals(player1.getAlgoformers().size(), 3);
 		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(),"Optimus Prime");
 		game.nextTurn();
