@@ -9,7 +9,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
-import fiuba.algo3.model.exceptions.MuyLejosException;
+import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Algoformer implements Content {
@@ -341,7 +341,7 @@ public class Algoformer implements Content {
 	}
 
 
-	public Algoformer getMergedAlgoformer( Board board, Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosException, InvalidPositionException {
+	public Algoformer getMergedAlgoformer( Board board, Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosParaCombinarException, InvalidPositionException {
 			if(this.canMerge(algoformer2.getPosition(), algoformer1.getPosition())){
 				board.clearContent(algoformer1.getPosition());
 				board.clearContent(algoformer2.getPosition());
@@ -355,7 +355,7 @@ public class Algoformer implements Content {
 				board.add(algoformerCombinado);
 				return algoformerCombinado;
 			}
-			throw new MuyLejosException();
+			throw new MuyLejosParaCombinarException();
 	}
 
 	public boolean canMerge( Position position2, Position position3){

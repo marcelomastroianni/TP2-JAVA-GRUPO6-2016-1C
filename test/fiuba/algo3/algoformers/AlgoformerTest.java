@@ -3,7 +3,7 @@ package fiuba.algo3.algoformers;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
-import fiuba.algo3.model.exceptions.MuyLejosException;
+import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
@@ -542,7 +542,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMergeAlgoformersSuperion() throws MuyLejosException, InvalidPositionException{
+	public void testMergeAlgoformersSuperion() throws MuyLejosParaCombinarException, InvalidPositionException{
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer bumblebee= AlgoFormerFactory.getBumblebee(new Position(0,1));
@@ -557,7 +557,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testMergeAlgoformersMenasor() throws MuyLejosException, InvalidPositionException{
+	public void testMergeAlgoformersMenasor() throws MuyLejosParaCombinarException, InvalidPositionException{
 		Board board = new Board(10, 10);
 		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		Algoformer bone= AlgoFormerFactory.getBonecrusher(new Position(0,1));
@@ -572,8 +572,8 @@ public class AlgoformerTest {
 		Assert.assertEquals(megatron.getMergedAlgoformer(board,bone,frenzy).getPosition(), new Position(0,0));
 	}
 
-	@Test(expected=MuyLejosException.class)
-	public void testCantMergeAlgoformersMenasor() throws MuyLejosException, InvalidPositionException{
+	@Test(expected=MuyLejosParaCombinarException.class)
+	public void testCantMergeAlgoformersMenasor() throws MuyLejosParaCombinarException, InvalidPositionException{
 		Board board = new Board(10, 10);
 		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		Algoformer bone= AlgoFormerFactory.getBonecrusher(new Position(0,1));

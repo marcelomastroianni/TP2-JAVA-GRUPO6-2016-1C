@@ -17,7 +17,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
-import fiuba.algo3.model.exceptions.MuyLejosException;
+import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 
 public class MansorAndSuperionTest {
@@ -76,7 +76,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void combinedSuperionTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void combinedSuperionTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException{
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
 		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(0,0));
@@ -88,7 +88,7 @@ public class MansorAndSuperionTest {
 
 
 	@Test
-	public void combinedMenasorTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void combinedMenasorTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException{
 		//Turno jugador1
 		game.moverAlgoformer(new Position(0,0), new Position(1,1));
 		game.nextTurn();
@@ -117,7 +117,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void superionTurnTes() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, MuyLejosException, InvalidPositionException {
+	public void superionTurnTes() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, MuyLejosParaCombinarException, InvalidPositionException {
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
@@ -184,7 +184,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void menasorTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void menasorTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException{
 		game.nextTurn();
 
 		Assert.assertEquals(game.getActivePlayer(),player2);
@@ -322,7 +322,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void cantMerge() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void cantMerge() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException{
 		//primer turno jugador1
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		game.moverAlgoformer(new Position(0,2), new Position(0,3));
@@ -337,7 +337,7 @@ public class MansorAndSuperionTest {
 		try{
 			game.combinar();
 		}
-		catch(MuyLejosException ex){
+		catch(MuyLejosParaCombinarException ex){
 			
 		}
 

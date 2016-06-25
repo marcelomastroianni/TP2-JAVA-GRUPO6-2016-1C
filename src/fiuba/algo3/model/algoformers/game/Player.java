@@ -9,7 +9,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.MuyLejosException;
+import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 
 public class Player {
 

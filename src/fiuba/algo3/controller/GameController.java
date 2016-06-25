@@ -50,7 +50,7 @@ public class GameController {
 		}
 	}
 
-	public void selectCell(Position position) throws InvalidPositionException, MuyLejosException{
+	public void selectCell(Position position) throws InvalidPositionException, MuyLejosParaCombinarException{
 		this.selectAlgoformer(position);
 		if (this.action != Action.SIN_ACCION){
 			if (this.positionSelected1 == null){
@@ -110,7 +110,7 @@ public class GameController {
 		this.view.update();
 	}
 
-	public void executeActionCombinar() throws MuyLejosException, InvalidPositionException{
+	public void executeActionCombinar() throws MuyLejosParaCombinarException, InvalidPositionException{
 		try{
 			this.game.combinar();
 		} catch (Exception e){

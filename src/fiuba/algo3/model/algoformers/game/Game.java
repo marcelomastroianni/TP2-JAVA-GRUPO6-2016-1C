@@ -244,7 +244,7 @@ public class Game {
 		algoformer.transform();
 	}
 
-	public void combinar() throws InvalidPositionException, MuyLejosException {
+	public void combinar() throws InvalidPositionException, MuyLejosParaCombinarException {
 		List<Algoformer> algoformersList =this.getActivePlayer().getAlgoformers();
 		Algoformer algoformer1 = algoformersList.get(0);
 		Algoformer algoformer2 = algoformersList.get(1);

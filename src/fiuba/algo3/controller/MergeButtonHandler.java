@@ -2,7 +2,7 @@ package fiuba.algo3.controller;
 
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.MuyLejosException;
+import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,9 +23,7 @@ public class MergeButtonHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
     	try {
 			this.controller.executeActionCombinar();
-		} catch (MuyLejosException | InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (MuyLejosParaCombinarException | InvalidPositionException e) {
 		}
     }
 
