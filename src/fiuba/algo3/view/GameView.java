@@ -65,7 +65,7 @@ public class GameView  {
 	}
 
 	public void updateTurn(){
-		this.lblTurno.setText(this.game.getActivePlayer());
+		this.lblTurno.setText(this.game.getActivePlayer().getName());
 	}
 
 	public void updateAlgoformerSelected(Algoformer algoformer){

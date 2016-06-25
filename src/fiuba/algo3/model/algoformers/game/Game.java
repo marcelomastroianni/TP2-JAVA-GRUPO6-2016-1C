@@ -25,7 +25,7 @@ public class Game {
 
 	int BOARD_X_LENGTH = 14;
 	int BOARD_Y_LENGTH = 14;
-	
+
 	boolean isOver = false;
 	Player winner;
 
@@ -112,11 +112,11 @@ public class Game {
 	public boolean isOver(){
 		return this.isOver;
 	}
-	
+
 	public Player getWinner(){
 		return this.winner;
 	}
-	
+
 	public Player getPlayer1() {
 		return this.player1;
 	}
@@ -133,11 +133,11 @@ public class Game {
 		return this.turn;
 	}
 
-	public String getActivePlayer(){
+	public Player getActivePlayer(){
 		if(this.getTurn().isActivePlayer(this.getPlayer1()))
-			return "Jugador 1: " + this.getPlayer1().getName();
+			return this.getPlayer1();
 		else
-			return "Jugador 2: " + this.getPlayer2().getName();
+			return this.getPlayer2();
 	}
 
 	public void setBoard(Board board){
@@ -239,17 +239,17 @@ public class Game {
 		algoformer.transform();
 	}
 
-	public void notifyPlayerWin(Player player) {		
-		this.winner = player;		
-		this.isOver = true;		
+	public void notifyPlayerWin(Player player) {
+		this.winner = player;
+		this.isOver = true;
 	}
-	
+
 	public void notifyPlayerLost(Player player) {
 		if(player.equals(player1)){
 			this.winner = player2;
 		}else{
 			this.winner = player1;
-		}		
+		}
 		this.isOver = true;
 	}
 

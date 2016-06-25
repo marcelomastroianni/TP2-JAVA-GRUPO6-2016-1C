@@ -2,6 +2,7 @@ package fiuba.algo3.view;
 
 import fiuba.algo3.controller.AttackButtonHandler;
 import fiuba.algo3.controller.GameController;
+import fiuba.algo3.controller.MergeButtonHandler;
 import fiuba.algo3.controller.MoveButtonHandler;
 import fiuba.algo3.controller.NextTurnButtonHandler;
 import fiuba.algo3.controller.TransformButtonHandler;
@@ -234,6 +235,8 @@ public class GameContainer extends BorderPane {
 		this.transformButton.setOnAction(transformButtonHandler);
 		AttackButtonHandler attackButtonHandler = new AttackButtonHandler(this.gameView, this.game, this.gameController);
 		this.attackButton.setOnAction(attackButtonHandler);
+		MergeButtonHandler mergeButtonHandler = new MergeButtonHandler(this.gameView, this.game, this.gameController);
+		this.attackButton.setOnAction(mergeButtonHandler);
 	}
 
 

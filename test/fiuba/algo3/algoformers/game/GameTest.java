@@ -153,9 +153,9 @@ public class GameTest {
 		game.setPlayer2(player2);
 		game.setTurn(turn);
 
-		Assert.assertEquals(game.getActivePlayer(),"Jugador 1: Florencia" );
+		Assert.assertEquals(game.getActivePlayer(),player1 );
 		game.nextTurn();
-		Assert.assertEquals(game.getActivePlayer(),"Jugador 2: Sofia" );
+		Assert.assertEquals(game.getActivePlayer(),player2 );
 	}
 
 	@Test(expected=JugadorNoPuedeJugarCuandoNoEsSuTurnoException.class)
@@ -809,28 +809,28 @@ public class GameTest {
 	}
 
 
-	
+
 	public void playerLostTheGame() throws InvalidPositionException{
 		Game game = new Game();
 		prepareGame(game);
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Player jugador1 = game.getPlayer1();
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algoformersJugador1.get(0).getLife());
 		algoformersJugador1.get(0).downHealthPoints(500,game.getBoard());
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 350 puntos de vida",350,algoformersJugador1.get(0).getLife());
 		algoformersJugador1.get(0).downHealthPoints(350,game.getBoard());
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
 		algoformersJugador1.get(0).downHealthPoints(150,game.getBoard());
-		
+
 		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
 		Assert.assertEquals("Jugador 2 deberia ser el ganador",game.getPlayer2(),game.getWinner());
 	}
@@ -841,7 +841,7 @@ public class GameTest {
 		prepareGame(game);
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Player jugador2 = game.getPlayer2();
 		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 550 puntos de vida",550,algoformersJugador2.get(0).getLife());
@@ -849,15 +849,15 @@ public class GameTest {
 		algoformersJugador2.get(0).downHealthPoints(550,game.getBoard());
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 200 puntos de vida",200,algoformersJugador2.get(0).getLife());
 		algoformersJugador2.get(0).downHealthPoints(200,game.getBoard());
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 400 puntos de vida",400,algoformersJugador2.get(0).getLife());
-		
+
 		algoformersJugador2.get(0).downHealthPoints(400,game.getBoard());
-		
+
 		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
 		Assert.assertEquals("Jugador 1 deberia ser el ganador",game.getPlayer1(),game.getWinner());
 	}
@@ -865,15 +865,15 @@ public class GameTest {
 	@Test
 	public void catchChispaSupremaTest() throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException {
 		Game game = new Game();
-		
+
 		Player player1 = new Player(game, "Juan");
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		player1.addAlgoformer(algoformer);
 
-		
+
 		game.setPlayer1(player1);
 		game.setPlayer2(new Player(game,"Maria"));
-		
+
 		Board board = new Board(5,5);
 		board.add(algoformer);
 
@@ -881,12 +881,12 @@ public class GameTest {
 		board.add(chispaSuprema);
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		algoformer.move(new Position(2,0),board);
-		
+
 		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
 		Assert.assertEquals("Jugador 1 deberia ser el ganador",game.getPlayer1(),game.getWinner());
-		
+
 		Assert.assertEquals("Algoformer deberia estar en la posicion de la chispa suprema",new Position(2,0),algoformer.getPosition());
 		Assert.assertEquals("La chispa suprema no deberia estar en el tablero",algoformer,board.getContent(new Position(2,0)));
 	}
@@ -918,7 +918,7 @@ public class GameTest {
 		algoformer.move(new Position(2,0),board);
 
 		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
-		
+
 		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",algoformer,board.getContent(new Position(1,0)));
 
 		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",new Position(2,0),chispaSuprema.getPosition());
@@ -950,15 +950,15 @@ public class GameTest {
 		game.nextTurn();
 		game.nextTurn();
 		algoformer.move(new Position(2,0),board);
-		
-		
+
+
 		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",new Position(1,0),algoformer.getPosition());
 		Assert.assertEquals("Algoformer deberia estar en la posicion (1,0)",algoformer,board.getContent(new Position(1,0)));
-		
+
 		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",new Position(2,0),chispaSuprema.getPosition());
-		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",chispaSuprema,board.getContent(new Position(2,0)));		
+		Assert.assertEquals("Chispa suprema deberia estar en la posicion (2,0)",chispaSuprema,board.getContent(new Position(2,0)));
 	}
-	
+
 	@Test
 	public void testMatarAlgoformerLoSacaDelTablero() throws  UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException{
 		Game game = new Game();
@@ -969,17 +969,17 @@ public class GameTest {
 
 		//Autobots:
 		Mode humanoidMode = new ModeHumanoid(550,2,2);
-		Mode alternalMode = new ModeAlternalTerrestrial(15,4,5);		
+		Mode alternalMode = new ModeAlternalTerrestrial(15,4,5);
 		Algoformer optimusPrime = new Algoformer("Optimus Prime", humanoidMode,alternalMode,500,new Position(0,0), Algoformer.Team.AUTOBOTS);
-		
+
 		//Decepticons:
 
 		Mode humanoidMode2 = new ModeHumanoid(10,3,1);
-		Mode alternalMode2 = new ModeAlternalAerial(55,2,8);		
+		Mode alternalMode2 = new ModeAlternalAerial(55,2,8);
 		Algoformer megatron =  new Algoformer("Megatron", humanoidMode2,alternalMode2,550,new Position(1,0), Algoformer.Team.DECEPTICONS);
 
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(3,3));
-		
+
 		player1.addAlgoformer(optimusPrime);
 		player2.addAlgoformer(megatron);
 		player2.addAlgoformer(frenzy);
@@ -1003,11 +1003,11 @@ public class GameTest {
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 		Algoformer algofomerJugador2 = algoformersJugador2.get(0);
 
-		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));		
+		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (1,0)",algofomerJugador2.getPosition().equals(new Position(1,0)));
 		Assert.assertEquals("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1, game.getBoard().getContent(new Position(0,0)));
 		Assert.assertEquals("Algoformer jugador 2 deberia estar en la posicion (1,0)",algofomerJugador2, game.getBoard().getContent(new Position(1,0)));
-		
+
 		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algofomerJugador1.getLife());
 		Assert.assertEquals("Algoformer jugador 2 deberia tener 550 puntos de vida",550,algofomerJugador2.getLife());
 		//Turno jugador 1
