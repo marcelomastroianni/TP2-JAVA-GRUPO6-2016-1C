@@ -17,7 +17,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 public class GameView  {
 
@@ -97,7 +96,7 @@ public class GameView  {
 			}else{
 				this.lblAlgoformerStateCombining.setText("");
 			}
-			
+
 			if (algoformer.isBonus()){
 				this.lblAlgoformerBonusTitle.setText("Bonus:");
 			}else{
@@ -235,7 +234,7 @@ public class GameView  {
 	}
 
 	public void setLblAlgoformerStateCombining(Label lblAlgoformerStateCombining) {
-		this.lblAlgoformerStateCombining = lblAlgoformerStateCombining;		
+		this.lblAlgoformerStateCombining = lblAlgoformerStateCombining;
 	}
 
 

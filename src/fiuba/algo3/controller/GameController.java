@@ -9,6 +9,8 @@ import fiuba.algo3.view.GameView;
 import fiuba.algo3.view.ViewConstants;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 public class GameController {
@@ -32,7 +34,7 @@ public class GameController {
 
 	public void selectAction(Action action){
 		this.action = action;
-		this.view.updateAction(this.action);	
+		this.view.updateAction(this.action);
 	}
 
 	private void clearAction(){
@@ -49,7 +51,7 @@ public class GameController {
 			this.view.clearAlgoformerSelected();
 		}
 	}
-	
+
 	public void selectCell(Position position) throws InvalidPositionException, MuyLejosException{
 		this.selectAlgoformer(position);
 		if (this.action != Action.SIN_ACCION){
@@ -67,11 +69,11 @@ public class GameController {
 	    		}
 	    		if (this.action == Action.ATACAR){
 					this.executeActionAtacar();
-	    		}	  
+	    		}
 	    	}
 		}
     }
-	
+
 	public void executeActionTransformar(){
 		try {
 			this.game.transformaraAlgoformer(positionSelected1);
@@ -83,7 +85,7 @@ public class GameController {
 		this.clearAction();
 		this.view.updateAlgoformerSelected(algoformerSelected);
 	}
-	
+
 	public void executeActionMover(){
 		try {
 
@@ -97,7 +99,7 @@ public class GameController {
 		this.clearSelectedCells();
 		this.view.update();
 	}
-	
+
 	public void executeActionAtacar(){
 		try {
 			this.game.dispararaAlgoformer(positionSelected1, positionSelected2);
@@ -111,12 +113,12 @@ public class GameController {
 		this.clearSelectedCells();
 		this.view.update();
 	}
-	
+
 	public void executeActionCombinar() throws MuyLejosException, InvalidPositionException{
 		this.game.combinar();
 		this.clearAction();
 		this.clearSelectedCells();
-		this.view.update();		
+		this.view.update();
 	}
 
 	private void clearSelectedCells(){
@@ -138,7 +140,7 @@ public class GameController {
 			this.app.setChooseTeamScene();
 		}
 	}
-	
+
 	public void nextTurn() throws InvalidPositionException {
 		this.clearSelectedCells();
 		this.game.nextTurn();
@@ -155,9 +157,14 @@ public class GameController {
 					try {
 						selectCell(new Position(x_celda,y_celda));
 					} catch (InvalidPositionException e) {
-						e.printStackTrace();
+						Alert alert = new Alert(AlertType.INFORMATION);
+				        alert.setTitle("oups..");
+				        String mensaje = "posicion Invalida";
+				        alert.setContentText(mensaje);
+				        alert.show();
 					}
-                }
+
+					}
             });
 	}
 }
