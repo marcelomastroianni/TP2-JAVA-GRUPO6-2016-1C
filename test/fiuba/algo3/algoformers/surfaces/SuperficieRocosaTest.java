@@ -69,14 +69,14 @@ public class SuperficieRocosaTest {
 		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 5));
 		frenzy.transform();
-		frenzy.notifyNextTurn(tablero);
+		frenzy.notifyNextTurn( );
 		tablero.add(frenzy);
 
 		Assert.assertTrue(frenzy.isAlternalMode());
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
 
 		frenzy.move(new Position(3, 5), tablero);
-		frenzy.notifyNextTurn(tablero);
+		frenzy.notifyNextTurn( );
 
 		Assert.assertTrue("frenzy deberia estar en la posicion (3,5)", frenzy.getPosition().equals(new Position(3, 5)));
 	}

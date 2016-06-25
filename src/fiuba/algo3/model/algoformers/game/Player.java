@@ -44,15 +44,15 @@ public class Player {
 		return hasAlgoformer;
 	}
 
-	public void notifyNextTurn(Board board) throws InvalidPositionException {
+	public void notifyNextTurn(){
 		Iterator<Algoformer> iter = algoformersList.iterator();
 		while (iter.hasNext()) {
 		    Algoformer algoformer = iter.next();
 		    if(algoformer.getNombre().equals("Superion") ||algoformer.getNombre().equals("Menasor")){
-		    	algoformer.notifyNextTurn(board);
+		    	algoformer.notifyNextTurn();
 		    	break;
 		    }
-			algoformer.notifyNextTurn(board);
+			algoformer.notifyNextTurn();
 		}
 
 

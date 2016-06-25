@@ -137,7 +137,7 @@ public class Algoformer implements Content {
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.isTrapped) {
+		if (!this.isTrapped && !isCombined) {
 			Position previous;
 			Position next;
 			Surface nextSurface;
@@ -230,11 +230,17 @@ public class Algoformer implements Content {
 		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
 	}
 
-	public void notifyNextTurn(Board board) throws InvalidPositionException {
+	public void notifyNextTurn() {
 		if (isTrapped) {
 			this.turnsTrapped -= 1;
 			if (this.turnsTrapped.equals(new Integer(0))) {
 				this.isTrapped = false;
+			}
+		}
+		if (isCombined) {
+			this.turnsCombined-= 1;
+			if (this.turnsCombined.equals(new Integer(0))) {
+				this.isCombined = false;
 			}
 		}
 		if (isDobleDamage) {
@@ -256,65 +262,9 @@ public class Algoformer implements Content {
 
 			}
 		}
-		if (isCombined) {
-			this.turnsCombined -= 1;
-			if (this.turnsCombined.equals(new Integer(0))) {
-				this.isCombined = false;
-				player.notifyDeadAlgoformer(this);
-				if(this.team.equals(team.AUTOBOTS)){
-					this.descombinarAutobots(board);
-				}else{
-					this.descombinarDecepticons(board);
-				}
-			}
-		}
 
 		this.stepsMovedInTurn = 0;
 		this.haveBeenUsedInTurn = false;
-	}
-
-	public void descombinarAutobots(Board board) throws InvalidPositionException{
-		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(position);
-		player.addAlgoformer(algoformer1);
-		board.add(algoformer1);
-		try{
-			Algoformer algoformer2 = AlgoFormerFactory.getBumblebee(position.nextDown());
-			Algoformer algoformer3 = AlgoFormerFactory.getRatchet(position.nextDown().nextDown());
-			board.add(algoformer2);
-			board.add(algoformer3);
-			player.addAlgoformer(algoformer2);
-			player.addAlgoformer(algoformer3);
-		}catch(InvalidPositionException e){
-			Algoformer algoformer2 = AlgoFormerFactory.getBumblebee(position.nextUp());
-			Algoformer algoformer3 = AlgoFormerFactory.getRatchet(position.nextUp().nextUp());
-			board.add(algoformer2);
-			board.add(algoformer3);
-			player.addAlgoformer(algoformer2);
-			player.addAlgoformer(algoformer3);
-
-		}
-	}
-
-	private void descombinarDecepticons(Board board) throws InvalidPositionException{
-		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(position);
-		player.addAlgoformer(algoformer1);
-		board.add(algoformer1);
-		try{
-			Algoformer algoformer2 = AlgoFormerFactory.getBonecrusher(position.nextDown());
-			Algoformer algoformer3 = AlgoFormerFactory.getFrenzy(position.nextDown().nextDown());
-			board.add(algoformer2);
-			board.add(algoformer3);
-			player.addAlgoformer(algoformer2);
-			player.addAlgoformer(algoformer3);
-		}catch(InvalidPositionException e){
-			Algoformer algoformer2 = AlgoFormerFactory.getBonecrusher(position.nextUp());
-			Algoformer algoformer3 = AlgoFormerFactory.getFrenzy(position.nextUp().nextUp());
-			board.add(algoformer2);
-			board.add(algoformer3);
-			player.addAlgoformer(algoformer2);
-			player.addAlgoformer(algoformer3);
-
-		}
 	}
 
 
@@ -410,6 +360,11 @@ public class Algoformer implements Content {
 		this.isCombined = true;
 		this.turnsCombined = 3;
 
+	}
+
+
+	public boolean isCombined() {
+		return isCombined;
 	}
 
 

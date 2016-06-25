@@ -35,10 +35,10 @@ public class SuperficieNebulosaAndromedaTest {
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		optimus.transform();
-		optimus.notifyNextTurn( tablero );
+		optimus.notifyNextTurn();
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(4,3), tablero);
-		optimus.notifyNextTurn( tablero );
+		optimus.notifyNextTurn();
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)),  tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
@@ -68,7 +68,7 @@ public class SuperficieNebulosaAndromedaTest {
 		tablero.add(ratchet);
 		Assert.assertTrue(ratchet.isHumanoidMode());
 		ratchet.transform();
-		ratchet.notifyNextTurn(tablero);
+		ratchet.notifyNextTurn();
 		Assert.assertTrue(ratchet.isAlternalMode());
 		ratchet.move(new Position(4,3), tablero);
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (2,3)",new Nothing(new Position(2,3)), tablero.getContent(new Position(2,3)));

@@ -112,16 +112,26 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void superionTurnTes() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+	public void superionTurnTes() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, MuyLejosException, InvalidPositionException {
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,2)) instanceof Nothing);
 		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(0,0));
-		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
-		Assert.assertEquals(algoformerCombinado.getSpeed(), 3);
+		Assert.assertEquals( algoformerCombinado.getNombre(),"Superion");
+		Assert.assertEquals(algoformerCombinado.getSpeed(),3);
+
+
 		Assert.assertEquals(player1.getAlgoformers().size(), 1);
 		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(0,3), board);
+
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(0,0), algoformerCombinado.getPosition());
+
 		game.nextTurn();
 
 		//primer turno jugador2
@@ -131,12 +141,11 @@ public class MansorAndSuperionTest {
 		//primer turno jugador 1
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		Assert.assertEquals(algoformerCombinado.getPlayer(), player1);
-		game.moverAlgoformer(new Position(0,0), new Position(3,3));
-		algoformerCombinado = (Algoformer) board.getContent(new Position(3,3));
-		Assert.assertEquals(algoformerCombinado.getSpeed(), 3);
-		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
-		Assert.assertEquals(player1.getAlgoformers().size(), 1);
-		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(0,3), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(0,0), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 		//segundo turno jugador 2
@@ -144,11 +153,13 @@ public class MansorAndSuperionTest {
 		game.nextTurn();
 
 		//segundo turno jugador 1
-		game.moverAlgoformer(new Position(3,3), new Position(3,0));
-		algoformerCombinado = (Algoformer) board.getContent(new Position(3,0));
-		Assert.assertEquals(algoformerCombinado.getNombre(), "Superion");
-		Assert.assertEquals(player1.getAlgoformers().size(), 1);
-		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(), "Superion");
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		Assert.assertEquals(algoformerCombinado.getPlayer(), player1);
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(0,3), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(0,0), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 		//tercer turno jugador 2
@@ -156,21 +167,13 @@ public class MansorAndSuperionTest {
 		game.nextTurn();
 
 		//tercer turno jugador 1
-		Assert.assertTrue(game.getBoard().getContent(new Position(3,0)) instanceof Algoformer);
-		Assert.assertTrue(game.getBoard().getContent(new Position(3,1)) instanceof Algoformer);
-		Assert.assertTrue(game.getBoard().getContent(new Position(3,2)) instanceof Algoformer);
-
-		Algoformer algoformer1 = (Algoformer) board.getContent(new Position(3,0));
-		Algoformer algoformer2 = (Algoformer) board.getContent(new Position(3,1));
-		Algoformer algoformer3 = (Algoformer) board.getContent(new Position(3,2));
-
-		Assert.assertEquals("Optimus Prime",algoformer1.getNombre());
-		Assert.assertEquals("Bumblebee" ,algoformer2.getNombre());
-		Assert.assertEquals("Ratchet",algoformer3.getNombre());
-
-		game.moverAlgoformer(new Position(3,0), new Position(3,3));
-		Assert.assertEquals(player1.getAlgoformers().size(), 3);
-		Assert.assertEquals(player1.getAlgoformers().get(0).getNombre(),"Optimus Prime");
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		Assert.assertEquals(algoformerCombinado.getPlayer(), player1);
+		Assert.assertFalse(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(0,3), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(0,3), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 	}
@@ -183,11 +186,19 @@ public class MansorAndSuperionTest {
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(9,1)) instanceof Nothing);
 		Assert.assertTrue(game.getBoard().getContent(new Position(9,2)) instanceof Nothing);
+
 		Algoformer algoformerCombinado = (Algoformer) board.getContent(new Position(9,0));
 		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
 		Assert.assertEquals(algoformerCombinado.getSpeed(), 2);
+
 		Assert.assertEquals(player2.getAlgoformers().size(), 1);
 		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(9,1), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(9,0), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 		//primer turno jugador1
@@ -196,13 +207,12 @@ public class MansorAndSuperionTest {
 
 		//primer turno jugador2
 		Assert.assertEquals(game.getActivePlayer(),player2);
-		Assert.assertEquals(algoformerCombinado.getPlayer(), player2);
-		game.moverAlgoformer(new Position(9,0), new Position(9,2));
-		algoformerCombinado = (Algoformer) board.getContent(new Position(9,2));
-		Assert.assertEquals(algoformerCombinado.getSpeed(), 2);
-		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
-		Assert.assertEquals(player2.getAlgoformers().size(), 1);
-		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(9,1), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+
+		Assert.assertEquals(new Position(9,0), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 		//segundo turno jugador1
@@ -210,11 +220,11 @@ public class MansorAndSuperionTest {
 		game.nextTurn();
 
 		//segundo turno jugador 2
-		game.moverAlgoformer(new Position(9,2), new Position(9,0));
-		algoformerCombinado = (Algoformer) board.getContent(new Position(9,0));
-		Assert.assertEquals(algoformerCombinado.getNombre(), "Menasor");
-		Assert.assertEquals(player2.getAlgoformers().size(), 1);
-		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(), "Menasor");
+		Assert.assertTrue(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(9,1), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(9,0), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 		//tercer turno jugador1
@@ -222,21 +232,11 @@ public class MansorAndSuperionTest {
 		game.nextTurn();
 
 		//tercer turno jugador2
-		Assert.assertTrue(game.getBoard().getContent(new Position(9,0)) instanceof Algoformer);
-		Assert.assertTrue(game.getBoard().getContent(new Position(9,1)) instanceof Algoformer);
-		Assert.assertTrue(game.getBoard().getContent(new Position(9,2)) instanceof Algoformer);
-
-		Algoformer algoformer1 = (Algoformer) board.getContent(new Position(9,0));
-		Algoformer algoformer2 = (Algoformer) board.getContent(new Position(9,1));
-		Algoformer algoformer3 = (Algoformer) board.getContent(new Position(9,2));
-
-		Assert.assertEquals("Megatron",algoformer1.getNombre());
-		Assert.assertEquals("Bonecrusher" ,algoformer2.getNombre());
-		Assert.assertEquals("Frenzy",algoformer3.getNombre());
-
-		game.moverAlgoformer(new Position(9,0), new Position(9,1));
-		Assert.assertEquals(player2.getAlgoformers().size(), 3);
-		Assert.assertEquals(player2.getAlgoformers().get(0).getNombre(),"Megatron");
+		Assert.assertFalse(algoformerCombinado.isCombined());
+		try{
+			algoformerCombinado.move(new Position(9,1), board);
+		}catch(AlgoformerAtrapadoEsteTurnoException e){}
+		Assert.assertEquals(new Position(9,1), algoformerCombinado.getPosition());
 		game.nextTurn();
 
 	}

@@ -23,9 +23,9 @@ public class TurnTest{
 		Turn turno = new Turn(jugador1,jugador2);
 
 		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));
-		turno.next( board );
+		turno.next();
 		Assert.assertTrue("Jugador activo deberia ser jugador 2", turno.isActivePlayer(jugador2));
-		turno.next( board );
+		turno.next();
 		Assert.assertTrue("Jugador activo deberia ser jugador 1", turno.isActivePlayer(jugador1));
 	}
 

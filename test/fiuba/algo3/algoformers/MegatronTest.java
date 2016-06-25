@@ -40,7 +40,7 @@ public class MegatronTest {
 	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 
 		megatron.transform();
-		megatron.notifyNextTurn(board);
+		megatron.notifyNextTurn();
 		board.add(megatron);
 		megatron.move(new Position(8,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),

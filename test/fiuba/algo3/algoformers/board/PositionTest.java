@@ -126,20 +126,6 @@ public class PositionTest {
 
 	}
 
-	@Test
-	public void nextDown(){
-		Position position = new Position(5,5);
-		Assert.assertEquals("una posicion para abajo deberia ser (5,6)",new Position(5,6),position.nextDown());
-
-	}
-
-	@Test
-	public void nextUp(){
-		Position position = new Position(5,5);
-		Assert.assertEquals("una posicion para arriba deberia ser (5,4)",new Position(5,4),position.nextUp());
-
-
-	}
 
 
 }

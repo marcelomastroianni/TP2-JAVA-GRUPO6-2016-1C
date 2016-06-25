@@ -17,11 +17,11 @@ public class Turn {
 		return this.activePlayer.equals(player);
 	}
 
-	public void next(Board board) throws InvalidPositionException {
+	public void next()  {
 		Player active = this.activePlayer;
 		this.activePlayer = this.nonActivePlayer;
 		this.nonActivePlayer = active;
 
-		this.activePlayer.notifyNextTurn(board);
+		this.activePlayer.notifyNextTurn();
 	}
 }
