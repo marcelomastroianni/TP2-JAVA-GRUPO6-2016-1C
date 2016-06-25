@@ -173,6 +173,16 @@ public class PositionTest {
 		Assert.assertFalse(position3.canMerge(position1, position2));
 
 	}
+	@Test
+	public void testCantMergeDistance2inL(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(1,2);
+		Assert.assertFalse(position1.canMerge(position2, position3));
+		Assert.assertFalse(position2.canMerge(position1, position3));
+		Assert.assertFalse(position3.canMerge(position1, position2));
+
+	}
 
 
 

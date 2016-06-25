@@ -572,5 +572,19 @@ public class AlgoformerTest {
 		Assert.assertEquals(megatron.getMergedAlgoformer(board,bone,frenzy).getPosition(), new Position(0,0));
 	}
 
+	@Test(expected=MuyLejosException.class)
+	public void testCantMergeAlgoformersMenasor() throws MuyLejosException, InvalidPositionException{
+		Board board = new Board(10, 10);
+		Algoformer  megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
+		Algoformer bone= AlgoFormerFactory.getBonecrusher(new Position(0,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,3));
+
+
+		board.add(megatron);
+		board.add(bone);
+		board.add(frenzy);
+		megatron.getMergedAlgoformer(board,bone,frenzy);
+	}
+
 }
 

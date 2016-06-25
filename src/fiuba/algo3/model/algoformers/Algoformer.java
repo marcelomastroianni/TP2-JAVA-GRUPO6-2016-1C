@@ -342,19 +342,22 @@ public class Algoformer implements Content {
 
 
 	public Algoformer getMergedAlgoformer( Board board, Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosException, InvalidPositionException {
-			board.clearContent(algoformer1.getPosition());
-			board.clearContent(algoformer2.getPosition());
-			board.clearContent(this.position);
-			if(this.team.equals(team.AUTOBOTS)){
-				Algoformer algoformerCombinado = AlgoFormerFactory.getSuperion(this.position);
+			if(algoformer1.getPosition().canMerge(algoformer2.getPosition(), algoformer1.getPosition())){
+				board.clearContent(algoformer1.getPosition());
+				board.clearContent(algoformer2.getPosition());
+				board.clearContent(this.position);
+				if(this.team.equals(team.AUTOBOTS)){
+					Algoformer algoformerCombinado = AlgoFormerFactory.getSuperion(this.position);
+					board.add(algoformerCombinado);
+					return algoformerCombinado;
+				}
+				Algoformer algoformerCombinado = AlgoFormerFactory.getMenasor(this.position);
 				board.add(algoformerCombinado);
 				return algoformerCombinado;
 			}
-			Algoformer algoformerCombinado = AlgoFormerFactory.getMenasor(this.position);
-			board.add(algoformerCombinado);
-			return algoformerCombinado;
+			throw new MuyLejosException("Solo pueden combinarse si estan a una distancia de uno entre ellos");
 	}
-	
+
 
 
 
