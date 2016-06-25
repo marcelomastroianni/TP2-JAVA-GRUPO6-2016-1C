@@ -63,7 +63,6 @@ public class Player {
 		if(this.algoformersList.size() < 1){
 			this.game.notifyPlayerLost(this);
 		}
-
 	}
 
 	public void notifyAlgoformerCathChispaSuprema()  {

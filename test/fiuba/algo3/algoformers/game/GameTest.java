@@ -852,7 +852,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void gameOverExceptionMessage() throws InvalidPositionException{
+	public void gameOverPlayer1Win() throws InvalidPositionException{
 		Game game = new Game();
 		prepareGame(game);
 
@@ -876,6 +876,34 @@ public class GameTest {
 
 		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
 		Assert.assertEquals("Jugador 1 deberia ser el ganador",game.getPlayer1(),game.getWinner());
+	}
+	
+	@Test
+
+	public void gameOverPlayer2Win() throws InvalidPositionException{
+		Game game = new Game();
+		prepareGame(game);
+
+		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
+
+		Player jugador1 = game.getPlayer1();
+		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 500 puntos de vida",500,algoformersJugador1.get(0).getLife());
+		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
+		algoformersJugador1.get(0).downHealthPoints(500,game.getBoard());
+
+		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
+
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 350 puntos de vida",350,algoformersJugador1.get(0).getLife());
+		algoformersJugador1.get(0).downHealthPoints(350,game.getBoard());
+
+		Assert.assertFalse("El juego no deberia estar terminado",game.isOver());
+		Assert.assertEquals("Algoformer jugador 1 deberia tener 150 puntos de vida",150,algoformersJugador1.get(0).getLife());
+
+		algoformersJugador1.get(0).downHealthPoints(150,game.getBoard());
+
+		Assert.assertTrue("El juego deberia estar terminado",game.isOver());
+		Assert.assertEquals("Jugador 1 deberia ser el ganador",game.getPlayer2(),game.getWinner());
 	}
 
 	@Test
@@ -1068,12 +1096,6 @@ public class GameTest {
 		Assert.assertEquals("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1, game.getBoard().getContent(new Position(0,0)));
 		Assert.assertEquals("Algoformer jugador 2 no deberia estar en la posicion (1,0)",new Nothing(new Position(1,0)), game.getBoard().getContent(new Position(1,0)));
 	}
-
-
-
-
-
-
 }
 
 
