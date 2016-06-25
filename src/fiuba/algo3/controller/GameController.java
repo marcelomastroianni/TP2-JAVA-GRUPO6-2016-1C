@@ -75,8 +75,11 @@ public class GameController {
 	public void executeActionTransformar(){
 		try {
 			this.game.transformaraAlgoformer(positionSelected1);
-		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-			 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException | AlgoformerUsadoEsteTurnoException e) {
+		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException 
+				| UsuarioNoSeleccionoAlgoformerException
+				| InvalidPositionException 
+				| AlgoformerAtrapadoEsteTurnoException 
+				| AlgoformerUsadoEsteTurnoException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.clearSelectedCells();
@@ -87,9 +90,13 @@ public class GameController {
 	public void executeActionMover(){
 		try {
 			this.game.moverAlgoformer( positionSelected1, positionSelected2);
-		} catch (Exception e){
-			this.view.showMessage(e.getMessage());			
-		}
+		} catch (AlgoformerAtrapadoEsteTurnoException 
+				| InvalidPositionException
+				| UsuarioNoSeleccionoAlgoformerException 
+				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException
+				| AlgoformerUsadoEsteTurnoException e) {	
+			this.view.showMessage(e.getMessage());
+		}									
 		this.checkGameOver();
 		this.clearAction();
 		this.clearSelectedCells();
@@ -99,8 +106,10 @@ public class GameController {
 	public void executeActionAtacar(){
 		try {
 			this.game.dispararaAlgoformer(positionSelected1, positionSelected2);
-		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-				| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
+		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException 
+				| UsuarioNoSeleccionoAlgoformerException
+				| UsuarioNoSeleccionoAlgoformerAQuienDispararException 
+				| InvalidPositionException
 				| AlgoformerUsadoEsteTurnoException e) {
 			this.view.showMessage(e.getMessage());
 		}
@@ -110,10 +119,10 @@ public class GameController {
 		this.view.update();
 	}
 
-	public void executeActionCombinar() throws MuyLejosParaCombinarException, InvalidPositionException{
-		try{
+	public void executeActionCombinar(){
+		try {
 			this.game.combinar();
-		} catch (Exception e){
+		} catch (MuyLejosParaCombinarException | InvalidPositionException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.clearAction();

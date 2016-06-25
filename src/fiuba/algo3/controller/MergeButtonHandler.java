@@ -21,10 +21,7 @@ public class MergeButtonHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	try {
-			this.controller.executeActionCombinar();
-		} catch (MuyLejosParaCombinarException | InvalidPositionException e) {
-		}
+		this.controller.executeActionCombinar();
     }
 
 }
