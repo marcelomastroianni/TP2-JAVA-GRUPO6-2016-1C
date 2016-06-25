@@ -237,5 +237,11 @@ public class GameView  {
 		this.lblAlgoformerStateCombining = lblAlgoformerStateCombining;
 	}
 
+	public void showMessage(String message){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("oups..");
+		alert.setContentText(message);
+		alert.show();
+	}
 
 }

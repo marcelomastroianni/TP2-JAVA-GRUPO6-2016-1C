@@ -1,10 +1,8 @@
 package fiuba.algo3.model.exceptions;
 
-import fiuba.algo3.model.algoformers.Algoformer;
 
 public class MuyLejosException extends RuntimeException {
-	public MuyLejosException(String msg){
-		super(msg);
+	public MuyLejosException(){
+		super("Solo pueden combinarse si estan a una distancia de uno entre ellos");
 	}
-
 }

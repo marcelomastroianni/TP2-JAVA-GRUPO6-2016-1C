@@ -9,8 +9,6 @@ import fiuba.algo3.view.GameView;
 import fiuba.algo3.view.ViewConstants;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 
 public class GameController {
@@ -79,7 +77,7 @@ public class GameController {
 			this.game.transformaraAlgoformer(positionSelected1);
 		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
 			 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException | AlgoformerUsadoEsteTurnoException e) {
-			e.printStackTrace();
+			this.view.showMessage(e.getMessage());
 		}
 		this.clearSelectedCells();
 		this.clearAction();
@@ -90,12 +88,7 @@ public class GameController {
 		try {
 			this.game.moverAlgoformer( positionSelected1, positionSelected2);
 		} catch (Exception e){
-			e.printStackTrace();
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("oups..");
-			alert.setContentText(e.getMessage());
-			alert.show();
-
+			this.view.showMessage(e.getMessage());			
 		}
 		this.checkGameOver();
 		this.clearAction();
@@ -109,7 +102,7 @@ public class GameController {
 		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
 				| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
 				| AlgoformerUsadoEsteTurnoException e) {
-			e.printStackTrace();
+			this.view.showMessage(e.getMessage());
 		}
 		this.checkGameOver();
 		this.clearAction();
@@ -121,12 +114,7 @@ public class GameController {
 		try{
 			this.game.combinar();
 		} catch (Exception e){
-			e.printStackTrace();
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("oups..");
-			alert.setContentText(e.getMessage());
-			alert.show();
-
+			this.view.showMessage(e.getMessage());
 		}
 		this.clearAction();
 		this.clearSelectedCells();
@@ -169,15 +157,9 @@ public class GameController {
 					try {
 						selectCell(new Position(x_celda,y_celda));
 					} catch (Exception e) {
-						e.printStackTrace();
-						Alert alert = new Alert(AlertType.INFORMATION);
-				        alert.setTitle("oups.."+e);
-				        String mensaje = "posicion Invalida";
-				        alert.setContentText(mensaje);
-				        alert.show();
+						view.showMessage(e.getMessage());
 					}
-
-					}
+				}
             });
 	}
 }

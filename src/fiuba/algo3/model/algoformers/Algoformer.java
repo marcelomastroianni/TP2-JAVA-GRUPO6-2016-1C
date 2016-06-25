@@ -355,7 +355,7 @@ public class Algoformer implements Content {
 				board.add(algoformerCombinado);
 				return algoformerCombinado;
 			}
-			throw new MuyLejosException("Solo pueden combinarse si estan a una distancia de uno entre ellos");
+			throw new MuyLejosException();
 	}
 
 	public boolean canMerge( Position position2, Position position3){

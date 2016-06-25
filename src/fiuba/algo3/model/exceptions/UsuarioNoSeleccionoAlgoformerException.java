@@ -1,6 +1,7 @@
 package fiuba.algo3.model.exceptions;
 
 public class UsuarioNoSeleccionoAlgoformerException extends Exception{
-
-
+	public UsuarioNoSeleccionoAlgoformerException(){
+		super("Usuario no selecciono algoformer");
+	}
 }
