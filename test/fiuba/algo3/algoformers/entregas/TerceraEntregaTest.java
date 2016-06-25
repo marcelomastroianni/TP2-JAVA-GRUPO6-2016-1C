@@ -251,9 +251,101 @@ public class TerceraEntregaTest {
 	 * 3. Ubico un algoformer, ubico un bonus flash, verifico que se mueve 3
 	 * veces más rápido durante 3 turnos propios. a. Repetir en modo alterno b.
 	 * Repetir en modo humanoide-alterno-humanoide
+	 * @throws InvalidPositionException
+	 * @throws AlgoformerAtrapadoEsteTurnoException
+	 * @throws AlgoformerUsadoEsteTurnoException
 	 */
 	@Test
-	public void test03() {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+
+		Board board = new Board(10, 10);
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
+		Bonus flash = new FlashBonus(new Position(0,1));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+		board.add(flash);
+
+
+		algoformer1.move(new Position(0,1), board);
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//primer turno
+		algoformer1.move(new Position(6,1), board);
+		Assert.assertEquals(new Position(6,1), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//segundo turno
+		algoformer1.move(new Position(6,7), board);
+		Assert.assertEquals(new Position(6,7), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//tercer turno
+		algoformer1.move(new Position(0,1), board);
+		Assert.assertEquals(new Position(0,1), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//cuarto turno
+		algoformer1.move(new Position(6,7), board);
+		Assert.assertEquals(new Position(2,3), algoformer1.getPosition());
+
+	}
+
+
+
+	@Test
+	public void test03Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+
+		Board board = new Board(20, 20);
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
+		Bonus flash = new FlashBonus(new Position(0,1));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+		board.add(flash);
+
+		algoformer1.transform();
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		algoformer1.move(new Position(0,1), board);
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//primer turno
+		algoformer1.move(new Position(15,1), board);
+		Assert.assertEquals(new Position(15,1), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//segundo turno
+		algoformer1.move(new Position(15,16), board);
+		Assert.assertEquals(new Position(15,16), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//tercer turno
+		algoformer1.move(new Position(0,1), board);
+		Assert.assertEquals(new Position(0,1), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//cuarto turno
+		algoformer1.move(new Position(15,1), board);
+		Assert.assertEquals(new Position(5,1), algoformer1.getPosition());
+
 	}
 
 	/**
