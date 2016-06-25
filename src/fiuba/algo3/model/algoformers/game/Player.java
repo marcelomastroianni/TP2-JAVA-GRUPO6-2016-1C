@@ -73,7 +73,7 @@ public class Player {
 			this.algoformersList = new ArrayList<Algoformer>();
 			this.addAlgoformer(mergedAlgoformer);
 		}
-		catch(MuyLejosException e){
+		catch(MuyLejosException | IndexOutOfBoundsException e){
 			System.out.print(e.getMessage());
 
 		}
