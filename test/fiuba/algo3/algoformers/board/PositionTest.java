@@ -151,6 +151,18 @@ public class PositionTest {
 
 	}
 
+	
+	@Test
+	public void testCanMergeInL(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(1,1);
+		Assert.assertTrue(position1.canMerge(position2, position3));
+		Assert.assertTrue(position2.canMerge(position1, position3));
+		Assert.assertTrue(position3.canMerge(position1, position2));
+
+	}
+
 
 
 
