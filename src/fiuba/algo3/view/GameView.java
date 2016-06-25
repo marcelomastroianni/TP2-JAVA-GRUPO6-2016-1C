@@ -62,6 +62,8 @@ public class GameView  {
 			this.lblActionSelected.setText("Mover");
 		if (action == Action.TRANSFORMARSE)
 			this.lblActionSelected.setText("Transformar");
+		if (action == Action.COMBINAR)
+			this.lblActionSelected.setText("Combinar");
 	}
 
 	public void updateTurn(){

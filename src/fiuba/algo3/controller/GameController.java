@@ -1,5 +1,7 @@
 package fiuba.algo3.controller;
 
+import java.util.List;
+
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
@@ -16,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 public class GameController {
 	private Position positionSelected1;
 	private Position positionSelected2;
+	private Position positionSelected3;
 	private Action action = Action.SIN_ACCION;
 	private Game game;
 	private GameView view;
@@ -113,7 +116,11 @@ public class GameController {
 	    		this.view.update();
 	    	}
 
-			if(this.action == Action.MOVERSE){
+			if(this.action == Action.COMBINAR){
+				List<Algoformer> algoformers = game.getActivePlayer().getAlgoformers();
+				positionSelected1 = algoformers.get(0).getPosition();
+				positionSelected2 = algoformers.get(1).getPosition();
+				positionSelected3 = algoformers.get(2).getPosition();
 				game.getActivePlayer().mergeTransformers();
 				if (game.isOver()){
     				this.clearSelectedCells();
@@ -136,6 +143,10 @@ public class GameController {
 		if (this.positionSelected2!=null){
 			this.view.toggleSelectCell(this.positionSelected2);
 			this.positionSelected2 =null;
+		}
+		if (this.positionSelected3!=null){
+			this.view.toggleSelectCell(this.positionSelected3);
+			this.positionSelected3 =null;
 		}
 	}
 
