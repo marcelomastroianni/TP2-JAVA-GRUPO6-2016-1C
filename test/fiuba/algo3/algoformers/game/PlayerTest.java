@@ -34,8 +34,16 @@ public class PlayerTest {
 		Assert.assertEquals("Jugador deberia tener 3 algoformers", listaAlgoformersJugador.size(),3);
 	}
 
+	@Test
+	public void testestGiveMeName() throws InvalidPositionException {
+		Game game = new Game();
+		Player player1 = new Player(game, "Mariano");
+		Player player2 = new Player(game, "Daniel");
 
-
+		Assert.assertEquals("Mariano",player1.getName());
+		Assert.assertEquals("Daniel",player2.getName());
+	}
+	
 	@Test
 	public void testAlgoformerPerteneceAJugador(){
 		Game game = new Game();
@@ -57,7 +65,6 @@ public class PlayerTest {
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
 
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(menasor));
-
 	}
 
 	@Test
@@ -81,9 +88,6 @@ public class PlayerTest {
 		optimusPrime.downHealthPoints(500,game.getBoard());
 
 		Assert.assertFalse("Algoformer ya no deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
-
-
-
 	}
 
 	@Test
@@ -113,9 +117,6 @@ public class PlayerTest {
 
 		Assert.assertEquals("el jugador deberia tener un solo algoformer",1, jugador.getAlgoformers().size());
 		Assert.assertEquals("el algoformer deberia ser mansor","Menasor", jugador.getAlgoformers().get(0).getNombre());
-
-
 	}
-
 
 }

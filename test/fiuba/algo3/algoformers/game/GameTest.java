@@ -479,6 +479,22 @@ public class GameTest {
 	}
 
 	@Test(expected=InvalidPositionException.class)
+	public void testInvalidInitialPositionMove() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+		Game game = new Game();
+		prepareGame(game);
+
+		game.moverAlgoformer(new Position(-1,0),new Position(2,0));
+	}
+
+	@Test(expected=InvalidPositionException.class)
+	public void testInvalidFinalPositionMove() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+		Game game = new Game();
+		prepareGame(game);
+
+		game.moverAlgoformer(new Position(0,0),new Position(0,-1));
+	}
+
+	@Test(expected=InvalidPositionException.class)
 	public void testInvalidMovement() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
