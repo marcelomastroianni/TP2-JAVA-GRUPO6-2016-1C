@@ -3,6 +3,8 @@ package fiuba.algo3.algoformers.entregas;
 import java.util.List;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,7 +23,7 @@ public class PrimeraEntragaTest {
 	//Se ubica un algoformer humanoide en un casillero, se pide que se mueva, se verifica
 	//nueva posición acorde a su modo.
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -55,7 +57,7 @@ public class PrimeraEntragaTest {
 	//3. Se ubica un algoformer en su modo alterno y se pide que se mueva y se verifica que su
 	//nueva posición sea acorde.
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 

@@ -6,6 +6,7 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
@@ -134,38 +135,43 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * 0.95);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.isTrapped && !this.isCombining) {
-			Position previous;
-			Position next;
-			Surface nextSurface;
-			int speed = this.getSpeed();
-			while (position.hasNext(finalPosition)
-					&& this.stepsMovedInTurn < speed
-					&& (!this.isTrapped)) {
-				this.stepsMovedInTurn++;
-				previous = this.position;
-				next = this.position.next(finalPosition);
-				nextSurface = board.getSurface(next);
-				if (this.activeMode.canCrossSurface(nextSurface)) {
-					try {
-						board.getContent(next).collideWithAlgoformer(this);
-						this.position = next;
-						board.clearContent(previous);
-						board.add(this);
-						this.activeMode.crossSurface(nextSurface, this);
-						this.haveBeenUsedInTurn = true;
-					} catch (InvalidPositionException ex) {
-						//Coliciono con otro Algoformer
-						break;
-					}
-				} else{
+		
+		if (this.isTrapped)
+			throw new AlgoformerAtrapadoEsteTurnoException();
+		
+		if (this.isCombining)
+			throw new AlgoformerCombinandoseEsteTurnoException();
+		
+		Position previous;
+		Position next;
+		Surface nextSurface;
+		int speed = this.getSpeed();
+		while (position.hasNext(finalPosition)
+				&& this.stepsMovedInTurn < speed
+				&& (!this.isTrapped)) {
+			this.stepsMovedInTurn++;
+			previous = this.position;
+			next = this.position.next(finalPosition);
+			nextSurface = board.getSurface(next);
+			if (this.activeMode.canCrossSurface(nextSurface)) {
+				try {
+					board.getContent(next).collideWithAlgoformer(this);
+					this.position = next;
+					board.clearContent(previous);
+					board.add(this);
+					this.activeMode.crossSurface(nextSurface, this);
+					this.haveBeenUsedInTurn = true;
+				} catch (InvalidPositionException ex) {
+					//Coliciono con otro Algoformer
 					break;
 				}
+			} else{
+				break;
 			}
-		}else throw new AlgoformerAtrapadoEsteTurnoException();
+		}
 	}
 
 	public void reduceSpeedFiftyPercent(){

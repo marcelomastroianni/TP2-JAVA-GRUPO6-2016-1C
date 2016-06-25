@@ -1,6 +1,8 @@
 package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,7 +42,7 @@ public class SuperficiePantanoTest {
 	}
 
 	@Test
-	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
@@ -57,7 +59,7 @@ public class SuperficiePantanoTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -72,7 +74,7 @@ public class SuperficiePantanoTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));

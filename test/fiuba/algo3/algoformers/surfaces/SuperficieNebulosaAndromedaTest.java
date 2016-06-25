@@ -1,6 +1,8 @@
 package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,7 +31,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -46,7 +48,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -61,7 +63,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));

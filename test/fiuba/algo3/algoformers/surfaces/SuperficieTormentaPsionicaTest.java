@@ -1,6 +1,8 @@
 package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
@@ -26,7 +28,7 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAlternoTerrestreNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfacePsionicStorm()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -43,7 +45,7 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
-	public void testModoHumanoideNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoHumanoideNoCruzaSuperficieTormentaPsionica() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfacePsionicStorm()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -57,7 +59,7 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
-	public void testModoHumanoideMantieneAttackPower() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoHumanoideMantieneAttackPower() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
@@ -68,7 +70,7 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
-	public void testModoAereoAlternoCruzaSuperficieTormentaPsionicaPeroPierdePoderDeAtaque() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAereoAlternoCruzaSuperficieTormentaPsionicaPeroPierdePoderDeAtaque() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
@@ -81,7 +83,7 @@ public class SuperficieTormentaPsionicaTest {
 	}
 
 	@Test
-	public void testModoAereoAlternoEsInmuneAlCruzaSuperficieTormentaPsionicaPorSegundaVez() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testModoAereoAlternoEsInmuneAlCruzaSuperficieTormentaPsionicaPorSegundaVez() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));

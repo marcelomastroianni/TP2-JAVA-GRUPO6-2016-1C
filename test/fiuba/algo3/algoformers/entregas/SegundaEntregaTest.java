@@ -27,10 +27,11 @@ public class SegundaEntregaTest {
 	 * sus modos la atraviesen sin problemas
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
 		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
@@ -149,10 +150,11 @@ public class SegundaEntregaTest {
 	 * atravesar.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
@@ -186,10 +188,11 @@ public class SegundaEntregaTest {
 	 * terrestres tardan el doble que rocoso
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
@@ -227,10 +230,11 @@ public class SegundaEntregaTest {
 	 * atraviesan sin problemas
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
@@ -251,10 +255,11 @@ public class SegundaEntregaTest {
 	 * pierden un 5% de sus vida por cada casillero de estos que atraviesen
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -279,10 +284,11 @@ public class SegundaEntregaTest {
 	 * problemas al atravesarlas.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -302,10 +308,11 @@ public class SegundaEntregaTest {
 	 * atraviesan sin problemas.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceCloud()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceCloud()));
@@ -325,12 +332,13 @@ public class SegundaEntregaTest {
 	 * corroborar que quede 3 turnos atrapada, sin moverse
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws InvalidPositionException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
-			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
+			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -387,10 +395,11 @@ public class SegundaEntregaTest {
 	 * aéreo, ver que baje su capacidad de ataque
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));

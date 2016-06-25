@@ -4,6 +4,7 @@ import fiuba.algo3.model.bonus.BubbleBonus;
 import fiuba.algo3.model.bonus.CanonBonus;
 import fiuba.algo3.model.bonus.FlashBonus;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
@@ -23,10 +24,11 @@ public class TerceraEntregaTest {
 	 * alterno.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory
 				.getFrenzy(new Position(2, 0));
@@ -173,9 +175,10 @@ public class TerceraEntregaTest {
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerAtrapadoEsteTurnoException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 */
 	@Test
-	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -209,7 +212,7 @@ public class TerceraEntregaTest {
 	}
 
 	@Test
-	public void test02Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test02Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -254,9 +257,10 @@ public class TerceraEntregaTest {
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerAtrapadoEsteTurnoException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 */
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(10, 10);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -301,7 +305,7 @@ public class TerceraEntregaTest {
 
 
 	@Test
-	public void test03Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test03Alterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(20, 20);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -350,7 +354,7 @@ public class TerceraEntregaTest {
 
 
 	@Test
-	public void test03HumanoideAlterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test03HumanoideAlterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(20, 20);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -411,10 +415,11 @@ public class TerceraEntregaTest {
 	 * comportamientos, etc…)
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
+	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 
 		Board board = new Board(20, 20);
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(2, 0));
