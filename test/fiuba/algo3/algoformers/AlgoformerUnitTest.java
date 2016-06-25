@@ -3,6 +3,7 @@ package fiuba.algo3.algoformers;
 import java.util.List;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
+import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +42,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void transformationTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void transformationTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getFrenzy(new Position(0, 0));
 		algoformer.transform();
 		Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode() );
@@ -55,14 +56,14 @@ public class AlgoformerUnitTest {
 	}
 	
 	@Test
-	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void alternalAerialModeTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		Assert.assertTrue(algoformer.isAlternalMode());
 	}
 	
 	@Test
-	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void reduceAttackPowerTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer algoformer = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer.transform();
 		algoformer.reduceAttackPowerFortyPercent();
@@ -89,7 +90,7 @@ public class AlgoformerUnitTest {
 	}
 
 	@Test
-	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
 		algoformer2.transform();

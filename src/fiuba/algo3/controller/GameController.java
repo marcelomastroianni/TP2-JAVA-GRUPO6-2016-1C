@@ -79,7 +79,8 @@ public class GameController {
 				| UsuarioNoSeleccionoAlgoformerException
 				| InvalidPositionException 
 				| AlgoformerAtrapadoEsteTurnoException 
-				| AlgoformerUsadoEsteTurnoException e) {
+				| AlgoformerUsadoEsteTurnoException
+				| AlgoformerCombinandoseEsteTurnoException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.clearSelectedCells();
@@ -111,7 +112,9 @@ public class GameController {
 				| UsuarioNoSeleccionoAlgoformerException
 				| UsuarioNoSeleccionoAlgoformerAQuienDispararException 
 				| InvalidPositionException
-				| AlgoformerUsadoEsteTurnoException e) {
+				| AlgoformerUsadoEsteTurnoException
+				| AlgoformerCombinandoseEsteTurnoException
+				| AlgoformerAtrapadoEsteTurnoException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.checkGameOver();

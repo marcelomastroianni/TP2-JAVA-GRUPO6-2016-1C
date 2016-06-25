@@ -33,7 +33,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testCruzarSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testCruzarSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficieRocosa = new SuperficieRocosa();
 		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeHumanoid());

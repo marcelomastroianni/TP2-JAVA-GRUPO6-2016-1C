@@ -53,7 +53,7 @@ public class PlayerTest {
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(0,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(0,2));
 
-		Algoformer menasor = AlgoFormerFactory.getMenasor(new Position(0,5));
+		Algoformer menasor = AlgoFormerFactory.getMenasor(new Position(0,5),500);
 
 
 		jugador.addAlgoformer(optimusPrime);
@@ -108,7 +108,7 @@ public class PlayerTest {
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
 
-		jugador.combinar(AlgoFormerFactory.getMenasor(new Position(0,0)));
+		jugador.combinar(AlgoFormerFactory.getMenasor(new Position(0,0),500));
 
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));

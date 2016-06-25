@@ -30,7 +30,7 @@ public class SuperficiePantanoTest {
 	}
 
 	@Test
-	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
 		Surface superficiePantano = new SuperficiePantano();
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeHumanoid());

@@ -38,7 +38,7 @@ public class PrimeraEntragaTest {
 	//2. Se ubica un algoformer humanoide se lo transforma, se verifica que se pueda transformar
 	//en ambas direcciones.
 	@Test
-	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, InvalidPositionException {
+	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerCombinandoseEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
@@ -111,7 +111,7 @@ public class PrimeraEntragaTest {
 	//5. Combinaciones en modos de: Ubicar un autobot, ubicar un decepticon, pedir que se
 	//ataquen respetando ( y no ) las distancias verificando los daños ( o no daños ).
 	@Test
-	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException{
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));

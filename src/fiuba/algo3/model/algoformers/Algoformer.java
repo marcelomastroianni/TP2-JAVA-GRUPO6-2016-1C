@@ -115,15 +115,14 @@ public class Algoformer implements Content {
 	}
 
 
-	public void transform() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
-
+	public void transform() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.isTrapped) {
-				this.changeMode();
-		}else {
+		if (this.isTrapped)
 			throw new AlgoformerAtrapadoEsteTurnoException();
-		}
+		if (this.isCombining)
+			throw new AlgoformerCombinandoseEsteTurnoException();
+		this.changeMode();
 		this.haveBeenUsedInTurn = true;
 	}
 
@@ -138,13 +137,10 @@ public class Algoformer implements Content {
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		
 		if (this.isTrapped)
 			throw new AlgoformerAtrapadoEsteTurnoException();
-		
 		if (this.isCombining)
 			throw new AlgoformerCombinandoseEsteTurnoException();
-		
 		Position previous;
 		Position next;
 		Surface nextSurface;
@@ -182,9 +178,13 @@ public class Algoformer implements Content {
 		this.hasCrossPsionicStorm = true;
 	}
 
-	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
+		if (this.isTrapped)
+			throw new AlgoformerAtrapadoEsteTurnoException();
+		if (this.isCombining)
+			throw new AlgoformerCombinandoseEsteTurnoException();
 		try {
 			this.resolveShootingDistance(algoformer);
 			this.checkTeamSide(algoformer);
@@ -352,12 +352,13 @@ public class Algoformer implements Content {
 				board.clearContent(algoformer1.getPosition());
 				board.clearContent(algoformer2.getPosition());
 				board.clearContent(this.position);
+				Integer life = this.life + algoformer1.getLife() + algoformer2.getLife();
 				if(this.team.equals(team.AUTOBOTS)){
-					Algoformer algoformerCombinado = AlgoFormerFactory.getSuperion(this.position);
+					Algoformer algoformerCombinado = AlgoFormerFactory.getSuperion(this.position, life);
 					board.add(algoformerCombinado);
 					return algoformerCombinado;
 				}
-				Algoformer algoformerCombinado = AlgoFormerFactory.getMenasor(this.position);
+				Algoformer algoformerCombinado = AlgoFormerFactory.getMenasor(this.position, life);
 				board.add(algoformerCombinado);
 				return algoformerCombinado;
 			}
@@ -366,29 +367,21 @@ public class Algoformer implements Content {
 
 	public boolean canMerge( Position position2, Position position3){
 		return(((this.position.isInDistance(position2, 1) && this.position.isInDistance(position3, 1)) ||((this.position.isInDistance(position2, 1) && position2.isInDistance(position3, 1)) ||(this.position.isInDistance(position3, 1) && position3.isInDistance(position2, 1)))));
-
 	}
-
-
 
 
 	public void setCombinado() {
 		this.isCombining = true;
 		this.turnsCombined = 3;
-
 	}
 
 
 	public boolean isCombining() {
 		return this.isCombining;
 	}
-	
 
 	public int getTurnsCombining() {
 		return this.turnsCombined;
 	}
-	
-	
-
 
 }

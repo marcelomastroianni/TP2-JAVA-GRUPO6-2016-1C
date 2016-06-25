@@ -24,9 +24,9 @@ public class AlgoFormerFactory {
 		return new Algoformer("Ratchet", humanoidMode,alternalMode,150,position, Algoformer.Team.AUTOBOTS);
 	}
 
-	public static Algoformer getSuperion(Position position) {
+	public static Algoformer getSuperion(Position position, Integer life ) {
 		Mode humanoidMode = new ModeHumanoid(100,2,3);
-		Algoformer algoformer = new Algoformer("Superion", humanoidMode,humanoidMode,100,position, Algoformer.Team.AUTOBOTS);
+		Algoformer algoformer = new Algoformer("Superion", humanoidMode,humanoidMode,life,position, Algoformer.Team.AUTOBOTS);
 		algoformer.setCombinado();
 		return algoformer;
 	}
@@ -51,9 +51,9 @@ public class AlgoFormerFactory {
 		return new Algoformer("Frenzy", humanoidMode,alternalMode,400,position, Algoformer.Team.DECEPTICONS);
 	}
 
-	public static Algoformer getMenasor(Position position) {
+	public static Algoformer getMenasor(Position position, Integer life) {
 		Mode humanoidMode = new ModeHumanoid(115,2,2);
-		Algoformer algoformer = new Algoformer("Menasor", humanoidMode,humanoidMode,400,position, Algoformer.Team.DECEPTICONS);
+		Algoformer algoformer = new Algoformer("Menasor", humanoidMode,humanoidMode,life,position, Algoformer.Team.DECEPTICONS);
 		algoformer.setCombinado();
 		return algoformer;
 	}

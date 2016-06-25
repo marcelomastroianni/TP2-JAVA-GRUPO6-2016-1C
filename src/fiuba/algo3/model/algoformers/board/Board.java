@@ -52,7 +52,7 @@ public class Board {
 		matrix.get(position).add(new Nothing(position));
 	}
 
-	public void remove(Content content) throws InvalidPositionException {
+	public void remove(Content content) {
 		matrix.get(content.getPosition()).removeContent();
 	}
 
