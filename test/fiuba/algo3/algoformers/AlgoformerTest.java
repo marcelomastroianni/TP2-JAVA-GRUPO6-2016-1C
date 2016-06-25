@@ -393,6 +393,23 @@ public class AlgoformerTest {
 		megatron.transform();
 	}
 
+	@Test(expected=AlgoformerCombinandoseEsteTurnoException.class)
+	public void testAlgoformeNoPuedeTransformarseSiEstaCombinandose() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+		Board board = new Board(10, 10);
+		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,1));
+		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,1));
+		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,1));
+
+		board.add(megatron);
+		board.add(bonecrusher);
+		board.add(frenzy);
+
+		megatron.trap(3);
+		Algoformer menasor = megatron.getMergedAlgoformer(board,bonecrusher,frenzy);
+		menasor.notifyNextTurn();
+		menasor.transform();
+	}
+
 	@Test
 	public void testIsTrapped() throws InvalidPositionException {
 		Board board = new Board(10, 10);
