@@ -45,7 +45,7 @@ public class GameController {
 		this.view.updateAction(this.action);
 	}
 
-	public void selectCell(Position position){
+	public void selectCell(Position position) throws InvalidPositionException, MuyLejosException{
 
 		try{
 			this.algoformerSelected = (Algoformer) this.game.getBoard().getContent(position);
@@ -121,7 +121,7 @@ public class GameController {
 				positionSelected1 = algoformers.get(0).getPosition();
 				positionSelected2 = algoformers.get(1).getPosition();
 				positionSelected3 = algoformers.get(2).getPosition();
-				game.getActivePlayer().mergeTransformers();
+				game.combinar();
 				if (game.isOver()){
     				this.clearSelectedCells();
     	    		this.view.update();
@@ -163,7 +163,12 @@ public class GameController {
                 public void handle(MouseEvent t) {
                 	int x_celda = (int) (t.getX() / ViewConstants.CELL_WIDTH);
                 	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);
-					selectCell(new Position(x_celda,y_celda));
+					try {
+						selectCell(new Position(x_celda,y_celda));
+					} catch (InvalidPositionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
             });
 	}

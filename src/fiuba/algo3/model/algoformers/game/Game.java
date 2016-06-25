@@ -1,5 +1,10 @@
 package fiuba.algo3.model.algoformers.game;
 
+
+
+
+import java.util.List;
+
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
@@ -239,6 +244,25 @@ public class Game {
 		algoformer.transform();
 	}
 
+	public void combinar() throws InvalidPositionException, MuyLejosException {
+		List<Algoformer> algoformersList =this.getActivePlayer().getAlgoformers();
+		try{
+			Algoformer algoformer1 = algoformersList.get(0);
+			Algoformer algoformer2 = algoformersList.get(1);
+			Algoformer algoformer3 = algoformersList.get(2);
+			Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer1, algoformer2);
+			this.getActivePlayer().notifyDeadAlgoformer(algoformer1);
+			this.getActivePlayer().notifyDeadAlgoformer(algoformer2);
+			this.getActivePlayer().notifyDeadAlgoformer(algoformer3);
+			this.getActivePlayer().addAlgoformer(combinado);
+		}
+		catch(MuyLejosException |IndexOutOfBoundsException e){
+			System.out.print(e.getMessage());
+
+		}
+
+	}
+
 	public void notifyPlayerWin(Player player) {
 		this.winner = player;
 		this.isOver = true;
@@ -252,5 +276,7 @@ public class Game {
 		}
 		this.isOver = true;
 	}
+
+
 
 }

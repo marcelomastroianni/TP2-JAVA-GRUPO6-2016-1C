@@ -5,7 +5,9 @@ import java.util.List;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
+import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.MuyLejosException;
 
 public class Player {
@@ -63,19 +65,4 @@ public class Player {
 		return this.name;
 	}
 
-	public void mergeTransformers() {
-		try{
-			Algoformer algoformer1 = this.algoformersList.get(0);
-			Algoformer algoformer2 = this.algoformersList.get(1);
-			Algoformer algoformer3 = this.algoformersList.get(2);
-
-			Algoformer mergedAlgoformer = algoformer1.getMergedAlgoformer(algoformer2, algoformer3);
-			this.algoformersList = new ArrayList<Algoformer>();
-			this.addAlgoformer(mergedAlgoformer);
-		}
-		catch(MuyLejosException | IndexOutOfBoundsException e){
-			System.out.print(e.getMessage());
-
-		}
-	}
 }

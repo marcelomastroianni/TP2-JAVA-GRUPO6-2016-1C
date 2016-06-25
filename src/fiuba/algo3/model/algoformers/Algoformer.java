@@ -321,13 +321,17 @@ public class Algoformer implements Content {
 	}
 
 
-	public Algoformer getMergedAlgoformer(Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosException {
-		if(this.position.isInDistance(algoformer1.getPosition(), 1) && this.position.isInDistance(algoformer2.getPosition(), 1)){
+	public Algoformer getMergedAlgoformer( Board board, Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosException, InvalidPositionException {
+			board.clearContent(algoformer1.getPosition());
+			board.clearContent(algoformer2.getPosition());
+			board.clearContent(this.position);
 			if(this.team.equals(team.AUTOBOTS)){
+				board.add(AlgoFormerFactory.getSuperion(this.position));
 				return AlgoFormerFactory.getSuperion(this.position);
 			}
+			board.add(AlgoFormerFactory.getMenasor(this.position));
 			return AlgoFormerFactory.getMenasor(this.position);
-		}
-		throw new MuyLejosException("Los algoformers están muy lejos para convinarse. Deben estar a una posicion de distancia");
 	}
+
+
 }
