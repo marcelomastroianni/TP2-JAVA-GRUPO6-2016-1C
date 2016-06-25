@@ -246,18 +246,12 @@ public class Game {
 
 	public void combinar() throws InvalidPositionException, MuyLejosException {
 		List<Algoformer> algoformersList =this.getActivePlayer().getAlgoformers();
-		try{
-			Algoformer algoformer1 = algoformersList.get(0);
-			Algoformer algoformer2 = algoformersList.get(1);
-			Algoformer algoformer3 = algoformersList.get(2);
-			Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer2, algoformer3);
-			combinado.setPlayer(this.getActivePlayer());
-			this.getActivePlayer().combinar(combinado);
-		}
-		catch(MuyLejosException |IndexOutOfBoundsException e){
-			System.out.print(e.getMessage());
-
-		}
+		Algoformer algoformer1 = algoformersList.get(0);
+		Algoformer algoformer2 = algoformersList.get(1);
+		Algoformer algoformer3 = algoformersList.get(2);
+		Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer2, algoformer3);
+		combinado.setPlayer(this.getActivePlayer());
+		this.getActivePlayer().combinar(combinado);
 
 	}
 

@@ -88,11 +88,14 @@ public class GameController {
 
 	public void executeActionMover(){
 		try {
-
 			this.game.moverAlgoformer( positionSelected1, positionSelected2);
-		} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
-				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException e) {
+		} catch (Exception e){
 			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("oups..");
+			alert.setContentText(e.getMessage());
+			alert.show();
+
 		}
 		this.checkGameOver();
 		this.clearAction();
@@ -115,7 +118,16 @@ public class GameController {
 	}
 
 	public void executeActionCombinar() throws MuyLejosException, InvalidPositionException{
-		this.game.combinar();
+		try{
+			this.game.combinar();
+		} catch (Exception e){
+			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("oups..");
+			alert.setContentText(e.getMessage());
+			alert.show();
+
+		}
 		this.clearAction();
 		this.clearSelectedCells();
 		this.view.update();
@@ -156,9 +168,10 @@ public class GameController {
                 	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);
 					try {
 						selectCell(new Position(x_celda,y_celda));
-					} catch (InvalidPositionException e) {
+					} catch (Exception e) {
+						e.printStackTrace();
 						Alert alert = new Alert(AlertType.INFORMATION);
-				        alert.setTitle("oups..");
+				        alert.setTitle("oups.."+e);
 				        String mensaje = "posicion Invalida";
 				        alert.setContentText(mensaje);
 				        alert.show();
