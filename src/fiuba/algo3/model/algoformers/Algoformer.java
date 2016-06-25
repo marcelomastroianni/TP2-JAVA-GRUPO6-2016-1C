@@ -32,7 +32,7 @@ public class Algoformer implements Content {
 	private boolean isFlash;
 	private boolean isDobleDamage;
 	private boolean isTrapped;
-	private boolean isCombined;
+	private boolean isCombining;
 
 	private Player player;
 
@@ -56,7 +56,7 @@ public class Algoformer implements Content {
 		isFlash = false;
 		isDobleDamage = false;
 		isTrapped = false;
-		isCombined = false;
+		isCombining = false;
 
 		turnsTrapped = 0;
 		turnsDobleDamage = 0;
@@ -137,7 +137,7 @@ public class Algoformer implements Content {
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
-		if (!this.isTrapped && !isCombined) {
+		if (!this.isTrapped && !this.isCombining) {
 			Position previous;
 			Position next;
 			Surface nextSurface;
@@ -237,10 +237,10 @@ public class Algoformer implements Content {
 				this.isTrapped = false;
 			}
 		}
-		if (isCombined) {
+		if (isCombining) {
 			this.turnsCombined-= 1;
 			if (this.turnsCombined.equals(new Integer(0))) {
-				this.isCombined = false;
+				this.isCombining = false;
 			}
 		}
 		if (isDobleDamage) {
@@ -367,15 +367,22 @@ public class Algoformer implements Content {
 
 
 	public void setCombinado() {
-		this.isCombined = true;
+		this.isCombining = true;
 		this.turnsCombined = 3;
 
 	}
 
 
-	public boolean isCombined() {
-		return isCombined;
+	public boolean isCombining() {
+		return this.isCombining;
 	}
+	
+
+	public int getTurnsCombining() {
+		return this.turnsCombined;
+	}
+	
+	
 
 
 }

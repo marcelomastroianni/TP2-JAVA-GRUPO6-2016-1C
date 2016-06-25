@@ -37,6 +37,7 @@ public class GameView  {
 	Label lblAlgoformerSpeed;
 	Label lblAlgoformerPosition;
 	Label lblAlgoformerStateTrapped;
+	Label lblAlgoformerStateCombining;
 	Label lblAlgoformerBonusTitle;
 	Label lblAlgoformerBonusDobleCannon;
 	Label lblAlgoformerBonusFlash;
@@ -91,6 +92,12 @@ public class GameView  {
 				this.lblAlgoformerStateTrapped.setText("");
 			}
 
+			if (algoformer.isCombining()){
+				this.lblAlgoformerStateCombining.setText("Combining (" + Integer.toString(algoformer.getTurnsCombining()) + " turns left)." );
+			}else{
+				this.lblAlgoformerStateCombining.setText("");
+			}
+			
 			if (algoformer.isBonus()){
 				this.lblAlgoformerBonusTitle.setText("Bonus:");
 			}else{
@@ -130,6 +137,7 @@ public class GameView  {
 		this.lblAlgoformerSpeed.setText("");
 		this.lblAlgoformerPosition.setText("");
 		this.lblAlgoformerStateTrapped.setText("");
+		this.lblAlgoformerStateCombining.setText("");
 		this.lblAlgoformerBonusTitle.setText("");
 		this.lblAlgoformerBonusDobleCannon.setText("");
 		this.lblAlgoformerBonusFlash.setText("");
@@ -224,6 +232,10 @@ public class GameView  {
 		alert.setHeaderText("Felicitaciones " + winner.getName() + " has ganado!!!");
 		alert.setContentText("");
 		alert.showAndWait();
+	}
+
+	public void setLblAlgoformerStateCombining(Label lblAlgoformerStateCombining) {
+		this.lblAlgoformerStateCombining = lblAlgoformerStateCombining;		
 	}
 
 

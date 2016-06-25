@@ -60,6 +60,7 @@ public class GameContainer extends BorderPane {
 	private Label lblException;
 
 	private Label lblAlgoformerStateTrapped;
+	private Label lblAlgoformerStateCombining;
 	private Label lblAlgoformerBonusTitle;
 	private Label lblAlgoformerBonusDobleCannon;
 	private Label lblAlgoformerBonusFlash;
@@ -114,6 +115,7 @@ public class GameContainer extends BorderPane {
 		this.lblAlgoformerPosition = new Label("");
 		this.lblException = new Label("");
 		this.lblAlgoformerStateTrapped = new Label("");
+		this.lblAlgoformerStateCombining = new Label("");
 		this.lblAlgoformerBonusTitle = new Label("");
 		this.lblAlgoformerBonusDobleCannon = new Label("");
 		this.lblAlgoformerBonusFlash = new Label("");
@@ -175,6 +177,7 @@ public class GameContainer extends BorderPane {
 										this.lblAlgoformerSpeed,
 										this.lblAlgoformerPosition,
 										this.lblAlgoformerStateTrapped,
+										this.lblAlgoformerStateCombining,
 										this.lblAlgoformerBonusTitle,
 										this.lblAlgoformerBonusDobleCannon,
 										this.lblAlgoformerBonusFlash,
@@ -221,6 +224,7 @@ public class GameContainer extends BorderPane {
 		this.gameView.setLblAlgoformerBonusDobleCannon(this.lblAlgoformerBonusDobleCannon);
 		this.gameView.setLblAlgoformerBonusInmaculateBubble(this.lblAlgoformerBonusInmaculateBubble);
 		this.gameView.setLblAlgoformerStateTrapped(this.lblAlgoformerStateTrapped);
+		this.gameView.setLblAlgoformerStateCombining(this.lblAlgoformerStateCombining);		
 		this.gameView.updateTurn();
 		this.gameView.setExceptionMessage(this.lblException);
 	}
