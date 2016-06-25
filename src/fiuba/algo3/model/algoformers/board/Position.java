@@ -95,8 +95,10 @@ public class Position {
 		return "(" + Integer.toString(X)  + "," + Integer.toString(Y) + ")";
 	}
 
+
+
 	public boolean canMerge(Position position2, Position position3){
-		return(((this.isInDistance(position2, 1) && this.isInDistance(position3, 1)) ||((this.isInDistance(position2, 1) && this.isInDistance(position3, 2)) ||(this.isInDistance(position2, 2) && this.isInDistance(position3, 1)))));
+		return(((this.isInDistance(position2, 1) && this.isInDistance(position3, 1)) ||((this.isInDistance(position2, 1) && position2.isInDistance(position3, 1)) ||(this.isInDistance(position3, 1) && position3.isInDistance(position2, 1)))));
 
 	}
 
