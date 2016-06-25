@@ -348,6 +348,63 @@ public class TerceraEntregaTest {
 
 	}
 
+
+	@Test
+	public void test03HumanoideAlterno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+
+		Board board = new Board(20, 20);
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
+		Bonus flash = new FlashBonus(new Position(0,1));
+
+		board.add(algoformer1);
+		board.add(algoformer2);
+		board.add(flash);
+
+
+		algoformer1.move(new Position(0,1), board);
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//primer turno
+		algoformer1.move(new Position(6,1), board);
+		Assert.assertEquals(new Position(6,1), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+		//segundo turno
+		algoformer1.transform();
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//tercer turno
+		algoformer1.move(new Position(6,16), board);
+		Assert.assertEquals(new Position(6,16), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//cuarto turno
+		algoformer1.move(new Position(6,1), board);
+		Assert.assertEquals(new Position(6,11), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//quinto turno
+		algoformer1.transform();
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+		//sexto turno
+		algoformer1.move(new Position(0,0), board);
+		Assert.assertEquals(new Position(4,9), algoformer1.getPosition());
+		algoformer1.notifyNextTurn();
+		algoformer2.notifyNextTurn();
+
+
+	}
+
+
 	/**
 	 * 4. Test boundary cases (Si ya tiene un bonus de un tipo que no pueda
 	 * agarrar otro del mismo tipo, Atrapar 2 bonus distintos verifcar ambos
