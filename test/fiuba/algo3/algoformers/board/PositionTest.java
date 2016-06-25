@@ -129,60 +129,6 @@ public class PositionTest {
 
 	}
 
-	@Test
-	public void testCanMergeVerticalLine(){
-		Position position1 = new Position(0,0);
-		Position position2 = new Position(0,1);
-		Position position3 = new Position(0,2);
-		Assert.assertTrue(position1.canMerge(position2, position3));
-		Assert.assertTrue(position2.canMerge(position1, position3));
-		Assert.assertTrue(position3.canMerge(position1, position2));
-
-	}
-
-	@Test
-	public void testCanMergeHorizontalLine(){
-		Position position1 = new Position(0,0);
-		Position position2 = new Position(1,0);
-		Position position3 = new Position(2,0);
-		Assert.assertTrue(position1.canMerge(position2, position3));
-		Assert.assertTrue(position2.canMerge(position1, position3));
-		Assert.assertTrue(position3.canMerge(position1, position2));
-
-	}
-
-
-	@Test
-	public void testCanMergeInL(){
-		Position position1 = new Position(0,0);
-		Position position2 = new Position(1,0);
-		Position position3 = new Position(1,1);
-		Assert.assertTrue(position1.canMerge(position2, position3));
-		Assert.assertTrue(position2.canMerge(position1, position3));
-		Assert.assertTrue(position3.canMerge(position1, position2));
-
-	}
-
-	@Test
-	public void testCantMergeDistance2(){
-		Position position1 = new Position(0,0);
-		Position position2 = new Position(1,0);
-		Position position3 = new Position(3,0);
-		Assert.assertFalse(position1.canMerge(position2, position3));
-		Assert.assertFalse(position2.canMerge(position1, position3));
-		Assert.assertFalse(position3.canMerge(position1, position2));
-
-	}
-	@Test
-	public void testCantMergeDistance2inL(){
-		Position position1 = new Position(0,0);
-		Position position2 = new Position(1,0);
-		Position position3 = new Position(1,2);
-		Assert.assertFalse(position1.canMerge(position2, position3));
-		Assert.assertFalse(position2.canMerge(position1, position3));
-		Assert.assertFalse(position3.canMerge(position1, position2));
-
-	}
 
 
 

@@ -242,5 +242,102 @@ public class MansorAndSuperionTest {
 	}
 
 
+	@Test
+	public void testCanMergeVerticalLine(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(0,1);
+		Position position3 = new Position(0,2);
+		Assert.assertTrue(optimusPrime.canMerge(position2, position3));
+		Assert.assertTrue(bumblebee.canMerge(position1, position3));
+		Assert.assertTrue(ratchet.canMerge(position1, position2));
+
+	}
+
+	@Test
+	public void testCanMergeHorizontalLine(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(2,0);
+
+		Algoformer algo1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algo2 = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		Algoformer algo3 = AlgoFormerFactory.getRatchet(new Position(2,0));
+
+		Assert.assertTrue(algo1.canMerge(position2, position3));
+		Assert.assertTrue(algo2.canMerge(position1, position3));
+		Assert.assertTrue(algo3.canMerge(position1, position2));
+
+	}
+
+
+	@Test
+	public void testCanMergeInL(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(1,1);
+
+		Algoformer algo1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algo2 = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		Algoformer algo3 = AlgoFormerFactory.getRatchet(new Position(1,1));
+
+		Assert.assertTrue(algo1.canMerge(position2, position3));
+		Assert.assertTrue(algo2.canMerge(position1, position3));
+		Assert.assertTrue(algo3.canMerge(position1, position2));
+
+	}
+
+	@Test
+	public void testCantMergeDistance2(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(3,0);
+		Algoformer algo1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algo2 = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		Algoformer algo3 = AlgoFormerFactory.getRatchet(new Position(3,0));
+
+		Assert.assertFalse(algo1.canMerge(position2, position3));
+		Assert.assertFalse(algo2.canMerge(position1, position3));
+		Assert.assertFalse(algo3.canMerge(position1, position2));
+
+	}
+	@Test
+	public void testCantMergeDistance2inL(){
+		Position position1 = new Position(0,0);
+		Position position2 = new Position(1,0);
+		Position position3 = new Position(1,2);
+
+		Algoformer algo1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
+		Algoformer algo2 = AlgoFormerFactory.getBumblebee(new Position(1,0));
+		Algoformer algo3 = AlgoFormerFactory.getRatchet(new Position(1,2));
+
+		Assert.assertFalse(algo1.canMerge(position2, position3));
+		Assert.assertFalse(algo2.canMerge(position1, position3));
+		Assert.assertFalse(algo3.canMerge(position1, position2));
+
+	}
+
+	@Test
+	public void cantMerge() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosException{
+		//primer turno jugador1
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		game.moverAlgoformer(new Position(0,2), new Position(0,3));
+		game.nextTurn();
+
+		//primer turno jugador 2
+		Assert.assertEquals(game.getActivePlayer(),player2);
+		game.nextTurn();
+
+		//primer turno jugador1
+		Assert.assertEquals(game.getActivePlayer(),player1);
+		game.combinar();
+
+		Assert.assertEquals(player1.getAlgoformers().size(), 3);
+		Assert.assertTrue(board.getContent(new Position(0,0)) instanceof Algoformer);
+		Assert.assertTrue(board.getContent(new Position(0,1)) instanceof Algoformer);
+		Assert.assertTrue(board.getContent(new Position(0,3)) instanceof Algoformer);
+	}
+
+
+
 
 }
