@@ -1,12 +1,8 @@
 package fiuba.algo3.controller;
 
-import java.util.List;
-
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
-import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.*;
 import fiuba.algo3.view.AlgoformerApp;
 import fiuba.algo3.view.GameView;
@@ -18,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 public class GameController {
 	private Position positionSelected1;
 	private Position positionSelected2;
-	private Position positionSelected3;
 	private Action action = Action.SIN_ACCION;
 	private Game game;
 	private GameView view;
@@ -37,7 +32,7 @@ public class GameController {
 
 	public void selectAction(Action action){
 		this.action = action;
-		this.view.updateAction(this.action);
+		this.view.updateAction(this.action);	
 	}
 
 	private void clearAction(){
@@ -45,8 +40,7 @@ public class GameController {
 		this.view.updateAction(this.action);
 	}
 
-	public void selectCell(Position position) throws InvalidPositionException, MuyLejosException{
-
+	private void selectAlgoformer(Position position){
 		try{
 			this.algoformerSelected = (Algoformer) this.game.getBoard().getContent(position);
 			this.view.updateAlgoformerSelected(algoformerSelected);
@@ -54,86 +48,76 @@ public class GameController {
 			this.algoformerSelected = null;
 			this.view.clearAlgoformerSelected();
 		}
-
+	}
+	
+	public void selectCell(Position position) throws InvalidPositionException, MuyLejosException{
+		this.selectAlgoformer(position);
 		if (this.action != Action.SIN_ACCION){
 			if (this.positionSelected1 == null){
 	    		this.positionSelected1 =position;
 	    		this.view.toggleSelectCell(this.positionSelected1);
-
 	    		if (this.action == Action.TRANSFORMARSE){
-	    			try {
-						game.transformaraAlgoformer(positionSelected1);
-					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-						 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException | AlgoformerUsadoEsteTurnoException e) {
-						e.printStackTrace();
-					}
-	    			this.clearSelectedCells();
-	    			this.clearAction();
-	    			this.view.updateAlgoformerSelected(algoformerSelected);
+	    			this.executeActionTransformar();
 	    		}
-
 	    	}else if (this.positionSelected2 == null){
 	    		this.positionSelected2 =position;
 	    		this.view.toggleSelectCell(this.positionSelected2);
-
 	    		if (this.action == Action.MOVERSE){
-	    			try {
-
-	    				game.moverAlgoformer( positionSelected1, positionSelected2);
-	    			} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
-	    					| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException e) {
-	    				e.printStackTrace();
-	    			}
-
-	    			if (game.isOver()){
-	    				this.clearSelectedCells();
-	    	    		this.view.update();
-	    				this.view.showGameFinish(game.getWinner());
-	    				this.app.setChooseTeamScene();
-	    			}
-
-	    			this.clearAction();
+	    			this.executeActionMover();
 	    		}
-
 	    		if (this.action == Action.ATACAR){
-					try {
-						game.dispararaAlgoformer(positionSelected1, positionSelected2);
-					} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
-							| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
-							| AlgoformerUsadoEsteTurnoException e) {
-						e.printStackTrace();
-					}
-					if (game.isOver()){
-	    				this.clearSelectedCells();
-	    	    		this.view.update();
-	    				this.view.showGameFinish(game.getWinner());
-	    				this.app.setChooseTeamScene();
-	    			}
-					this.clearAction();
-	    		}
-
-	    		this.clearSelectedCells();
-	    		this.view.update();
+					this.executeActionAtacar();
+	    		}	  
 	    	}
-
-			if(this.action == Action.COMBINAR){
-				List<Algoformer> algoformers = game.getActivePlayer().getAlgoformers();
-				positionSelected1 = algoformers.get(0).getPosition();
-				positionSelected2 = algoformers.get(1).getPosition();
-				positionSelected3 = algoformers.get(2).getPosition();
-				game.combinar();
-				if (game.isOver()){
-    				this.clearSelectedCells();
-    	    		this.view.update();
-    				this.view.showGameFinish(game.getWinner());
-    				this.app.setChooseTeamScene();
-    			}
-				this.clearAction();
-				this.clearSelectedCells();
-				this.view.update();
-			}
 		}
     }
+	
+	public void executeActionTransformar(){
+		try {
+			this.game.transformaraAlgoformer(positionSelected1);
+		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
+			 | InvalidPositionException | AlgoformerAtrapadoEsteTurnoException | AlgoformerUsadoEsteTurnoException e) {
+			e.printStackTrace();
+		}
+		this.clearSelectedCells();
+		this.clearAction();
+		this.view.updateAlgoformerSelected(algoformerSelected);
+	}
+	
+	public void executeActionMover(){
+		try {
+
+			this.game.moverAlgoformer( positionSelected1, positionSelected2);
+		} catch (UsuarioNoSeleccionoAlgoformerException | AlgoformerAtrapadoEsteTurnoException
+				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException | InvalidPositionException | AlgoformerUsadoEsteTurnoException e) {
+			e.printStackTrace();
+		}
+		this.checkGameOver();
+		this.clearAction();
+		this.clearSelectedCells();
+		this.view.update();
+	}
+	
+	public void executeActionAtacar(){
+		try {
+			this.game.dispararaAlgoformer(positionSelected1, positionSelected2);
+		} catch (JugadorNoPuedeJugarCuandoNoEsSuTurnoException | UsuarioNoSeleccionoAlgoformerException
+				| UsuarioNoSeleccionoAlgoformerAQuienDispararException | InvalidPositionException
+				| AlgoformerUsadoEsteTurnoException e) {
+			e.printStackTrace();
+		}
+		this.checkGameOver();
+		this.clearAction();
+		this.clearSelectedCells();
+		this.view.update();
+	}
+	
+	public void executeActionCombinar() throws MuyLejosException, InvalidPositionException{
+		this.game.combinar();
+		this.clearAction();
+		this.clearSelectedCells();
+		this.view.update();		
+	}
 
 	private void clearSelectedCells(){
 		if (this.positionSelected1!=null){
@@ -144,12 +128,17 @@ public class GameController {
 			this.view.toggleSelectCell(this.positionSelected2);
 			this.positionSelected2 =null;
 		}
-		if (this.positionSelected3!=null){
-			this.view.toggleSelectCell(this.positionSelected3);
-			this.positionSelected3 =null;
-		}
 	}
 
+	public void checkGameOver(){
+		if (this.game.isOver()){
+			this.clearSelectedCells();
+    		this.view.update();
+			this.view.showGameFinish(game.getWinner());
+			this.app.setChooseTeamScene();
+		}
+	}
+	
 	public void nextTurn() throws InvalidPositionException {
 		this.clearSelectedCells();
 		this.game.nextTurn();
@@ -166,7 +155,6 @@ public class GameController {
 					try {
 						selectCell(new Position(x_celda,y_celda));
 					} catch (InvalidPositionException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
                 }
