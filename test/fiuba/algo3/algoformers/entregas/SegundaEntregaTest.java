@@ -27,7 +27,7 @@ public class SegundaEntregaTest {
 	 * sus modos la atraviesen sin problemas
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -44,14 +44,14 @@ public class SegundaEntregaTest {
 		Assert.assertTrue("optimus deberia estar en la posicion (1,5)",
 				optimus.getPosition().equals(new Position(1, 5)));
 		optimus.move(new Position(3, 5), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue("optimus deberia estar en la posicion (3,5)",
 				optimus.getPosition().equals(new Position(3, 5)));
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(5, 5), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue("optimus deberia estar en la posicion (5,5)",
 				optimus.getPosition().equals(new Position(5, 5)));
 		tablero.remove(optimus);
@@ -62,14 +62,14 @@ public class SegundaEntregaTest {
 		Assert.assertTrue("bumblebee deberia estar en la posicion (1,6)",
 				bumblebee.getPosition().equals(new Position(1, 6)));
 		bumblebee.move(new Position(3, 6), tablero);
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue("bumblebee deberia estar en la posicion (3,6)",
 				bumblebee.getPosition().equals(new Position(3, 6)));
 		bumblebee.transform();
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue(bumblebee.isAlternalMode());
 		bumblebee.move(new Position(5, 6), tablero);
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue("bumblebee deberia estar en la posicion (5,6)",
 				bumblebee.getPosition().equals(new Position(5, 6)));
 		tablero.remove(bumblebee);
@@ -80,14 +80,14 @@ public class SegundaEntregaTest {
 		Assert.assertTrue("ratchet deberia estar en la posicion (1,7)",
 				ratchet.getPosition().equals(new Position(1, 7)));
 		ratchet.move(new Position(2, 7), tablero);
-		ratchet.notifyNextTurn();
+		ratchet.notifyNextTurn(tablero);
 		Assert.assertTrue("ratchet deberia estar en la posicion (2,7)",
 				ratchet.getPosition().equals(new Position(2, 7)));
 		ratchet.transform();
-		ratchet.notifyNextTurn();
+		ratchet.notifyNextTurn(tablero);
 		Assert.assertTrue(ratchet.isAlternalMode());
 		ratchet.move(new Position(5, 7), tablero);
-		ratchet.notifyNextTurn();
+		ratchet.notifyNextTurn(tablero);
 		Assert.assertTrue("ratchet deberia estar en la posicion (5,7)",
 				ratchet.getPosition().equals(new Position(5, 7)));
 		tablero.remove(ratchet);
@@ -98,14 +98,14 @@ public class SegundaEntregaTest {
 		Assert.assertTrue("megatron deberia estar en la posicion (1,4)",
 				megatron.getPosition().equals(new Position(1, 4)));
 		megatron.move(new Position(2, 4), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertTrue("megatron deberia estar en la posicion (2,4)",
 				megatron.getPosition().equals(new Position(2, 4)));
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertTrue(megatron.isAlternalMode());
 		megatron.move(new Position(5, 4), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertTrue("megatron deberia estar en la posicion (5,4)",
 				megatron.getPosition().equals(new Position(5, 4)));
 		tablero.remove(megatron);
@@ -116,14 +116,14 @@ public class SegundaEntregaTest {
 		Assert.assertTrue("bonecrusher deberia estar en la posicion (1,3)",
 				bonecrusher.getPosition().equals(new Position(1, 3)));
 		bonecrusher.move(new Position(2, 3), tablero);
-		bonecrusher.notifyNextTurn();
+		bonecrusher.notifyNextTurn(tablero);
 		Assert.assertTrue("bonecrusher deberia estar en la posicion (2,3)",
 				bonecrusher.getPosition().equals(new Position(2, 3)));
 		bonecrusher.transform();
-		bonecrusher.notifyNextTurn();
+		bonecrusher.notifyNextTurn(tablero);
 		Assert.assertTrue(bonecrusher.isAlternalMode());
 		bonecrusher.move(new Position(5, 3), tablero);
-		bonecrusher.notifyNextTurn();
+		bonecrusher.notifyNextTurn(tablero);
 		Assert.assertTrue("bonecrusher deberia estar en la posicion (5,3)",
 				bonecrusher.getPosition().equals(new Position(5, 3)));
 		tablero.remove(bonecrusher);
@@ -133,13 +133,13 @@ public class SegundaEntregaTest {
 		Assert.assertTrue(frenzy.isHumanoidMode());
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,8)", frenzy.getPosition().equals(new Position(1, 8)));
 		frenzy.move(new Position(3, 8), tablero);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(tablero);
 		Assert.assertTrue("frenzy deberia estar en la posicion (3,8)", frenzy.getPosition().equals(new Position(3, 8)));
 		frenzy.transform();
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(tablero);
 		Assert.assertTrue(frenzy.isAlternalMode());
 		frenzy.move(new Position(5, 8), tablero);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(tablero);
 		Assert.assertTrue("frenzy deberia estar en la posicion (5,8)", frenzy.getPosition().equals(new Position(5, 8)));
 		tablero.remove(frenzy);
 	}
@@ -149,7 +149,7 @@ public class SegundaEntregaTest {
 	 * atravesar.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -159,7 +159,7 @@ public class SegundaEntregaTest {
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(3, 3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (3,3)",new Nothing(new Position(3,3)),  tablero.getContent(new Position(3, 3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",
@@ -170,10 +170,10 @@ public class SegundaEntregaTest {
 				optimus);
 
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(3, 3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",
 				optimus.getPosition().equals(new Position(2, 3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",
@@ -186,7 +186,7 @@ public class SegundaEntregaTest {
 	 * terrestres tardan el doble que rocoso
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -198,10 +198,10 @@ public class SegundaEntregaTest {
 		tablero.add(optimus);
 
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(10, 3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",
 				optimus.getPosition().equals(new Position(2, 3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (5,3)",
@@ -211,10 +211,10 @@ public class SegundaEntregaTest {
 		tablero.add(bumblebee);
 		tablero.addCell(new Cell(new Position(3, 8), new SuperficiePantano()));
 		bumblebee.transform();
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue(bumblebee.isAlternalMode());
 		bumblebee.move(new Position(10, 8), tablero);
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,8)",
 				bumblebee.getPosition().equals(new Position(3, 8)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (6,8)",
@@ -227,7 +227,7 @@ public class SegundaEntregaTest {
 	 * atraviesan sin problemas
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -236,10 +236,10 @@ public class SegundaEntregaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertTrue(megatron.isAlternalMode());
 		megatron.move(new Position(4, 3), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",
 				megatron.getPosition().equals(new Position(3, 3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",
@@ -251,7 +251,7 @@ public class SegundaEntregaTest {
 	 * pierden un 5% de sus vida por cada casillero de estos que atraviesen
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -262,14 +262,14 @@ public class SegundaEntregaTest {
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
 		tablero.add(optimus);
 		optimus.move(new Position(3, 0), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertEquals("su vida se ve reducida 5% por cada casillero", 451, optimus.getLife());
 
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 
 		optimus.move(new Position(1, 0), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertEquals("su vida se ve reducida 5% por un casillero de espinas", 428, optimus.getLife());
 
 	}
@@ -279,7 +279,7 @@ public class SegundaEntregaTest {
 	 * problemas al atravesarlas.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -290,10 +290,10 @@ public class SegundaEntregaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0, 0));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 
 		megatron.move(new Position(3, 0), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals(550, megatron.getLife());
 	}
 
@@ -302,7 +302,7 @@ public class SegundaEntregaTest {
 	 * atraviesan sin problemas.
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -313,10 +313,10 @@ public class SegundaEntregaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0, 0));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Position newPosition = new Position(3, 0);
 		megatron.move(newPosition, tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals(newPosition, megatron.getPosition());
 	}
 
@@ -325,7 +325,7 @@ public class SegundaEntregaTest {
 	 * corroborar que quede 3 turnos atrapada, sin moverse
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws InvalidPositionException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
@@ -340,7 +340,7 @@ public class SegundaEntregaTest {
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer megatron = algoformersJugador1.get(0);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(game.getBoard());
 
 		// Turno jugador 1 se mueve a la nebulosa andromeda
 		game.moverAlgoformer( new Position(0, 0), new Position(1, 0));
@@ -387,7 +387,7 @@ public class SegundaEntregaTest {
 	 * aéreo, ver que baje su capacidad de ataque
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerUsadoEsteTurnoException
-	 * @throws GameOverException 
+	 * @throws GameOverException
 	 */
 	@Test
 	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
@@ -398,10 +398,10 @@ public class SegundaEntregaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0, 0));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 
 		megatron.move(new Position(2, 0), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals(
 				"el algoformer alterno aereo reduce su poder de ataque un 40% al pasar por una tormenta psionica",
 				33, megatron.getAttack());

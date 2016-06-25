@@ -24,22 +24,22 @@ import fiuba.algo3.model.surfaces.Surface;
 public class SuperficieRocosaTest {
 
 	@Test
-	public void testCrearSuperficieRocosa(){		
-		Surface superficieRocosa = new SuperficieRocosa();		
-		Cell casillero = new Cell(new Position(0,0),superficieRocosa);		
-		Assert.assertEquals("La superficie del casillero deberia ser Superficie Rocosa", superficieRocosa, casillero.getSurface());		
+	public void testCrearSuperficieRocosa(){
+		Surface superficieRocosa = new SuperficieRocosa();
+		Cell casillero = new Cell(new Position(0,0),superficieRocosa);
+		Assert.assertEquals("La superficie del casillero deberia ser Superficie Rocosa", superficieRocosa, casillero.getSurface());
 	}
-	
+
 	@Test
 	public void testCruzarSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
-		Surface superficieRocosa = new SuperficieRocosa();				
+		Surface superficieRocosa = new SuperficieRocosa();
 		Assert.assertTrue("Modo humanoide deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
 		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeAlternalTerrestrial());
 		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
 		megatron.transform();
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeAlternalAerial());										
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie rocosa", superficieRocosa.canBeCrossedByModeAlternalAerial());
 	}
 
 	@Test
@@ -69,14 +69,14 @@ public class SuperficieRocosaTest {
 		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1, 5));
 		frenzy.transform();
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(tablero);
 		tablero.add(frenzy);
 
 		Assert.assertTrue(frenzy.isAlternalMode());
 		Assert.assertTrue("frenzy deberia estar en la posicion (1,5)", frenzy.getPosition().equals(new Position(1, 5)));
 
 		frenzy.move(new Position(3, 5), tablero);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(tablero);
 
 		Assert.assertTrue("frenzy deberia estar en la posicion (3,5)", frenzy.getPosition().equals(new Position(3, 5)));
 	}

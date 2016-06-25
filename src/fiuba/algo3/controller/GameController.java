@@ -150,7 +150,7 @@ public class GameController {
 		}
 	}
 
-	public void nextTurn() {
+	public void nextTurn() throws InvalidPositionException {
 		this.clearSelectedCells();
 		this.game.nextTurn();
 		this.view.updateTurn();

@@ -32,10 +32,10 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(4,3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)),tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
@@ -63,7 +63,7 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);
 		megatron.move(new Position(2,0), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals("algoformer humanoide debe mantener el mismo poder de ataque",10,megatron.getAttack());
 	}
 
@@ -74,9 +74,9 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		megatron.move(new Position(2,0), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals("algoformer alterno aereo deberia reducirse su poder de ataque al pasar por la tormenta psionica",33,megatron.getAttack());
 	}
 
@@ -87,11 +87,11 @@ public class SuperficieTormentaPsionicaTest {
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(0,0));
 		tablero.add(megatron);
 		megatron.transform();
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		megatron.move(new Position(2,0), tablero);
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		Assert.assertEquals("algoformer alterno aereo deberia reducirse su poder de ataque al pasar por la tormenta psionica",33,megatron.getAttack());
-		megatron.notifyNextTurn();
+		megatron.notifyNextTurn(tablero);
 		megatron.move(new Position(0,0), tablero);
 		Assert.assertEquals("algoformer alterno aereo deberia mantener su poder de ataque al pasar por segunda vez por una tormenta psionica",33,megatron.getAttack());
 	}

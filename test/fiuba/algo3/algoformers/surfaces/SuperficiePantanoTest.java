@@ -21,80 +21,80 @@ import fiuba.algo3.model.surfaces.Surface;
 public class SuperficiePantanoTest {
 
 	@Test
-	public void testCrearSuperficiePantano(){		
-		Surface superficiePantano = new SuperficiePantano();		
-		Cell casillero = new Cell(new Position(0,0),superficiePantano);		
-		Assert.assertEquals("La superficie del casillero deberia ser Superficie Pantano", superficiePantano, casillero.getSurface());		
+	public void testCrearSuperficiePantano(){
+		Surface superficiePantano = new SuperficiePantano();
+		Cell casillero = new Cell(new Position(0,0),superficiePantano);
+		Assert.assertEquals("La superficie del casillero deberia ser Superficie Pantano", superficiePantano, casillero.getSurface());
 	}
-	
+
 	@Test
 	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
-		Surface superficiePantano = new SuperficiePantano();				
+		Surface superficiePantano = new SuperficiePantano();
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
 		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalTerrestrial());
 		Algoformer megatron = AlgoFormerFactory.getMegatron(null);
 		megatron.transform();
-		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalAerial());										
+		Assert.assertTrue("Modo alterno aereo deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalAerial());
 	}
-	
+
 	@Test
 	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
-		
+
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(3,3), tablero);
-		
+
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (3,3)",new Nothing(new Position(3,3)), tablero.getContent(new Position(3,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
 		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
-		
+
 	}
-	
+
 	@Test
 	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
-		Assert.assertTrue(optimus.isHumanoidMode());		
+		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(3,3), tablero);
-		optimus.notifyNextTurn();
-		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));		
+		optimus.notifyNextTurn(tablero);
+		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",optimus.getPosition().equals(new Position(3,3)));
 	}
-	
+
 	@Test
 	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
-		
+
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
 		tablero.addCell(new Cell(new Position(4,3), new SuperficiePantano()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(10,3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn(tablero);
 		Assert.assertTrue("Algoformer deberia estar en la posicion (5,3)",optimus.getPosition().equals(new Position(5,3)));
-			
+
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(2,8));
 		tablero.add(bumblebee);
 		tablero.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
 		bumblebee.transform();
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue(bumblebee.isAlternalMode());
 		bumblebee.move(new Position(10,8), tablero);
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(tablero);
 		Assert.assertTrue("Algoformer deberia estar en la posicion (6,8)",bumblebee.getPosition().equals(new Position(6,8)));
 	}
 }

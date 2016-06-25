@@ -39,7 +39,7 @@ public class BumblebeeTest {
 	@Test
 	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		bumblebee.transform();
-		bumblebee.notifyNextTurn();
+		bumblebee.notifyNextTurn(board);
 		board.add(bumblebee);
 		bumblebee.move(new Position(5,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(5, 0),

@@ -1,5 +1,8 @@
 package fiuba.algo3.model.algoformers.game;
 
+import fiuba.algo3.model.algoformers.board.Board;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
+
 public class Turn {
 
 	private Player activePlayer;
@@ -9,16 +12,16 @@ public class Turn {
 		this.activePlayer = jugador1;
 		this.nonActivePlayer = jugador2;
 	}
-	
+
 	public boolean isActivePlayer(Player player){
 		return this.activePlayer.equals(player);
 	}
-	
-	public void next() {
+
+	public void next(Board board) throws InvalidPositionException {
 		Player active = this.activePlayer;
 		this.activePlayer = this.nonActivePlayer;
-		this.nonActivePlayer = active;		
-		
-		this.activePlayer.notifyNextTurn();
+		this.nonActivePlayer = active;
+
+		this.activePlayer.notifyNextTurn(board);
 	}
 }

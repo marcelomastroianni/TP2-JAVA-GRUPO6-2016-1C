@@ -36,17 +36,18 @@ public class PrimeraEntragaTest {
 	//2. Se ubica un algoformer humanoide se lo transforma, se verifica que se pueda transformar
 	//en ambas direcciones.
 	@Test
-	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, InvalidPositionException {
+		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
-        algoformer.notifyNextTurn();
+        algoformer.notifyNextTurn(board);
         Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
         algoformer.transform();
-        algoformer.notifyNextTurn();
+        algoformer.notifyNextTurn(board);
         Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();
-        algoformer.notifyNextTurn();
+        algoformer.notifyNextTurn(board);
         Assert.assertTrue("Modo deberia ser alterno", algoformer.isAlternalMode());
 	}
 
@@ -60,10 +61,10 @@ public class PrimeraEntragaTest {
 
 		board.add(algoformer);
 		algoformer.transform();
-		algoformer.notifyNextTurn();
+		algoformer.notifyNextTurn(board);
 		Assert.assertEquals("Algoformer deberia estar en su posicion inicial",board.getContent(new Position(0,0)),algoformer);
 		algoformer.move(new Position(5,0),board);
-		algoformer.notifyNextTurn();
+		algoformer.notifyNextTurn(board);
 		Assert.assertEquals("Algoformer alterno deberia haberse movido a la derecha",new Position(5,0),algoformer.getPosition());
 	}
 

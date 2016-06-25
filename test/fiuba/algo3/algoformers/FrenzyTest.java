@@ -38,10 +38,10 @@ public class FrenzyTest {
 	@Test
 	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		frenzy.transform();
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(board);
 		board.add(frenzy);
 		frenzy.move(new Position(6,0),board);
-		frenzy.notifyNextTurn();
+		frenzy.notifyNextTurn(board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(6, 0),
 				frenzy.getPosition());
 	}

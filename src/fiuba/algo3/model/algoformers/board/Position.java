@@ -95,8 +95,12 @@ public class Position {
 		return "(" + Integer.toString(X)  + "," + Integer.toString(Y) + ")";
 	}
 
-	public Position next() {
+	public Position nextDown() {
 		return new Position(X,Y+1);
+	}
+
+	public Position nextUp() {
+		return new Position(X,Y-1);
 	}
 
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.model.algoformers;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -229,7 +230,7 @@ public class Algoformer implements Content {
 		this.turnsTrapped = turns + 1;// le sumo uno para que se libere en cero
 	}
 
-	public void notifyNextTurn() {
+	public void notifyNextTurn(Board board) throws InvalidPositionException {
 		if (isTrapped) {
 			this.turnsTrapped -= 1;
 			if (this.turnsTrapped.equals(new Integer(0))) {
@@ -259,18 +260,11 @@ public class Algoformer implements Content {
 			this.turnsCombined -= 1;
 			if (this.turnsCombined.equals(new Integer(0))) {
 				this.isCombined = false;
+				player.notifyDeadAlgoformer(this);
 				if(this.team.equals(team.AUTOBOTS)){
-					player.notifyDeadAlgoformer(this);
-					player.addAlgoformer(AlgoFormerFactory.getOptimusPrime(this.position));
-					player.addAlgoformer(AlgoFormerFactory.getBumblebee(this.position.next()));
-					player.addAlgoformer(AlgoFormerFactory.getRatchet(this.position.next().next()));
+					this.descombinarAutobots(board);
 				}else{
-					player.notifyDeadAlgoformer(this);
-					player.addAlgoformer(AlgoFormerFactory.getOptimusPrime(this.position));
-					player.addAlgoformer(AlgoFormerFactory.getBumblebee(this.position.next()));
-					player.addAlgoformer(AlgoFormerFactory.getRatchet(this.position.next().next()));
-
-
+					this.descombinarDecepticons(board);
 				}
 			}
 		}
@@ -278,6 +272,51 @@ public class Algoformer implements Content {
 		this.stepsMovedInTurn = 0;
 		this.haveBeenUsedInTurn = false;
 	}
+
+	public void descombinarAutobots(Board board) throws InvalidPositionException{
+		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(position);
+		player.addAlgoformer(algoformer1);
+		board.add(algoformer1);
+		try{
+			Algoformer algoformer2 = AlgoFormerFactory.getBumblebee(position.nextDown());
+			Algoformer algoformer3 = AlgoFormerFactory.getRatchet(position.nextDown().nextDown());
+			board.add(algoformer2);
+			board.add(algoformer3);
+			player.addAlgoformer(algoformer2);
+			player.addAlgoformer(algoformer3);
+		}catch(InvalidPositionException e){
+			Algoformer algoformer2 = AlgoFormerFactory.getBumblebee(position.nextUp());
+			Algoformer algoformer3 = AlgoFormerFactory.getRatchet(position.nextUp().nextUp());
+			board.add(algoformer2);
+			board.add(algoformer3);
+			player.addAlgoformer(algoformer2);
+			player.addAlgoformer(algoformer3);
+
+		}
+	}
+
+	private void descombinarDecepticons(Board board) throws InvalidPositionException{
+		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(position);
+		player.addAlgoformer(algoformer1);
+		board.add(algoformer1);
+		try{
+			Algoformer algoformer2 = AlgoFormerFactory.getBonecrusher(position.nextDown());
+			Algoformer algoformer3 = AlgoFormerFactory.getFrenzy(position.nextDown().nextDown());
+			board.add(algoformer2);
+			board.add(algoformer3);
+			player.addAlgoformer(algoformer2);
+			player.addAlgoformer(algoformer3);
+		}catch(InvalidPositionException e){
+			Algoformer algoformer2 = AlgoFormerFactory.getBonecrusher(position.nextUp());
+			Algoformer algoformer3 = AlgoFormerFactory.getFrenzy(position.nextUp().nextUp());
+			board.add(algoformer2);
+			board.add(algoformer3);
+			player.addAlgoformer(algoformer2);
+			player.addAlgoformer(algoformer3);
+
+		}
+	}
+
 
 	@Override
 	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException{
@@ -369,7 +408,7 @@ public class Algoformer implements Content {
 
 	public void setCombinado() {
 		this.isCombined = true;
-		this.turnsCombined = 2;
+		this.turnsCombined = 3;
 
 	}
 

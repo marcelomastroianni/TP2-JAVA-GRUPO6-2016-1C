@@ -38,7 +38,7 @@ public class RatchetTest {
 	@Test
 	public void speedAlternalModeTest() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException {
 		ratchet.transform();
-		ratchet.notifyNextTurn();
+		ratchet.notifyNextTurn(board);
 		board.add(ratchet);
 		ratchet.move(new Position(8,0),board);
 		Assert.assertEquals("Algoformer deberia haberse movido a la derecha", new Position(8, 0),

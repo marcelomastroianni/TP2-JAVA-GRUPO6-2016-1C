@@ -1,6 +1,7 @@
 package fiuba.algo3.model.algoformers.game;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
@@ -43,10 +44,18 @@ public class Player {
 		return hasAlgoformer;
 	}
 
-	public void notifyNextTurn() {
-		for(Algoformer algoformer : algoformersList){
-			algoformer.notifyNextTurn();
+	public void notifyNextTurn(Board board) throws InvalidPositionException {
+		Iterator<Algoformer> iter = algoformersList.iterator();
+		while (iter.hasNext()) {
+		    Algoformer algoformer = iter.next();
+		    if(algoformer.getNombre().equals("Superion") ||algoformer.getNombre().equals("Menasor")){
+		    	algoformer.notifyNextTurn(board);
+		    	break;
+		    }
+			algoformer.notifyNextTurn(board);
 		}
+
+
 	}
 
 	public void notifyDeadAlgoformer(Algoformer algoformer) {

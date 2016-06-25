@@ -22,58 +22,58 @@ import fiuba.algo3.model.surfaces.Surface;
 public class SuperficieNebulosaAndromedaTest {
 
 	@Test
-	public void testCrearSuperficieNebulosaAndromeda(){		
-		Surface superficieNebulosaAndromeda = new SurfaceAndromedaNebula();		
-		Cell casillero = new Cell(new Position(0,0),superficieNebulosaAndromeda);		
-		Assert.assertEquals("La superficie del casillero deberia ser Superficie Nebulosa Andromeda", superficieNebulosaAndromeda, casillero.getSurface());		
+	public void testCrearSuperficieNebulosaAndromeda(){
+		Surface superficieNebulosaAndromeda = new SurfaceAndromedaNebula();
+		Cell casillero = new Cell(new Position(0,0),superficieNebulosaAndromeda);
+		Assert.assertEquals("La superficie del casillero deberia ser Superficie Nebulosa Andromeda", superficieNebulosaAndromeda, casillero.getSurface());
 	}
 
 	@Test
 	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		optimus.transform();
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn( tablero );
 		Assert.assertTrue(optimus.isAlternalMode());
 		optimus.move(new Position(4,3), tablero);
-		optimus.notifyNextTurn();
+		optimus.notifyNextTurn( tablero );
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)),  tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
-		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);												
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
 	}
-	
+
 	@Test
 	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
-		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));		
+		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
 		optimus.move(new Position(4,3), tablero);
-		
+
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (4,3)",new Nothing(new Position(4,3)), tablero.getContent(new Position(4,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (4,3)",optimus.getPosition().equals(new Position(4,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (2,3)",optimus.getPosition().equals(new Position(2,3)));
-		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);							
+		Assert.assertEquals("Algoformer deberia estar en la posicion (2,3)",tablero.getContent(new Position(2,3)),optimus);
 	}
-	
+
 	@Test
 	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
-		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));		
+		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));
 		tablero.add(ratchet);
 		Assert.assertTrue(ratchet.isHumanoidMode());
 		ratchet.transform();
-		ratchet.notifyNextTurn();
+		ratchet.notifyNextTurn(tablero);
 		Assert.assertTrue(ratchet.isAlternalMode());
 		ratchet.move(new Position(4,3), tablero);
 		Assert.assertEquals("Algoformer no deberia estar en la posicion (2,3)",new Nothing(new Position(2,3)), tablero.getContent(new Position(2,3)));
 		Assert.assertFalse("Algoformer no deberia estar en la posicion (2,3)",ratchet.getPosition().equals(new Position(2,3)));
 		Assert.assertTrue("Algoformer deberia estar en la posicion (3,3)",ratchet.getPosition().equals(new Position(3,3)));
-		Assert.assertEquals("Algoformer deberia estar en la posicion (3,3)",tablero.getContent(new Position(3,3)),ratchet);							
+		Assert.assertEquals("Algoformer deberia estar en la posicion (3,3)",tablero.getContent(new Position(3,3)),ratchet);
 	}
 }

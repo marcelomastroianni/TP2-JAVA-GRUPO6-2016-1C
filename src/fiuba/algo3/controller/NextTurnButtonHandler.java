@@ -1,6 +1,7 @@
 package fiuba.algo3.controller;
 
 import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +19,12 @@ public class NextTurnButtonHandler implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {  
-    	this.controller.nextTurn();		
+    public void handle(ActionEvent actionEvent) {
+    	try {
+			this.controller.nextTurn();
+		} catch (InvalidPositionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
