@@ -6,6 +6,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
+import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import org.junit.Assert;
 import org.junit.Test;
@@ -136,7 +137,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testShootingToAnotherAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testShootingToAnotherAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
@@ -154,7 +155,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testAlgoformerCanNotShootSameTeamAlgoformer() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getBumblebee(new Position(2,0));
@@ -169,7 +170,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testDobleDamageActiveOn() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -185,7 +186,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testDobleDamageActiveFor2Turns() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 
 		Board board = new Board(10,10);
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(5,5));
@@ -210,7 +211,7 @@ public class AlgoformerTest {
 	}
 
 	@Test
-	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void testSwitchModeWithDobleDamge() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 
 		Board board = new Board(5,5);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(2,2));
@@ -354,7 +355,7 @@ public class AlgoformerTest {
 	}
 
 	@Test(expected=AlgoformerUsadoEsteTurnoException.class)
-	public void testAlgoformeNoPuedeAtacarPorqueYaFueUsadoEnElTurno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testAlgoformeNoPuedeAtacarPorqueYaFueUsadoEnElTurno() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,2));
@@ -369,8 +370,8 @@ public class AlgoformerTest {
 		Assert.assertEquals("la vida de Frenzy deberia ser 350", 350, frenzy.getLife());
 	}
 
-	@Test
-	public void testAlgoformeNoPuedeAtacarAAlguienDelMismoEquipo() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	@Test(expected=NoSePuedeAtacarAlgoformerDelMismoEquipoException.class)
+	public void testAlgoformeNoPuedeAtacarAAlguienDelMismoEquipo() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(1,2));
@@ -384,7 +385,7 @@ public class AlgoformerTest {
 	}
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
-	public void testAlgoformeNoPuedeAtacarMientrasEstaTrapado() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testAlgoformeNoPuedeAtacarMientrasEstaTrapado() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,2));
@@ -397,7 +398,7 @@ public class AlgoformerTest {
 	}
 
 	@Test(expected=AlgoformerCombinandoseEsteTurnoException.class)
-	public void testAlgoformeNoPuedeAtacarMientrasSeTransforma() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException {
+	public void testAlgoformeNoPuedeAtacarMientrasSeTransforma() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		Board board = new Board(10, 10);
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(new Position(1,1));
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(1,2));

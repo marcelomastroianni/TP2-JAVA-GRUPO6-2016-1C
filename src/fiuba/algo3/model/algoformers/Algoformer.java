@@ -11,6 +11,7 @@ import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
+import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Algoformer implements Content {
@@ -174,7 +175,7 @@ public class Algoformer implements Content {
 		this.hasCrossPsionicStorm = true;
 	}
 
-	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, InvalidPositionException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, InvalidPositionException,NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
@@ -191,9 +192,9 @@ public class Algoformer implements Content {
 	}
 
 	private void checkTeamSide(Algoformer algoformer)
-			throws InvalidStrikeException {
+			throws NoSePuedeAtacarAlgoformerDelMismoEquipoException {
 		if (algoformer.getTeam().equals(this.team)) {
-			throw new InvalidStrikeException();
+			throw new NoSePuedeAtacarAlgoformerDelMismoEquipoException();
 		}
 
 	}

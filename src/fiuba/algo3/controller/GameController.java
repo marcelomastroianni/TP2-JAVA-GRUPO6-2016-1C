@@ -114,7 +114,8 @@ public class GameController {
 				| InvalidPositionException
 				| AlgoformerUsadoEsteTurnoException
 				| AlgoformerCombinandoseEsteTurnoException
-				| AlgoformerAtrapadoEsteTurnoException e) {
+				| AlgoformerAtrapadoEsteTurnoException 
+				| NoSePuedeAtacarAlgoformerDelMismoEquipoException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.checkGameOver();
