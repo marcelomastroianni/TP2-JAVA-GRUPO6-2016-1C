@@ -10,6 +10,7 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.GameConstants;
 import fiuba.algo3.model.algoformers.game.Player;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -86,13 +87,19 @@ public class GameView  {
 			this.lblAlgoformerPosition.setText("Position: " + algoformer.getPosition().toString());
 
 			if (algoformer.isTrapped()){
-				this.lblAlgoformerStateTrapped.setText("Trapped (" + Integer.toString(algoformer.getTurnsTrapped()) + " turns left)." );
+				int turnsTrapped = algoformer.getTurnsTrapped();
+				if (turnsTrapped>GameConstants.SURFACE_ANDROMEDA_NEBULA_TRAPS_TURNS)
+					turnsTrapped = turnsTrapped - 1; 
+				this.lblAlgoformerStateTrapped.setText("Trapped (" + Integer.toString(turnsTrapped) + " turns left)." );
 			}else{
 				this.lblAlgoformerStateTrapped.setText("");
 			}
 
 			if (algoformer.isCombining()){
-				this.lblAlgoformerStateCombining.setText("Combining (" + Integer.toString(algoformer.getTurnsCombining()) + " turns left)." );
+				int turnsCombining = algoformer.getTurnsCombining();
+				if (turnsCombining>GameConstants.ALGOFORMER_COMBINING_TURNS)
+					turnsCombining = turnsCombining - 1; 
+				this.lblAlgoformerStateCombining.setText("Combining (" + Integer.toString(turnsCombining) + " turns left)." );
 			}else{
 				this.lblAlgoformerStateCombining.setText("");
 			}
@@ -104,19 +111,28 @@ public class GameView  {
 			}
 
 			if (algoformer.isDobleDamage()){
-				this.lblAlgoformerBonusDobleCannon.setText("Doble Cannon (" + Integer.toString(algoformer.getTurnsDobleDamage()) + " turns left)." );
+				int turnsDobleCannon = algoformer.getTurnsDobleDamage();
+				if (turnsDobleCannon>GameConstants.BONUS_DOBLE_CANNON_TURNS)
+					turnsDobleCannon = turnsDobleCannon - 1; 
+				this.lblAlgoformerBonusDobleCannon.setText("Doble Cannon (" + Integer.toString(turnsDobleCannon) + " turns left)." );
 			}else{
 				this.lblAlgoformerBonusDobleCannon.setText("");
 			}
 
 			if (algoformer.isFlash()){
-				this.lblAlgoformerBonusFlash.setText("Flash (" + Integer.toString(algoformer.getTurnsFlash()) + " turns left)." );
+				int turnsFlash = algoformer.getTurnsFlash();
+				if (turnsFlash>GameConstants.BONUS_FLASH_TURNS)
+					turnsFlash = turnsFlash - 1; 
+				this.lblAlgoformerBonusFlash.setText("Flash (" + Integer.toString(turnsFlash) + " turns left)." );
 			}else{
 				this.lblAlgoformerBonusFlash.setText("");
 			}
 
 			if (algoformer.isImmaculateBubble()){
-				this.lblAlgoformerBonusInmaculateBubble.setText("Immaculate Bubble (" + Integer.toString(algoformer.getTurnsImmaculateBubble()) + " turns left)." );
+				int turnsBubble = algoformer.getTurnsImmaculateBubble();
+				if (turnsBubble>GameConstants.BONUS_INMACULATE_BUBBLE_TURNS)
+					turnsBubble = turnsBubble - 1; 
+				this.lblAlgoformerBonusInmaculateBubble.setText("Immaculate Bubble (" + Integer.toString(turnsBubble) + " turns left)." );
 			}else{
 				this.lblAlgoformerBonusInmaculateBubble.setText("");
 			}
