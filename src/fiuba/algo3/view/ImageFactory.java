@@ -232,7 +232,7 @@ public class ImageFactory {
 	public static Image getSupRocosa() {
 		if (supRocosa == null) {
 			supRocosa = new Image(
-					"file:src/fiuba/algo3/vista/pictures/superficie_rocosa.png");
+					"file:src/fiuba/algo3/vista/pictures/superficie_rocosa2.gif");
 		}
 		return supRocosa;
 	}
