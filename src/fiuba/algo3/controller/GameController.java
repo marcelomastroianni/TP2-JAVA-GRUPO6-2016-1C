@@ -158,6 +158,7 @@ public class GameController {
 		this.clearSelectedCells();
 		this.game.nextTurn();
 		this.view.updateTurn();
+		this.view.updateAlgoformerSelected(algoformerSelected);
 	}
 
 	public void registerClickEvents(Canvas canvas){
