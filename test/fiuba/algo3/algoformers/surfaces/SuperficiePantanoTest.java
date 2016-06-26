@@ -19,14 +19,14 @@ import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaException;
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
-import fiuba.algo3.model.surfaces.SuperficiePantano;
+import fiuba.algo3.model.surfaces.SurfaceSwamp;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class SuperficiePantanoTest {
 
 	@Test
 	public void testCrearSuperficiePantano(){
-		Surface superficiePantano = new SuperficiePantano();
+		Surface superficiePantano = new SurfaceSwamp();
 		Cell casillero = new Cell(new Position(0,0),superficiePantano);
 		Assert.assertEquals("La superficie del casillero deberia ser Superficie Pantano", superficiePantano, casillero.getSurface());
 	}
@@ -34,7 +34,7 @@ public class SuperficiePantanoTest {
 	@Test
 	public void testCruzarSuperficiePantano() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
 		Algoformer optimusPrime = AlgoFormerFactory.getOptimusPrime(null);
-		Surface superficiePantano = new SuperficiePantano();
+		Surface superficiePantano = new SurfaceSwamp();
 		Assert.assertFalse("Modo humanoide no deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeHumanoid());
 		optimusPrime.transform();
 		Assert.assertTrue("Modo alterno terrestre deberia poder cruzar superficie pantano", superficiePantano.canBeCrossedByModeAlternalTerrestrial());
@@ -47,7 +47,7 @@ public class SuperficiePantanoTest {
 	public void testModoHumanoideNoCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 
 		Board tablero = new Board(20,20);
-		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceSwamp()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
@@ -63,7 +63,7 @@ public class SuperficiePantanoTest {
 	@Test
 	public void testModoAlternoTerrestreCruzaSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20,20);
-		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceSwamp()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
@@ -79,8 +79,8 @@ public class SuperficiePantanoTest {
 	public void testModoAlternoTerrestreTardaElDobleEnCruzarSuperficiePantano() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 
 		Board tablero = new Board(20,20);
-		tablero.addCell(new Cell(new Position(3,3), new SuperficiePantano()));
-		tablero.addCell(new Cell(new Position(4,3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3,3), new SurfaceSwamp()));
+		tablero.addCell(new Cell(new Position(4,3), new SurfaceSwamp()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
 		tablero.add(optimus);
 
@@ -93,7 +93,7 @@ public class SuperficiePantanoTest {
 
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(2,8));
 		tablero.add(bumblebee);
-		tablero.addCell(new Cell(new Position(3,8), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3,8), new SurfaceSwamp()));
 		bumblebee.transform();
 		bumblebee.notifyNextTurn( );
 		Assert.assertTrue(bumblebee.isAlternalMode());

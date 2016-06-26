@@ -12,7 +12,7 @@ import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
-import fiuba.algo3.model.surfaces.SuperficieRocosa;
+import fiuba.algo3.model.surfaces.SurfaceRocky;
 
 
 public class BoardTest {
@@ -89,7 +89,7 @@ public class BoardTest {
 		tablero.addCell(new Cell(new Position(0,0),new SurfaceCloud()));
 	
 		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof SurfaceCloud );
-		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
+		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SurfaceRocky);
 	}
 
 	@Test
@@ -97,7 +97,7 @@ public class BoardTest {
 		Board tablero = new Board(10,10);		
 		tablero.addCell(new Cell(new Position(0,0),new SurfaceCloud()));
 		Assert.assertTrue(tablero.getSurface(new Position(0,0)) instanceof SurfaceCloud );
-		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SuperficieRocosa);
+		Assert.assertFalse(tablero.getSurface(new Position(0,0)) instanceof SurfaceRocky);
 	}
 
 	@Test

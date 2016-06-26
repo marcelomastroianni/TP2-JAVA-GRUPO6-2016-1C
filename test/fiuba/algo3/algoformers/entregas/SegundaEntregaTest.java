@@ -5,7 +5,7 @@ import java.util.List;
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.exceptions.*;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
-import fiuba.algo3.model.surfaces.SuperficieRocosa;
+import fiuba.algo3.model.surfaces.SurfaceRocky;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceThorn;
 import org.junit.Assert;
@@ -18,7 +18,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
-import fiuba.algo3.model.surfaces.SuperficiePantano;
+import fiuba.algo3.model.surfaces.SurfaceSwamp;
 
 public class SegundaEntregaTest {
 
@@ -35,11 +35,11 @@ public class SegundaEntregaTest {
 	@Test
 	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(10, 10);
-		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
-		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
-		tablero.addCell(new Cell(new Position(3, 5), new SuperficieRocosa()));
-		tablero.addCell(new Cell(new Position(4, 5), new SuperficieRocosa()));
-		tablero.addCell(new Cell(new Position(5, 5), new SuperficieRocosa()));
+		tablero.addCell(new Cell(new Position(1, 5), new SurfaceRocky()));
+		tablero.addCell(new Cell(new Position(2, 5), new SurfaceRocky()));
+		tablero.addCell(new Cell(new Position(3, 5), new SurfaceRocky()));
+		tablero.addCell(new Cell(new Position(4, 5), new SurfaceRocky()));
+		tablero.addCell(new Cell(new Position(5, 5), new SurfaceRocky()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(1, 5));
 		tablero.add(optimus);
@@ -160,7 +160,7 @@ public class SegundaEntregaTest {
 	@Test
 	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20, 20);
-		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3, 3), new SurfaceSwamp()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
 		tablero.add(optimus);
 		Assert.assertTrue(optimus.isHumanoidMode());
@@ -201,8 +201,8 @@ public class SegundaEntregaTest {
 	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 
 		Board tablero = new Board(20, 20);
-		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
-		tablero.addCell(new Cell(new Position(4, 3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3, 3), new SurfaceSwamp()));
+		tablero.addCell(new Cell(new Position(4, 3), new SurfaceSwamp()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
 		tablero.add(optimus);
 
@@ -218,7 +218,7 @@ public class SegundaEntregaTest {
 
 		Algoformer bumblebee = AlgoFormerFactory.getBumblebee(new Position(2, 8));
 		tablero.add(bumblebee);
-		tablero.addCell(new Cell(new Position(3, 8), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3, 8), new SurfaceSwamp()));
 		bumblebee.transform();
 		bumblebee.notifyNextTurn( );
 		Assert.assertTrue(bumblebee.isAlternalMode());
@@ -244,7 +244,7 @@ public class SegundaEntregaTest {
 	@Test
 	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20, 20);
-		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
+		tablero.addCell(new Cell(new Position(3, 3), new SurfaceSwamp()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
 		tablero.add(megatron);
 		megatron.transform();

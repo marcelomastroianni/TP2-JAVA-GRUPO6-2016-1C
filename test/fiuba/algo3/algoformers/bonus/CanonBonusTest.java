@@ -15,8 +15,8 @@ import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
-import fiuba.algo3.model.bonus.CanonBonus;
-import fiuba.algo3.model.surfaces.SuperficieRocosa;
+import fiuba.algo3.model.bonus.BonusDobleCannon;
+import fiuba.algo3.model.surfaces.SurfaceRocky;
 
 public class CanonBonusTest {
 
@@ -45,8 +45,8 @@ public class CanonBonusTest {
 	}
 	@Test
 	public void createCanonBonus(){
-		CanonBonus canonBonus = CanonBonus.createCanonBonus(new Position(0,0));
-		Cell cell= new Cell(new Position(0,0), new SuperficieRocosa());
+		BonusDobleCannon canonBonus = BonusDobleCannon.createCanonBonus(new Position(0,0));
+		Cell cell= new Cell(new Position(0,0), new SurfaceRocky());
 		cell.add(canonBonus);
 		Assert.assertEquals("la celda deberia contener un canonBonus",cell.getContent(), canonBonus);
 	}
@@ -63,7 +63,7 @@ public class CanonBonusTest {
 
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(1,0));
 
-		Bonus cannonBonus = CanonBonus.createCanonBonus(new Position(0,1));
+		Bonus cannonBonus = BonusDobleCannon.createCanonBonus(new Position(0,1));
 
 		player1.addAlgoformer(ratchet);
 		player2.addAlgoformer(bonecrusher);

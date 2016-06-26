@@ -1,8 +1,8 @@
 package fiuba.algo3.algoformers.entregas;
 
-import fiuba.algo3.model.bonus.BubbleBonus;
-import fiuba.algo3.model.bonus.CanonBonus;
-import fiuba.algo3.model.bonus.FlashBonus;
+import fiuba.algo3.model.bonus.BonusInmaculateBubble;
+import fiuba.algo3.model.bonus.BonusDobleCannon;
+import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -43,8 +43,8 @@ public class TerceraEntregaTest {
 		Algoformer algoformer2 = AlgoFormerFactory
 				.getOptimusPrime(new Position(2, 4));
 
-		Bonus dobleCanon1 = CanonBonus.createCanonBonus(new Position(2, 1));
-		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 2));
+		Bonus dobleCanon1 = BonusDobleCannon.createCanonBonus(new Position(2, 1));
+		Bonus dobleCanon2 = BonusDobleCannon.createCanonBonus(new Position(2, 2));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -195,7 +195,7 @@ public class TerceraEntregaTest {
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
-		Bonus burbuja = new BubbleBonus(new Position(0,1));
+		Bonus burbuja = new BonusInmaculateBubble(new Position(0,1));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -229,7 +229,7 @@ public class TerceraEntregaTest {
 		Board board = new Board(5, 5);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
-		Bonus burbuja = new BubbleBonus(new Position(0,1));
+		Bonus burbuja = new BonusInmaculateBubble(new Position(0,1));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -279,7 +279,7 @@ public class TerceraEntregaTest {
 		Board board = new Board(10, 10);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
-		Bonus flash = new FlashBonus(new Position(0,1));
+		Bonus flash = new BonusFlash(new Position(0,1));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -324,7 +324,7 @@ public class TerceraEntregaTest {
 		Board board = new Board(20, 20);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
-		Bonus flash = new FlashBonus(new Position(0,1));
+		Bonus flash = new BonusFlash(new Position(0,1));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -373,7 +373,7 @@ public class TerceraEntregaTest {
 		Board board = new Board(20, 20);
 		Algoformer algoformer1 = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,2));
-		Bonus flash = new FlashBonus(new Position(0,1));
+		Bonus flash = new BonusFlash(new Position(0,1));
 
 		board.add(algoformer1);
 		board.add(algoformer2);
@@ -443,12 +443,12 @@ public class TerceraEntregaTest {
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(2, 0));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(3, 4));
 
-		Bonus dobleCanon1 = CanonBonus.createCanonBonus(new Position(2, 1));
-		Bonus dobleCanon2 = CanonBonus.createCanonBonus(new Position(2, 5));
-		Bonus dobleCanon3 = CanonBonus.createCanonBonus(new Position(2, 9));
-		Bonus flash1 = FlashBonus.createBonusFlash(new Position(2, 3));
-		Bonus flash2 = FlashBonus.createBonusFlash(new Position(2, 10));
-		Bonus flash3 = FlashBonus.createBonusFlash(new Position(2, 11));
+		Bonus dobleCanon1 = BonusDobleCannon.createCanonBonus(new Position(2, 1));
+		Bonus dobleCanon2 = BonusDobleCannon.createCanonBonus(new Position(2, 5));
+		Bonus dobleCanon3 = BonusDobleCannon.createCanonBonus(new Position(2, 9));
+		Bonus flash1 = BonusFlash.createBonusFlash(new Position(2, 3));
+		Bonus flash2 = BonusFlash.createBonusFlash(new Position(2, 10));
+		Bonus flash3 = BonusFlash.createBonusFlash(new Position(2, 11));
 
 
 		board.add(frenzy);

@@ -17,8 +17,8 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.bonus.Bonus;
-import fiuba.algo3.model.bonus.FlashBonus;
-import fiuba.algo3.model.bonus.CanonBonus;
+import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.BonusDobleCannon;
 
 import fiuba.algo3.model.surfaces.SurfaceThorn;
 
@@ -595,7 +595,7 @@ public class GameTest {
 		//Decepticons:
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(1,0));
 
-		Bonus cannonBonus = CanonBonus.createCanonBonus(new Position(0,1));
+		Bonus cannonBonus = BonusDobleCannon.createCanonBonus(new Position(0,1));
 
 		player1.addAlgoformer(optimusPrime);
 		player2.addAlgoformer(megatron);
@@ -669,7 +669,7 @@ public class GameTest {
 
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(1,0));
 
-		Bonus cannonBonus = CanonBonus.createCanonBonus(new Position(1,1));
+		Bonus cannonBonus = BonusDobleCannon.createCanonBonus(new Position(1,1));
 
 		player1.addAlgoformer(bumblebee);
 		player2.addAlgoformer(frenzy);

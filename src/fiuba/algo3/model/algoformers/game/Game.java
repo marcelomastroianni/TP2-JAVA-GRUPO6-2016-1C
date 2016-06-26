@@ -12,11 +12,11 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.bonus.BubbleBonus;
-import fiuba.algo3.model.bonus.FlashBonus;
-import fiuba.algo3.model.bonus.CanonBonus;
+import fiuba.algo3.model.bonus.BonusInmaculateBubble;
+import fiuba.algo3.model.bonus.BonusFlash;
+import fiuba.algo3.model.bonus.BonusDobleCannon;
 import fiuba.algo3.model.exceptions.*;
-import fiuba.algo3.model.surfaces.SuperficiePantano;
+import fiuba.algo3.model.surfaces.SurfaceSwamp;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
 import fiuba.algo3.model.surfaces.SurfacePsionicStorm;
@@ -81,10 +81,10 @@ public class Game {
 		this.board.addCell(new Cell(new Position(5,5), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(6,5), new SurfaceCloud()));
 
-		this.board.addCell(new Cell(new Position(2,7), new SuperficiePantano()));
-		this.board.addCell(new Cell(new Position(3,7), new SuperficiePantano()));
-		this.board.addCell(new Cell(new Position(5,1), new SuperficiePantano()));
-		this.board.addCell(new Cell(new Position(6,1), new SuperficiePantano()));
+		this.board.addCell(new Cell(new Position(2,7), new SurfaceSwamp()));
+		this.board.addCell(new Cell(new Position(3,7), new SurfaceSwamp()));
+		this.board.addCell(new Cell(new Position(5,1), new SurfaceSwamp()));
+		this.board.addCell(new Cell(new Position(6,1), new SurfaceSwamp()));
 
 
 		this.board.addCell(new Cell(new Position(8,4), new SurfaceAndromedaNebula()));
@@ -103,9 +103,9 @@ public class Game {
 		this.board.addCell(new Cell(new Position(9,2), new SurfaceCloud()));
 		this.board.addCell(new Cell(new Position(10,2), new SurfaceCloud()));
 
-		this.board.add(new CanonBonus(new Position(4,4)));
-		this.board.add(new BubbleBonus(new Position(3,1)));
-		this.board.add(new FlashBonus(new Position(2,5)));
+		this.board.add(new BonusDobleCannon(new Position(4,4)));
+		this.board.add(new BonusInmaculateBubble(new Position(3,1)));
+		this.board.add(new BonusFlash(new Position(2,5)));
 	}
 
 	public boolean isOver(){

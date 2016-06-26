@@ -5,7 +5,7 @@ import java.util.Map;
 
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.surfaces.SuperficieRocosa;
+import fiuba.algo3.model.surfaces.SurfaceRocky;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Board {
@@ -22,7 +22,7 @@ public class Board {
 		this.matrix = new HashMap<>();
 		for(int row = 0 ; row< rows ; row++ ){
 		    for(int column = 0 ; column < columns ; column++ ){
-		        matrix.put(new Position(column,row), new Cell(new Position(column,row),new SuperficieRocosa()));
+		        matrix.put(new Position(column,row), new Cell(new Position(column,row),new SurfaceRocky()));
 		    }
 		}
 		this.xLength = rows;

@@ -5,12 +5,16 @@ import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.GameConstants;
 
-public class BubbleBonus implements Bonus {
+public class BonusDobleCannon implements Bonus{
 
 	private Position position;
 
-	public BubbleBonus(Position position){
+	public BonusDobleCannon(Position position){
 		this.position = position;
+	}
+
+	public static BonusDobleCannon createCanonBonus(Position position){
+		return new BonusDobleCannon(position);
 	}
 
 	@Override
@@ -21,7 +25,7 @@ public class BubbleBonus implements Bonus {
 	@Override
 	public void collideWithAlgoformer(Content algoformer) {
 		Algoformer algo = (Algoformer) algoformer;
-		algo.protectWithImmaculateBubble(GameConstants.BONUS_INMACULATE_BUBBLE_TURNS);
+		algo.dobleDamage(GameConstants.BONUS_DOBLE_CANNON_TURNS);
 	}
 
 }

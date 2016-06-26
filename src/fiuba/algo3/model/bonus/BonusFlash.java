@@ -5,16 +5,16 @@ import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.GameConstants;
 
-public class FlashBonus implements Bonus {
+public class BonusFlash implements Bonus {
 
 	private Position position;
 
-	public FlashBonus(Position position){
+	public BonusFlash(Position position){
 		this.position = position;
 	}
 
-	public static FlashBonus createBonusFlash(Position position){
-		return new FlashBonus(position);
+	public static BonusFlash createBonusFlash(Position position){
+		return new BonusFlash(position);
 	}
 
 	@Override
