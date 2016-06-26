@@ -25,22 +25,10 @@ public class Position {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Position other = (Position) obj;
-		if (X == null) {
-			if (other.X != null)
-				return false;
-		} else if (!X.equals(other.X))
+		if (!X.equals(other.X))
 			return false;
-		if (Y == null) {
-			if (other.Y != null)
-				return false;
-		} else if (!Y.equals(other.Y))
+		if (!Y.equals(other.Y))
 			return false;
 		return true;
 	}
