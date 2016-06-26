@@ -11,6 +11,7 @@ import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.MuyLejosParaAtacarException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -131,7 +132,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * GameConstants.SURFACE_THORN_LIFE_FACTOR);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
@@ -145,13 +146,13 @@ public class Algoformer implements Content {
 		while (position.hasNext(finalPosition)
 				&& this.stepsMovedInTurn < speed
 				&& (!this.isTrapped)) {
-			this.stepsMovedInTurn++;
 			previous = this.position;
 			next = this.position.next(finalPosition);
 			nextSurface = board.getSurface(next);
 			if (this.activeMode.canCrossSurface(nextSurface)) {
 				try {
 					board.getContent(next).collideWithAlgoformer(this);
+					this.stepsMovedInTurn++;
 					this.position = next;
 					board.clearContent(previous);
 					board.add(this);
@@ -269,8 +270,8 @@ public class Algoformer implements Content {
 
 
 	@Override
-	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException{
-		throw new InvalidPositionException();
+	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException, NoPuedeMoverseDondeEstaOtroAlgoformerException{
+		throw new NoPuedeMoverseDondeEstaOtroAlgoformerException();
 	}
 
 	public void collideWithChiapaSuprema() throws InvalidPositionException {

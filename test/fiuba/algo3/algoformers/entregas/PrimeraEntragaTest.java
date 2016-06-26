@@ -18,6 +18,7 @@ import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.MuyLejosParaAtacarException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 
 public class PrimeraEntragaTest {
@@ -25,7 +26,7 @@ public class PrimeraEntragaTest {
 	//Se ubica un algoformer humanoide en un casillero, se pide que se mueva, se verifica
 	//nueva posición acorde a su modo.
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
@@ -59,7 +60,7 @@ public class PrimeraEntragaTest {
 	//3. Se ubica un algoformer en su modo alterno y se pide que se mueva y se verifica que su
 	//nueva posición sea acorde.
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		Board board = new Board(20,20);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
 

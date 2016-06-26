@@ -1,13 +1,14 @@
 package fiuba.algo3.model.algoformers.board;
 
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 
 public interface Content {
 
 
 	Position getPosition();
 
-	void collideWithAlgoformer(Content algoformer) throws InvalidPositionException;
+	void collideWithAlgoformer(Content algoformer) throws InvalidPositionException, NoPuedeMoverseDondeEstaOtroAlgoformerException;
 
 
 }

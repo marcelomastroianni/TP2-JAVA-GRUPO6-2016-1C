@@ -159,7 +159,7 @@ public class Game {
 		this.turn.next();
 	}
 
-	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void moverAlgoformer(Position initialPosition, Position finalPosition) throws AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 
 		if (!this.board.isValidPosition(initialPosition) || !this.board.isValidPosition(finalPosition)){
 			throw new InvalidPositionException();

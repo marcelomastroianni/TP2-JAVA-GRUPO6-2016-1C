@@ -96,7 +96,8 @@ public class GameController {
 				| UsuarioNoSeleccionoAlgoformerException 
 				| JugadorNoPuedeJugarCuandoNoEsSuTurnoException
 				| AlgoformerUsadoEsteTurnoException 
-				| AlgoformerCombinandoseEsteTurnoException e) {	
+				| AlgoformerCombinandoseEsteTurnoException 
+				| NoPuedeMoverseDondeEstaOtroAlgoformerException e) {	
 			this.view.showMessage(e.getMessage());
 		}									
 		this.checkGameOver();

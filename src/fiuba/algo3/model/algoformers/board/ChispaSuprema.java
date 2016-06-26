@@ -2,6 +2,7 @@ package fiuba.algo3.model.algoformers.board;
 
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 
 public class ChispaSuprema implements Content {
 
@@ -17,7 +18,7 @@ public class ChispaSuprema implements Content {
 	}
 
 	@Override
-	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException {
+	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException,NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		Algoformer algo = (Algoformer) algoformer;
 		algo.collideWithChiapaSuprema();
 	}

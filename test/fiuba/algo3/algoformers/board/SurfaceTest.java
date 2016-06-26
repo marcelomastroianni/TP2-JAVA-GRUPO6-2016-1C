@@ -14,6 +14,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 public class SurfaceTest {
@@ -28,7 +29,7 @@ public class SurfaceTest {
 	}	
 	
 	@Test
-	public void crossThornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void crossThornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
@@ -39,7 +40,7 @@ public class SurfaceTest {
 	}
 	
 	@Test
-	public void startInthornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void startInthornReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		board.addCell(new Cell(new Position(0, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));
@@ -50,7 +51,7 @@ public class SurfaceTest {
 	}
 	
 	@Test
-	public void endInthornDontReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void endInthornDontReduceLifeOfTerrestial() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 		board.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));

@@ -17,6 +17,7 @@ import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.surfaces.SuperficieRocosa;
 import fiuba.algo3.model.surfaces.Surface;
 
@@ -45,7 +46,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoHumanoideCruzaSuperficieRocosa() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void testModoHumanoideCruzaSuperficieRocosa() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
@@ -63,7 +64,7 @@ public class SuperficieRocosaTest {
 	}
 
 	@Test
-	public void testModoAlternoCruzaSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void testModoAlternoCruzaSuperficieRocosa() throws AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
