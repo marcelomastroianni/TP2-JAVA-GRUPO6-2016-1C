@@ -52,7 +52,7 @@ public class CanonBonusTest {
 	}
 
 	@Test
-	public void testCapturarCanonBonus() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void testCapturarCanonBonus() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");

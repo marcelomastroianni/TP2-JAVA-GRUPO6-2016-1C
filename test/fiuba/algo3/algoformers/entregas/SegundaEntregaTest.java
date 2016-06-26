@@ -29,10 +29,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test01() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 5), new SuperficieRocosa()));
 		tablero.addCell(new Cell(new Position(2, 5), new SuperficieRocosa()));
@@ -153,10 +154,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test02() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2, 3));
@@ -192,10 +194,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test03() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
@@ -235,10 +238,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test04() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20, 20);
 		tablero.addCell(new Cell(new Position(3, 3), new SuperficiePantano()));
 		Algoformer megatron = AlgoFormerFactory.getMegatron(new Position(2, 3));
@@ -261,10 +265,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -291,10 +296,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test06() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceThorn()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceThorn()));
@@ -316,10 +322,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test07() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfaceCloud()));
 		tablero.addCell(new Cell(new Position(2, 0), new SurfaceCloud()));
@@ -341,12 +348,13 @@ public class SegundaEntregaTest {
 	 * @throws InvalidPositionException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)
 	public void test08() throws UsuarioNoSeleccionoAlgoformerException,
-			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+			JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -405,10 +413,11 @@ public class SegundaEntregaTest {
 	 * @throws AlgoformerUsadoEsteTurnoException
 	 * @throws AlgoformerCombinandoseEsteTurnoException 
 	 * @throws NoPuedeMoverseDondeEstaOtroAlgoformerException 
+	 * @throws ModoAlternoNoPuedeCapturarChispaSupremaException 
 	 * @throws GameOverException
 	 */
 	@Test
-	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void test09() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 
 		Board tablero = new Board(10, 10);
 		tablero.addCell(new Cell(new Position(1, 0), new SurfacePsionicStorm()));

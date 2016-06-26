@@ -1,6 +1,6 @@
 package fiuba.algo3.model.algoformers;
 
-import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaException;
 import fiuba.algo3.model.surfaces.Surface;
 
 public abstract class Mode {
@@ -33,5 +33,5 @@ public abstract class Mode {
 
 	public abstract void crossSurface(Surface surface,Algoformer algoformer);
 
-	public abstract void collideWithChispaSuprema(Algoformer algoformer) throws InvalidPositionException;
+	public abstract void collideWithChispaSuprema(Algoformer algoformer) throws ModoAlternoNoPuedeCapturarChispaSupremaException;
 }

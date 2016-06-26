@@ -9,6 +9,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaException;
 import fiuba.algo3.model.exceptions.MuyLejosParaAtacarException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
@@ -132,7 +133,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * GameConstants.SURFACE_THORN_LIFE_FACTOR);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
@@ -159,7 +160,6 @@ public class Algoformer implements Content {
 					this.activeMode.crossSurface(nextSurface, this);
 					this.haveBeenUsedInTurn = true;
 				} catch (InvalidPositionException ex) {
-					//Coliciono con otro Algoformer
 					break;
 				}
 			} else{
@@ -270,11 +270,11 @@ public class Algoformer implements Content {
 
 
 	@Override
-	public void collideWithAlgoformer(Content algoformer) throws InvalidPositionException, NoPuedeMoverseDondeEstaOtroAlgoformerException{
+	public void collideWithAlgoformer(Content algoformer) throws NoPuedeMoverseDondeEstaOtroAlgoformerException{
 		throw new NoPuedeMoverseDondeEstaOtroAlgoformerException();
 	}
 
-	public void collideWithChiapaSuprema() throws InvalidPositionException {
+	public void collideWithChiapaSuprema() throws ModoAlternoNoPuedeCapturarChispaSupremaException {
 		this.activeMode.collideWithChispaSuprema(this);
 	}
 

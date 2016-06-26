@@ -17,6 +17,7 @@ import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaException;
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.Surface;
@@ -32,7 +33,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void testModoAlternoTerrestreNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -49,7 +50,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void testModoHumanoideNoCruzaSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer optimus = AlgoFormerFactory.getOptimusPrime(new Position(2,3));
@@ -64,7 +65,7 @@ public class SuperficieNebulosaAndromedaTest {
 	}
 
 	@Test
-	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void testModoAereoSeQuedaAtrapadoEnSuperficieNebulosaAndromeda() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Board tablero = new Board(20,20);
 		tablero.addCell(new Cell(new Position(3,3), new SurfaceAndromedaNebula()));
 		Algoformer ratchet = AlgoFormerFactory.getRatchet(new Position(2,3));

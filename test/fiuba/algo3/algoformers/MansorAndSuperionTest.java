@@ -18,6 +18,7 @@ import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.exceptions.JugadorNoPuedeJugarCuandoNoEsSuTurnoException;
+import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.exceptions.NoTieneSuficientesAlgoformersParaCombinarException;
@@ -92,7 +93,7 @@ public class MansorAndSuperionTest {
 
 
 	@Test
-	public void combinedMenasorTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException{
+	public void combinedMenasorTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException{
 		//Turno jugador1
 		game.moverAlgoformer(new Position(0,0), new Position(1,1));
 		game.nextTurn();
@@ -118,7 +119,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void superionTurnTes() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, MuyLejosParaCombinarException, InvalidPositionException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException {
+	public void superionTurnTes() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, MuyLejosParaCombinarException, InvalidPositionException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		game.combinar();
 		Assert.assertTrue(game.getBoard().getContent(new Position(0,1)) instanceof Nothing);
@@ -185,7 +186,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void menasorTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException{
+	public void menasorTurnTest() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException{
 		game.nextTurn();
 
 		Assert.assertEquals(game.getActivePlayer(),player2);
@@ -323,7 +324,7 @@ public class MansorAndSuperionTest {
 	}
 
 	@Test
-	public void cantMerge() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException{
+	public void cantMerge() throws InvalidPositionException, AlgoformerAtrapadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, AlgoformerUsadoEsteTurnoException, MuyLejosParaCombinarException, AlgoformerCombinandoseEsteTurnoException, NoTieneSuficientesAlgoformersParaCombinarException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException{
 		//primer turno jugador1
 		Assert.assertEquals(game.getActivePlayer(),player1);
 		game.moverAlgoformer(new Position(0,2), new Position(0,3));
