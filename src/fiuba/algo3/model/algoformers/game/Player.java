@@ -1,15 +1,8 @@
 package fiuba.algo3.model.algoformers.game;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 
 public class Player {
 
@@ -45,17 +38,9 @@ public class Player {
 	}
 
 	public void notifyNextTurn(){
-		Iterator<Algoformer> iter = algoformersList.iterator();
-		while (iter.hasNext()) {
-		    Algoformer algoformer = iter.next();
-		    if(algoformer.getNombre().equals("Superion") ||algoformer.getNombre().equals("Menasor")){
-		    	algoformer.notifyNextTurn();
-		    	break;
-		    }
+		for(Algoformer algoformer:this.algoformersList){
 			algoformer.notifyNextTurn();
 		}
-
-
 	}
 
 	public void notifyDeadAlgoformer(Algoformer algoformer) {
@@ -76,7 +61,5 @@ public class Player {
 	public void combinar(Algoformer fusion) {
 		this.algoformersList = new ArrayList<Algoformer>();
 		this.addAlgoformer(fusion);
-
 	}
-
 }
