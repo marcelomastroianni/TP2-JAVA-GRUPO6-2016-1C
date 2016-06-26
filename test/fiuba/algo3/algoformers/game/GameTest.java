@@ -824,8 +824,6 @@ public class GameTest {
 		game.dispararaAlgoformer( new Position(0,0), new Position(4,0));
 	}
 
-
-
 	public void playerLostTheGame() throws InvalidPositionException{
 		Game game = new Game();
 		prepareGame(game);
@@ -879,7 +877,6 @@ public class GameTest {
 	}
 
 	@Test
-
 	public void gameOverPlayer2Win() throws InvalidPositionException{
 		Game game = new Game();
 		prepareGame(game);

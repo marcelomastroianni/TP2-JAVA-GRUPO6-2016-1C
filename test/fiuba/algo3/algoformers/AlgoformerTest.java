@@ -1,6 +1,7 @@
 package fiuba.algo3.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Cell;
+import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidStrikeException;
@@ -427,11 +428,11 @@ public class AlgoformerTest {
 		Assert.assertEquals("Turno de combinacion tiene que ser 0",0, optimusPrime.getTurnsCombining());
 		Algoformer superion = optimusPrime.getMergedAlgoformer(board,bumblebee,ratchet);
 		superion.notifyNextTurn();
-		Assert.assertEquals("Turno de combinacion tiene que ser 1",2, superion.getTurnsCombining());
+		Assert.assertEquals("Turno de combinacion tiene que ser 2",2, superion.getTurnsCombining());
 		superion.notifyNextTurn();
 		Assert.assertEquals("Turno de combinacion tiene que ser 1",1, superion.getTurnsCombining());
 		superion.notifyNextTurn();
-		Assert.assertEquals("Turno de combinacion tiene que ser 1",0, superion.getTurnsCombining());
+		Assert.assertEquals("Turno de combinacion tiene que ser 0",0, superion.getTurnsCombining());
 	}
 
 	@Test(expected=AlgoformerAtrapadoEsteTurnoException.class)

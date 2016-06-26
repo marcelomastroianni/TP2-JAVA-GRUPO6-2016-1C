@@ -87,16 +87,12 @@ public class Algoformer implements Content {
 		return this.activeMode.equals(this.alternalMode);
 	}
 
-	public void downHealthPoints(Integer damage, Board board) {
+	public void downHealthPoints(Integer damage, Board board) throws InvalidPositionException {
 		if (!this.isImmaculateBubble){
 			this.life = this.life - damage;
 		}
 		if(this.life < 1){
-			try {
-				board.clearContent(this.getPosition());
-			} catch (InvalidPositionException e) {
-				e.printStackTrace();
-			}
+			board.clearContent(this.getPosition());
 			this.player.notifyDeadAlgoformer(this);
 		}
 	}
@@ -178,7 +174,7 @@ public class Algoformer implements Content {
 		this.hasCrossPsionicStorm = true;
 	}
 
-	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, InvalidPositionException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
