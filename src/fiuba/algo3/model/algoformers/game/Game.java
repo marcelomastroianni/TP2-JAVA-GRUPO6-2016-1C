@@ -128,12 +128,8 @@ public class Game {
 		return this.board;
 	}
 
-	public Turn getTurn() {
-		return this.turn;
-	}
-
 	public Player getActivePlayer(){
-		if(this.getTurn().isActivePlayer(this.getPlayer1()))
+		if(this.turn.isActivePlayer(this.getPlayer1()))
 			return this.getPlayer1();
 		else
 			return this.getPlayer2();
