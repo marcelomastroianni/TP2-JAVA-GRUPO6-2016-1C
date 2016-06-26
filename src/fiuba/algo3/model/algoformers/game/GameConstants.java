@@ -13,4 +13,5 @@ public class GameConstants {
 	public static double SURFACE_THORN_LIFE_FACTOR = 0.95;
 	public static int ALGOFORMER_COMBINING_TURNS = 3;
 	public static int ALGOFORMER_COMBINING_DISTANCE = 1;
+	public static int ALGOFORMER_COMBINING_NUMBER = 3;
 }

@@ -126,7 +126,9 @@ public class GameController {
 	public void executeActionCombinar(){
 		try {
 			this.game.combinar();
-		} catch (MuyLejosParaCombinarException | InvalidPositionException e) {
+		} catch (MuyLejosParaCombinarException 
+				| InvalidPositionException 
+				| NoTieneSuficientesAlgoformersParaCombinarException e) {
 			this.view.showMessage(e.getMessage());
 		}
 		this.clearAction();

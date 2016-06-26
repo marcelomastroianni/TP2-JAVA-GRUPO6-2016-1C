@@ -108,12 +108,12 @@ public class PlayerTest {
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
 		Assert.assertTrue("Algoformer deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
 
-		jugador.combinar(AlgoFormerFactory.getMenasor(new Position(0,0),500));
+		jugador.removeAlgoformers();		
+		jugador.addAlgoformer(AlgoFormerFactory.getMenasor(new Position(0,0),500));
 
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(optimusPrime));
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(bumblebee));
 		Assert.assertFalse("Algoformer no deberia pertenecer a jugador", jugador.hasAlgoformer(frenzy));
-
 
 		Assert.assertEquals("el jugador deberia tener un solo algoformer",1, jugador.getAlgoformers().size());
 		Assert.assertEquals("el algoformer deberia ser mansor","Menasor", jugador.getAlgoformers().get(0).getNombre());

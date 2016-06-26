@@ -46,13 +46,13 @@ public class Game {
 		Algoformer bonecrusher = AlgoFormerFactory.getBonecrusher(new Position(board.getXLength()-1,1));
 		Algoformer frenzy = AlgoFormerFactory.getFrenzy(new Position(board.getXLength()-1,2));
 
-		player1.addAlgoformer(optimusPrime);
-		player1.addAlgoformer(bumblebee);
-		player1.addAlgoformer(ratchet);
+		this.player1.addAlgoformer(optimusPrime);
+		this.player1.addAlgoformer(bumblebee);
+		this.player1.addAlgoformer(ratchet);
 
-		player2.addAlgoformer(megatron);
-		player2.addAlgoformer(bonecrusher);
-		player2.addAlgoformer(frenzy);
+		this.player2.addAlgoformer(megatron);
+		this.player2.addAlgoformer(bonecrusher);
+		this.player2.addAlgoformer(frenzy);
 
 		ChispaSuprema chispaSuprema = new ChispaSuprema(board.getCentralPosition());
 
@@ -106,7 +106,6 @@ public class Game {
 		this.board.add(new CanonBonus(new Position(4,4)));
 		this.board.add(new BubbleBonus(new Position(3,1)));
 		this.board.add(new FlashBonus(new Position(2,5)));
-
 	}
 
 	public boolean isOver(){
@@ -143,12 +142,15 @@ public class Game {
 	public void setBoard(Board board){
 		this.board = board;
 	}
+	
 	public void setPlayer1(Player player1){
 		this.player1 = player1;
 	}
+	
 	public void setPlayer2(Player player2){
 		this.player2 = player2;
 	}
+	
 	public void setTurn(Turn turn){
 		this.turn = turn;
 	}
@@ -164,7 +166,6 @@ public class Game {
 		}
 
 		Content content = this.board.getContent(initialPosition);
-
 
 		Algoformer algoformer;
 
@@ -223,7 +224,6 @@ public class Game {
 
 		Content content = this.board.getContent(position);
 
-
 		Algoformer algoformer;
 
 		try{
@@ -239,15 +239,19 @@ public class Game {
 		algoformer.transform();
 	}
 
-	public void combinar() throws InvalidPositionException, MuyLejosParaCombinarException {
+	public void combinar() throws InvalidPositionException, MuyLejosParaCombinarException, NoTieneSuficientesAlgoformersParaCombinarException {
 		List<Algoformer> algoformersList =this.getActivePlayer().getAlgoformers();
-		Algoformer algoformer1 = algoformersList.get(0);
-		Algoformer algoformer2 = algoformersList.get(1);
-		Algoformer algoformer3 = algoformersList.get(2);
-		Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer2, algoformer3);
-		combinado.setPlayer(this.getActivePlayer());
-		this.getActivePlayer().combinar(combinado);
-
+		if (algoformersList.size()==GameConstants.ALGOFORMER_COMBINING_NUMBER){
+			Algoformer algoformer1 = algoformersList.get(0);
+			Algoformer algoformer2 = algoformersList.get(1);
+			Algoformer algoformer3 = algoformersList.get(2);
+			Algoformer combinado = algoformer1.getMergedAlgoformer(this.board,algoformer2, algoformer3);
+			this.getActivePlayer().removeAlgoformers();
+			this.getActivePlayer().addAlgoformer(combinado);
+		}else{
+			throw new NoTieneSuficientesAlgoformersParaCombinarException();
+		}
+			
 	}
 
 
@@ -264,10 +268,4 @@ public class Game {
 		}
 		this.isOver = true;
 	}
-
-
-
-
-
-
 }

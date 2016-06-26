@@ -57,9 +57,8 @@ public class Player {
 	public String getName() {
 		return this.name;
 	}
-
-	public void combinar(Algoformer fusion) {
-		this.algoformersList = new ArrayList<Algoformer>();
-		this.addAlgoformer(fusion);
+	
+	public void removeAlgoformers(){
+		this.algoformersList.clear();
 	}
 }
