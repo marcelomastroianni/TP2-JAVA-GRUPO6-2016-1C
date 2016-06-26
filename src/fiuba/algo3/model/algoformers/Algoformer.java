@@ -9,7 +9,7 @@ import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.InvalidStrikeException;
+import fiuba.algo3.model.exceptions.MuyLejosParaAtacarException;
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 import fiuba.algo3.model.surfaces.Surface;
@@ -175,20 +175,18 @@ public class Algoformer implements Content {
 		this.hasCrossPsionicStorm = true;
 	}
 
-	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, InvalidPositionException,NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void shot(Algoformer algoformer, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, InvalidPositionException,NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
 			throw new AlgoformerAtrapadoEsteTurnoException();
 		if (this.isCombining)
 			throw new AlgoformerCombinandoseEsteTurnoException();
-		try {
-			this.resolveShootingDistance(algoformer);
-			this.checkTeamSide(algoformer);
-			algoformer.downHealthPoints(this.getAttack(),board);
-			this.haveBeenUsedInTurn = true;
-		} catch (InvalidStrikeException e) {
-		}
+		
+		this.resolveShootingDistance(algoformer);
+		this.checkTeamSide(algoformer);
+		algoformer.downHealthPoints(this.getAttack(),board);
+		this.haveBeenUsedInTurn = true;		
 	}
 
 	private void checkTeamSide(Algoformer algoformer)
@@ -200,9 +198,9 @@ public class Algoformer implements Content {
 	}
 
 	private void resolveShootingDistance(Algoformer algoformer)
-			throws InvalidStrikeException {
+			throws MuyLejosParaAtacarException {
 		if (!this.position.isInDistance(algoformer.getPosition(),this.getStrikingDistance())){
-			throw new InvalidStrikeException();
+			throw new MuyLejosParaAtacarException();
 		}
 	}
 

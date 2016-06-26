@@ -45,7 +45,7 @@ public class BonusBurbujaInmaculadaTest {
 	}
 
 	@Test
-	public void testCapturarBonusBurbujaInmaculada() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testCapturarBonusBurbujaInmaculada() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		prepareGame(game);
 

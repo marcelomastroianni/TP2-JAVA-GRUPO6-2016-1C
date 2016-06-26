@@ -17,6 +17,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
+import fiuba.algo3.model.exceptions.MuyLejosParaAtacarException;
 import fiuba.algo3.model.exceptions.NoSePuedeAtacarAlgoformerDelMismoEquipoException;
 
 public class PrimeraEntragaTest {
@@ -111,8 +112,8 @@ public class PrimeraEntragaTest {
 
 	//5. Combinaciones en modos de: Ubicar un autobot, ubicar un decepticon, pedir que se
 	//ataquen respetando ( y no ) las distancias verificando los daños ( o no daños ).
-	@Test
-	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	@Test(expected=MuyLejosParaAtacarException.class)
+	public void test05() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Board board = new Board(5,5);
 		Algoformer algoformer1 = AlgoFormerFactory.getFrenzy(new Position(2,0));
 		Algoformer algoformer2 = AlgoFormerFactory.getOptimusPrime(new Position(2,4));

@@ -217,7 +217,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testDispararAAlgoformer() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testDispararAAlgoformer() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
@@ -336,7 +336,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testJugabilidad() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testJugabilidad() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
@@ -376,7 +376,12 @@ public class GameTest {
 
 
 		//Turno jugador 1
-		game.dispararaAlgoformer(new Position(0,0),new Position(10,0));
+		try{
+			game.dispararaAlgoformer(new Position(0,0),new Position(10,0));
+		}
+		catch(MuyLejosParaAtacarException ex){
+			
+		}
 
 		//Algoformer 2 esta fuera de radio de ataque de algoformer 1
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
@@ -387,8 +392,12 @@ public class GameTest {
 		game.nextTurn();
 
 		//Turno jugador 2
-		game.dispararaAlgoformer(new Position(10,0),new Position(0,0));
-
+		try{
+			game.dispararaAlgoformer(new Position(10,0),new Position(0,0));
+		}
+		catch(MuyLejosParaAtacarException ex){
+			
+		}
 		//Algoformer 1 esta fuera de radio de ataque de algoformer 2
 		Assert.assertTrue("Algoformer jugador 1 deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
 		Assert.assertTrue("Algoformer jugador 2 deberia estar en la posicion (10,0)",algofomerJugador2.getPosition().equals(new Position(10,0)));
@@ -506,7 +515,7 @@ public class GameTest {
 	}
 
 	@Test(expected=InvalidPositionException.class)
-	public void testInvalidInitialPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testInvalidInitialPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -517,7 +526,7 @@ public class GameTest {
 	}
 
 	@Test(expected=InvalidPositionException.class)
-	public void testInvalidFinalPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testInvalidFinalPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -568,7 +577,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testCapturarBonusDeUnaPosicionIntermediaLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testCapturarBonusDeUnaPosicionIntermediaLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
@@ -644,7 +653,7 @@ public class GameTest {
 
 
 	@Test
-	public void testCapturarBonusDeUnaPosicionFinalLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testCapturarBonusDeUnaPosicionFinalLoBorraDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
@@ -707,7 +716,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testShotExceptions() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testShotExceptions() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Carlos");
 		Player player2 = new Player(game, "Brenda");
@@ -811,7 +820,7 @@ public class GameTest {
 	}
 
 	@Test(expected=UsuarioNoSeleccionoAlgoformerAQuienDispararException.class)
-	public void testUsuarioNoSeleccionoAlgoformerAQuienDisparar() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testUsuarioNoSeleccionoAlgoformerAQuienDisparar() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		prepareGame(game);
 
@@ -1035,7 +1044,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testMatarAlgoformerLoSacaDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException {
+	public void testMatarAlgoformerLoSacaDelTablero() throws UsuarioNoSeleccionoAlgoformerException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, InvalidPositionException, AlgoformerUsadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");
