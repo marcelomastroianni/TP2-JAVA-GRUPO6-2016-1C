@@ -3,7 +3,7 @@ package fiuba.algo3.model.algoformers;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.algoformers.game.Game;
+import fiuba.algo3.model.algoformers.game.GameConstants;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
@@ -51,20 +51,20 @@ public class Algoformer implements Content {
 		this.position = position;
 		this.team = team;
 
-		hasCrossPsionicStorm = false;
-		haveBeenUsedInTurn = false;
-		isImmaculateBubble = false;
-		isFlash = false;
-		isDobleDamage = false;
-		isTrapped = false;
-		isCombining = false;
+		this.hasCrossPsionicStorm = false;
+		this.haveBeenUsedInTurn = false;
+		this.isImmaculateBubble = false;
+		this.isFlash = false;
+		this.isDobleDamage = false;
+		this.isTrapped = false;
+		this.isCombining = false;
 
-		turnsTrapped = 0;
-		turnsDobleDamage = 0;
-		turnsFlash = 0;
-		turnsCombined = 0;
-		stepsMovedInTurn = 0;
-		turnsImmaculateBubble = 0;
+		this.turnsTrapped = 0;
+		this.turnsDobleDamage = 0;
+		this.turnsFlash = 0;
+		this.turnsCombined = 0;
+		this.stepsMovedInTurn = 0;
+		this.turnsImmaculateBubble = 0;
 	}
 
 
@@ -127,7 +127,7 @@ public class Algoformer implements Content {
 	}
 
 	public void reduceLifeFivePercent() {
-		this.life = (int) (this.life * 0.95);
+		this.life = (int) (this.life * GameConstants.SURFACE_THORN_LIFE_FACTOR);
 	}
 
 	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
@@ -187,7 +187,6 @@ public class Algoformer implements Content {
 			algoformer.downHealthPoints(this.getAttack(),board);
 			this.haveBeenUsedInTurn = true;
 		} catch (InvalidStrikeException e) {
-			// System.err.print(e.getMessage());
 		}
 	}
 
@@ -221,7 +220,7 @@ public class Algoformer implements Content {
 	}
 
 	public void protectWithImmaculateBubble(Integer turns) {
-		this.turnsImmaculateBubble = turns;
+		this.turnsImmaculateBubble = turns  + 1;
 		if (!this.isImmaculateBubble){
 			this.isImmaculateBubble = true;
 		}
@@ -286,17 +285,17 @@ public class Algoformer implements Content {
 	public int getAttack(){
 		int attack = this.activeMode.getAttack();
 		if (this.isDobleDamage) {
-			attack = (attack * 2);
+			attack = (attack * GameConstants.BONUS_DOBLE_CANNON_ATACK_FACTOR);
 		}
 		if (this.hasCrossPsionicStorm && this.activeMode.equals(this.alternalMode)){
-			attack =  (int) (attack * 0.6);
+			attack =  (int) (attack * GameConstants.SURFACE_PSIONIC_STORM_ATACK_FACTOR);
 		}
 		return attack;
 	}
 
 	public int getSpeed(){
 		if (this.isFlash){
-			return (this.activeMode.getSpeed() *3);
+			return (this.activeMode.getSpeed() * GameConstants.BONUS_FLASH_SPEED_FACTOR);
 		}else{
 			return this.activeMode.getSpeed();
 		}
@@ -362,13 +361,15 @@ public class Algoformer implements Content {
 	}
 
 	public boolean canMerge( Position position2, Position position3){
-		return(((this.position.isInDistance(position2, 1) && this.position.isInDistance(position3, 1)) ||((this.position.isInDistance(position2, 1) && position2.isInDistance(position3, 1)) ||(this.position.isInDistance(position3, 1) && position3.isInDistance(position2, 1)))));
+		return(((this.position.isInDistance(position2, GameConstants.ALGOFORMER_COMBINING_DISTANCE) && this.position.isInDistance(position3, GameConstants.ALGOFORMER_COMBINING_DISTANCE)) 
+			||((this.position.isInDistance(position2, GameConstants.ALGOFORMER_COMBINING_DISTANCE) && position2.isInDistance(position3, GameConstants.ALGOFORMER_COMBINING_DISTANCE)) 
+			||(this.position.isInDistance(position3, GameConstants.ALGOFORMER_COMBINING_DISTANCE) && position3.isInDistance(position2, GameConstants.ALGOFORMER_COMBINING_DISTANCE)))));
 	}
 
 
 	public void setCombinado() {
 		this.isCombining = true;
-		this.turnsCombined = 3;
+		this.turnsCombined = GameConstants.ALGOFORMER_COMBINING_TURNS;
 	}
 
 

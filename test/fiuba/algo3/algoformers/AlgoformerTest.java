@@ -249,12 +249,12 @@ public class AlgoformerTest {
 		Assert.assertFalse("Ratchet no deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
 		ratchet.protectWithImmaculateBubble(2);
 		Assert.assertTrue("Ratchet deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
-		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,ratchet.getTurnsImmaculateBubble());
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,(ratchet.getTurnsImmaculateBubble()-1));
 		ratchet.notifyNextTurn();
 		Assert.assertTrue("Ratchet deberia tener burbuja inmaculada",ratchet.isImmaculateBubble());
-		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 1 turno",1,ratchet.getTurnsImmaculateBubble());
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 1 turno",1,(ratchet.getTurnsImmaculateBubble()-1));
 		ratchet.protectWithImmaculateBubble(2);
-		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,ratchet.getTurnsImmaculateBubble());
+		Assert.assertEquals("Ratchet deberia tener burbuja inmaculada por 2 turnos",2,(ratchet.getTurnsImmaculateBubble()-1));
 	}
 
 	@Test
@@ -571,7 +571,7 @@ public class AlgoformerTest {
 		board.add(menasor);
 
 		menasor.protectWithImmaculateBubble(2);
-		Assert.assertEquals("Menasor deberia tener burbuja inmaculada por 2 turnos",2,menasor.getTurnsImmaculateBubble());
+		Assert.assertTrue("Menasor deberia tener burbuja inmaculada por 2 turnos",menasor.isImmaculateBubble());
 	}
 
 	@Test

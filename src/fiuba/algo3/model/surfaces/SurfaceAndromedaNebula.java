@@ -1,9 +1,7 @@
 package fiuba.algo3.model.surfaces;
 
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalAerial;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
-import fiuba.algo3.model.algoformers.ModeHumanoid;
+import fiuba.algo3.model.algoformers.game.GameConstants;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class SurfaceAndromedaNebula implements Surface {
@@ -35,7 +33,7 @@ public class SurfaceAndromedaNebula implements Surface {
 
 	@Override
 	public void crossedByModeAlternalAerial(Algoformer algoformer) {
-		algoformer.trap(3);
+		algoformer.trap(GameConstants.SURFACE_ANDROMEDA_NEBULA_TRAPS_TURNS);
 	}
 
 }

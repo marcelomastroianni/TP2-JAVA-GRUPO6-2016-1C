@@ -3,6 +3,7 @@ package fiuba.algo3.model.bonus;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Content;
 import fiuba.algo3.model.algoformers.board.Position;
+import fiuba.algo3.model.algoformers.game.GameConstants;
 
 public class BubbleBonus implements Bonus {
 
@@ -20,7 +21,7 @@ public class BubbleBonus implements Bonus {
 	@Override
 	public void collideWithAlgoformer(Content algoformer) {
 		Algoformer algo = (Algoformer) algoformer;
-		algo.protectWithImmaculateBubble(3);
+		algo.protectWithImmaculateBubble(GameConstants.BONUS_INMACULATE_BUBBLE_TURNS);
 	}
 
 }

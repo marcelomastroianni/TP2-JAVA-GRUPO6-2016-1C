@@ -27,18 +27,13 @@ public class Game {
 	Player player2;
 	Board board;
 	Turn turn;
-
-	int BOARD_X_LENGTH = 14;
-	int BOARD_Y_LENGTH = 14;
-
 	boolean isOver = false;
 	Player winner;
-
-
+	
 	public void init(String namePlayer1,String namePlayer2) throws InvalidPositionException {
 		this.player1 = new Player(this, namePlayer1);
 		this.player2 = new Player(this, namePlayer2);
-		this.board = new Board(BOARD_X_LENGTH,BOARD_Y_LENGTH);
+		this.board = new Board(GameConstants.BOARD_X_LENGTH,GameConstants.BOARD_Y_LENGTH);
 		this.turn = new Turn(this.player1, this.player2);
 
 		//Autobots:
