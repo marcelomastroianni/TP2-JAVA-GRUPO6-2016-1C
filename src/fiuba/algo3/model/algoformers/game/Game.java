@@ -158,7 +158,7 @@ public class Game {
 		this.turn = turn;
 	}
 
-	public void nextTurn() throws InvalidPositionException{
+	public void nextTurn(){
 		this.turn.next();
 	}
 

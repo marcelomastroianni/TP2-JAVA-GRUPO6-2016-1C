@@ -50,7 +50,7 @@ public class GameController {
 		}
 	}
 
-	public void selectCell(Position position) throws InvalidPositionException, MuyLejosParaCombinarException{
+	public void selectCell(Position position){
 		this.selectAlgoformer(position);
 		if (this.action != Action.SIN_ACCION){
 			if (this.positionSelected1 == null){
@@ -154,7 +154,7 @@ public class GameController {
 		}
 	}
 
-	public void nextTurn() throws InvalidPositionException {
+	public void nextTurn() {
 		this.clearSelectedCells();
 		this.game.nextTurn();
 		this.view.updateTurn();
@@ -166,12 +166,8 @@ public class GameController {
                 @Override
                 public void handle(MouseEvent t) {
                 	int x_celda = (int) (t.getX() / ViewConstants.CELL_WIDTH);
-                	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);
-					try {
-						selectCell(new Position(x_celda,y_celda));
-					} catch (Exception e) {
-						view.showMessage(e.getMessage());
-					}
+                	int y_celda = (int) (t.getY() / ViewConstants.CELL_HEIGHT);					
+					selectCell(new Position(x_celda,y_celda));					
 				}
             });
 	}

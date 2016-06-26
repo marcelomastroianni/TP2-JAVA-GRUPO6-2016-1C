@@ -19,12 +19,7 @@ public class NextTurnButtonHandler implements EventHandler<ActionEvent> {
     }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
-    	try {
-			this.controller.nextTurn();
-		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void handle(ActionEvent actionEvent) {    	
+		this.controller.nextTurn();		
     }
 }
