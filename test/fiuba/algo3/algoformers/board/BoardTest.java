@@ -30,6 +30,11 @@ public class BoardTest {
 	}	
 
 	@Test
+	public void getCellsTest(){
+		Assert.assertTrue("Deberia poder obtenerse las celdas del tablero", (board.getCells()!=null));		
+	}
+	
+	@Test
 	public void getContentTest(){
 		Assert.assertEquals(new Nothing(firstPosition), board.getContent(firstPosition));
 		Assert.assertEquals(new Nothing(lastPosition), board.getContent(lastPosition));
