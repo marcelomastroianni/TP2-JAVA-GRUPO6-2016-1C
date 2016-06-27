@@ -1,6 +1,6 @@
 package fiuba.algo3.model.algoformers.game;
 
-public class GameConstants {			
+public final class GameConstants {			
 	public static int BOARD_X_LENGTH = 14;
 	public static int BOARD_Y_LENGTH = 14;
 	public static int BONUS_INMACULATE_BUBBLE_TURNS = 2;
@@ -14,4 +14,8 @@ public class GameConstants {
 	public static int ALGOFORMER_COMBINING_TURNS = 3;
 	public static int ALGOFORMER_COMBINING_DISTANCE = 1;
 	public static int ALGOFORMER_COMBINING_NUMBER = 3;
+	
+	private GameConstants(){
+		throw new AssertionError();
+	}
 }

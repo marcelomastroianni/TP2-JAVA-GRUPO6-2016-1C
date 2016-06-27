@@ -2,7 +2,7 @@ package fiuba.algo3.model.algoformers;
 
 import fiuba.algo3.model.algoformers.board.Position;
 
-public class AlgoFormerFactory {
+public final class AlgoFormerFactory {
 
 	//Autobots:
 
@@ -58,4 +58,7 @@ public class AlgoFormerFactory {
 		return algoformer;
 	}
 
+	private AlgoFormerFactory(){
+		throw new AssertionError();
+	}
 }
