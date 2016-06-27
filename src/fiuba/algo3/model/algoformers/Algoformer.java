@@ -133,7 +133,7 @@ public class Algoformer implements Content {
 		this.life = (int) (this.life * GameConstants.SURFACE_THORN_LIFE_FACTOR);
 	}
 
-	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException {
+	public void move(Position finalPosition, Board board) throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException, NoPuedeMoverseDondeEstaOtroAlgoformerException, ModoAlternoNoPuedeCapturarChispaSupremaException, InvalidPositionException {
 		if(this.haveBeenUsedInTurn)
 			throw new AlgoformerUsadoEsteTurnoException();
 		if (this.isTrapped)
@@ -150,18 +150,14 @@ public class Algoformer implements Content {
 			previous = this.position;
 			next = this.position.next(finalPosition);
 			nextSurface = board.getSurface(next);
-			if (this.activeMode.canCrossSurface(nextSurface)) {
-				try {
-					board.getContent(next).collideWithAlgoformer(this);
-					this.stepsMovedInTurn++;
-					this.position = next;
-					board.clearContent(previous);
-					board.add(this);
-					this.activeMode.crossSurface(nextSurface, this);
-					this.haveBeenUsedInTurn = true;
-				} catch (InvalidPositionException ex) {
-					break;
-				}
+			if (this.activeMode.canCrossSurface(nextSurface)) {				
+				board.getContent(next).collideWithAlgoformer(this);
+				this.stepsMovedInTurn++;
+				this.position = next;
+				board.clearContent(previous);
+				board.add(this);
+				this.activeMode.crossSurface(nextSurface, this);
+				this.haveBeenUsedInTurn = true;				
 			} else{
 				break;
 			}
