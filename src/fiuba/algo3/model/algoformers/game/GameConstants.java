@@ -16,6 +16,5 @@ public final class GameConstants {
 	public static int ALGOFORMER_COMBINING_NUMBER = 3;
 	
 	private GameConstants(){
-		throw new AssertionError();
 	}
 }

@@ -59,6 +59,5 @@ public final class AlgoFormerFactory {
 	}
 
 	private AlgoFormerFactory(){
-		throw new AssertionError();
 	}
 }
