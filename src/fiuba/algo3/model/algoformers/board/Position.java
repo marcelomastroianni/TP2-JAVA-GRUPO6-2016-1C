@@ -2,48 +2,48 @@ package fiuba.algo3.model.algoformers.board;
 
 
 public class Position {
-	private Integer X;
-	private Integer Y;
+	private Integer x;
+	private Integer y;
 	public Position(Integer X, Integer Y){
-		this.X = X;
-		this.Y = Y;
+		this.x = X;
+		this.y = Y;
 	}
 
 	public boolean isInDistance(Position position, int distance){
-		return (this.X + distance >= position.getX() && this.X - distance <= position.getX() &&
-		this.Y + distance >= position.getY() && this.Y - distance <= position.getY());
+		return (this.x + distance >= position.getX() && this.x - distance <= position.getX() &&
+		this.y + distance >= position.getY() && this.y - distance <= position.getY());
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((X == null) ? 0 : X.hashCode());
-		result = prime * result + ((Y == null) ? 0 : Y.hashCode());
+		result = prime * result + x.hashCode();
+		result = prime * result + y.hashCode();
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Position other = (Position) obj;
-		if (!X.equals(other.X))
+		if (!x.equals(other.x))
 			return false;
-		if (!Y.equals(other.Y))
+		if (!y.equals(other.y))
 			return false;
 		return true;
 	}
 
 	public boolean isInRange(int xLength, int yLength){
-		return(Y>=0 && Y < yLength && X >=0  && X < xLength );
+		return(y>=0 && y < yLength && x >=0  && x < xLength );
 	}
 
 
 	public Integer getX(){
-		return X;
+		return x;
 	}
 
 	public Integer getY(){
-		return Y;
+		return y;
 	}
 
 	public boolean hasNext(Position finalPosition) {
@@ -78,6 +78,6 @@ public class Position {
 	}
 
 	public String toString(){
-		return "(" + Integer.toString(X)  + "," + Integer.toString(Y) + ")";
+		return "(" + Integer.toString(x)  + "," + Integer.toString(y) + ")";
 	}
 }
