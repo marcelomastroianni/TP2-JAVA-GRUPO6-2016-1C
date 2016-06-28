@@ -1,9 +1,22 @@
-Ejemplo                                                                                                                                                                 
+Algoformers                                                                                                                                                                 
 ==========
 
-Este proyecto es un simple ejemplo que muestra un proyecto base en Java para la material Algo3.
+Juego de Algoformers escrito en Java para el TP final de Algoritmos y Programación 3 FIUBA
 
-## Definición de pruebas
-### Nombrar correctamente los archivos de pruebas
+Reportes del servidor de integracion continua en: https://nicopaez.ci.cloudbees.com/job/nicopaez-n6/
 
-Al momento de definir un nuevo archivo que contendrá pruebas, ya sean unitarias o de integración, el patrón del nuevo archivo **deberá** ser `*Test.java`; además de ubicarse en `<directorio del proyecto>/test/`. A modo de ejemplo: `<mi proyecto>/test/<paquete>/MiNuevoArchivoTest.java`.
+
+## Requerimientos
+### 
+
+Java 1.8
+JavaFX
+ANT
+
+## Integrantes
+### 
+
+* Ariel Manzione (Padron 95716)
+* Jazmin Ferreiro (Padron 97266)
+* Marcelo Mastroianni (Padron 88782)
+* Nicolas Deciancio (Padron 92150)
