@@ -26,3 +26,7 @@ ANT
 * Jazmin Ferreiro (Padron 97266)
 * Marcelo Mastroianni (Padron 88782)
 * Nicolas Deciancio (Padron 92150)
+
+
+## Build trend
+[![Build trend](https://nicopaez.ci.cloudbees.com/job/nicopaez-n6/test/trend)](https://nicopaez.ci.cloudbees.com/view/Algo3/job/nicopaez-n6/)
