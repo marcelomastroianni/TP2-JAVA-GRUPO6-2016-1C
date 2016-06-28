@@ -10,7 +10,9 @@ Reportes del servidor de integracion continua en: https://nicopaez.ci.cloudbees.
 ### 
 
 Java 1.8
+
 JavaFX
+
 ANT
 
 ## Integrantes
