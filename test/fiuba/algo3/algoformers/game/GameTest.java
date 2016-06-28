@@ -1,12 +1,9 @@
 package fiuba.algo3.algoformers.game;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
@@ -17,9 +14,7 @@ import fiuba.algo3.model.algoformers.game.Game;
 import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.algoformers.game.Turn;
 import fiuba.algo3.model.bonus.Bonus;
-import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.bonus.BonusDobleCannon;
-
 import fiuba.algo3.model.surfaces.SurfaceThorn;
 
 
@@ -115,10 +110,8 @@ public class GameTest {
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
 
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
-		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));
@@ -164,7 +157,6 @@ public class GameTest {
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
 
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
@@ -185,8 +177,7 @@ public class GameTest {
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
-
+		
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 
@@ -201,8 +192,7 @@ public class GameTest {
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
-
+		
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 
@@ -480,8 +470,6 @@ public class GameTest {
 		Game game = new Game();
 		prepareGame(game);
 
-		Player jugador1 = game.getPlayer1();
-
 		//Turno jugador
 		game.moverAlgoformer(new Position(0,2),new Position(1,2));
 		game.transformaraAlgoformer(new Position(1,2));
@@ -508,8 +496,6 @@ public class GameTest {
 		Game game = new Game();
 		prepareGame(game);
 
-		Player jugador1 = game.getPlayer1();
-
 		//Turno jugador
 		game.moverAlgoformer(new Position(0,2),new Position(-2,0));
 	}
@@ -519,8 +505,6 @@ public class GameTest {
 		Game game = new Game();
 		prepareGame(game);
 
-		Player jugador1 = game.getPlayer1();
-
 		//Turno jugador
 		game.dispararaAlgoformer(new Position(-1,0),new Position(2,0));
 	}
@@ -529,8 +513,6 @@ public class GameTest {
 	public void testInvalidFinalPositionShot() throws InvalidPositionException, AlgoformerUsadoEsteTurnoException, JugadorNoPuedeJugarCuandoNoEsSuTurnoException, UsuarioNoSeleccionoAlgoformerException, UsuarioNoSeleccionoAlgoformerAQuienDispararException, AlgoformerCombinandoseEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, NoSePuedeAtacarAlgoformerDelMismoEquipoException, MuyLejosParaAtacarException {
 		Game game = new Game();
 		prepareGame(game);
-
-		Player jugador1 = game.getPlayer1();
 
 		//Turno jugador
 		game.dispararaAlgoformer(new Position(0,0),new Position(0,-2));
@@ -544,14 +526,9 @@ public class GameTest {
 		game.getPlayer1().addAlgoformer(bumblebee);
 		game.getBoard().add(bumblebee);
 
-		//game.getBoard().add(new CanonBonus(new Position(1,0)));
-
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
-
 
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
-		List<Algoformer> algoformersJugador2 = jugador2.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);
 
 		Assert.assertTrue("Algoformer deberia estar en la posicion (0,0)",algofomerJugador1.getPosition().equals(new Position(0,0)));

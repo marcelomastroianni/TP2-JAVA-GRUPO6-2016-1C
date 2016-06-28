@@ -25,12 +25,14 @@ public class BonusView {
 	   	Image imagen = cannon;
 	   
 	   	try{
-	   		BonusFlash bonusFlash = (BonusFlash)this.bonus;
+	   		@SuppressWarnings("unused")
+			BonusFlash bonusFlash = (BonusFlash)this.bonus;
 	   		imagen = flash;
 	   	}
 	   	catch(ClassCastException ex){	   		
 	   	}	   	
 		try{
+			@SuppressWarnings("unused")
 			BonusInmaculateBubble bonusBurbuja = (BonusInmaculateBubble)this.bonus;
 	   		imagen = bubble;
 	   	}

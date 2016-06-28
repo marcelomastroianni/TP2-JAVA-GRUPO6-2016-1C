@@ -3,9 +3,7 @@ package fiuba.algo3.view;
 import fiuba.algo3.controller.AplicacionOnExitPressEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 
 public class AlgoformerApp extends Application {
 		Stage stage;

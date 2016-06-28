@@ -46,7 +46,6 @@ public class BonusFlashTest {
 		game.getBoard().add(BonusFlash.createBonusFlash(new Position(1,0)));
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
 
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer algofomerJugador1 = algoformersJugador1.get(0);

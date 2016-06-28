@@ -2,15 +2,10 @@ package fiuba.algo3.algoformers.board;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import fiuba.algo3.model.algoformers.AlgoFormerFactory;
-import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
 
 public class PositionTest {
-
-
+	
 	@Test
 	public void compareTwoEqualPositionsTest(){
 		Position position1 = new Position(0,0);
@@ -93,7 +88,6 @@ public class PositionTest {
 		Assert.assertFalse("No deberia haber una posicion siguiente", position.hasNext(finalPosition));
 		position = position.next(finalPosition);
 		Assert.assertEquals("La posicion siguiente deberia ser (10,10).", new Position(10,10), position);
-
 
 		position = new Position(10,17);
 		finalPosition = new Position(10,10);

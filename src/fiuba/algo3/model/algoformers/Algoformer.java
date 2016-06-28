@@ -338,6 +338,7 @@ public class Algoformer implements Content {
 	}
 
 
+	@SuppressWarnings("static-access")
 	public Algoformer getMergedAlgoformer( Board board, Algoformer algoformer1, Algoformer algoformer2) throws MuyLejosParaCombinarException, InvalidPositionException {
 			if(this.canMerge(algoformer2.getPosition(), algoformer1.getPosition())){
 				board.clearContent(algoformer1.getPosition());

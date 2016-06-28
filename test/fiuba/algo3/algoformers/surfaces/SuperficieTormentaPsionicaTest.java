@@ -2,13 +2,10 @@ package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
-
 import org.junit.Assert;
 import org.junit.Test;
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
-import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Nothing;

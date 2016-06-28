@@ -6,10 +6,7 @@ import fiuba.algo3.controller.InfoOptionEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
-
-
 
 public class AlgoformerMenuBar extends MenuBar{
 
@@ -38,10 +35,7 @@ public class AlgoformerMenuBar extends MenuBar{
 	        this.getMenus().addAll(fileMenu, viewMenu, helpMenu);
 	}
 
-	 public void maximizedApp() {
-		 fullScreenOption.setDisable(false);
-
-	    }
-
-
+	public void maximizedApp() {
+		fullScreenOption.setDisable(false);
+	}
 }

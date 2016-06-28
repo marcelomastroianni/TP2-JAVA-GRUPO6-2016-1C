@@ -43,7 +43,6 @@ public class PrimeraEntragaTest {
 	//en ambas direcciones.
 	@Test
 	public void test02() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, InvalidPositionException, AlgoformerCombinandoseEsteTurnoException {
-		Board board = new Board(5,5);
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0,0));
         Assert.assertTrue("Modo deberia ser humanoide", algoformer.isHumanoidMode());
         algoformer.transform();

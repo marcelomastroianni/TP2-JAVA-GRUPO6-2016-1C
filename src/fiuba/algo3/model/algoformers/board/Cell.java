@@ -1,6 +1,5 @@
 package fiuba.algo3.model.algoformers.board;
 
-import fiuba.algo3.model.surfaces.SurfaceRocky;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class Cell{

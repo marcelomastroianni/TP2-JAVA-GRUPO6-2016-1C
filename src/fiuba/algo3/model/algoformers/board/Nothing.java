@@ -1,7 +1,5 @@
 package fiuba.algo3.model.algoformers.board;
 
-import fiuba.algo3.model.algoformers.Algoformer;
-
 public class Nothing implements Content{
 
 	Position position;

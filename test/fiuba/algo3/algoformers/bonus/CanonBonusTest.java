@@ -6,7 +6,6 @@ import fiuba.algo3.model.bonus.Bonus;
 import fiuba.algo3.model.exceptions.*;
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
@@ -24,6 +23,7 @@ public class CanonBonusTest {
 	int BOARD_X_LENGTH = 20;
 	int BOARD_Y_LENGTH = 20;
 
+	@SuppressWarnings("unused")
 	private void prepareGame(Game game) throws InvalidPositionException{
 		Player player1 = new Player(game, "Juan");
 		Player player2 = new Player(game, "Maria");

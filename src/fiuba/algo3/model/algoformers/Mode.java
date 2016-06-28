@@ -14,7 +14,6 @@ public abstract class Mode {
 		this.attack = attack;
 		this.strikingDistance = strikingDistance;
 		this.speed = speed;
-		this.imagePath = imagePath;
 	}
 
 	public Integer getAttack(){

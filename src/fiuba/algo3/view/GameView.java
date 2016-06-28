@@ -168,8 +168,8 @@ public class GameView  {
 		listaCellViews.get(position).update();
     }
 
-    private void drawCells(){
-    	GraphicsContext gc = canvas.getGraphicsContext2D();
+    @SuppressWarnings("rawtypes")
+	private void drawCells(){
     	Iterator entries = this.game.getBoard().getCells().entrySet().iterator();
     	while (entries.hasNext()) {
     	  Entry thisEntry = (Entry) entries.next();

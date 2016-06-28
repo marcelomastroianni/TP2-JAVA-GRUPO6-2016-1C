@@ -3,11 +3,9 @@ package fiuba.algo3.algoformers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.algoformers.board.Nothing;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.algoformers.game.Game;
@@ -22,7 +20,6 @@ import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaExcep
 import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.exceptions.NoTieneSuficientesAlgoformersParaCombinarException;
-import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerAQuienDispararException;
 import fiuba.algo3.model.exceptions.UsuarioNoSeleccionoAlgoformerException;
 
 public class MansorAndSuperionTest {

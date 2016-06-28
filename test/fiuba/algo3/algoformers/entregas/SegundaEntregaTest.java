@@ -1,6 +1,5 @@
 package fiuba.algo3.algoformers.entregas;
 
-import static org.junit.Assert.*;
 import java.util.List;
 import fiuba.algo3.model.algoformers.*;
 import fiuba.algo3.model.exceptions.*;
@@ -359,8 +358,7 @@ public class SegundaEntregaTest {
 		prepareGame(game);
 
 		Player jugador1 = game.getPlayer1();
-		Player jugador2 = game.getPlayer2();
-
+		
 		List<Algoformer> algoformersJugador1 = jugador1.getAlgoformers();
 		Algoformer megatron = algoformersJugador1.get(0);
 		megatron.transform();

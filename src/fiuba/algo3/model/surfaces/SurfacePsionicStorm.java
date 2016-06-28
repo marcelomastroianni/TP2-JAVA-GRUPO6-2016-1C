@@ -1,9 +1,6 @@
 package fiuba.algo3.model.surfaces;
 
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalAerial;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
-import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.surfaces.Surface;
 
 public class SurfacePsionicStorm implements Surface {

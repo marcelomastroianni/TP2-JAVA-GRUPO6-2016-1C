@@ -1,8 +1,6 @@
 package fiuba.algo3.controller;
 
 import fiuba.algo3.model.algoformers.game.Game;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-import fiuba.algo3.model.exceptions.MuyLejosParaCombinarException;
 import fiuba.algo3.view.GameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

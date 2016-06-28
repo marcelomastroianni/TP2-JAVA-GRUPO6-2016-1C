@@ -1,8 +1,5 @@
 package fiuba.algo3.model.algoformers.game;
 
-import fiuba.algo3.model.algoformers.board.Board;
-import fiuba.algo3.model.exceptions.InvalidPositionException;
-
 public class Turn {
 
 	private Player activePlayer;

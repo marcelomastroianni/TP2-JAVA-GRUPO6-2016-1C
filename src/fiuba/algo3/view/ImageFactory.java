@@ -10,13 +10,10 @@ public class ImageFactory {
 	private static Image supPantano;
 	private static Image supAndromeda;
 	private static Image supPsionica;
-
 	private static Image cannon;
 	private static Image flash;
 	private static Image bubble;
-
 	private static Image chispaSupremaImage;
-
 	private static Image algoformerOptimusprime;
 	private static Image algoformerOptimusprimeAlternal;
 	private static Image algoformerBumblebee;

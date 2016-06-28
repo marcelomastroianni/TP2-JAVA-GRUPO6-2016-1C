@@ -5,7 +5,6 @@ import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.ChispaSuprema;
 import fiuba.algo3.model.bonus.Bonus;
-import fiuba.algo3.model.bonus.BonusFlash;
 import fiuba.algo3.model.surfaces.SurfaceSwamp;
 import fiuba.algo3.model.surfaces.SurfaceAndromedaNebula;
 import fiuba.algo3.model.surfaces.SurfaceCloud;
@@ -42,13 +41,14 @@ public class CellView {
 			 this.selected = true;
 	 }
 
-	 public void update(){
+	@SuppressWarnings("unused")
+	public void update(){
 
 		GraphicsContext gc = canvas.getGraphicsContext2D();
     	Image imagen = supRocosa;
 
        	try{
-       		SurfaceThorn sup = (SurfaceThorn)this.cell.getSurface();
+			SurfaceThorn sup = (SurfaceThorn)this.cell.getSurface();
 	   		imagen = supEspinas;
 	   	}
 	   	catch(ClassCastException ex){

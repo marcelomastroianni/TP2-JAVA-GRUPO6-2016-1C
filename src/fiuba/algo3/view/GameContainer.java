@@ -20,8 +20,6 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
 public class GameContainer extends BorderPane {
 
 	private AlgoformerMenuBar menuBar;
@@ -46,16 +44,12 @@ public class GameContainer extends BorderPane {
 	private Label lblAlgoformerSpeed;
 	private Label lblAlgoformerPosition;
 	private Label lblException;
-
 	private Label lblAlgoformerStateTrapped;
 	private Label lblAlgoformerStateCombining;
 	private Label lblAlgoformerBonusTitle;
 	private Label lblAlgoformerBonusDobleCannon;
 	private Label lblAlgoformerBonusFlash;
 	private Label lblAlgoformerBonusInmaculateBubble;
-
-	private Label lblBlankLine1;
-	private Label lblBlankLine2;
 
 	private Game game;
 	private GameView gameView;
@@ -90,8 +84,6 @@ public class GameContainer extends BorderPane {
 		this.lblTurnoTitle = new Label("Turno Jugador:");
 		this.lblTurnoTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
 		this.lblTurno = new Label("");
-		this.lblBlankLine1 = new Label("");
-		this.lblBlankLine2 = new Label("");
 		this.lblAlgoformerTitle = new Label("Algoformer Seleccionado:");
 		this.lblAlgoformerTitle.setStyle("-fx-font-weight: bold;" + "-fx-font-size: 15;");
 		this.lblAlgoformerName = new Label("");
@@ -192,7 +184,6 @@ public class GameContainer extends BorderPane {
 		try {
 			this.game.init(namePlayer1,namePlayer2);
 		} catch (InvalidPositionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.gameView = new GameView(this.game, this.boardCanvas);

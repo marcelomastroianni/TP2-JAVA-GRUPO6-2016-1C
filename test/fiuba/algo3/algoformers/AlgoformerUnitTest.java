@@ -1,20 +1,14 @@
 package fiuba.algo3.algoformers;
 
-import java.util.List;
-
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalAerial;
 import fiuba.algo3.model.algoformers.board.Board;
 import fiuba.algo3.model.algoformers.board.Position;
-import fiuba.algo3.model.algoformers.game.Game;
-import fiuba.algo3.model.algoformers.game.Player;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 
@@ -75,27 +69,5 @@ public class AlgoformerUnitTest {
 		Algoformer algoformer = AlgoFormerFactory.getOptimusPrime(new Position(0, 0));	
 		algoformer.dobleDamage(2);
 		Assert.assertEquals("Algoformer deberia tener un poder de ataque de 100 puntos",100,algoformer.getAttack());
-	}
-	
-	@Test
-	public void twoEqualsAlgoformersTest(){
-		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
-		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
-	}
-	
-	@Test
-	public void twoDiferentsAlgoformersTest(){
-		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
-		Algoformer algoformer2 = AlgoFormerFactory.getBonecrusher(new Position(0,0));
-	}
-
-	@Test
-	public void twoEqualsAlgoformersInDiferentStatesTest() throws AlgoformerUsadoEsteTurnoException, AlgoformerAtrapadoEsteTurnoException, AlgoformerCombinandoseEsteTurnoException {
-		Algoformer algoformer1 = AlgoFormerFactory.getMegatron(new Position(0,0));
-		Algoformer algoformer2 = AlgoFormerFactory.getMegatron(new Position(0,0));
-		algoformer2.transform();
-	}
-	
-	
-	
+	}	
 }

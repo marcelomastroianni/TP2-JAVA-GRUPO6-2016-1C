@@ -2,17 +2,11 @@ package fiuba.algo3.algoformers.surfaces;
 
 import fiuba.algo3.model.algoformers.AlgoFormerFactory;
 import fiuba.algo3.model.algoformers.Algoformer;
-import fiuba.algo3.model.algoformers.ModeAlternalAerial;
-import fiuba.algo3.model.algoformers.ModeAlternalTerrestrial;
-import fiuba.algo3.model.algoformers.ModeHumanoid;
 import fiuba.algo3.model.algoformers.board.Board;
-
 import fiuba.algo3.model.exceptions.AlgoformerAtrapadoEsteTurnoException;
 import fiuba.algo3.model.exceptions.AlgoformerCombinandoseEsteTurnoException;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.model.algoformers.board.Cell;
 import fiuba.algo3.model.algoformers.board.Position;
 import fiuba.algo3.model.exceptions.AlgoformerUsadoEsteTurnoException;
@@ -21,9 +15,6 @@ import fiuba.algo3.model.exceptions.ModoAlternoNoPuedeCapturarChispaSupremaExcep
 import fiuba.algo3.model.exceptions.NoPuedeMoverseDondeEstaOtroAlgoformerException;
 import fiuba.algo3.model.surfaces.SurfaceRocky;
 import fiuba.algo3.model.surfaces.Surface;
-
-
-
 
 public class SuperficieRocosaTest {
 

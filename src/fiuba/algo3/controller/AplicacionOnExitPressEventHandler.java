@@ -2,11 +2,9 @@ package fiuba.algo3.controller;
 
 import fiuba.algo3.view.AlgoformerMenuBar;
 import javafx.event.EventHandler;
-
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
 
 public class AplicacionOnExitPressEventHandler  implements EventHandler<KeyEvent> {
 
@@ -24,7 +22,5 @@ public class AplicacionOnExitPressEventHandler  implements EventHandler<KeyEvent
             stage.setMaximized(true);
             menuBar.maximizedApp();
         }
-
 	}
-
 }

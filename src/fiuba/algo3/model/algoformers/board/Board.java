@@ -2,8 +2,6 @@ package fiuba.algo3.model.algoformers.board;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import fiuba.algo3.model.algoformers.Algoformer;
 import fiuba.algo3.model.exceptions.InvalidPositionException;
 import fiuba.algo3.model.surfaces.SurfaceRocky;
 import fiuba.algo3.model.surfaces.Surface;
