@@ -13,6 +13,8 @@
 	<property name="coverage.summaryxml.dir" location="${reports.dir}/cobertura-summary-xml" />
 	<property name="coverage.html.dir" location="${reports.dir}/cobertura-html" />
 
+
+
 	<!-- Ivy customization -->
 	<property name="ivy.install.version" value="2.2.0" />
 	<property name="ivy.jar.dir" value="${libs}/" />
@@ -197,15 +199,38 @@
 	</target>
 
 
-		<target name="empaquetar.con.imagenes" depends="compilar.paquete">
-			<copydir src="src/gui/imagess"
-				dest="${build}/classes/gui/imagess"
-				includes="**/*.png"/>
+	<target name="empaquetar.con.imagenes" depends="compilar.paquete">
+		<copy todir="${build}/fiuba/algo3/vista/pictures">
+			<fileset dir="src/fiuba/algo3/vista/pictures">
+				<include name="**/*.jpg"/>
+			</fileset>
+		</copy>
+
 		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
 	</target>
 
-	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="fiuba.algo3.ejemplo1.Foo" fork="true">
+
+	<target name="empaquetar.con.iconos" depends="empaquetar.con.imagenes">
+		<copy todir="${build}/fiuba/algo3/vista/pictures">
+			<fileset dir="src/fiuba/algo3/vista/pictures">
+				<include name="**/*.png"/>
+			</fileset>
+		</copy>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+	<target name="empaquetar.con.css" depends="empaquetar.con.iconos">
+		<copy todir="${build}/classes/fiuba/algo3/view">
+			<fileset dir="src/fiuba/algo3/view">
+				<include name="**/*.css"/>
+			</fileset>
+		</copy>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+
+	<target name="ejecutar.aplicacion" depends="empaquetar.con.css">
+		<java classname="fiuba.algo3.view.AlgoformerApp" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/algo3.jar" />
 		</java>
