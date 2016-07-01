@@ -9,7 +9,6 @@ https://nicopaez.ci.cloudbees.com/job/nicopaez-n6/
 
 https://travis-ci.org/marcelomastroianni/TP2-JAVA-GRUPO6-2016-1C
 
-
 ## Requerimientos
 ### 
 
@@ -18,6 +17,17 @@ Java 1.8
 JavaFX
 
 ANT
+
+## Comandos
+### 
+
+Correr los test:
+
+ant test
+
+Compilar y ejecutar la aplicacion:
+
+ant ejecutar.aplicacion
 
 ## Integrantes
 ### 
